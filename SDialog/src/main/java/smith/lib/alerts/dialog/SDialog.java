@@ -7,6 +7,7 @@ import android.content.res.Configuration;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.GradientDrawable;
+import android.os.CountDownTimer;
 import android.view.View;
 import android.view.Window;
 import android.widget.LinearLayout;
@@ -18,6 +19,9 @@ public class SDialog {
     private Context context;
     private View dialogView;
     private AlertDialog alertdialog;
+    public static final int SYSTEM_THEME = 0;
+    public static final int DARK_THEME = 1;
+    public static final int LIGHT_THEME = 2;
     
     
     
@@ -37,6 +41,15 @@ public class SDialog {
         this.alertdialog.show();
     }
     
+    public void show(long dur) {
+        animateView(this.dialogView);
+        this.alertdialog.show();
+        new CountDownTimer(dur, 1) {
+            @Override public void onTick(long arg0) {}
+            @Override public void onFinish() { dismiss(); }
+        }.start();
+    }
+    
     public void dismiss() {
         this.alertdialog.dismiss();
     }
@@ -49,9 +62,6 @@ public class SDialog {
         SDialog dialog;
         View sdialogView;
         int titleColor, textColor, buttonColor = 0xFFA7B4C5, backgroundColor;
-        boolean isPositive = false;
-        boolean isNegative = false;
-        boolean isNeutral = false;
         
         public AlertSDialog(Context context) {
             this.context = context;
@@ -101,23 +111,20 @@ public class SDialog {
             this.buttonColor = Color.parseColor(color);
             return this;
         }
+        
+        public AlertSDialog setSDialogTheme(int theme) {
+            if (theme == SYSTEM_THEME) {
+                if (dialog.nightModeON()) darkThemeColors();
+                else lightThemeColors();
+            } else if (theme == DARK_THEME) darkThemeColors();
+            else if (theme == LIGHT_THEME) lightThemeColors();
+            return this;
+        }
 
         public SDialog create() {
             this.dialog.context = this.context;
             this.dialog.dialogView = this.sdialogView;
             this.dialog.init();
-            
-            if (dialog.nightModeON()) {
-                this.titleColor = this.dialog.lighterColor(buttonColor, .5f);
-                this.textColor = this.dialog.lighterColor(buttonColor, .4f);
-                this.backgroundColor = this.dialog.darkerColor(buttonColor, .16f);
-                this.buttonColor = this.dialog.lighterColor(buttonColor, .1f);
-            } else {
-                this.titleColor = this.dialog.darkerColor(buttonColor, .5f);
-                this.textColor = this.dialog.darkerColor(buttonColor, .4f);
-                this.backgroundColor = this.dialog.lighterColor(buttonColor, .16f);
-                this.buttonColor = this.dialog.darkerColor(buttonColor, .1f);
-            }
 
             this.dialog.setBackgroundColor(this.sdialogView.findViewById(R.id.main), backgroundColor);
             ((TextView) this.sdialogView.findViewById(R.id.title)).setTextColor(titleColor);
@@ -127,6 +134,18 @@ public class SDialog {
             ((TextView) this.sdialogView.findViewById(R.id.neutral)).setTextColor(buttonColor);
 
             return dialog;
+        }
+        
+        private void lightThemeColors() {
+            this.titleColor = this.dialog.darkerColor(buttonColor, .7f);
+            this.textColor = this.dialog.darkerColor(buttonColor, .55f);
+            this.backgroundColor = this.dialog.lighterColor(buttonColor, .13f);
+        }
+
+        private void darkThemeColors() {
+            this.titleColor = this.dialog.lighterColor(buttonColor, .7f);
+            this.textColor = this.dialog.lighterColor(buttonColor, .55f);
+            this.backgroundColor = this.dialog.darkerColor(buttonColor, .13f);
         }
     }
     

@@ -28,9 +28,10 @@ public class MainActivity extends AppCompatActivity {
             .setNeutralButton("Hide", v -> {
                 Toast.makeText(MainActivity.this, "hide", Toast.LENGTH_SHORT).show();
             })
+            .setSDialogTheme(SDialog.LIGHT_THEME)
             .setButtonsColor("#A7B4C5")
             .create();
         dialog.setCancelable(true);
-        dialog.show();
+        dialog.show(2*60*1000);
     }
 }
