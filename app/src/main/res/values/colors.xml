@@ -1,0 +1,12 @@
+<resources>
+
+    <color name="acc">#56756d</color>
+    <color name="bg1">#f1f2ed</color>
+    <color name="bg2">#d5dfe8</color>
+    <color name="txt">#2f2f2f</color>
+    <color name="hnt">#aa2f2f2f</color>
+    <color name="acc_trn">#3356756d</color>
+    <color name="bg2_trn">#33d5dfe8</color>
+    <color name="txt_trn">#332f2f2f</color>
+    
+</resources>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/coordinator"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent" >
+    
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appbar"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:theme="@style/ThemeOverlay.MaterialComponents.Dark.ActionBar"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$Behavior">
+        
+        <com.google.android.material.appbar.MaterialToolbar
+            android:background="@color/acc"
+            android:id="@+id/toolbar"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_width="match_parent"
+            app:popupTheme="@style/ThemeOverlay.MaterialComponents.Light"/>
+        
+    
+    </com.google.android.material.appbar.AppBarLayout>
+    
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nested_scroll_view"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+        
+        <android.widget.LinearLayout
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:gravity="center">
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:padding="10dp"
+            android:text="show toast"
+            android:textSize="18sp"
+            android:onClick="show"
+            android:textColor="#000000"/>
+            
+            <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:padding="10dp"
+            android:text="show toast"
+            android:textSize="18sp"
+            android:onClick="show2"
+            android:textColor="#000000"/>
+        </android.widget.LinearLayout>
+    
+    </androidx.core.widget.NestedScrollView>
+    
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

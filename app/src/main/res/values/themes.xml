@@ -1,0 +1,16 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- App Theme -->
+    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/acc</item>
+        <item name="colorPrimaryDark">@color/bg1</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="colorAccent">@color/acc</item>
+        <item name="colorControlHighlight">@color/txt</item>
+        <item name="colorControlNormal">@color/bg1</item>
+        <item name="android:statusBarColor">@color/bg1</item>
+        <item name="android:navigationBarColor">@color/bg1</item>
+        <item name="android:windowBackground">@color/bg1</item>
+    </style>
+    
+</resources>
