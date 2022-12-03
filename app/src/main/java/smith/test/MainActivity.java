@@ -5,6 +5,9 @@ import android.view.View;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import com.itsaky.androidide.logsender.LogSender;
+import smith.lib.alerts.dialog.AlertSDialog;
+import smith.lib.alerts.dialog.CustomSDialog;
+import smith.lib.alerts.dialog.LoadingSDialog;
 import smith.lib.alerts.dialog.SDialog;
 
 public class MainActivity extends AppCompatActivity {
@@ -18,33 +21,51 @@ public class MainActivity extends AppCompatActivity {
     }
     
     public void alert(View vi) {
-        SDialog sdialog = new SDialog.AlertSDialog(this)
-            .setTitle("Title Of SDialog")
-            .setText(getString(R.string.dummy_text))
-            .setPositiveButton("OK", () -> {
-                Toast.makeText(MainActivity.this, "ok", Toast.LENGTH_SHORT).show();
-            })
-            .setNegativeButton("Cancel", () -> {
-                Toast.makeText(MainActivity.this, "cancel", Toast.LENGTH_SHORT).show();
-            })
-            .setNeutralButton("Hide", () -> {
-                Toast.makeText(MainActivity.this, "hide", Toast.LENGTH_SHORT).show();
-            })
-            // .setButtonsColor(0xFFA7B4C5)
-            // .setSDialogTheme(SDialog.LIGHT_THEME)
-            .create();
+        AlertSDialog sdialog = new AlertSDialog(this);
+        sdialog.setTitle("Title Of SDialog");
+        sdialog.setText(getString(R.string.dummy_text));
+        sdialog.setPositiveButton("OK", () -> {
+            Toast.makeText(MainActivity.this, "ok", Toast.LENGTH_SHORT).show();
+            sdialog.dismiss();
+        });
+        sdialog.setNegativeButton("Cancel", () -> {
+            Toast.makeText(this, "cancel", Toast.LENGTH_SHORT).show();
+            sdialog.dismiss();
+        });
+        sdialog.setNeutralButton("Hide", () -> {
+            Toast.makeText(this, "hide", Toast.LENGTH_SHORT).show();
+            sdialog.dismiss();
+        });
+        sdialog.setButtonsColor(SDialog.DEFAULT_COLOR);
+        sdialog.setTheme(SDialog.LIGHT_THEME);
         sdialog.setCancelable(true);
+        sdialog.setOnDismissCallBack(() -> {
+            Toast.makeText(this, "onDismiss", Toast.LENGTH_SHORT).show();
+        });
         sdialog.show();
     }
     
     public void loading(View vi) {
-        SDialog sdialog = new SDialog.LoadingSDialog(this)
-            .setTitle("Loading SDialog!")
-            .setText("Please wait a second...")
-            // .setLoadingColor(0xFFA7B4C5)
-            // .setSDialogTheme(SDialog.LIGHT_THEME)
-            .create();
-        sdialog.setOnDismissCallBack(() -> Toast.makeText(this, "onDismiss", Toast.LENGTH_SHORT).show());
-        sdialog.show(8*1000);
+        LoadingSDialog sdialog = new LoadingSDialog(this);
+        sdialog.setTitle("Loading SDialog!");
+        sdialog.setText("Please wait a second...");
+        sdialog.setLoadingColor(SDialog.DEFAULT_COLOR);
+        sdialog.setTheme(SDialog.LIGHT_THEME);
+        sdialog.setOnDismissCallBack(() -> {
+            Toast.makeText(this, "onDismiss", Toast.LENGTH_SHORT).show();
+        });
+        sdialog.show(6*1000);
+    }
+    
+    public void custom() {
+        CustomSDialog sdialog = new CustomSDialog(this);
+        sdialog.setView(R.layout.activity_main, customView -> {
+            
+        });
+        sdialog.setCancelable(true);
+        sdialog.setOnDismissCallBack(() -> {
+            Toast.makeText(this, "onDismiss", Toast.LENGTH_SHORT).show();
+        });
+        sdialog.show();
     }
 }

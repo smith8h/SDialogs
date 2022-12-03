@@ -42,4 +42,4 @@ dependencyResolutionManagement {
 }
 rootProject.name = "Smith Lib"
 include ':app'
-include ':SDialog'
+include ':SDialogs'
