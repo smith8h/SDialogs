@@ -38,18 +38,18 @@
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:padding="10dp"
-            android:text="show toast"
+            android:text="show alert dialog"
             android:textSize="18sp"
-            android:onClick="show"
+            android:onClick="alert"
             android:textColor="#000000"/>
             
             <TextView
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:padding="10dp"
-            android:text="show toast"
+            android:text="show loading dialog"
             android:textSize="18sp"
-            android:onClick="show2"
+            android:onClick="loading"
             android:textColor="#000000"/>
         </android.widget.LinearLayout>
     

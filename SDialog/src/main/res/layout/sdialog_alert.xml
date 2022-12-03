@@ -77,7 +77,8 @@
                 android:text="Positive"
                 android:textColor="#A7B4C5"
                 android:padding="8dp"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                android:visibility="gone" />
         </android.widget.LinearLayout>
     </android.widget.LinearLayout>
 </android.widget.LinearLayout>
