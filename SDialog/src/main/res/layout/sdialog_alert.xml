@@ -30,7 +30,7 @@
         <smith.lib.views.scroll.SScrollView
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
-            android:padding="0"
+            android:padding="0dp"
             app:maxHeight="400dp"
             android:scrollbars="none"
             android:overScrollMode="never">

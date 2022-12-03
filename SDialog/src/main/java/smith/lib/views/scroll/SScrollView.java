@@ -1,11 +1,10 @@
 package smith.lib.views.scroll;
 
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.os.Build;
 import android.util.AttributeSet;
 import android.widget.ScrollView;
+import smith.lib.alerts.dialog.R;
 
 public class SScrollView extends ScrollView {
     
@@ -42,6 +41,7 @@ public class SScrollView extends ScrollView {
             TypedArray styledAttrs = context.obtainStyledAttributes(attrs, R.styleable.SScrollView);
             maxHeight = styledAttrs.getDimensionPixelSize(R.styleable.SScrollView_maxHeight, defaultHeight);
             styledAttrs.recycle();
+            
         }
     }
 

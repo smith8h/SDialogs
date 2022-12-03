@@ -15,7 +15,6 @@ public class MainActivity extends AppCompatActivity {
         LogSender.startLogging(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        
     }
     
     public void alert(View vi) {
@@ -31,8 +30,8 @@ public class MainActivity extends AppCompatActivity {
             .setNeutralButton("Hide", () -> {
                 Toast.makeText(MainActivity.this, "hide", Toast.LENGTH_SHORT).show();
             })
-            .setButtonsColor(0xFFA7B4C5)
-            .setSDialogTheme(SDialog.LIGHT_THEME)
+            // .setButtonsColor(0xFFA7B4C5)
+            // .setSDialogTheme(SDialog.LIGHT_THEME)
             .create();
         sdialog.setCancelable(true);
         sdialog.show();
@@ -40,13 +39,12 @@ public class MainActivity extends AppCompatActivity {
     
     public void loading(View vi) {
         SDialog sdialog = new SDialog.LoadingSDialog(this)
-            .setTitle("Loading SDialog...")
-            .setText("Please wait.")
-            .setLoadingColor(0xFFA7B4C5)
-            .setSDialogTheme(SDialog.LIGHT_THEME)
+            .setTitle("Loading SDialog!")
+            .setText("Please wait a second...")
+            // .setLoadingColor(0xFFA7B4C5)
+            // .setSDialogTheme(SDialog.LIGHT_THEME)
             .create();
-        sdialog.setCancelable(false);
         sdialog.setOnDismissCallBack(() -> Toast.makeText(this, "onDismiss", Toast.LENGTH_SHORT).show());
-        sdialog.show(10*1000);
+        sdialog.show(8*1000);
     }
 }

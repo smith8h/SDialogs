@@ -1,3 +1,0 @@
-<declare-styleable name="SScrollView">
-    <attr name="maxHeight" format="dimension" />
-</declare-styleable>
