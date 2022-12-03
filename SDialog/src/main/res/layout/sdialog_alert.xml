@@ -27,14 +27,23 @@
             android:text="Title of SDialog"
             android:layout_marginBottom="20dp"/>
         
-        <android.widget.TextView
-            android:alpha=".75"
-            android:id="@+id/text"
+        <smith.lib.views.scroll.SScrollView
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
-            android:textSize="17sp"
-            android:textColor="@android:color/white"
-            android:text="Dummy long text of SDialog" />
+            android:padding="0"
+            app:maxHeight="400dp"
+            android:scrollbars="none"
+            android:overScrollMode="never">
+        
+            <android.widget.TextView
+                android:alpha=".75"
+                android:id="@+id/text"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:textSize="17sp"
+                android:textColor="@android:color/white"
+                android:text="Dummy long text of SDialog" />
+        </smith.lib.views.scroll.SScrollView>
         
         <android.widget.LinearLayout 
             android:id="@+id/holder"
