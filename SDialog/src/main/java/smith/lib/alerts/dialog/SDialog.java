@@ -31,28 +31,28 @@ public class SDialog {
     
     
     private void init() {
-        this.alertdialog = new AlertDialog.Builder(context).create();
-        this.alertdialog.setView(this.dialogView);
-        this.alertdialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        this.alertdialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        alertdialog = new AlertDialog.Builder(context).create();
+        alertdialog.setView(dialogView);
+        alertdialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        alertdialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
     }
     
     public void setCancelable(boolean cancelable) {
-        this.alertdialog.setCancelable(cancelable);
+        alertdialog.setCancelable(cancelable);
     }
     
     public void setOnDismissCallBack(OnDismissCallBack callback) {
-        this.alertdialog.setOnDismissListener(dialogInterface -> callback.onDismiss());
+        alertdialog.setOnDismissListener(dialogInterface -> callback.onDismiss());
     }
     
     public void show() {
-        animateView(this.dialogView);
-        this.alertdialog.show();
+        animateView(dialogView);
+        alertdialog.show();
     }
     
     public void show(long dur) {
-        animateView(this.dialogView);
-        this.alertdialog.show();
+        animateView(dialogView);
+        alertdialog.show();
         new CountDownTimer(dur, 1) {
             @Override public void onTick(long arg0) {}
             @Override public void onFinish() { dismiss(); }
@@ -60,7 +60,7 @@ public class SDialog {
     }
     
     public void dismiss() {
-        this.alertdialog.dismiss();
+        alertdialog.dismiss();
     }
     
     
@@ -71,67 +71,71 @@ public class SDialog {
         SDialog dialog;
         View sdialogView;
         int titleColor, textColor, loadingColor = 0xFFA7B4C5, backgroundColor;
+        int theme;
         
         public LoadingSDialog(Context context) {
             this.context = context;
-            this.dialog = new SDialog();
-            this.sdialogView = ((Activity)context).getLayoutInflater().inflate(R.layout.sdialog_loading, null);
-            this.dialog.context = this.context;
-            this.dialog.dialogView = this.sdialogView;
-            this.dialog.init();
+            dialog = new SDialog();
+            sdialogView = ((Activity)context).getLayoutInflater().inflate(R.layout.sdialog_loading, null);
+            dialog.context = context;
+            dialog.dialogView = sdialogView;
+            dialog.init();
         }
         
         public LoadingSDialog setTitle(String title) {
-            ((TextView) this.sdialogView.findViewById(R.id.title)).setText(title);
+            ((TextView) sdialogView.findViewById(R.id.title)).setText(title);
             return this;
         }
         
         public LoadingSDialog setText(String text) {
-            ((TextView) this.sdialogView.findViewById(R.id.text)).setText(text);
+            ((TextView) sdialogView.findViewById(R.id.text)).setText(text);
             return this;
         }
         
         public LoadingSDialog setLoadingColor(int color) {
-            this.loadingColor = color;
+            loadingColor = color;
             return this;
         }
     
         public LoadingSDialog setLoadingColor(String color) {
-            this.loadingColor = Color.parseColor(color);
+            loadingColor = Color.parseColor(color);
             return this;
         }
         
         public LoadingSDialog setSDialogTheme(int theme) {
+            this.theme = theme;
+            return this;
+        }
+        
+        public SDialog create() {
+            dialog.setCancelable(false);
+            
             if (theme == SYSTEM_THEME) {
                 if (dialog.nightModeON()) darkThemeColors();
                 else lightThemeColors();
             } else if (theme == DARK_THEME) darkThemeColors();
             else if (theme == LIGHT_THEME) lightThemeColors();
-            return this;
-        }
-        
-        public SDialog create() {
-            this.dialog.setCancelable(false);
-
-            this.dialog.setBackgroundColor(this.sdialogView.findViewById(R.id.main), backgroundColor);
-            ((TextView) this.sdialogView.findViewById(R.id.title)).setTextColor(titleColor);
-            ((TextView) this.sdialogView.findViewById(R.id.text)).setTextColor(textColor);
-            ((ProgressBar) this.sdialogView.findViewById(R.id.loading)).setIndeterminateTintList(ColorStateList.valueOf(loadingColor));
+            
+            dialog.setBackgroundColor(sdialogView.findViewById(R.id.main), backgroundColor);
+            ((TextView) sdialogView.findViewById(R.id.title)).setTextColor(titleColor);
+            ((TextView) sdialogView.findViewById(R.id.text)).setTextColor(textColor);
+            ((ProgressBar) sdialogView.findViewById(R.id.loading)).setIndeterminateTintList(ColorStateList.valueOf(loadingColor));
             
             return dialog;
         }
         
         private void lightThemeColors() {
-            this.titleColor = this.dialog.darkerColor(loadingColor, .3f);
-            this.textColor = this.dialog.darkerColor(loadingColor, .45f);
-            this.backgroundColor = this.dialog.lighterColor(loadingColor, .87f);
-            this.loadingColor = this.dialog.darkerColor(loadingColor, .8f);
+            titleColor = dialog.darkerColor(loadingColor, .2f);
+            textColor = dialog.darkerColor(loadingColor, .35f);
+            backgroundColor = dialog.lighterColor(loadingColor, .88f);
+            loadingColor = dialog.darkerColor(loadingColor, .8f);
         }
 
         private void darkThemeColors() {
-            this.titleColor = this.dialog.lighterColor(loadingColor, .7f);
-            this.textColor = this.dialog.lighterColor(loadingColor, .55f);
-            this.backgroundColor = this.dialog.darkerColor(loadingColor, .13f);
+            titleColor = dialog.lighterColor(loadingColor, .8f);
+            textColor = dialog.lighterColor(loadingColor, .65f);
+            backgroundColor = dialog.darkerColor(loadingColor, .12f);
+            loadingColor = dialog.lighterColor(loadingColor, .9f);
         }
     }
     
@@ -143,100 +147,104 @@ public class SDialog {
         SDialog dialog;
         View sdialogView;
         int titleColor, textColor, buttonColor = 0xFFA7B4C5, backgroundColor;
+        int theme;
         
         public AlertSDialog(Context context) {
             this.context = context;
-            this.dialog = new SDialog();
-            this.sdialogView = ((Activity)context).getLayoutInflater().inflate(R.layout.sdialog_alert, null);
-            this.dialog.context = this.context;
-            this.dialog.dialogView = this.sdialogView;
-            this.dialog.init();
+            dialog = new SDialog();
+            sdialogView = ((Activity)context).getLayoutInflater().inflate(R.layout.sdialog_alert, null);
+            dialog.context = context;
+            dialog.dialogView = sdialogView;
+            dialog.init();
         }
         
         public AlertSDialog setTitle(String title) {
-            ((TextView) this.sdialogView.findViewById(R.id.title)).setText(title);
+            ((TextView) sdialogView.findViewById(R.id.title)).setText(title);
             return this;
         }
         
         public AlertSDialog setText(String text) {
-            ((TextView) this.sdialogView.findViewById(R.id.text)).setText(text);
+            ((TextView) sdialogView.findViewById(R.id.text)).setText(text);
             return this;
         }
         
         public AlertSDialog setPositiveButton(String positive, OnClickCallBack callback) {
-            ((LinearLayout) this.sdialogView.findViewById(R.id.holder)).setVisibility(View.VISIBLE);
-            ((TextView) this.sdialogView.findViewById(R.id.positive)).setVisibility(View.VISIBLE);
-            ((TextView) this.sdialogView.findViewById(R.id.positive)).setText(positive);
-            ((TextView) this.sdialogView.findViewById(R.id.positive)).setOnClickListener(v -> {
+            ((LinearLayout) sdialogView.findViewById(R.id.holder)).setVisibility(View.VISIBLE);
+            ((TextView) sdialogView.findViewById(R.id.positive)).setVisibility(View.VISIBLE);
+            ((TextView) sdialogView.findViewById(R.id.positive)).setText(positive);
+            ((TextView) sdialogView.findViewById(R.id.positive)).setOnClickListener(v -> {
                 callback.onClick();
-                this.dialog.dismiss();
+                dialog.dismiss();
             });
             return this;
         }
         
         public AlertSDialog setNegativeButton(String negative, OnClickCallBack callback) {
-            ((LinearLayout) this.sdialogView.findViewById(R.id.holder)).setVisibility(View.VISIBLE);
-            ((TextView) this.sdialogView.findViewById(R.id.negative)).setVisibility(View.VISIBLE);
-            ((TextView) this.sdialogView.findViewById(R.id.negative)).setText(negative);
-            ((TextView) this.sdialogView.findViewById(R.id.negative)).setOnClickListener(v -> {
+            ((LinearLayout) sdialogView.findViewById(R.id.holder)).setVisibility(View.VISIBLE);
+            ((TextView) sdialogView.findViewById(R.id.negative)).setVisibility(View.VISIBLE);
+            ((TextView) sdialogView.findViewById(R.id.negative)).setText(negative);
+            ((TextView) sdialogView.findViewById(R.id.negative)).setOnClickListener(v -> {
                 callback.onClick();
-                this.dialog.dismiss();
+                dialog.dismiss();
             });
             return this;
         }
         
         public AlertSDialog setNeutralButton(String neutral, OnClickCallBack callback) {
-            ((LinearLayout) this.sdialogView.findViewById(R.id.holder)).setVisibility(View.VISIBLE);
-            ((TextView) this.sdialogView.findViewById(R.id.neutral)).setVisibility(View.VISIBLE);
-            ((TextView) this.sdialogView.findViewById(R.id.neutral)).setText(neutral);
-            ((TextView) this.sdialogView.findViewById(R.id.neutral)).setOnClickListener(v -> {
+            ((LinearLayout) sdialogView.findViewById(R.id.holder)).setVisibility(View.VISIBLE);
+            ((TextView) sdialogView.findViewById(R.id.neutral)).setVisibility(View.VISIBLE);
+            ((TextView) sdialogView.findViewById(R.id.neutral)).setText(neutral);
+            ((TextView) sdialogView.findViewById(R.id.neutral)).setOnClickListener(v -> {
                 callback.onClick();
-                this.dialog.dismiss();
+                dialog.dismiss();
             });
             return this;
         }
         
         public AlertSDialog setButtonsColor(int color) {
-            this.buttonColor = color;
+            buttonColor = color;
             return this;
         }
     
         public AlertSDialog setButtonsColor(String color) {
-            this.buttonColor = Color.parseColor(color);
+            buttonColor = Color.parseColor(color);
             return this;
         }
         
         public AlertSDialog setSDialogTheme(int theme) {
+            this.theme = theme;
+            return this;
+        }
+
+        public SDialog create() {
             if (theme == SYSTEM_THEME) {
                 if (dialog.nightModeON()) darkThemeColors();
                 else lightThemeColors();
             } else if (theme == DARK_THEME) darkThemeColors();
             else if (theme == LIGHT_THEME) lightThemeColors();
-            return this;
-        }
-
-        public SDialog create() {
-            this.dialog.setBackgroundColor(this.sdialogView.findViewById(R.id.main), backgroundColor);
-            ((TextView) this.sdialogView.findViewById(R.id.title)).setTextColor(titleColor);
-            ((TextView) this.sdialogView.findViewById(R.id.text)).setTextColor(textColor);
-            ((TextView) this.sdialogView.findViewById(R.id.positive)).setTextColor(buttonColor);
-            ((TextView) this.sdialogView.findViewById(R.id.negative)).setTextColor(buttonColor);
-            ((TextView) this.sdialogView.findViewById(R.id.neutral)).setTextColor(buttonColor);
+            
+            dialog.setBackgroundColor(sdialogView.findViewById(R.id.main), backgroundColor);
+            ((TextView) sdialogView.findViewById(R.id.title)).setTextColor(titleColor);
+            ((TextView) sdialogView.findViewById(R.id.text)).setTextColor(textColor);
+            ((TextView) sdialogView.findViewById(R.id.positive)).setTextColor(buttonColor);
+            ((TextView) sdialogView.findViewById(R.id.negative)).setTextColor(buttonColor);
+            ((TextView) sdialogView.findViewById(R.id.neutral)).setTextColor(buttonColor);
 
             return dialog;
         }
         
         private void lightThemeColors() {
-            this.titleColor = this.dialog.darkerColor(buttonColor, .3f);
-            this.textColor = this.dialog.darkerColor(buttonColor, .45f);
-            this.backgroundColor = this.dialog.lighterColor(buttonColor, .87f);
-            this.buttonColor = this.dialog.darkerColor(buttonColor, .8f);
+            titleColor = dialog.darkerColor(buttonColor, .2f);
+            textColor = dialog.darkerColor(buttonColor, .35f);
+            backgroundColor = dialog.lighterColor(buttonColor, .88f);
+            buttonColor = dialog.darkerColor(buttonColor, .8f);
         }
 
         private void darkThemeColors() {
-            this.titleColor = this.dialog.lighterColor(buttonColor, .7f);
-            this.textColor = this.dialog.lighterColor(buttonColor, .55f);
-            this.backgroundColor = this.dialog.darkerColor(buttonColor, .13f);
+            titleColor = dialog.lighterColor(buttonColor, .8f);
+            textColor = dialog.lighterColor(buttonColor, .65f);
+            backgroundColor = dialog.darkerColor(buttonColor, .12f);
+            buttonColor = dialog.lighterColor(buttonColor, .9f);
         }
     }
     
