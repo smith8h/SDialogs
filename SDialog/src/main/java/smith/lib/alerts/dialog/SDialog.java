@@ -71,7 +71,7 @@ public class SDialog {
         SDialog dialog;
         View sdialogView;
         int titleColor, textColor, loadingColor = 0xFFA7B4C5, backgroundColor;
-        int theme;
+        int theme = SYSTEM_THEME;
         
         public LoadingSDialog(Context context) {
             this.context = context;
@@ -147,7 +147,7 @@ public class SDialog {
         SDialog dialog;
         View sdialogView;
         int titleColor, textColor, buttonColor = 0xFFA7B4C5, backgroundColor;
-        int theme;
+        int theme = SYSTEM_THEME;
         
         public AlertSDialog(Context context) {
             this.context = context;

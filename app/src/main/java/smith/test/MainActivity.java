@@ -1,6 +1,5 @@
 package smith.test;
 
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -16,13 +15,13 @@ public class MainActivity extends AppCompatActivity {
         LogSender.startLogging(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        
     }
     
     public void alert(View vi) {
         SDialog sdialog = new SDialog.AlertSDialog(this)
             .setTitle("Title Of SDialog")
-            .setText("Some dummy text.\nSDialog text here...")
+            .setText(getString(R.string.dummy_text))
             .setPositiveButton("OK", () -> {
                 Toast.makeText(MainActivity.this, "ok", Toast.LENGTH_SHORT).show();
             })
