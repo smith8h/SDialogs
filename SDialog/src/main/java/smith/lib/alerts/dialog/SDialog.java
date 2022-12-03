@@ -54,13 +54,44 @@ public class SDialog {
         animateView(dialogView);
         alertdialog.show();
         new CountDownTimer(dur, 1) {
-            @Override public void onTick(long arg0) {}
+            @Override public void onTick(long duration) {}
             @Override public void onFinish() { dismiss(); }
         }.start();
     }
     
     public void dismiss() {
         alertdialog.dismiss();
+    }
+    
+    
+    
+    public static class CustomSDialog {
+        
+        Context context;
+        SDialog dialog;
+        
+        public CustomSDialog(Context context) {
+            this.context = context;
+            dialog = new SDialog();
+            dialog.context = context;
+        }
+        
+        public CustomSDialog setView(View view, OnBindCustomViewCallBack callback) {
+            dialog.dialogView = view;
+            callback.onBindCustomView(view);
+            return this;
+        }
+        
+        public CustomSDialog setView(int layout, OnBindCustomViewCallBack callback) {
+            View view = ((Activity)context).getLayoutInflater().inflate(layout, null);
+            dialog.dialogView = view;
+            callback.onBindCustomView(view);
+            return this;
+        }
+        
+        public SDialog create() {
+            return dialog;
+        }
     }
     
     
@@ -128,14 +159,14 @@ public class SDialog {
             titleColor = dialog.darkerColor(loadingColor, .2f);
             textColor = dialog.darkerColor(loadingColor, .35f);
             backgroundColor = dialog.lighterColor(loadingColor, .88f);
-            loadingColor = dialog.darkerColor(loadingColor, .8f);
+            loadingColor = dialog.darkerColor(loadingColor, .9f);
         }
 
         private void darkThemeColors() {
             titleColor = dialog.lighterColor(loadingColor, .8f);
             textColor = dialog.lighterColor(loadingColor, .65f);
             backgroundColor = dialog.darkerColor(loadingColor, .12f);
-            loadingColor = dialog.lighterColor(loadingColor, .9f);
+            loadingColor = dialog.lighterColor(loadingColor, .1f);
         }
     }
     
@@ -237,14 +268,14 @@ public class SDialog {
             titleColor = dialog.darkerColor(buttonColor, .2f);
             textColor = dialog.darkerColor(buttonColor, .35f);
             backgroundColor = dialog.lighterColor(buttonColor, .88f);
-            buttonColor = dialog.darkerColor(buttonColor, .8f);
+            buttonColor = dialog.darkerColor(buttonColor, .9f);
         }
 
         private void darkThemeColors() {
             titleColor = dialog.lighterColor(buttonColor, .8f);
             textColor = dialog.lighterColor(buttonColor, .65f);
             backgroundColor = dialog.darkerColor(buttonColor, .12f);
-            buttonColor = dialog.lighterColor(buttonColor, .9f);
+            buttonColor = dialog.lighterColor(buttonColor, .1f);
         }
     }
     
@@ -258,6 +289,12 @@ public class SDialog {
     
     public interface OnClickCallBack {
         public void onClick();
+    }
+    
+    
+    
+    public interface OnBindCustomViewCallBack {
+        public void onBindCustomView(View customView);
     }
     
     
