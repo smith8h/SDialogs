@@ -1,0 +1,64 @@
+package smith.lib.alerts.dialog.adapters;
+
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
+import android.widget.TextView;
+import android.widget.LinearLayout;
+import androidx.annotation.StringDef;
+import java.util.ArrayList;
+import java.util.List;
+import android.view.View;
+import androidx.recyclerview.widget.RecyclerView;
+import smith.lib.alerts.dialog.ItemsSDialog;
+import smith.lib.alerts.dialog.R;
+import smith.lib.alerts.dialog.callbacks.OnItemClickCallBack;
+
+public class SItemsAdapter extends RecyclerView.Adapter<SItemsAdapter.ViewHolder> {
+
+    List<String> stringData = new ArrayList<>();
+    
+    OnItemClickCallBack callback;
+    
+    ItemsSDialog sdialog;
+    
+    public SItemsAdapter(List<String> strData, OnItemClickCallBack call, ItemsSDialog dialog) {
+        stringData = strData;
+        callback = call;
+        sdialog = dialog;
+    }
+
+    @Override
+    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.sitem_sitems, null);
+        v.setLayoutParams(new RecyclerView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+        return new ViewHolder(v);
+    }
+
+    @Override
+    public void onBindViewHolder(ViewHolder holder, final int p) {
+        
+        holder.text.setText(stringData.get(p) + "");
+        holder.text.setTextColor(sdialog.getAccentColor());
+        holder.main.setOnClickListener(v -> {
+            callback.onItemClick(stringData.get(p), "" + stringData.get(p), p);
+            sdialog.dismiss();
+        });
+    }
+
+    @Override
+    public int getItemCount() {
+        return stringData.size();
+    }
+
+    public class ViewHolder extends RecyclerView.ViewHolder {
+
+        private TextView text;
+        private LinearLayout main;
+
+        public ViewHolder(View v) {
+            super(v);
+            text = (TextView) v.findViewById(R.id.text);
+            main = (LinearLayout) v.findViewById(R.id.main);
+        }
+    }
+}

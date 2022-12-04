@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.widget.LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent">
+    
+    <android.widget.LinearLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="20dp"
+        android:paddingStart="24dp"
+        android:paddingTop="20dp"
+        android:paddingEnd="24dp"
+        android:paddingBottom="20dp" >
+    
+        <android.widget.TextView
+            android:alpha=".9"
+            android:id="@+id/title"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:textSize="19sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/white"
+            android:text="Title of SDialog"
+            android:layout_marginBottom="20dp"/>
+        
+        <smith.lib.views.recycler.SRecyclerView
+            android:id="@+id/recycler"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:padding="0dp"
+            app:maxHeight="270dp"
+            android:scrollbars="none"
+            android:overScrollMode="ifContentScrolls" />
+    </android.widget.LinearLayout>
+</android.widget.LinearLayout>

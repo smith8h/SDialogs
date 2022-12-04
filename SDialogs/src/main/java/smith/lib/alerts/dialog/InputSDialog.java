@@ -71,6 +71,26 @@ public class InputSDialog extends SDialog {
         super.theme = theme;
     }
     
+    public int getAccentColor() {
+        return accentColor;
+    }
+    
+    public int getTitleColor() {
+        return titleColor;
+    }
+    
+    public int getBackgroundColor() {
+        return backgroundColor;
+    }
+    
+    public int getTextColor() {
+        return textColor;
+    }
+    
+    public int getHintColor() {
+        return hintColor;
+    }
+    
     @Override
     public void show() {
         updateColors();

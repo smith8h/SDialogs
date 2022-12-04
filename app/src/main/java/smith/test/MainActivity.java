@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
     
     public void input(View v) {
         InputSDialog sdialog = new InputSDialog(this);
-        sdialog.setAccentColor(SDialog.DEFAULT_COLOR);
+        sdialog.setAccentColor(0xFFAD97BE);
         sdialog.setTheme(SDialog.LIGHT_THEME);
         sdialog.setCancelable(false);
         sdialog.setTitle("Input Your Name");
@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         sdialog.show();
     }
     
-    public void alert(View vi) {
+    public void alert(View v) {
         AlertSDialog sdialog = new AlertSDialog(this);
         sdialog.setTitle("Title Of SDialog");
         sdialog.setText(getString(R.string.dummy_text));
@@ -54,8 +54,8 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, "hide", Toast.LENGTH_SHORT).show();
             sdialog.dismiss();
         });
-        sdialog.setAccentColor(SDialog.DEFAULT_COLOR);
-        sdialog.setTheme(SDialog.LIGHT_THEME);
+        sdialog.setAccentColor(0xFFAD97BE);
+        sdialog.setTheme(SDialog.DARK_THEME);
         sdialog.setCancelable(true);
         sdialog.setOnDismissCallBack(() -> {
             Toast.makeText(this, "onDismiss", Toast.LENGTH_SHORT).show();
@@ -63,19 +63,19 @@ public class MainActivity extends AppCompatActivity {
         sdialog.show();
     }
     
-    public void loading(View vi) {
+    public void loading(View v) {
         LoadingSDialog sdialog = new LoadingSDialog(this);
         sdialog.setTitle("Loading SDialog!");
         sdialog.setText("Please wait a second...");
-        sdialog.setAccentColor(SDialog.DEFAULT_COLOR);
-        sdialog.setTheme(SDialog.LIGHT_THEME);
+        sdialog.setAccentColor(0xFFAD97BE);
+        sdialog.setTheme(SDialog.SYSTEM_THEME);
         sdialog.setOnDismissCallBack(() -> {
             Toast.makeText(this, "onDismiss", Toast.LENGTH_SHORT).show();
         });
         sdialog.show(6*1000);
     }
     
-    public void custom() {
+    public void custom(View v) {
         CustomSDialog sdialog = new CustomSDialog(this);
         sdialog.setView(R.layout.activity_main, customView -> {
             

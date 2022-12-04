@@ -33,7 +33,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
             android:layout_width="match_parent"
-            android:textSize="17sp"
+            android:textSize="16sp"
             android:maxLines="3"
             android:textColor="@android:color/white"
             android:text="Dummy long text of SDialog"

@@ -81,6 +81,22 @@ public class AlertSDialog extends SDialog {
         super.theme = theme;
     }
     
+    public int getAccentColor() {
+        return accentColor;
+    }
+    
+    public int getTitleColor() {
+        return titleColor;
+    }
+    
+    public int getBackgroundColor() {
+        return backgroundColor;
+    }
+    
+    public int getTextColor() {
+        return textColor;
+    }
+    
     @Override
     public void show() {
         updateColors();
