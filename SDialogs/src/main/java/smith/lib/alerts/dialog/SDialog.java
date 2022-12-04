@@ -47,10 +47,10 @@ public class SDialog {
     
     protected int titleColor;
     protected int textColor;
-    protected int loadingColor = DEFAULT_COLOR;
-    protected int buttonColor = DEFAULT_COLOR;
+    protected int accentColor = DEFAULT_COLOR;
     protected int backgroundColor;
     protected int theme = SYSTEM_THEME;
+    protected int hintColor;
     
     
     
@@ -90,17 +90,19 @@ public class SDialog {
     
     
     protected void lightThemeColors() {
-        titleColor = darkerColor(buttonColor, .2f);
-        textColor = darkerColor(buttonColor, .35f);
-        backgroundColor = lighterColor(buttonColor, .88f);
-        buttonColor = darkerColor(buttonColor, .9f);
+        titleColor = darkerColor(accentColor, .2f);
+        textColor = darkerColor(accentColor, .35f);
+        backgroundColor = lighterColor(accentColor, .88f);
+        hintColor = darkerColor(accentColor, .6f);
+        accentColor = darkerColor(accentColor, .9f);
     }
 
     protected void darkThemeColors() {
-        titleColor = lighterColor(buttonColor, .8f);
-        textColor = lighterColor(buttonColor, .65f);
-        backgroundColor = darkerColor(buttonColor, .12f);
-        buttonColor = lighterColor(buttonColor, .1f);
+        titleColor = lighterColor(accentColor, .8f);
+        textColor = lighterColor(accentColor, .65f);
+        backgroundColor = darkerColor(accentColor, .12f);
+        hintColor = lighterColor(accentColor, .4f);
+        accentColor = lighterColor(accentColor, .1f);
     }
     
     protected void animateView(View v) {

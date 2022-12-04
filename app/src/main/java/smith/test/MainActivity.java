@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.itsaky.androidide.logsender.LogSender;
 import smith.lib.alerts.dialog.AlertSDialog;
 import smith.lib.alerts.dialog.CustomSDialog;
+import smith.lib.alerts.dialog.InputSDialog;
 import smith.lib.alerts.dialog.LoadingSDialog;
 import smith.lib.alerts.dialog.SDialog;
 
@@ -14,10 +15,27 @@ public class MainActivity extends AppCompatActivity {
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        
         LogSender.startLogging(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+    }
+    
+    public void input(View v) {
+        InputSDialog sdialog = new InputSDialog(this);
+        sdialog.setAccentColor(SDialog.DEFAULT_COLOR);
+        sdialog.setTheme(SDialog.LIGHT_THEME);
+        sdialog.setCancelable(false);
+        sdialog.setTitle("Input Your Name");
+        sdialog.setText("please write your full name in no more than 20 characters.");
+        sdialog.setInputFieldHint("Your Name");
+        sdialog.setPositiveButtonAction("Save", inputText -> {
+            Toast.makeText(this, inputText, Toast.LENGTH_SHORT).show();
+        });
+        sdialog.setNegativeButtonText("Close");
+        sdialog.setOnDismissCallBack(() -> {
+            Toast.makeText(this, "onDismiss", Toast.LENGTH_SHORT).show();
+        });
+        sdialog.show();
     }
     
     public void alert(View vi) {
@@ -36,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, "hide", Toast.LENGTH_SHORT).show();
             sdialog.dismiss();
         });
-        sdialog.setButtonsColor(SDialog.DEFAULT_COLOR);
+        sdialog.setAccentColor(SDialog.DEFAULT_COLOR);
         sdialog.setTheme(SDialog.LIGHT_THEME);
         sdialog.setCancelable(true);
         sdialog.setOnDismissCallBack(() -> {
@@ -49,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
         LoadingSDialog sdialog = new LoadingSDialog(this);
         sdialog.setTitle("Loading SDialog!");
         sdialog.setText("Please wait a second...");
-        sdialog.setLoadingColor(SDialog.DEFAULT_COLOR);
+        sdialog.setAccentColor(SDialog.DEFAULT_COLOR);
         sdialog.setTheme(SDialog.LIGHT_THEME);
         sdialog.setOnDismissCallBack(() -> {
             Toast.makeText(this, "onDismiss", Toast.LENGTH_SHORT).show();

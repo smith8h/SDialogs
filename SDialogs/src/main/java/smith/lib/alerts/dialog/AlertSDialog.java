@@ -69,12 +69,12 @@ public class AlertSDialog extends SDialog {
         });
     }
 
-    public void setButtonsColor(int color) {
-        buttonColor = color;
+    public void setAccentColor(int color) {
+        accentColor = color;
     }
 
-    public void setButtonsColor(String color) {
-        buttonColor = Color.parseColor(color);
+    public void setAccentColor(String color) {
+        accentColor = Color.parseColor(color);
     }
 
     public void setTheme(int theme) {
@@ -103,8 +103,8 @@ public class AlertSDialog extends SDialog {
         setBackgroundColor(dialogView.findViewById(R.id.main), backgroundColor);
         ((TextView) dialogView.findViewById(R.id.title)).setTextColor(titleColor);
         ((TextView) dialogView.findViewById(R.id.text)).setTextColor(textColor);
-        ((TextView) dialogView.findViewById(R.id.positive)).setTextColor(buttonColor);
-        ((TextView) dialogView.findViewById(R.id.negative)).setTextColor(buttonColor);
-        ((TextView) dialogView.findViewById(R.id.neutral)).setTextColor(buttonColor);
+        ((TextView) dialogView.findViewById(R.id.positive)).setTextColor(accentColor);
+        ((TextView) dialogView.findViewById(R.id.negative)).setTextColor(accentColor);
+        ((TextView) dialogView.findViewById(R.id.neutral)).setTextColor(accentColor);
     }
 }

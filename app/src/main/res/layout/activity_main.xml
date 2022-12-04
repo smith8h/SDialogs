@@ -56,6 +56,15 @@
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:padding="10dp"
+                android:text="show input dialog"
+                android:textSize="18sp"
+                android:onClick="input"
+                android:textColor="#000000" />
+            
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:padding="10dp"
                 android:text="show custom dialog"
                 android:textSize="18sp"
                 android:onClick="custom"

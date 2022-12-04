@@ -38,12 +38,12 @@ public class LoadingSDialog extends SDialog {
         ((TextView) dialogView.findViewById(R.id.text)).setText(text);
     }
 
-    public void setLoadingColor(int color) {
-        loadingColor = color;
+    public void setAccentColor(int color) {
+        accentColor = color;
     }
 
-    public void setLoadingColor(String color) {
-        loadingColor = Color.parseColor(color);
+    public void setAccentColor(String color) {
+        accentColor = Color.parseColor(color);
     }
 
     public void setTheme(int theme) {
@@ -74,6 +74,6 @@ public class LoadingSDialog extends SDialog {
         setBackgroundColor(dialogView.findViewById(R.id.main), backgroundColor);
         ((TextView) dialogView.findViewById(R.id.title)).setTextColor(titleColor);
         ((TextView) dialogView.findViewById(R.id.text)).setTextColor(textColor);
-        ((ProgressBar) dialogView.findViewById(R.id.loading)).setIndeterminateTintList(ColorStateList.valueOf(loadingColor));
+        ((ProgressBar) dialogView.findViewById(R.id.loading)).setIndeterminateTintList(ColorStateList.valueOf(accentColor));
     }
 }
