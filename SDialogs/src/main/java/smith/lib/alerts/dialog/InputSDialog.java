@@ -93,17 +93,17 @@ public class InputSDialog extends SDialog {
     
     @Override
     public void show() {
-        updateColors();
+        update();
         super.show();
     }
     
     @Override
     public void show(long dur) {
-        updateColors();
+        update();
         super.show(dur);
     }
     
-    private void updateColors() {
+    private void update() {
         if (theme == SYSTEM_THEME) {
             if (nightModeON()) darkThemeColors();
             else lightThemeColors();

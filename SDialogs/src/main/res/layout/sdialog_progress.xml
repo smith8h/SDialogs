@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.widget.LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_height="wrap_content"
+    android:layout_width="wrap_content"
+    android:gravity="center">
+    
+    <android.widget.LinearLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="20dp"
+        android:paddingStart="24dp"
+        android:paddingTop="20dp"
+        android:paddingEnd="24dp"
+        android:paddingBottom="20dp"
+        android:gravity="center_vertical" >
+        
+        <android.widget.TextView
+            android:alpha=".9"
+            android:id="@+id/title"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:lines="1"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/white"
+            android:text="Downloding SDialog"
+            android:layout_marginBottom="10dp" />
+        
+        <android.widget.ProgressBar
+			android:id="@+id/progress"
+			android:layout_width="match_parent"
+			android:layout_height="3dp"
+            android:indeterminate="false"
+            android:layout_marginBottom="10dp"
+            style="?android:progressBarStyleHorizontal" />
+            
+        <android.widget.LinearLayout
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:gravity="center_vertical" >
+            
+            <android.widget.TextView
+                android:alpha=".8"
+                android:id="@+id/text"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_weight="1"
+                android:textSize="14sp"
+                android:textColor="@android:color/white"
+                android:text="Getting Resources..." />
+                
+            <android.widget.TextView
+                android:alpha=".8"
+                android:id="@+id/percent"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:textSize="12sp"
+                android:textColor="@android:color/white"
+                android:text="0%"
+                android:lines="1"/>
+        </android.widget.LinearLayout>
+    </android.widget.LinearLayout>
+</android.widget.LinearLayout>

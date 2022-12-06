@@ -3,7 +3,9 @@ package smith.lib.alerts.dialog;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Color;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import java.util.ArrayList;
 import java.util.List;
 import smith.lib.alerts.dialog.adapters.SItemsAdapter;
@@ -38,6 +40,8 @@ public class ItemsSDialog extends SDialog {
     
     public void setDataList(List<String> dataList, OnItemClickCallBack callback) {
         adapter = new SItemsAdapter(dataList, callback, this);
+        ((SRecyclerView) dialogView.findViewById(R.id.recycler))
+            .setLayoutManager(new LinearLayoutManager(context, LinearLayout.VERTICAL, false));
     }
     
     public int getAccentColor() {
@@ -54,17 +58,17 @@ public class ItemsSDialog extends SDialog {
     
     @Override
     public void show() {
-        updateColors();
+        update();
         super.show();
     }
     
     @Override
     public void show(long dur) {
-        updateColors();
+        update();
         super.show(dur);
     }
     
-    private void updateColors() {
+    private void update() {
         if (theme == SYSTEM_THEME) {
             if (nightModeON()) darkThemeColors();
             else lightThemeColors();

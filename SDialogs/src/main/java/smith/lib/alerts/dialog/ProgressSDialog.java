@@ -21,13 +21,21 @@ import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import smith.lib.alerts.dialog.callbacks.OnProgressCallBack;
 
-public class LoadingSDialog extends SDialog {
-
-    public LoadingSDialog(Context context) {
+public class ProgressSDialog extends SDialog {
+    
+    OnProgressCallBack callback;
+    private final int MAX = 100;
+    private final int MIN = 0;
+    
+    public ProgressSDialog(Context context) {
         this.context = context;
-        dialogView = ((Activity) context).getLayoutInflater().inflate(R.layout.sdialog_loading, null);
+        dialogView = ((Activity) context).getLayoutInflater().inflate(R.layout.sdialog_progress, null);
         init();
+        
+        ((ProgressBar) dialogView.findViewById(R.id.progress)).setMin(MAX);
+        ((ProgressBar) dialogView.findViewById(R.id.progress)).setMax(MIN);
     }
 
     public void setTitle(String title) {
@@ -37,7 +45,27 @@ public class LoadingSDialog extends SDialog {
     public void setText(String text) {
         ((TextView) dialogView.findViewById(R.id.text)).setText(text);
     }
-
+    
+    public void setMin(int min) {
+        ((ProgressBar) dialogView.findViewById(R.id.progress)).setMin(min);
+    }
+    
+    public void setMax(int max) {
+        ((ProgressBar) dialogView.findViewById(R.id.progress)).setMax(max);
+    }
+    
+    public void setProgress(int progress) {
+        ((ProgressBar) dialogView.findViewById(R.id.progress)).setProgress(progress);
+        
+        if (callback != null) callback.onProgress(getProgress());
+        setProgressText(getProgress());
+        
+        if (callback != null && getProgress() == getMax()) {
+            callback.onFinish();
+            dismiss();
+        }
+    }
+    
     public void setAccentColor(int color) {
         accentColor = color;
     }
@@ -48,6 +76,28 @@ public class LoadingSDialog extends SDialog {
 
     public void setTheme(int theme) {
         this.theme = theme;
+    }
+    
+    private void setProgressText(int progress) {
+        int percent = (getProgress() * 100) / getMax();
+        String info = getProgress() + "/" + getMax() + " (" + percent + "%)";
+        ((TextView) dialogView.findViewById(R.id.percent)).setText(info);
+    }
+    
+    public void setOnProgressCallBack(OnProgressCallBack callback) {
+        this.callback = callback;
+    }
+    
+    public int getProgress() {
+        return ((ProgressBar) dialogView.findViewById(R.id.progress)).getProgress();
+    }
+    
+    public int getMin() {
+        return ((ProgressBar) dialogView.findViewById(R.id.progress)).getMin();
+    }
+    
+    public int getMax() {
+        return ((ProgressBar) dialogView.findViewById(R.id.progress)).getMax();
     }
     
     public int getAccentColor() {
@@ -90,6 +140,7 @@ public class LoadingSDialog extends SDialog {
         setBackgroundColor(dialogView.findViewById(R.id.main), backgroundColor);
         ((TextView) dialogView.findViewById(R.id.title)).setTextColor(titleColor);
         ((TextView) dialogView.findViewById(R.id.text)).setTextColor(textColor);
-        ((ProgressBar) dialogView.findViewById(R.id.loading)).setIndeterminateTintList(ColorStateList.valueOf(accentColor));
+        ((TextView) dialogView.findViewById(R.id.percent)).setTextColor(textColor);
+        ((ProgressBar) dialogView.findViewById(R.id.progress)).setProgressTintList(ColorStateList.valueOf(accentColor));
     }
 }
