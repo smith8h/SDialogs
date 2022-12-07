@@ -14,7 +14,8 @@ import smith.lib.views.recyclerview.SRecyclerView;
 
 public class ItemsSDialog extends SDialog {
     
-    private SItemsAdapter adapter;
+    private List<String> data = new ArrayList<>();
+    private OnItemClickCallBack callback;
     
     public ItemsSDialog(Context context) {
         this.context = context;
@@ -38,10 +39,26 @@ public class ItemsSDialog extends SDialog {
         this.theme = theme;
     }
     
-    public void setDataList(List<String> dataList, OnItemClickCallBack callback) {
-        adapter = new SItemsAdapter(dataList, callback, this);
-        ((SRecyclerView) dialogView.findViewById(R.id.recycler))
-            .setLayoutManager(new LinearLayoutManager(context, LinearLayout.VERTICAL, false));
+    public void setItemsList(List<String> dataList) {
+        data = dataList;
+    }
+    
+    public void setOnItemClickCallBack(OnItemClickCallBack callback) {
+        this.callback = callback;
+    }
+    
+    public void addItem(String item) {
+        data.add(item);
+        update();
+    }
+    
+    public void removeItem(String item) {
+        for (int i = 0; i < data.size(); i++) {
+            if (data.get(i).equals(item)) {
+                data.remove(i);
+                break;
+            }
+        }
     }
     
     public int getAccentColor() {
@@ -77,6 +94,10 @@ public class ItemsSDialog extends SDialog {
         
         setBackgroundColor(dialogView.findViewById(R.id.main), backgroundColor);
         ((TextView) dialogView.findViewById(R.id.title)).setTextColor(titleColor);
+        
+        SItemsAdapter adapter = new SItemsAdapter(data, callback, this);
+        ((SRecyclerView) dialogView.findViewById(R.id.recycler))
+            .setLayoutManager(new LinearLayoutManager(context, LinearLayout.VERTICAL, false));
         ((SRecyclerView) dialogView.findViewById(R.id.recycler)).setAdapter(adapter);
     }
 }

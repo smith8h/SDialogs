@@ -34,8 +34,8 @@ public class ProgressSDialog extends SDialog {
         dialogView = ((Activity) context).getLayoutInflater().inflate(R.layout.sdialog_progress, null);
         init();
         
-        ((ProgressBar) dialogView.findViewById(R.id.progress)).setMin(MAX);
-        ((ProgressBar) dialogView.findViewById(R.id.progress)).setMax(MIN);
+        ((ProgressBar) dialogView.findViewById(R.id.progress)).setMin(MIN);
+        ((ProgressBar) dialogView.findViewById(R.id.progress)).setMax(MAX);
     }
 
     public void setTitle(String title) {
@@ -57,12 +57,11 @@ public class ProgressSDialog extends SDialog {
     public void setProgress(int progress) {
         ((ProgressBar) dialogView.findViewById(R.id.progress)).setProgress(progress);
         
-        if (callback != null) callback.onProgress(getProgress());
         setProgressText(getProgress());
         
-        if (callback != null && getProgress() == getMax()) {
-            callback.onFinish();
+        if (getProgress() == getMax()) {
             dismiss();
+            if (callback != null) callback.onFinish();
         }
     }
     
@@ -82,6 +81,7 @@ public class ProgressSDialog extends SDialog {
         int percent = (getProgress() * 100) / getMax();
         String info = getProgress() + "/" + getMax() + " (" + percent + "%)";
         ((TextView) dialogView.findViewById(R.id.percent)).setText(info);
+        if (callback != null) callback.onProgress(getProgress(), percent);
     }
     
     public void setOnProgressCallBack(OnProgressCallBack callback) {
