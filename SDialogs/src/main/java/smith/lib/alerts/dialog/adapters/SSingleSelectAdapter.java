@@ -4,33 +4,30 @@ import android.content.res.ColorStateList;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.RadioButton;
-import android.widget.TextView;
 import android.widget.LinearLayout;
-import androidx.annotation.StringDef;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import android.view.View;
 import androidx.recyclerview.widget.RecyclerView;
-import smith.lib.alerts.dialog.ItemsSDialog;
+import java.util.Map;
+import smith.lib.alerts.dialog.SingleSelectSDialog;
 import smith.lib.alerts.dialog.R;
-import smith.lib.alerts.dialog.callbacks.OnItemClickCallBack;
+import smith.lib.alerts.dialog.callbacks.OnSingleSelectCallBack;
 
-public class SRadiosAdapter extends RecyclerView.Adapter<SRadiosAdapter.ViewHolder> {
+public class SSingleSelectAdapter extends RecyclerView.Adapter<SSingleSelectAdapter.ViewHolder> {
 
-    List<HashMap<String, Object>> data = new ArrayList<>();
+    List<Map<String, Object>> data = new ArrayList<>();
 
-    OnItemClickCallBack callback;
+    OnSingleSelectCallBack callback;
 
-    ItemsSDialog sdialog;
+    SingleSelectSDialog sdialog;
 
-    public SRadiosAdapter(
-            List<HashMap<String, Object>> itmData, OnItemClickCallBack call, ItemsSDialog dialog) {
+    public SSingleSelectAdapter(List<Map<String, Object>> itmData, OnSingleSelectCallBack call, SingleSelectSDialog dialog) {
         data = itmData;
         callback = call;
         sdialog = dialog;
     }
-
+    
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.sitem_radios, null);
@@ -45,25 +42,29 @@ public class SRadiosAdapter extends RecyclerView.Adapter<SRadiosAdapter.ViewHold
         holder.choice.setTextColor(sdialog.getTextColor());
 
         int[][] states = new int[][] {
-            new int[] {-android.R.attr.state_checked},
-            new int[] {android.R.attr.state_checked}
+            new int[] {-android.R.attr.state_checked },
+            new int[] { android.R.attr.state_checked }
         };
         int[] colors = new int[] {
-            sdialog.getTextColor(),
+            sdialog.getRadioUncheckedColor(),
             sdialog.getAccentColor()
         };
-
-        holder.choice.setCompoundDrawableTintList(new ColorStateList(states, colors));
-
-        holder.main.setOnClickListener(v -> {
-            callback.onItemClick(stringData.get(p), "" + stringData.get(p), p);
+        
+        holder.choice.setButtonTintList(new ColorStateList(states, colors));
+        
+        if ((boolean) data.get(p).get("checked")) holder.choice.setChecked(true);
+        else holder.choice.setChecked(false);
+        
+        holder.choice.setOnCheckedChangeListener((button, isChecked) -> {
+            if (callback != null) callback.onSelect((int) data.get(p).get("id"), data.get(p).get("text").toString());
             sdialog.dismiss();
         });
+        
     }
 
     @Override
     public int getItemCount() {
-        return stringData.size();
+        return data.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

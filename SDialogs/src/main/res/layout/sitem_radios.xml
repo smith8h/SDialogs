@@ -4,13 +4,15 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="10dp"
+    android:paddingTop="10dp"
+    android:paddingBottom="10dp"
     android:gravity="center">
 
     <android.widget.RadioButton
         android:id="@+id/choice"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingStart="15dp"
         android:textSize="16sp"
         android:text="System Theme" />
 

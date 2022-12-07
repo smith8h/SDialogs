@@ -127,7 +127,7 @@ public class ProgressSDialog extends SDialog {
     public void show(long dur) {
         setCancelable(false);
         update();
-        super.show(dur);
+        super.show();
     }
         
     private void update() {

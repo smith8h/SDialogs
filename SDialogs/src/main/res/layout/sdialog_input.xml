@@ -72,7 +72,7 @@
                 android:padding="8dp"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                android:layout_marginEnd="5dp" />
+                android:layout_marginEnd="15dp" />
         
             <android.widget.TextView
                 android:id="@+id/positive"

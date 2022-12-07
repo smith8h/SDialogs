@@ -54,11 +54,14 @@ public class ItemsSDialog extends SDialog {
     
     public void removeItem(String item) {
         for (int i = 0; i < data.size(); i++) {
-            if (data.get(i).equals(item)) {
-                data.remove(i);
-                break;
-            }
+            if (data.get(i).equals(item)) data.remove(i);
         }
+        update();
+    }
+    
+    public void removeItem(int index) {
+        data.remove(index);
+        update();
     }
     
     public int getAccentColor() {
@@ -82,7 +85,7 @@ public class ItemsSDialog extends SDialog {
     @Override
     public void show(long dur) {
         update();
-        super.show(dur);
+        super.show();
     }
     
     private void update() {

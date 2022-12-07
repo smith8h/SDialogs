@@ -15,6 +15,7 @@ import smith.lib.alerts.dialog.ItemsSDialog;
 import smith.lib.alerts.dialog.LoadingSDialog;
 import smith.lib.alerts.dialog.ProgressSDialog;
 import smith.lib.alerts.dialog.SDialog;
+import smith.lib.alerts.dialog.SingleSelectSDialog;
 import smith.lib.alerts.dialog.callbacks.OnProgressCallBack;
 
 public class MainActivity extends AppCompatActivity {
@@ -28,6 +29,26 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
     
+    public void single(View v) {
+        SingleSelectSDialog sdialog = new SingleSelectSDialog(this);
+        sdialog.setAccentColor(SDialog.DEFAULT_COLOR);
+        sdialog.setTheme(SDialog.DARK_THEME);
+        sdialog.setTitle("Notifications Sounds");
+        sdialog.setCancelable(true);
+        
+        sdialog.addItem(1, "ON");
+        sdialog.addItem(2, "OFF");
+        sdialog.addItem(3, "ON (SILENT)");
+        
+        sdialog.setCheckedItem(2);
+        
+        sdialog.setOnSingleSelectCallBack((itemId, itemText) -> {
+            Toast.makeText(this, itemId + " " + itemText, Toast.LENGTH_SHORT).show();
+        });
+        
+        sdialog.show();
+    }
+    
     public void progress(View v) {
         ProgressSDialog sdialog = new ProgressSDialog(this);
         sdialog.setAccentColor(0xFFAD97BE);
@@ -37,12 +58,12 @@ public class MainActivity extends AppCompatActivity {
         sdialog.setTitle("Downloading Files");
         sdialog.setText("Gethering Resources...");
         sdialog.setOnProgressCallBack(new OnProgressCallBack() {
-            @Override public void onProgress(int progress) {
-                if (progress > 0 && progress <= 40) sdialog.setText("Gethering Resources...");
-                if (progress > 40 && progress <= 100) sdialog.setText("Downloading Resources...");
-                if (progress > 100 && progress <= 160) sdialog.setText("Extracting Resources...");
-                if (progress > 160 && progress <= 198) sdialog.setText("Installing Resources...");
-                if (progress >= 199) sdialog.setText("Resources Installed.");
+            @Override public void onProgress(int progress, int percent) {
+                if (percent > 0 && percent <= 20) sdialog.setText("Gethering Resources...");
+                if (percent > 20 && percent <= 50) sdialog.setText("Downloading Resources...");
+                if (percent > 50 && percent <= 80) sdialog.setText("Extracting Resources...");
+                if (percent > 80 && percent <= 98) sdialog.setText("Installing Resources...");
+                if (percent >= 99) sdialog.setText("Resources Installed.");
             }
             
             @Override public void onFinish() {
@@ -78,9 +99,16 @@ public class MainActivity extends AppCompatActivity {
         genders.add("Bigender");
         genders.add("Prefer not to say");
         
-        sdialog.setDataList(genders, (object, itemValue, itemIndex) -> {
+        sdialog.setItemsList(genders);
+        sdialog.setOnItemClickCallBack((object, itemValue, itemIndex) -> {
             Toast.makeText(this, object.toString() + (itemIndex+1) + itemValue, Toast.LENGTH_SHORT).show();
         });
+        sdialog.addItem("Male to Female");
+        sdialog.addItem("Female to Male");
+        
+        sdialog.removeItem("Prefer not to say");
+        // sdialog.removeItem(2);
+        
         sdialog.show();
     }
     

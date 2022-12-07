@@ -100,7 +100,7 @@ public class InputSDialog extends SDialog {
     @Override
     public void show(long dur) {
         update();
-        super.show(dur);
+        super.show();
     }
     
     private void update() {
