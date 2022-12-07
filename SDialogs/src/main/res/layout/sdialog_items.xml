@@ -32,7 +32,27 @@
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:padding="0dp"
-            app:maxHeight="270dp"
+            app:maxHeight="260dp"
             android:scrollbars="none" />
+            
+        <android.widget.LinearLayout 
+            android:id="@+id/holder"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:gravity="end|center_vertical"
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp"
+            android:visibility="gone" >
+            
+            <android.widget.TextView
+                android:id="@+id/positive"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="Positive"
+                android:textColor="#A7B4C5"
+                android:padding="8dp"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+        </android.widget.LinearLayout>
     </android.widget.LinearLayout>
 </android.widget.LinearLayout>

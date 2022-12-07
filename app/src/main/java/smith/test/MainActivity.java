@@ -13,6 +13,7 @@ import smith.lib.alerts.dialog.CustomSDialog;
 import smith.lib.alerts.dialog.InputSDialog;
 import smith.lib.alerts.dialog.ItemsSDialog;
 import smith.lib.alerts.dialog.LoadingSDialog;
+import smith.lib.alerts.dialog.MultiSelectSDialog;
 import smith.lib.alerts.dialog.ProgressSDialog;
 import smith.lib.alerts.dialog.SDialog;
 import smith.lib.alerts.dialog.SingleSelectSDialog;
@@ -27,6 +28,32 @@ public class MainActivity extends AppCompatActivity {
         LogSender.startLogging(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+    }
+    
+    public void multi(View v) {
+        MultiSelectSDialog sdialog = new MultiSelectSDialog(this);
+        sdialog.setAccentColor(SDialog.DEFAULT_COLOR);
+        sdialog.setTheme(SDialog.DARK_THEME);
+        sdialog.setTitle("Search Filters");
+        sdialog.setCancelable(true);
+        
+        sdialog.addItem(1, "Images (jpg/jpeg/png)", true);
+        sdialog.addItem(2, "GIF", false);
+        sdialog.addItem(3, "Videos (mp4)", true);
+        
+        sdialog.setPositiveButton("Save & Search", (itemsList, idKey, textKey, checkedKey) -> {
+            StringBuilder builder = new StringBuilder();
+            for (int i = 0; i < itemsList.size(); i++) {
+                builder.append(itemsList.get(i).get(idKey));
+                builder.append(" ");
+                builder.append(itemsList.get(i).get(textKey));
+                builder.append(" ");
+                builder.append(itemsList.get(i).get(checkedKey));
+            }
+            Toast.makeText(this, builder.toString(), Toast.LENGTH_SHORT).show();
+        });
+        
+        sdialog.show();
     }
     
     public void single(View v) {

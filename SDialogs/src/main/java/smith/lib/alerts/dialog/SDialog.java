@@ -52,6 +52,10 @@ public class SDialog {
     protected int theme = SYSTEM_THEME;
     protected int hintColor;
     
+    protected final String KEY_ITEM_ID = "id";
+    protected final String KEY_ITEM_TEXT = "text";
+    protected final String KEY_ITEM_CHECKED = "checked";
+    
     
     
     protected void init() {

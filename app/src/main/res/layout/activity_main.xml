@@ -83,6 +83,15 @@
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:padding="10dp"
+                android:text="show multi select items dialog"
+                android:textSize="18sp"
+                android:onClick="multi"
+                android:textColor="#000000" />
+            
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:padding="10dp"
                 android:text="show progress dialog"
                 android:textSize="18sp"
                 android:onClick="progress"
