@@ -10,6 +10,7 @@ import java.util.List;
 import android.view.View;
 import androidx.recyclerview.widget.RecyclerView;
 import java.util.Map;
+import smith.lib.alerts.dialog.SDialog;
 import smith.lib.alerts.dialog.SingleSelectSDialog;
 import smith.lib.alerts.dialog.R;
 import smith.lib.alerts.dialog.callbacks.OnSingleSelectCallBack;

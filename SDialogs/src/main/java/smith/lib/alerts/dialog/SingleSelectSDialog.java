@@ -51,7 +51,11 @@ public class SingleSelectSDialog extends SDialog {
                 data.remove(i);
                 item.put(KEY_ITEM_CHECKED, true);
                 data.add(i, item);
-                break;
+            } else {
+                item = data.get(i);
+                data.remove(i);
+                item.put(KEY_ITEM_CHECKED, false);
+                data.add(i, item);
             }
         }
         update();
