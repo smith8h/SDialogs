@@ -97,6 +97,10 @@ public class SingleSelectSDialog extends SDialog {
         return textColor;
     }
     
+    public List<Map<String, Object>> getItemsList() {
+        return data;
+    }
+    
     @Override
     public void show() {
         update();

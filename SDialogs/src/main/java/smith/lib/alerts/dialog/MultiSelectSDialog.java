@@ -36,7 +36,7 @@ public class MultiSelectSDialog extends SDialog {
          ((LinearLayout) dialogView.findViewById(R.id.holder)).setVisibility(View.VISIBLE);
          ((TextView) dialogView.findViewById(R.id.positive)).setText(positive);
          ((TextView) dialogView.findViewById(R.id.positive)).setOnClickListener(v-> {
-             if (adapter != null) callback.onMultiSelect(adapter.getCheckedItems(), KEY_ITEM_ID, KEY_ITEM_TEXT, KEY_ITEM_CHECKED);
+             if (adapter != null) callback.onMultiSelect(adapter.getCheckedItems());
              dismiss();
          });
     }
@@ -101,6 +101,10 @@ public class MultiSelectSDialog extends SDialog {
     
     public int getTextColor() {
         return textColor;
+    }
+    
+    public List<Map<String, Object>> getItemsList() {
+        return data;
     }
     
     @Override

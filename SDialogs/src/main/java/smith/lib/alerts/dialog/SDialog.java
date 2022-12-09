@@ -39,6 +39,10 @@ public class SDialog {
     public static final int DARK_THEME = 1;
     public static final int LIGHT_THEME = 2;
     
+    public static final String KEY_ITEM_ID = "id";
+    public static final String KEY_ITEM_TEXT = "text";
+    public static final String KEY_ITEM_CHECKED = "checked";
+    
     protected Context context;
     
     protected View dialogView;
@@ -51,10 +55,6 @@ public class SDialog {
     protected int backgroundColor;
     protected int theme = SYSTEM_THEME;
     protected int hintColor;
-    
-    protected final String KEY_ITEM_ID = "id";
-    protected final String KEY_ITEM_TEXT = "text";
-    protected final String KEY_ITEM_CHECKED = "checked";
     
     
     
@@ -152,12 +152,12 @@ public class SDialog {
         return Color.argb(alpha, red, green, blue);
     }
 
-    protected int oppositeColor(int color) {
+    /* protected int oppositeColor(int color) {
         float[] hsv = new float[3];
         Color.RGBToHSV(Color.red(color),
                 Color.green(color),
                 Color.blue(color), hsv);
         hsv[0] = (hsv[0] + 180) % 360;
         return Color.HSVToColor(hsv);
-    }
+    } */
 }
