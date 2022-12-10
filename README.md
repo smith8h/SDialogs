@@ -8,7 +8,7 @@ Beautiful custom android dialogs ( alert, multiselect checkbox, singleselect rad
   - [CustomSDialog](#customsdialog)
   - [InputSDialog](#inputsdialog)
   - [ItemsSDialog](#itemssdialog)
-  
+  - [LoadingSDialog](#loadingsdialog)
 - [Support library improvements (Donations)](#donations)
 
 # Setup
@@ -101,8 +101,8 @@ Table of methods:
 - `getTextColor()` get accent color.
 - `getHintColor()` get hint color.
 
-## AlertSDialog
-Create new instance of AlertSDialog:
+## ItemsSDialog
+Create new instance of ItemsSDialog:
 ```java
     ItemsSDialog sdialog = new ItemsSDialog(this);
 ```
@@ -127,6 +127,28 @@ Table of methods:
 - `getTitleColor()` get accent color.
 - `getBackgroundColor()` get accent color.
 
+## LoadingSDialog
+Create new instance of LoadingSDialog:
+```java
+    LoadingSDialog sdialog = new LoadingSDialog(this);
+```
+Table of methods:
+
+**Setters**
+- `setTitle("Loading");`
+- `setText("Please wait a seconds...");`
+- `setAccentColor(int color/string hex color);` Default color is 0xFFA7B4C5/#FFA7B4C5 you can access it by `SDialog.DEFAULT_COLOR`.
+- `setTheme(SDialog.SYSTEM_THEME);` or `LIGHT_THEME / DARK_THEME`.
+- `setOnDismissCallBack(dismisscallback);` (Optional).
+- `show(); / show(1200);` to show it always or for a duration of time.
+- `dismiss();` to hide it.
+
+**Getters**
+- `getAccentColor()` get accent color.
+- `getTitleColor()` get accent color.
+- `getBackgroundColor()` get accent color.
+- `getTextColor()` get text color.
+
 ## CallBacks
 CallBacks used in SDialogs:
 ```java
@@ -147,7 +169,7 @@ CallBacks used in SDialogs:
     };
     
     // onBindCustomView in custom sdialog
-    OnBindCustomViewCallBack bindviewcallback = OnBindCustomViewCallBack() {
+    OnBindCustomViewCallBack bindcustomviewcallback = OnBindCustomViewCallBack() {
         @Override
         public void onBindCustomView(View customView) {
             // use customView.findView.... to find the child views.
@@ -155,7 +177,7 @@ CallBacks used in SDialogs:
     };
     
     // onInputPositiveButtonClick in input sdialog
-    OnInputClickCallBack callback = new OnInputClickCallBack() {
+    OnInputClickCallBack inputclickcallback = new OnInputClickCallBack() {
         @Override
         public void onClick(String inputText) {
             // use inputText to get the text entered.
