@@ -6,6 +6,7 @@ Beautiful custom android dialogs ( alert, multiselect checkbox, singleselect rad
 - [How to implement (Documentation)](#documentation)
   - [AlertSDialog](#alertsdialog)
   - [CustomSDialog](#customsdialog)
+  - [InputSDialog](#inputsdialog)
 - [Support library improvements (Donations)](#donations)
 
 # Setup
@@ -37,6 +38,8 @@ Create new instance of AlertSDialog:
     AlertSDialog sdialog = new AlertSDialog(this);
 ```
 Table of methods:
+
+**Setters**
 - `setTitle("Title");`
 - `setText("Text...");`
 - `setPositiveButton("Button Text", clickcallback);` (Optional) the code here in java8, to use java7 or below syntax see in [CallBacks](#callbacks).
@@ -49,10 +52,16 @@ Table of methods:
 - `show(); / show(1200);` to show always or for a duration of time (auto hide).
 - `dismiss();` to hide it.
 
+**Getters**
+- `getAccentColor()` get accent color.
+- `getTitleColor()` get accent color.
+- `getBackgroundColor()` get accent color.
+- `getTextColor()` get accent color.
+
 ## CustomSDialog
 Create new instance of CustomSDialog:
 ```java
-    AlertSDialog sdialog = new AlertSDialog(this);
+    CustomSDialog sdialog = new CustomSDialog(this);
 ```
 Table of methods:
 - `setView(view, bindviewcallback);` set a view and liatener onBindCustomView.
@@ -61,6 +70,32 @@ Table of methods:
 - `setOnDismissCallBack(dismisscallback);` (Optional).
 - `show(); / show(1200);` to show always or for a duration of time (auto hide).
 - `dismiss();` to hide it.
+
+## InputSDialog
+Create new instance of InputSDialog:
+```java
+    InputSDialog sdialog = new InputSDialog(this);
+```
+Table of methods:
+**Setters**
+- `setTitle("Title");`
+- `setText("Text...");` (Optional) set a docs above the input field.
+- `setPositiveButtonAction("Button Text", inputclickclickcallback);` use OnInputClickCallBack.
+- `setNegativeButtonText("Button Text");` dismissing sdialog by default (no need for callback).
+- `setInputFieldHint("Input field hint");` set hint text in input field.
+- `setAccentColor(int color/string hex color);` Default color is 0xFFA7B4C5/#FFA7B4C5 you can access it by `SDialog.DEFAULT_COLOR`.
+- `setTheme(SDialog.SYSTEM_THEME);` or `LIGHT_THEME / DARK_THEME`.
+- `setCancelable(false);` (*Optional).
+- `setOnDismissCallBack(dismisscallback);` (Optional).
+- `show(); / show(1200);` to show always or for a duration of time (auto hide).
+- `dismiss();` to hide it.
+
+**Getters**
+- `getAccentColor()` get accent color.
+- `getTitleColor()` get accent color.
+- `getBackgroundColor()` get accent color.
+- `getTextColor()` get accent color.
+- `getHintColor()` get hint color.
 
 ## CallBacks
 CallBacks used in SDialogs:
@@ -85,7 +120,15 @@ CallBacks used in SDialogs:
     OnBindCustomViewCallBack bindviewcallback = OnBindCustomViewCallBack() {
         @Override
         public void onBindCustomView(View customView) {
-            
+            // use customView.findView.... to find the child views.
+        }
+    };
+    
+    // onInputPositiveButtonClick in input sdialog
+    OnInputClickCallBack callback = new OnInputClickCallBack() {
+        @Override
+        public void onClick(String inputText) {
+            // use inputText to get the text entered.
         }
     };
 ```
