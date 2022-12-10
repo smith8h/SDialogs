@@ -112,7 +112,7 @@ public class SDialog {
     protected void animateView(View v) {
         v.setAlpha(0f);
         ObjectAnimator animator = new ObjectAnimator();
-        animator.setDuration(310);
+        animator.setDuration(620);
         animator.setFloatValues(0f, 1f);
         animator.setPropertyName("alpha");
         animator.setTarget(v);
@@ -152,12 +152,12 @@ public class SDialog {
         return Color.argb(alpha, red, green, blue);
     }
 
-    /* protected int oppositeColor(int color) {
+    protected int oppositeColor(int color) {
         float[] hsv = new float[3];
         Color.RGBToHSV(Color.red(color),
                 Color.green(color),
                 Color.blue(color), hsv);
         hsv[0] = (hsv[0] + 180) % 360;
         return Color.HSVToColor(hsv);
-    } */
+    }
 }
