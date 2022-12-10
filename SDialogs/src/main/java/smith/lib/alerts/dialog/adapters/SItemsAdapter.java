@@ -57,7 +57,7 @@ public class SItemsAdapter extends RecyclerView.Adapter<SItemsAdapter.ViewHolder
         holder.text.setTextColor(sdialog.getAccentColor());
        
         holder.main.setOnClickListener(v -> {
-            if (callback != null) callback.onItemClick(data.get(p), data.get(p), p);
+            if (callback != null) callback.onItemClick(data.get(p), p);
             sdialog.dismiss();
         });
         

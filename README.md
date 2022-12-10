@@ -7,6 +7,8 @@ Beautiful custom android dialogs ( alert, multiselect checkbox, singleselect rad
   - [AlertSDialog](#alertsdialog)
   - [CustomSDialog](#customsdialog)
   - [InputSDialog](#inputsdialog)
+  - [ItemsSDialog](#itemssdialog)
+  
 - [Support library improvements (Donations)](#donations)
 
 # Setup
@@ -64,6 +66,7 @@ Create new instance of CustomSDialog:
     CustomSDialog sdialog = new CustomSDialog(this);
 ```
 Table of methods:
+
 - `setView(view, bindviewcallback);` set a view and liatener onBindCustomView.
 - `setView(R.layout.your_layout_name, bindviewcallback);` set a int layout from resources and liatener onBindCustomView.
 - `setCancelable(false);` (*Optional).
@@ -77,6 +80,7 @@ Create new instance of InputSDialog:
     InputSDialog sdialog = new InputSDialog(this);
 ```
 Table of methods:
+
 **Setters**
 - `setTitle("Title");`
 - `setText("Text...");` (Optional) set a docs above the input field.
@@ -96,6 +100,32 @@ Table of methods:
 - `getBackgroundColor()` get accent color.
 - `getTextColor()` get accent color.
 - `getHintColor()` get hint color.
+
+## AlertSDialog
+Create new instance of AlertSDialog:
+```java
+    ItemsSDialog sdialog = new ItemsSDialog(this);
+```
+Table of methods:
+
+**Setters**
+- `setTitle("Title");`
+- `setAccentColor(int color/string hex color);` Default color is 0xFFA7B4C5/#FFA7B4C5 you can access it by `SDialog.DEFAULT_COLOR`.
+- `setTheme(SDialog.SYSTEM_THEME);` or `LIGHT_THEME / DARK_THEME`.
+- `setItemsList(ArrayList<String>);` set items from existing arraylist of strings `ArrayList<String>`.
+- `setOnItemClickCallBack(itemclickcallback);` set items from existing arraylist of strings `ArrayList<String>`.
+- `addItem("item text")` add new item.
+- `removeItem(2)` remove an item by its **index** from the list.
+- `removeItem("item text")` remove an item by its **text** from the list.
+- `setCancelable(false);` (Optional).
+- `setOnDismissCallBack(dismisscallback);` (Optional).
+- `show();` to show it.
+- `dismiss();` to hide it.
+
+**Getters**
+- `getAccentColor()` get accent color.
+- `getTitleColor()` get accent color.
+- `getBackgroundColor()` get accent color.
 
 ## CallBacks
 CallBacks used in SDialogs:
@@ -131,4 +161,12 @@ CallBacks used in SDialogs:
             // use inputText to get the text entered.
         }
     };
+    
+    // onItemClickCallBack used in items sdialog
+    OnItemClickCallBack itemclickcallback = new OnItemClickCallBack() {
+        @Override
+        public void onItemClick(String itemValue, int itemIndex) {
+            // use itemValue to get item text, itemIndex to get item index.
+        }
+    }
 ```
