@@ -5,6 +5,7 @@ Beautiful custom android dialogs ( alert, multiselect checkbox, singleselect rad
 - [How to setup](#setup)
 - [How to implement (Documentation)](#documentation)
   - [AlertSDialog](#alertsdialog)
+  - [CustomSDialog](#customsdialog)
 - [Support library improvements (Donations)](#donations)
 
 # Setup
@@ -38,14 +39,53 @@ Create new instance of AlertSDialog:
 Table of methods:
 - `setTitle("Title");`
 - `setText("Text...");`
-- `setPositiveButton("Button Text", () -> {...});` (Optional) the code here in java8, to use java7 or below syntax see in [CallBacks](#callbacks).
-- `setNegativeButton("Button Text", () -> {...});` (Optional).
-- `setNeutralButton("Button Text", () -> {...});` (Optional).
+- `setPositiveButton("Button Text", clickcallback);` (Optional) the code here in java8, to use java7 or below syntax see in [CallBacks](#callbacks).
+- `setNegativeButton("Button Text", clickcallback);` (Optional) onClick callback used.
+- `setNeutralButton("Button Text", clickcallback);` (Optional) .
 - `setAccentColor(int color/string hex color);` Default color is 0xFFA7B4C5/#FFA7B4C5 you can access it by `SDialog.DEFAULT_COLOR`.
 - `setTheme(SDialog.SYSTEM_THEME);` or `LIGHT_THEME / DARK_THEME`.
 - `setCancelable(false);` (*Optional).
-- `setOnDismissCallBack(() -> {...});` (Optional).
+- `setOnDismissCallBack(dismisscallback);` (Optional).
+- `show(); / show(1200);` to show always or for a duration of time (auto hide).
+- `dismiss();` to hide it.
+
+## CustomSDialog
+Create new instance of CustomSDialog:
+```java
+    AlertSDialog sdialog = new AlertSDialog(this);
+```
+Table of methods:
+- `setView(view, bindviewcallback);` set a view and liatener onBindCustomView.
+- `setView(R.layout.your_layout_name, bindviewcallback);` set a int layout from resources and liatener onBindCustomView.
+- `setCancelable(false);` (*Optional).
+- `setOnDismissCallBack(dismisscallback);` (Optional).
 - `show(); / show(1200);` to show always or for a duration of time (auto hide).
 - `dismiss();` to hide it.
 
 ## CallBacks
+CallBacks used in SDialogs:
+```java
+    // onClick button in alert sdialog
+    OnClickCallBack clickcallback = new OnClickCallBack() {
+        @Override
+        public void onClick() {
+            
+        }
+    };
+    
+    // onDismiss any sdialog
+    OnDismissCallBack dismisscallback = new OnDismissCallBack() {
+        @Override
+        public void onDismiss() {
+            
+        }
+    };
+    
+    // onBindCustomView in custom sdialog
+    OnBindCustomViewCallBack bindviewcallback = OnBindCustomViewCallBack() {
+        @Override
+        public void onBindCustomView(View customView) {
+            
+        }
+    };
+```
