@@ -10,7 +10,8 @@ Beautiful custom android dialogs ( alert, multiselect checkbox, singleselect rad
   - [ItemsSDialog](#itemssdialog)
   - [LoadingSDialog](#loadingsdialog)
   - [ProgressSDialog](#progresssdialog)
-  - [LoadingSDialog](#loadingsdialog)
+  - [SingleSelectSDialog](#singleselectsdialog)
+  - [MultiSelectSDialog](#multiselectsdialog)
 - [Support library improvements (Donations)](#donations)
 
 # Setup
@@ -115,7 +116,7 @@ Table of methods:
 - `setAccentColor(int color/string hex color);` Default color is 0xFFA7B4C5/#FFA7B4C5 you can access it by `SDialog.DEFAULT_COLOR`.
 - `setTheme(SDialog.SYSTEM_THEME);` or `LIGHT_THEME / DARK_THEME`.
 - `setItemsList(ArrayList<String>);` set items from existing arraylist of strings `ArrayList<String>`.
-- `setOnItemClickCallBack(itemclickcallback);` set items from existing arraylist of strings `ArrayList<String>`.
+- `setOnItemClickCallBack(itemclickcallback);`
 - `addItem("item text")` add new item.
 - `removeItem(2)` remove an item by its **index** from the list.
 - `removeItem("item text")` remove an item by its **text** from the list.
@@ -180,6 +181,64 @@ Table of methods:
 - `getBackgroundColor()`
 - `getTextColor()`
 
+## SingleSelectSDialog
+Create new instance of SingleSelectSDialog:
+```java
+    SingleSelectSDialog sdialog = new SingleSelectSDialog(this);
+```
+Table of methods:
+
+**Setters**
+- `setTitle("Title");`
+- `setAccentColor(int color/string hex color);` Default color is 0xFFA7B4C5/#FFA7B4C5 you can access it by `SDialog.DEFAULT_COLOR`.
+- `setTheme(SDialog.SYSTEM_THEME);` or `LIGHT_THEME / DARK_THEME`.
+- `setOnSingleSelectCallBack(singleselectcallback);` get checked radio button id & text.
+- `addItem(intId, "item text")` add new item(1, "Holow").
+- `setCheckedItem(intId)` set the checked item by default by its id.
+- `removeItem(2)` remove an item by its **index** from the list.
+- `removeItem("item text")` remove an item by its **text** from the list.
+- `setCancelable(false);` (Optional).
+- `setOnDismissCallBack(dismisscallback);` (Optional).
+- `show();` to show it.
+- `dismiss();` to hide it.
+
+**Getters**
+- `getItemsList()` returns a list of Map<String, Object> containing all the items, to access their id, text, isChecked use:
+> SDialog.KEY_ITEM_ID | KEY_ITEM_TEXT | KEY_ITEM_CHECKED
+- `getAccentColor()` get accent color.
+- `getTitleColor()` get accent color.
+- `getBackgroundColor()` get accent color.
+- `getTextColor()` get text color.
+
+## MultiSelectSDialog
+Create new instance of MultiSelectSDialog:
+```java
+    MultiSelectSDialog sdialog = new MultiSelectSDialog(this);
+```
+Table of methods:
+
+**Setters**
+- `setTitle("Title");`
+- `setPositiveButton("button text", multiselectcallback)`
+- `setAccentColor(int color/string hex color);` Default color is 0xFFA7B4C5/#FFA7B4C5 you can access it by `SDialog.DEFAULT_COLOR`.
+- `setTheme(SDialog.SYSTEM_THEME);` or `LIGHT_THEME / DARK_THEME`.
+- `addItem(intId, "item text", isChecked)` add new item(1, "Holow", true).
+- `setCheckedItem(intId)` set the checked item by default by its id.
+- `removeItem(2)` remove an item by its **index** from the list.
+- `removeItem("item text")` remove an item by its **text** from the list.
+- `setCancelable(false);` (Optional).
+- `setOnDismissCallBack(dismisscallback);` (Optional).
+- `show();` to show it.
+- `dismiss();` to hide it.
+
+**Getters**
+- `getItemsList()` returns a list of Map<String, Object> containing all the items, to access their id, text, isChecked use:
+> SDialog.KEY_ITEM_ID | KEY_ITEM_TEXT | KEY_ITEM_CHECKED
+- `getAccentColor()` get accent color.
+- `getTitleColor()` get accent color.
+- `getBackgroundColor()` get accent color.
+- `getTextColor()` get text color.
+
 ## CallBacks
 CallBacks used in SDialogs:
 ```java
@@ -229,6 +288,25 @@ CallBacks used in SDialogs:
         public void onProgress(int progress, int percent) {
             // use progress to get the progress 120 of max 200 eg..
             // use percent to get progress percentage 20 of 100% eg..
+        }
+    }
+    
+    // onSingleSelect used in single select sdialog
+    OnMultiSelectCallBack multiselectcallback = new OnMultiSelectCallBack() {
+        @Override
+        public void onSelect(int itemId, String itemText) {
+            // use itemId to get selected item id
+            // use itemText to get selected itemText
+        }
+    }
+    
+    // onMultiSelect used in multi select sdialog in positive button
+    OnMultiSelectCallBack multiselectcallback = new OnMultiSelectCallBack() {
+        @Override
+        public void onMultiSelect(List<Map<String, Object>> itemsList) {
+            // use itemsList to get all items selected
+            // to access their id, text, isChecked use:
+            // SDialog.KEY_ITEM_ID | KEY_ITEM_TEXT | KEY_ITEM_CHECKED
         }
     }
 ```
