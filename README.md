@@ -38,6 +38,8 @@ This library composed of 7 types of **SDialogs** and an additional one type that
 All these SDialogs using an algorithm to calculate and extract colors lighter/darker from the accent color you set in method `setAccentColor()`. 
 
 ## AlertSDialog
+![progress](https://te.legra.ph/file/29a07cd23e39721c24002.jpg)
+
 Create new instance of AlertSDialog:
 ```java
     AlertSDialog sdialog = new AlertSDialog(this);
@@ -78,6 +80,8 @@ Table of methods:
 - `dismiss();` to hide it.
 
 ## InputSDialog
+![progress](https://te.legra.ph/file/f398e834ab82ae6367776.jpg)
+
 Create new instance of InputSDialog:
 ```java
     InputSDialog sdialog = new InputSDialog(this);
@@ -105,6 +109,8 @@ Table of methods:
 - `getHintColor()` get hint color.
 
 ## ItemsSDialog
+![progress](https://te.legra.ph/file/11810e2ec43ec98511739.jpg)
+
 Create new instance of ItemsSDialog:
 ```java
     ItemsSDialog sdialog = new ItemsSDialog(this);
@@ -131,6 +137,8 @@ Table of methods:
 - `getBackgroundColor()` get accent color.
 
 ## LoadingSDialog
+![progress](https://te.legra.ph/file/646416c965f2227515195.jpg)
+
 Create new instance of LoadingSDialog:
 ```java
     LoadingSDialog sdialog = new LoadingSDialog(this);
@@ -153,6 +161,7 @@ Table of methods:
 - `getTextColor()` get text color.
 
 ## ProgressSDialog
+![progress](https://te.legra.ph/file/d025c806be8d64eb9ae07.jpg)
 Create new instance of ProgressSDialog:
 ```java
     ProgressSDialog sdialog = new ProgressSDialog(this);
@@ -182,6 +191,8 @@ Table of methods:
 - `getTextColor()`
 
 ## SingleSelectSDialog
+![progress](https://te.legra.ph/file/e5f52e32d27c0b0d7ab66.jpg)
+
 Create new instance of SingleSelectSDialog:
 ```java
     SingleSelectSDialog sdialog = new SingleSelectSDialog(this);
@@ -211,6 +222,8 @@ Table of methods:
 - `getTextColor()` get text color.
 
 ## MultiSelectSDialog
+![progress](https://te.legra.ph/file/329172778299d06c611af.jpg)
+
 Create new instance of MultiSelectSDialog:
 ```java
     MultiSelectSDialog sdialog = new MultiSelectSDialog(this);
@@ -310,3 +323,20 @@ CallBacks used in SDialogs:
         }
     }
 ```
+
+# Donations
+> If you would like to support this project's further development, the creator of this projects or the continuous maintenance of the project **feel free to donate**.
+Your donation is highly appreciated. Thank you!
+<br/>
+
+You can **choose what you want to donate**, all donations are awesome!</br>
+<br/>
+
+[![Buy me a coffee](https://img.shields.io/badge/Buy_Me_A_Coffee-FFDD00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black)](https://www.buymeacoffee.com/HusseinShakir)
+
+<br/>
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/smith8h/smith8h/main/20221103_150053.png" style="width: 38%;"/>
+  <br><b>With :heart:</b>
+</p>
