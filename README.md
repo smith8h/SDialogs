@@ -9,6 +9,8 @@ Beautiful custom android dialogs ( alert, multiselect checkbox, singleselect rad
   - [InputSDialog](#inputsdialog)
   - [ItemsSDialog](#itemssdialog)
   - [LoadingSDialog](#loadingsdialog)
+  - [ProgressSDialog](#progresssdialog)
+  - [LoadingSDialog](#loadingsdialog)
 - [Support library improvements (Donations)](#donations)
 
 # Setup
@@ -149,6 +151,35 @@ Table of methods:
 - `getBackgroundColor()` get accent color.
 - `getTextColor()` get text color.
 
+## ProgressSDialog
+Create new instance of ProgressSDialog:
+```java
+    ProgressSDialog sdialog = new ProgressSDialog(this);
+```
+Table of methods:
+
+**Setters**
+- `setTitle("Downloading Files");`
+- `setText("Gethering resources...");` set text under progress bar (can be changed onProgress)
+- `setMin(9);` default is 0.
+- `setMax(200);` default is 100.
+- `setProgress(120)` set sdialog progress.
+- `setOnProgressCallBack(progresscallback)` set on progress changed callback.
+- `setAccentColor(int color/string hex color);` Default color is 0xFFA7B4C5/#FFA7B4C5 you can access it by `SDialog.DEFAULT_COLOR`.
+- `setTheme(SDialog.SYSTEM_THEME);` or `LIGHT_THEME / DARK_THEME`.
+- `setOnDismissCallBack(dismisscallback);` (Optional).
+- `show();` to show it.
+- `dismiss();` to hide it.
+
+**Getters**
+- `getProgress()`
+- `getMax()`
+- `getMin()`
+- `getAccentColor()`
+- `getTitleColor()`
+- `getBackgroundColor()`
+- `getTextColor()`
+
 ## CallBacks
 CallBacks used in SDialogs:
 ```java
@@ -189,6 +220,15 @@ CallBacks used in SDialogs:
         @Override
         public void onItemClick(String itemValue, int itemIndex) {
             // use itemValue to get item text, itemIndex to get item index.
+        }
+    }
+    
+    // onProgressCallBack used in progress sdialog
+    OnProgressCallBack progresscallback = new OnProgressCallBack() {
+        @Override
+        public void onProgress(int progress, int percent) {
+            // use progress to get the progress 120 of max 200 eg..
+            // use percent to get progress percentage 20 of 100% eg..
         }
     }
 ```
