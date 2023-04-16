@@ -28,7 +28,7 @@ allprojects {
 > **Step 2.** Add the dependency:
 ```gradle
 dependencies {
-    implementation 'com.github.smith8h:SDialogs:1.0.1'
+    implementation 'com.github.smith8h:SDialogs:2.0.0'
 }
 ```
 
@@ -47,8 +47,11 @@ Create new instance of AlertSDialog:
 Table of methods:
 
 **Setters**
+- `setIconResource(icon)` add icon from res.
+- `setIconDrawable(icon)` add icon from a Drawable.
+- `setIconBitmap(icon)` add icon from bitmap.
 - `setTitle("Title");`
-- `setText("Text...");`
+- `setText(text);` accepts span text | int string res | string text...
 - `setPositiveButton("Button Text", clickcallback);` (Optional) the code here in java8, to use java7 or below syntax see in [CallBacks](#callbacks).
 - `setNegativeButton("Button Text", clickcallback);` (Optional) onClick callback used.
 - `setNeutralButton("Button Text", clickcallback);` (Optional) .
@@ -89,8 +92,11 @@ Create new instance of InputSDialog:
 Table of methods:
 
 **Setters**
+- `setIconResource(icon)` add icon from res.
+- `setIconDrawable(icon)` add icon from a Drawable.
+- `setIconBitmap(icon)` add icon from bitmap.
 - `setTitle("Title");`
-- `setText("Text...");` (Optional) set a docs above the input field.
+- `setText(text);` string | int res, (Optional) set a docs above the input field.
 - `setPositiveButtonAction("Button Text", inputclickclickcallback);` use OnInputClickCallBack.
 - `setNegativeButtonText("Button Text");` dismissing sdialog by default (no need for callback).
 - `setInputFieldHint("Input field hint");` set hint text in input field.
@@ -119,6 +125,9 @@ Create new instance of ItemsSDialog:
 Table of methods:
 
 **Setters**
+- `setIconResource(icon)` add icon from res.
+- `setIconDrawable(icon)` add icon from a Drawable.
+- `setIconBitmap(icon)` add icon from bitmap.
 - `setTitle("Title");`
 - `setAccentColor(int color/string hex color);` Default color is 0xFFA7B4C5/#FFA7B4C5 you can access it by `SDialog.DEFAULT_COLOR`.
 - `setTheme(SDialog.SYSTEM_THEME);` or `LIGHT_THEME / DARK_THEME`.
@@ -148,7 +157,7 @@ Table of methods:
 
 **Setters**
 - `setTitle("Loading");`
-- `setText("Please wait a seconds...");`
+- `setText(text);` string | int string res.
 - `setAccentColor(int color/string hex color);` Default color is 0xFFA7B4C5/#FFA7B4C5 you can access it by `SDialog.DEFAULT_COLOR`.
 - `setTheme(SDialog.SYSTEM_THEME);` or `LIGHT_THEME / DARK_THEME`.
 - `setOnDismissCallBack(dismisscallback);` (Optional).
@@ -170,8 +179,11 @@ Create new instance of ProgressSDialog:
 Table of methods:
 
 **Setters**
+- `setIconResource(icon)` add icon from res.
+- `setIconDrawable(icon)` add icon from a Drawable.
+- `setIconBitmap(icon)` add icon from bitmap.
 - `setTitle("Downloading Files");`
-- `setText("Gethering resources...");` set text under progress bar (can be changed onProgress)
+- `setText(text);` string | int res, set text under progress bar (can be changed onProgress)
 - `setMin(9);` default is 0.
 - `setMax(200);` default is 100.
 - `setProgress(120)` set sdialog progress.
@@ -201,6 +213,9 @@ Create new instance of SingleSelectSDialog:
 Table of methods:
 
 **Setters**
+- `setIconResource(icon)` add icon from res.
+- `setIconDrawable(icon)` add icon from a Drawable.
+- `setIconBitmap(icon)` add icon from bitmap.
 - `setTitle("Title");`
 - `setAccentColor(int color/string hex color);` Default color is 0xFFA7B4C5/#FFA7B4C5 you can access it by `SDialog.DEFAULT_COLOR`.
 - `setTheme(SDialog.SYSTEM_THEME);` or `LIGHT_THEME / DARK_THEME`.
@@ -232,6 +247,9 @@ Create new instance of MultiSelectSDialog:
 Table of methods:
 
 **Setters**
+- `setIconResource(icon)` add icon from res.
+- `setIconDrawable(icon)` add icon from a Drawable.
+- `setIconBitmap(icon)` add icon from bitmap.
 - `setTitle("Title");`
 - `setPositiveButton("button text", multiselectcallback)`
 - `setAccentColor(int color/string hex color);` Default color is 0xFFA7B4C5/#FFA7B4C5 you can access it by `SDialog.DEFAULT_COLOR`.
