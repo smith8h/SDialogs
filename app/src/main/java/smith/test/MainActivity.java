@@ -41,15 +41,16 @@ public class MainActivity extends AppCompatActivity {
         sdialog.addItem(2, "GIF", false);
         sdialog.addItem(3, "Videos (mp4)", true);
         
-        sdialog.setPositiveButton("Save & Search", (itemsList, idKey, textKey, checkedKey) -> {
+        sdialog.setPositiveButton("Save & Search", (itemsList) -> {
             StringBuilder builder = new StringBuilder();
-            for (int i = 0; i < itemsList.size(); i++) {
-                builder.append(itemsList.get(i).get(idKey));
+            itemsList.forEach(item -> {
+                builder.append(item.get(SDialog.KEY_ITEM_ID));
                 builder.append(" ");
-                builder.append(itemsList.get(i).get(textKey));
+                builder.append(item.get(SDialog.KEY_ITEM_TEXT));
                 builder.append(" ");
-                builder.append(itemsList.get(i).get(checkedKey));
-            }
+                builder.append(item.get(SDialog.KEY_ITEM_CHECKED));
+                builder.append("\n");
+            });
             Toast.makeText(this, builder.toString(), Toast.LENGTH_SHORT).show();
         });
         

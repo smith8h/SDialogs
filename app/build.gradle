@@ -3,9 +3,8 @@ plugins {
 }
 
 android {
-    compileSdk 32
+    compileSdk 33
     
-
     defaultConfig {
         applicationId "smith.test"
         minSdk 21
@@ -33,5 +32,4 @@ dependencies {
     implementation 'com.google.android.material:material:1.6.1'
     
     implementation project(path: ':SDialogs')
-    
 }

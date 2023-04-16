@@ -94,6 +94,7 @@ Table of methods:
 - `setPositiveButtonAction("Button Text", inputclickclickcallback);` use OnInputClickCallBack.
 - `setNegativeButtonText("Button Text");` dismissing sdialog by default (no need for callback).
 - `setInputFieldHint("Input field hint");` set hint text in input field.
+- `setInputFieldText("Input field text");` set text in input field.
 - `setAccentColor(int color/string hex color);` Default color is 0xFFA7B4C5/#FFA7B4C5 you can access it by `SDialog.DEFAULT_COLOR`.
 - `setTheme(SDialog.SYSTEM_THEME);` or `LIGHT_THEME / DARK_THEME`.
 - `setCancelable(false);` (*Optional).
@@ -305,7 +306,7 @@ CallBacks used in SDialogs:
     }
     
     // onSingleSelect used in single select sdialog
-    OnMultiSelectCallBack multiselectcallback = new OnMultiSelectCallBack() {
+    OnSingleSelectCallBack multiselectcallback = new OnSingleSelectCallBack() {
         @Override
         public void onSelect(int itemId, String itemText) {
             // use itemId to get selected item id

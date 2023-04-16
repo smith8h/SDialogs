@@ -4,40 +4,12 @@ buildscript {
         gradlePluginPortal()
         google()
         jcenter()
-        maven {
-        	url 'https://jitpack.io'
-        	allowInsecureProtocol = true
-        }
-        maven {
-        	url 'https://repo1.maven.org/maven2'
-            allowInsecureProtocol = true
-        }
-        maven {
-        	url 'https://repo.maven.apache.org'
-            allowInsecureProtocol = true
-        }
-        maven {
-        	url 'https://maven.google.com'
-            allowInsecureProtocol = true
-        }
-        maven {
-        	url 'https://repo.maven.apache.org/maven2'
-            allowInsecureProtocol = true
-        }
-        maven {
-        	url 'https://jcenter.bintray.com'
-            allowInsecureProtocol = true
-        }
-        maven {
-        	url 'https://dl.google.com'
-            allowInsecureProtocol = true
-        }
     }
 }
 
 plugins {
-    id 'com.android.application' version '7.3.1' apply false
-    id 'com.android.library' version '7.3.1' apply false
+    id 'com.android.application' version '7.4.1' apply false
+    id 'com.android.library' version '7.4.1' apply false
 }
 
 allprojects {
@@ -45,34 +17,7 @@ allprojects {
     	mavenCentral()
         google()
         jcenter()
-        maven {
-        	url 'https://jitpack.io'
-        	allowInsecureProtocol = true
-        }
-        maven {
-        	url 'https://repo1.maven.org/maven2'
-            allowInsecureProtocol = true
-        }
-        maven {
-        	url 'https://repo.maven.apache.org'
-            allowInsecureProtocol = true
-        }
-        maven {
-        	url 'https://maven.google.com'
-            allowInsecureProtocol = true
-        }
-        maven {
-        	url 'https://repo.maven.apache.org/maven2'
-            allowInsecureProtocol = true
-        }
-        maven {
-        	url 'https://jcenter.bintray.com'
-            allowInsecureProtocol = true
-        }
-        maven {
-        	url 'https://dl.google.com'
-            allowInsecureProtocol = true
-        }
+        maven { url 'https://jitpack.io' }
     }
 }
 

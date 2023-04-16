@@ -59,6 +59,10 @@ public class InputSDialog extends SDialog {
         ((TextInputLayout) dialogView.findViewById(R.id.input)).setHint(hint);
     }
     
+    public void setInputFieldText(String text) {
+    	((TextInputLayout) dialogView.findViewById(R.id.input)).getEditText().setText(text);
+    }
+    
     public void setAccentColor(int color) {
         accentColor = color;
     }
