@@ -1,6 +1,7 @@
 package smith.test;
 
 import android.os.Bundle;
+import android.text.SpannableString;
 import android.view.View;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
@@ -32,8 +33,8 @@ public class MainActivity extends AppCompatActivity {
     
     public void multi(View v) {
         MultiSelectSDialog sdialog = new MultiSelectSDialog(this);
-        sdialog.setAccentColor(SDialog.DEFAULT_COLOR);
-        sdialog.setTheme(SDialog.DARK_THEME);
+        sdialog.setAccentColor(SDialog.COLOR_DEFAULT);
+        sdialog.setTheme(SDialog.THEME_BY_SYSTEM);
         sdialog.setTitle("Search Filters");
         sdialog.setCancelable(true);
         
@@ -59,8 +60,8 @@ public class MainActivity extends AppCompatActivity {
     
     public void single(View v) {
         SingleSelectSDialog sdialog = new SingleSelectSDialog(this);
-        sdialog.setAccentColor(SDialog.DEFAULT_COLOR);
-        sdialog.setTheme(SDialog.DARK_THEME);
+        sdialog.setAccentColor(SDialog.COLOR_DEFAULT);
+        sdialog.setTheme(SDialog.THEME_BY_SYSTEM);
         sdialog.setTitle("Notifications Sounds");
         sdialog.setCancelable(true);
         
@@ -80,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
     public void progress(View v) {
         ProgressSDialog sdialog = new ProgressSDialog(this);
         sdialog.setAccentColor(0xFFAD97BE);
-        sdialog.setTheme(SDialog.LIGHT_THEME);
+        sdialog.setTheme(SDialog.THEME_BY_SYSTEM);
         sdialog.setMax(200);
         sdialog.setMin(0);
         sdialog.setTitle("Downloading Files");
@@ -118,7 +119,7 @@ public class MainActivity extends AppCompatActivity {
         ItemsSDialog sdialog = new ItemsSDialog(this);
         sdialog.setAccentColor(0xFFAD97BE);
         sdialog.setCancelable(false);
-        sdialog.setTheme(SDialog.LIGHT_THEME);
+        sdialog.setTheme(SDialog.THEME_BY_SYSTEM);
         sdialog.setTitle("Set Your Gender:");
         
         ArrayList<String> genders = new ArrayList<>();
@@ -128,8 +129,8 @@ public class MainActivity extends AppCompatActivity {
         genders.add("Prefer not to say");
         
         sdialog.setItemsList(genders);
-        sdialog.setOnItemClickCallBack((object, itemValue, itemIndex) -> {
-            Toast.makeText(this, object.toString() + (itemIndex+1) + itemValue, Toast.LENGTH_SHORT).show();
+        sdialog.setOnItemClickCallBack((itemValue, itemIndex) -> {
+            Toast.makeText(this, itemValue + (itemIndex+1), Toast.LENGTH_SHORT).show();
         });
         sdialog.addItem("Male to Female");
         sdialog.addItem("Female to Male");
@@ -143,7 +144,7 @@ public class MainActivity extends AppCompatActivity {
     public void input(View v) {
         InputSDialog sdialog = new InputSDialog(this);
         sdialog.setAccentColor(0xFFAD97BE);
-        sdialog.setTheme(SDialog.LIGHT_THEME);
+        sdialog.setTheme(SDialog.THEME_BY_SYSTEM);
         sdialog.setCancelable(false);
         sdialog.setTitle("Input Your Name");
         sdialog.setText("please write your full name in no more than 20 characters.");
@@ -160,6 +161,7 @@ public class MainActivity extends AppCompatActivity {
     
     public void alert(View v) {
         AlertSDialog sdialog = new AlertSDialog(this);
+        sdialog.setIconResource(R.drawable.ok_img);
         sdialog.setTitle("Title Of SDialog");
         sdialog.setText(getString(R.string.dummy_text));
         sdialog.setPositiveButton("OK", () -> {
@@ -175,7 +177,7 @@ public class MainActivity extends AppCompatActivity {
             sdialog.dismiss();
         });
         sdialog.setAccentColor(0xFFAD97BE);
-        sdialog.setTheme(SDialog.DARK_THEME);
+        sdialog.setTheme(SDialog.THEME_BY_SYSTEM);
         sdialog.setCancelable(true);
         sdialog.setOnDismissCallBack(() -> {
             Toast.makeText(this, "onDismiss", Toast.LENGTH_SHORT).show();
@@ -188,7 +190,7 @@ public class MainActivity extends AppCompatActivity {
         sdialog.setTitle("Loading SDialog!");
         sdialog.setText("Please wait a second...");
         sdialog.setAccentColor(0xFFAD97BE);
-        sdialog.setTheme(SDialog.SYSTEM_THEME);
+        sdialog.setTheme(SDialog.THEME_BY_SYSTEM);
         sdialog.setOnDismissCallBack(() -> {
             Toast.makeText(this, "onDismiss", Toast.LENGTH_SHORT).show();
         });

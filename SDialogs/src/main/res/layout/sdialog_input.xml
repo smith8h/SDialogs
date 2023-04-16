@@ -16,16 +16,31 @@
         android:paddingEnd="24dp"
         android:paddingBottom="20dp" >
     
-        <android.widget.TextView
-            android:alpha=".9"
-            android:id="@+id/title"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:textSize="19sp"
-            android:textStyle="bold"
-            android:textColor="@android:color/white"
-            android:text="Title of SDialog"
-            android:layout_marginBottom="20dp"/>
+        <LinearLayout
+             android:layout_height="wrap_content"
+             android:layout_width="match_parent"
+             android:layout_marginBottom="20dp"
+             android:gravity="center_vertical"
+             android:orientation="horizontal">
+
+            <ImageView
+                 android:layout_height="32dp"
+                 android:layout_width="32dp"
+                 android:scaleType="centerInside"
+                 android:layout_marginEnd="18dp"
+                 android:visibility="gone"
+                 android:id="@+id/icon" />
+
+            <TextView
+                 android:layout_height="wrap_content"
+                 android:layout_width="wrap_content"
+                 android:alpha=".9"
+                 android:textSize="19sp"
+                 android:textColor="@android:color/white"
+                 android:id="@+id/title"
+                 android:textStyle="bold"
+                 android:text="Title of SDialog" />
+        </LinearLayout>
         
         <android.widget.TextView
             android:alpha=".8"

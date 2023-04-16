@@ -81,11 +81,11 @@ public class LoadingSDialog extends SDialog {
     }
         
     private void update() {
-        if (theme == SYSTEM_THEME) {
+        if (theme == THEME_BY_SYSTEM) {
             if (nightModeON()) darkThemeColors();
             else lightThemeColors();
-        } else if (theme == DARK_THEME) darkThemeColors();
-        else if (theme == LIGHT_THEME) lightThemeColors();
+        } else if (theme == THEME_DARK) darkThemeColors();
+        else if (theme == THEME_LIGHT) lightThemeColors();
 
         setBackgroundColor(dialogView.findViewById(R.id.main), backgroundColor);
         ((TextView) dialogView.findViewById(R.id.title)).setTextColor(titleColor);

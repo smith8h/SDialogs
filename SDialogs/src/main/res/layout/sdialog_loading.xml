@@ -1,55 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.widget.LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    android:layout_height="wrap_content"
-    android:layout_width="wrap_content"
-    android:gravity="center">
-    
-    <android.widget.LinearLayout
-        android:id="@+id/main"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_margin="20dp"
-        android:paddingStart="24dp"
-        android:paddingTop="20dp"
-        android:paddingEnd="24dp"
-        android:paddingBottom="20dp"
-        android:gravity="center_vertical" >
-        
-        <android.widget.ProgressBar
-			android:id="@+id/loading"
-			android:layout_width="42dp"
-			android:layout_height="42dp"
-            android:indeterminate="true"
-            android:layout_marginEnd="20dp" />
-        
-        <android.widget.LinearLayout
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:orientation="vertical" >
-            
-            <android.widget.TextView
-                android:alpha=".9"
-                android:id="@+id/title"
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:textColor="@android:color/white"
-                android:text="LoadingSDialog"
-                android:layout_marginBottom="5dp"/>
-                
-            <android.widget.TextView
-                android:alpha=".8"
-                android:id="@+id/text"
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:textSize="15sp"
-                android:textColor="@android:color/white"
-                android:text="Dummy long text of SDialog"
-                android:lines="1"/>
-        </android.widget.LinearLayout>
-    </android.widget.LinearLayout>
-</android.widget.LinearLayout>
+<LinearLayout
+     xmlns:android="http://schemas.android.com/apk/res/android"
+     xmlns:app="http://schemas.android.com/apk/res-auto"
+     android:layout_height="wrap_content"
+     android:layout_width="wrap_content"
+     android:gravity="center"
+     android:orientation="vertical">
+
+    <LinearLayout
+         android:layout_height="wrap_content"
+         android:layout_width="wrap_content"
+         android:paddingEnd="24dp"
+         android:gravity="center_vertical"
+         android:layout_margin="20dp"
+         android:orientation="horizontal"
+         android:paddingBottom="20dp"
+         android:paddingStart="24dp"
+         android:id="@+id/main"
+         android:paddingTop="20dp">
+
+        <ProgressBar
+             android:layout_height="42dp"
+             android:layout_width="42dp"
+             android:layout_marginEnd="20dp"
+             android:indeterminate="true"
+             android:id="@+id/loading" />
+
+        <LinearLayout
+             android:layout_height="wrap_content"
+             android:layout_width="wrap_content"
+             android:orientation="vertical">
+
+            <TextView
+                 android:layout_height="wrap_content"
+                 android:layout_width="wrap_content"
+                 android:layout_marginBottom="5dp"
+                 android:alpha=".9"
+                 android:textSize="18sp"
+                 android:textColor="@android:color/white"
+                 android:id="@+id/title"
+                 android:textStyle="bold"
+                 android:text="LoadingSDialog" />
+
+            <TextView
+                 android:layout_height="wrap_content"
+                 android:layout_width="wrap_content"
+                 android:alpha=".8"
+                 android:textSize="15sp"
+                 android:lines="1"
+                 android:textColor="@android:color/white"
+                 android:id="@+id/text"
+                 android:text="Dummy long text of SDialog" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

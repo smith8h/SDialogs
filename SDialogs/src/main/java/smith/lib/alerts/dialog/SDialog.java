@@ -34,29 +34,27 @@ import smith.lib.alerts.dialog.callbacks.OnDismissCallBack;
 
 public class SDialog {
     
-    public static final int DEFAULT_COLOR = 0xFFA7B4C5;
-    public static final int SYSTEM_THEME = 0;
-    public static final int DARK_THEME = 1;
-    public static final int LIGHT_THEME = 2;
+    public static final int COLOR_DEFAULT = 0xFFA7B4C5;
+    
+    public static final int THEME_BY_SYSTEM = 0;
+    public static final int THEME_DARK = 1;
+    public static final int THEME_LIGHT = 2;
     
     public static final String KEY_ITEM_ID = "id";
     public static final String KEY_ITEM_TEXT = "text";
     public static final String KEY_ITEM_CHECKED = "checked";
     
     protected Context context;
-    
     protected View dialogView;
-    
     protected AlertDialog alertdialog;
     
+    protected int iconColor;
     protected int titleColor;
     protected int textColor;
-    protected int accentColor = DEFAULT_COLOR;
+    protected int accentColor = COLOR_DEFAULT;
     protected int backgroundColor;
-    protected int theme = SYSTEM_THEME;
+    protected int theme = THEME_BY_SYSTEM;
     protected int hintColor;
-    
-    
     
     protected void init() {
         alertdialog = new AlertDialog.Builder(context).create();
@@ -91,32 +89,32 @@ public class SDialog {
         alertdialog.dismiss();
     }
     
-    
-    
     protected void lightThemeColors() {
+        iconColor = darkerColor(accentColor, .2f);
         titleColor = darkerColor(accentColor, .2f);
         textColor = darkerColor(accentColor, .35f);
-        backgroundColor = lighterColor(accentColor, .88f);
+        backgroundColor = lighterColor(accentColor, .9f);
         hintColor = darkerColor(accentColor, .6f);
         accentColor = darkerColor(accentColor, .9f);
     }
 
     protected void darkThemeColors() {
+        iconColor = lighterColor(accentColor, .8f);
         titleColor = lighterColor(accentColor, .8f);
         textColor = lighterColor(accentColor, .65f);
-        backgroundColor = darkerColor(accentColor, .12f);
+        backgroundColor = darkerColor(accentColor, .1f);
         hintColor = lighterColor(accentColor, .4f);
         accentColor = lighterColor(accentColor, .1f);
     }
     
     protected void animateView(View v) {
         v.setAlpha(0f);
-        ObjectAnimator animator = new ObjectAnimator();
-        animator.setDuration(620);
-        animator.setFloatValues(0f, 1f);
-        animator.setPropertyName("alpha");
-        animator.setTarget(v);
-        animator.start();
+        ObjectAnimator anim = new ObjectAnimator();
+        anim.setDuration(620);
+        anim.setFloatValues(0f, 1f);
+        anim.setPropertyName("alpha");
+        anim.setTarget(v);
+        anim.start();
     }
 
     protected boolean nightModeON() {

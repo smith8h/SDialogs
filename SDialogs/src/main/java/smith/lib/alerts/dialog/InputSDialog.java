@@ -19,6 +19,9 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
+import android.graphics.Bitmap;
+import android.widget.ImageView;
 import android.view.View;
 import android.widget.TextView;
 import com.google.android.material.textfield.TextInputEditText;
@@ -31,6 +34,21 @@ public class InputSDialog extends SDialog {
         this.context = context;
         dialogView = ((Activity) context).getLayoutInflater().inflate(R.layout.sdialog_input, null);
         init();
+    }
+    
+    public void setIconResource(int icon) {
+        ((ImageView) dialogView.findViewById(R.id.icon)).setVisibility(View.VISIBLE);
+    	((ImageView) dialogView.findViewById(R.id.icon)).setImageResource(icon);
+    }
+    
+    public void setIconDrawable(Drawable icon) {
+        ((ImageView) dialogView.findViewById(R.id.icon)).setVisibility(View.VISIBLE);
+    	((ImageView) dialogView.findViewById(R.id.icon)).setImageDrawable(icon);
+    }
+    
+    public void setIconBitmap(Bitmap icon) {
+        ((ImageView) dialogView.findViewById(R.id.icon)).setVisibility(View.VISIBLE);
+    	((ImageView) dialogView.findViewById(R.id.icon)).setImageBitmap(icon);
     }
     
     public void setTitle(String title) {
@@ -108,11 +126,11 @@ public class InputSDialog extends SDialog {
     }
     
     private void update() {
-        if (theme == SYSTEM_THEME) {
+        if (theme == THEME_BY_SYSTEM) {
             if (nightModeON()) darkThemeColors();
             else lightThemeColors();
-        } else if (theme == DARK_THEME) darkThemeColors();
-        else if (theme == LIGHT_THEME) lightThemeColors();
+        } else if (theme == THEME_DARK) darkThemeColors();
+        else if (theme == THEME_LIGHT) lightThemeColors();
         
         setBackgroundColor(dialogView.findViewById(R.id.main), backgroundColor);
         ((TextView) dialogView.findViewById(R.id.title)).setTextColor(titleColor);

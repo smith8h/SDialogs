@@ -17,8 +17,11 @@ package smith.lib.alerts.dialog;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import smith.lib.alerts.dialog.callbacks.OnClickCallBack;
@@ -30,12 +33,27 @@ public class AlertSDialog extends SDialog {
         dialogView = ((Activity) context).getLayoutInflater().inflate(R.layout.sdialog_alert, null);
         init();
     }
+    
+    public void setIconResource(int icon) {
+        ((ImageView) dialogView.findViewById(R.id.icon)).setVisibility(View.VISIBLE);
+    	((ImageView) dialogView.findViewById(R.id.icon)).setImageResource(icon);
+    }
+    
+    public void setIconDrawable(Drawable icon) {
+        ((ImageView) dialogView.findViewById(R.id.icon)).setVisibility(View.VISIBLE);
+    	((ImageView) dialogView.findViewById(R.id.icon)).setImageDrawable(icon);
+    }
+    
+    public void setIconBitmap(Bitmap icon) {
+        ((ImageView) dialogView.findViewById(R.id.icon)).setVisibility(View.VISIBLE);
+    	((ImageView) dialogView.findViewById(R.id.icon)).setImageBitmap(icon);
+    }
 
     public void setTitle(String title) {
         ((TextView) dialogView.findViewById(R.id.title)).setText(title);
     }
 
-    public void setText(String text) {
+    public void setText(CharSequence text) {
         ((TextView) dialogView.findViewById(R.id.text)).setText(text);
     }
 
@@ -110,13 +128,14 @@ public class AlertSDialog extends SDialog {
     }
     
     private void update() {
-        if (theme == SYSTEM_THEME) {
+        if (theme == THEME_BY_SYSTEM) {
             if (nightModeON()) darkThemeColors();
             else lightThemeColors();
-        } else if (theme == DARK_THEME) darkThemeColors();
-        else if (theme == LIGHT_THEME) lightThemeColors();
+        } else if (theme == THEME_DARK) darkThemeColors();
+        else if (theme == THEME_LIGHT) lightThemeColors();
         
         setBackgroundColor(dialogView.findViewById(R.id.main), backgroundColor);
+        ((ImageView) dialogView.findViewById(R.id.icon)).setColorFilter(iconColor);
         ((TextView) dialogView.findViewById(R.id.title)).setTextColor(titleColor);
         ((TextView) dialogView.findViewById(R.id.text)).setTextColor(textColor);
         ((TextView) dialogView.findViewById(R.id.positive)).setTextColor(accentColor);

@@ -1,68 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.widget.LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    android:layout_height="wrap_content"
-    android:layout_width="wrap_content"
-    android:gravity="center">
-    
-    <android.widget.LinearLayout
-        android:id="@+id/main"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_margin="20dp"
-        android:paddingStart="24dp"
-        android:paddingTop="20dp"
-        android:paddingEnd="24dp"
-        android:paddingBottom="20dp"
-        android:gravity="center_vertical" >
-        
-        <android.widget.TextView
-            android:alpha=".9"
-            android:id="@+id/title"
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:lines="1"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:textColor="@android:color/white"
-            android:text="Downloding SDialog"
-            android:layout_marginBottom="10dp" />
-        
-        <android.widget.ProgressBar
-			android:id="@+id/progress"
-			android:layout_width="match_parent"
-			android:layout_height="3dp"
-            android:indeterminate="false"
-            android:layout_marginBottom="10dp"
-            style="?android:progressBarStyleHorizontal" />
-            
-        <android.widget.LinearLayout
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:orientation="horizontal"
-            android:gravity="center_vertical" >
-            
-            <android.widget.TextView
-                android:alpha=".8"
-                android:id="@+id/text"
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:layout_weight="1"
-                android:textSize="14sp"
-                android:textColor="@android:color/white"
-                android:text="Getting Resources..." />
-                
-            <android.widget.TextView
-                android:alpha=".8"
-                android:id="@+id/percent"
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:textSize="12sp"
-                android:textColor="@android:color/white"
-                android:text="0%"
-                android:lines="1"/>
-        </android.widget.LinearLayout>
-    </android.widget.LinearLayout>
-</android.widget.LinearLayout>
+<LinearLayout
+     xmlns:android="http://schemas.android.com/apk/res/android"
+     xmlns:app="http://schemas.android.com/apk/res-auto"
+     android:layout_height="wrap_content"
+     android:layout_width="wrap_content"
+     android:gravity="center"
+     android:orientation="vertical">
+
+    <LinearLayout
+         android:layout_height="wrap_content"
+         android:layout_width="match_parent"
+         android:paddingEnd="24dp"
+         android:gravity="center_vertical"
+         android:layout_margin="20dp"
+         android:orientation="vertical"
+         android:paddingBottom="20dp"
+         android:paddingStart="24dp"
+         android:id="@+id/main"
+         android:paddingTop="20dp">
+
+        <LinearLayout
+             android:layout_height="wrap_content"
+             android:layout_width="match_parent"
+             android:layout_marginBottom="10dp"
+             android:gravity="center_vertical"
+             android:orientation="horizontal">
+
+            <ImageView
+                 android:layout_height="32dp"
+                 android:layout_width="32dp"
+                 android:visibility="gone"
+                 android:scaleType="centerInside"
+                 android:layout_marginEnd="18dp"
+                 android:id="@+id/icon" />
+
+            <TextView
+                 android:layout_height="wrap_content"
+                 android:layout_width="wrap_content"
+                 android:alpha=".9"
+                 android:textSize="19sp"
+                 android:textColor="@android:color/white"
+                 android:id="@+id/title"
+                 android:textStyle="bold"
+                 android:text="Title of SDialog" />
+        </LinearLayout>
+
+        <ProgressBar
+             android:layout_height="3dp"
+             android:layout_width="match_parent"
+             android:layout_marginBottom="10dp"
+             android:indeterminate="false"
+             style="?android:progressBarStyleHorizontal"
+             android:id="@+id/progress" />
+
+        <LinearLayout
+             android:layout_height="wrap_content"
+             android:layout_width="match_parent"
+             android:gravity="center_vertical"
+             android:orientation="horizontal">
+
+            <TextView
+                 android:layout_height="wrap_content"
+                 android:layout_width="wrap_content"
+                 android:alpha=".8"
+                 android:textSize="14sp"
+                 android:textColor="@android:color/white"
+                 android:layout_weight="1"
+                 android:id="@+id/text"
+                 android:text="Getting Resources..." />
+
+            <TextView
+                 android:layout_height="wrap_content"
+                 android:layout_width="wrap_content"
+                 android:alpha=".8"
+                 android:textSize="12sp"
+                 android:lines="1"
+                 android:textColor="@android:color/white"
+                 android:id="@+id/percent"
+                 android:text="0%" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
