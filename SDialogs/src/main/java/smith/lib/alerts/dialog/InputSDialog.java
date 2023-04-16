@@ -60,6 +60,11 @@ public class InputSDialog extends SDialog {
         ((TextView) dialogView.findViewById(R.id.text)).setText(text);
     }
     
+    public void setText(int text) {
+        ((TextView) dialogView.findViewById(R.id.text)).setVisibility(View.VISIBLE);
+        ((TextView) dialogView.findViewById(R.id.text)).setText(text);
+    }
+    
     public void setPositiveButtonAction(String positive, OnInputClickCallBack callback) {
         ((TextView) dialogView.findViewById(R.id.positive)).setText(positive);
         ((TextView) dialogView.findViewById(R.id.positive)).setOnClickListener(v-> {

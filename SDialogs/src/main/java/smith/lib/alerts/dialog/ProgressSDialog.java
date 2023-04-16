@@ -65,6 +65,10 @@ public class ProgressSDialog extends SDialog {
         ((TextView) dialogView.findViewById(R.id.text)).setText(text);
     }
     
+    public void setText(int text) {
+        ((TextView) dialogView.findViewById(R.id.text)).setText(text);
+    }
+    
     public void setMin(int min) {
         ((ProgressBar) dialogView.findViewById(R.id.progress)).setMin(min);
     }

@@ -56,6 +56,10 @@ public class AlertSDialog extends SDialog {
     public void setText(CharSequence text) {
         ((TextView) dialogView.findViewById(R.id.text)).setText(text);
     }
+    
+    public void setText(int text) {
+    	((TextView) dialogView.findViewById(R.id.text)).setText(text);
+    }
 
     public void setPositiveButton(String positive, OnClickCallBack callback) {
         ((LinearLayout) dialogView.findViewById(R.id.holder)).setVisibility(View.VISIBLE);

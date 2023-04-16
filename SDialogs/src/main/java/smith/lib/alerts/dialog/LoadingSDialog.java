@@ -37,6 +37,10 @@ public class LoadingSDialog extends SDialog {
     public void setText(String text) {
         ((TextView) dialogView.findViewById(R.id.text)).setText(text);
     }
+    
+    public void setText(int text) {
+        ((TextView) dialogView.findViewById(R.id.text)).setText(text);
+    }
 
     public void setAccentColor(int color) {
         accentColor = color;
