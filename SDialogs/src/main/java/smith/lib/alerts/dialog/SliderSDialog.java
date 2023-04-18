@@ -12,39 +12,33 @@
      *
      *
      */
-
+     
 
 package smith.lib.alerts.dialog;
 
 import android.app.Activity;
 import android.content.Context;
-import android.graphics.Color;
+import android.content.res.ColorStateList;
 import android.graphics.drawable.Drawable;
 import android.graphics.Bitmap;
-import android.widget.ImageView;
-import android.media.tv.TvView;
 import android.view.View;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import smith.lib.alerts.dialog.adapters.SMultiSelectAdapter;
-import smith.lib.alerts.dialog.callbacks.OnMultiSelectCallBack;
-import smith.lib.views.recyclerview.SRecyclerView;
+import android.widget.*;
+import com.google.android.material.slider.Slider;
+import android.graphics.Color;
+import smith.lib.alerts.dialog.callbacks.OnSlideCallBack;
 
-public class MultiSelectSDialog extends SDialog {
+public class SliderSDialog extends SDialog {
     
-    private SMultiSelectAdapter adapter;
-    private List<Map<String, Object>> data = new ArrayList<>();
-    private Map<String, Object> item = new HashMap<>();
+    private final int MAX = 100;
+    private final int MIN = 0;
     
-    public MultiSelectSDialog(Context context) {
+    public SliderSDialog(Context context) {
         this.context = context;
-        dialogView = ((Activity) context).getLayoutInflater().inflate(R.layout.sdialog_items, null);
+        dialogView = ((Activity) context).getLayoutInflater().inflate(R.layout.sdialog_seek, null);
         init();
+        
+        ((Slider) dialogView.findViewById(R.id.seek)).setValueFrom(MIN);
+        ((Slider) dialogView.findViewById(R.id.seek)).setValueTo(MAX);
     }
     
     public void setIconResource(int icon) {
@@ -61,52 +55,42 @@ public class MultiSelectSDialog extends SDialog {
         ((ImageView) dialogView.findViewById(R.id.icon)).setVisibility(View.VISIBLE);
     	((ImageView) dialogView.findViewById(R.id.icon)).setImageBitmap(icon);
     }
-    
+
     public void setTitle(String title) {
         ((TextView) dialogView.findViewById(R.id.title)).setText(title);
     }
-    
-    public void setPositiveButton(String positive, OnMultiSelectCallBack callback) {
-         ((LinearLayout) dialogView.findViewById(R.id.holder)).setVisibility(View.VISIBLE);
-         ((TextView) dialogView.findViewById(R.id.positive)).setText(positive);
-         ((TextView) dialogView.findViewById(R.id.positive)).setOnClickListener(v-> {
-             if (adapter != null) callback.onMultiSelect(adapter.getCheckedItems());
-             dismiss();
-         });
+
+    public void setText(String text) {
+        ((TextView) dialogView.findViewById(R.id.text)).setText(text);
     }
     
-    public void addItem(int id, String text, boolean checked) {
-        item = new HashMap<>();
-        item.put(KEY_ITEM_ID, id);
-        item.put(KEY_ITEM_TEXT, text);
-        item.put(KEY_ITEM_CHECKED, checked);
-        data.add(item);
-        update();
+    public void setText(int text) {
+        ((TextView) dialogView.findViewById(R.id.text)).setText(text);
     }
     
-    public void setCheckedItem(int id) {
-        for (int i = 0; i < data.size(); i++) {
-            if (data.get(i).get(KEY_ITEM_ID).equals(id)) {
-                item = data.get(i);
-                data.remove(i);
-                item.put(KEY_ITEM_CHECKED, true);
-                data.add(i, item);
-                break;
-            }
-        }
-        update();
+    public void setMin(float min) {
+        ((Slider) dialogView.findViewById(R.id.seek)).setValueFrom(min);
     }
     
-    public void removeItem(String itemText) {
-        for (int i = 0; i < data.size(); i++) {
-            if (data.get(i).get("text").toString().equals(itemText)) data.remove(i);
-        }
-        update();
+    public void setMax(float max) {
+        ((Slider) dialogView.findViewById(R.id.seek)).setValueTo(max);
     }
     
-    public void removeItem(int index) {
-        data.remove(index);
-        update();
+    public void setValue(float value) {
+        ((Slider) dialogView.findViewById(R.id.seek)).setValue(value);
+    }
+    
+    public void setPositiveButtonAction(String positive, OnSlideCallBack callback) {
+        ((TextView) dialogView.findViewById(R.id.positive)).setText(positive);
+        ((TextView) dialogView.findViewById(R.id.positive)).setOnClickListener(v-> {
+            callback.onValueSelected(((Slider) dialogView.findViewById(R.id.seek)).getValue());
+            dismiss();
+        });
+    }
+    
+    public void setNegativeButtonText(String negative) {
+        ((TextView) dialogView.findViewById(R.id.negative)).setText(negative);
+        ((TextView) dialogView.findViewById(R.id.negative)).setOnClickListener(v-> dismiss());
     }
     
     public void setAccentColor(int color) {
@@ -119,6 +103,18 @@ public class MultiSelectSDialog extends SDialog {
 
     public void setTheme(int theme) {
         this.theme = theme;
+    }
+    
+    public float getValue() {
+        return ((Slider) dialogView.findViewById(R.id.seek)).getValue();
+    }
+    
+    public float getMinValue() {
+        return ((Slider) dialogView.findViewById(R.id.seek)).getValueFrom();
+    }
+    
+    public float getMaxValue() {
+        return ((Slider) dialogView.findViewById(R.id.seek)).getValueTo();
     }
     
     public int getAccentColor() {
@@ -135,10 +131,6 @@ public class MultiSelectSDialog extends SDialog {
     
     public int getTextColor() {
         return textColor;
-    }
-    
-    public List<Map<String, Object>> getItemsList() {
-        return data;
     }
     
     @Override
@@ -159,15 +151,14 @@ public class MultiSelectSDialog extends SDialog {
             else lightThemeColors();
         } else if (theme == THEME_DARK) darkThemeColors();
         else if (theme == THEME_LIGHT) lightThemeColors();
-        
+
         setBackgroundColor(dialogView.findViewById(R.id.main), backgroundColor);
         ((ImageView) dialogView.findViewById(R.id.icon)).setColorFilter(iconColor);
         ((TextView) dialogView.findViewById(R.id.title)).setTextColor(titleColor);
+        ((TextView) dialogView.findViewById(R.id.text)).setTextColor(textColor);
+        ((Slider) dialogView.findViewById(R.id.seek)).setThumbTintList(ColorStateList.valueOf(accentColor));
+        ((Slider) dialogView.findViewById(R.id.seek)).setTrackTintList(ColorStateList.valueOf(accentColor));
         ((TextView) dialogView.findViewById(R.id.positive)).setTextColor(accentColor);
-        
-        adapter = new SMultiSelectAdapter(data, this);
-        ((SRecyclerView) dialogView.findViewById(R.id.recycler))
-            .setLayoutManager(new LinearLayoutManager(context, LinearLayout.VERTICAL, false));
-        ((SRecyclerView) dialogView.findViewById(R.id.recycler)).setAdapter(adapter);
+        ((TextView) dialogView.findViewById(R.id.negative)).setTextColor(accentColor);
     }
 }

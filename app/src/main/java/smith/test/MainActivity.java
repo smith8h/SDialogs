@@ -5,7 +5,6 @@ import android.text.SpannableString;
 import android.view.View;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
-import com.itsaky.androidide.logsender.LogSender;
 import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -18,6 +17,7 @@ import smith.lib.alerts.dialog.MultiSelectSDialog;
 import smith.lib.alerts.dialog.ProgressSDialog;
 import smith.lib.alerts.dialog.SDialog;
 import smith.lib.alerts.dialog.SingleSelectSDialog;
+import smith.lib.alerts.dialog.SliderSDialog;
 import smith.lib.alerts.dialog.callbacks.OnProgressCallBack;
 
 public class MainActivity extends AppCompatActivity {
@@ -26,9 +26,25 @@ public class MainActivity extends AppCompatActivity {
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        LogSender.startLogging(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+    }
+    
+    public void seek(View v) {
+    	SliderSDialog d = new SliderSDialog(this);
+        d.setAccentColor(SDialog.COLOR_DEFAULT);
+        d.setCancelable(false);
+        d.setIconResource(R.drawable.ok_img);
+        d.setMax(70);
+        d.setMin(10);
+        d.setNegativeButtonText("Cancel");
+        d.setPositiveButtonAction("Confirm", value -> {
+            Toast.makeText(this, "" + value, Toast.LENGTH_SHORT).show();
+        });
+        d.setTheme(SDialog.THEME_DARK);
+        d.setTitle("Confirm Your Age");
+        d.setText("In order to use our app, you must confirm your age is over 13!");
+        d.show();
     }
     
     public void multi(View v) {

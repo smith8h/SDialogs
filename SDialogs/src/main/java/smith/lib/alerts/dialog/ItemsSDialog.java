@@ -131,6 +131,7 @@ public class ItemsSDialog extends SDialog {
         else if (theme == THEME_LIGHT) lightThemeColors();
         
         setBackgroundColor(dialogView.findViewById(R.id.main), backgroundColor);
+        ((ImageView) dialogView.findViewById(R.id.icon)).setColorFilter(iconColor);
         ((TextView) dialogView.findViewById(R.id.title)).setTextColor(titleColor);
         
         SItemsAdapter adapter = new SItemsAdapter(data, callback, this);

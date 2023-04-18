@@ -138,6 +138,7 @@ public class InputSDialog extends SDialog {
         else if (theme == THEME_LIGHT) lightThemeColors();
         
         setBackgroundColor(dialogView.findViewById(R.id.main), backgroundColor);
+        ((ImageView) dialogView.findViewById(R.id.icon)).setColorFilter(iconColor);
         ((TextView) dialogView.findViewById(R.id.title)).setTextColor(titleColor);
         ((TextView) dialogView.findViewById(R.id.text)).setTextColor(textColor);
         ((TextView) dialogView.findViewById(R.id.positive)).setTextColor(accentColor);

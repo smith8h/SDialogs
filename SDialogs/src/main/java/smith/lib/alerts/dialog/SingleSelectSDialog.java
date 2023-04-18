@@ -160,6 +160,7 @@ public class SingleSelectSDialog extends SDialog {
         else if (theme == THEME_LIGHT) lightThemeColors();
         
         setBackgroundColor(dialogView.findViewById(R.id.main), backgroundColor);
+        ((ImageView) dialogView.findViewById(R.id.icon)).setColorFilter(iconColor);
         ((TextView) dialogView.findViewById(R.id.title)).setTextColor(titleColor);
         
         SSingleSelectAdapter adapter = new SSingleSelectAdapter(data, callback, this);
