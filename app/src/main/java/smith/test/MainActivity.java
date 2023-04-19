@@ -5,19 +5,8 @@ import android.text.SpannableString;
 import android.view.View;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
-import java.util.ArrayList;
-import java.util.Timer;
-import java.util.TimerTask;
-import smith.lib.alerts.dialog.AlertSDialog;
-import smith.lib.alerts.dialog.CustomSDialog;
-import smith.lib.alerts.dialog.InputSDialog;
-import smith.lib.alerts.dialog.ItemsSDialog;
-import smith.lib.alerts.dialog.LoadingSDialog;
-import smith.lib.alerts.dialog.MultiSelectSDialog;
-import smith.lib.alerts.dialog.ProgressSDialog;
-import smith.lib.alerts.dialog.SDialog;
-import smith.lib.alerts.dialog.SingleSelectSDialog;
-import smith.lib.alerts.dialog.SliderSDialog;
+import java.util.*;
+import smith.lib.alerts.dialog.*;
 import smith.lib.alerts.dialog.callbacks.OnProgressCallBack;
 
 public class MainActivity extends AppCompatActivity {
@@ -35,15 +24,16 @@ public class MainActivity extends AppCompatActivity {
         d.setAccentColor(SDialog.COLOR_DEFAULT);
         d.setCancelable(false);
         d.setIconResource(R.drawable.ok_img);
-        d.setMax(70);
-        d.setMin(10);
+        d.setMax(70f);
+        d.setMin(10f);
+        //d.setStepBy(1f);
         d.setNegativeButtonText("Cancel");
         d.setPositiveButtonAction("Confirm", value -> {
             Toast.makeText(this, "" + value, Toast.LENGTH_SHORT).show();
         });
         d.setTheme(SDialog.THEME_DARK);
         d.setTitle("Confirm Your Age");
-        d.setText("In order to use our app, you must confirm your age is over 13!");
+        //d.setText("In order to use our app, you must confirm your age is over 13!");
         d.show();
     }
     
