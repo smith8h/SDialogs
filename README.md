@@ -12,6 +12,7 @@ Beautiful custom android dialogs ( alert, multiselect checkbox, singleselect rad
   - [ProgressSDialog](#progresssdialog)
   - [SingleSelectSDialog](#singleselectsdialog)
   - [MultiSelectSDialog](#multiselectsdialog)
+  - [SliderSDialog](#slidersdialog)
 - [Support library improvements (Donations)](#donations)
 
 # Setup
@@ -28,12 +29,12 @@ allprojects {
 > **Step 2.** Add the dependency:
 ```gradle
 dependencies {
-    implementation 'com.github.smith8h:SDialogs:2.0.0'
+    implementation 'com.github.smith8h:SDialogs:3.0.0'
 }
 ```
 
 # Documentation
-This library composed of 7 types of **SDialogs** and an additional one type that represent the customizable **SDialog** (use a custom view/layout of your own design and logic) for fast and small codes of initializing new dialog.
+This library composed of 8 types of **SDialogs** and an additional one type that represent the customizable **SDialog** (use a custom view/layout of your own design and logic) for fast and small codes of initializing new dialog.
 </br>
 All these SDialogs using an algorithm to calculate and extract colors lighter/darker from the accent color you set in method `setAccentColor()`. 
 
@@ -55,8 +56,8 @@ Table of methods:
 - `setPositiveButton("Button Text", clickcallback);` (Optional) the code here in java8, to use java7 or below syntax see in [CallBacks](#callbacks).
 - `setNegativeButton("Button Text", clickcallback);` (Optional) onClick callback used.
 - `setNeutralButton("Button Text", clickcallback);` (Optional) .
-- `setAccentColor(int color/string hex color);` Default color is 0xFFA7B4C5/#FFA7B4C5 you can access it by `SDialog.DEFAULT_COLOR`.
-- `setTheme(SDialog.SYSTEM_THEME);` or `LIGHT_THEME / DARK_THEME`.
+- `setAccentColor(int color/string hex color);` Default color is 0xFFA7B4C5/#FFA7B4C5 you can access it by `SDialog.COLOR_DEFAULT`.
+- `setTheme(SDialog.THEME_SYSTEM);` or `THEME_LIGHT / THEME_DARK`.
 - `setCancelable(false);` (*Optional).
 - `setOnDismissCallBack(dismisscallback);` (Optional).
 - `show(); / show(1200);` to show always or for a duration of time (auto hide).
@@ -101,8 +102,8 @@ Table of methods:
 - `setNegativeButtonText("Button Text");` dismissing sdialog by default (no need for callback).
 - `setInputFieldHint("Input field hint");` set hint text in input field.
 - `setInputFieldText("Input field text");` set text in input field.
-- `setAccentColor(int color/string hex color);` Default color is 0xFFA7B4C5/#FFA7B4C5 you can access it by `SDialog.DEFAULT_COLOR`.
-- `setTheme(SDialog.SYSTEM_THEME);` or `LIGHT_THEME / DARK_THEME`.
+- `setAccentColor(int color/string hex color);` Default color is 0xFFA7B4C5/#FFA7B4C5 you can access it by `SDialog.COLOR_DEFAULT`.
+- `setTheme(SDialog.THEME_SYSTEM);` or `THEME_LIGHT / THEME_DARK`.
 - `setCancelable(false);` (*Optional).
 - `setOnDismissCallBack(dismisscallback);` (Optional).
 - `show(); / show(1200);` to show always or for a duration of time (auto hide).
@@ -129,8 +130,8 @@ Table of methods:
 - `setIconDrawable(icon)` add icon from a Drawable.
 - `setIconBitmap(icon)` add icon from bitmap.
 - `setTitle("Title");`
-- `setAccentColor(int color/string hex color);` Default color is 0xFFA7B4C5/#FFA7B4C5 you can access it by `SDialog.DEFAULT_COLOR`.
-- `setTheme(SDialog.SYSTEM_THEME);` or `LIGHT_THEME / DARK_THEME`.
+- `setAccentColor(int color/string hex color);` Default color is 0xFFA7B4C5/#FFA7B4C5 you can access it by `SDialog.COLOR_DEFAULT`.
+- `setTheme(SDialog.THEME_SYSTEM);` or `THEME_LIGHT / THEME_DARK`.
 - `setItemsList(ArrayList<String>);` set items from existing arraylist of strings `ArrayList<String>`.
 - `setOnItemClickCallBack(itemclickcallback);`
 - `addItem("item text")` add new item.
@@ -158,8 +159,8 @@ Table of methods:
 **Setters**
 - `setTitle("Loading");`
 - `setText(text);` string | int string res.
-- `setAccentColor(int color/string hex color);` Default color is 0xFFA7B4C5/#FFA7B4C5 you can access it by `SDialog.DEFAULT_COLOR`.
-- `setTheme(SDialog.SYSTEM_THEME);` or `LIGHT_THEME / DARK_THEME`.
+- `setAccentColor(int color/string hex color);` Default color is 0xFFA7B4C5/#FFA7B4C5 you can access it by `SDialog.COLOR_DEFAULT`.
+- `setTheme(SDialog.THEME_SYSTEM);` or `THEME_LIGHT / THEME_DARK`.
 - `setOnDismissCallBack(dismisscallback);` (Optional).
 - `show(); / show(1200);` to show it always or for a duration of time.
 - `dismiss();` to hide it.
@@ -188,8 +189,8 @@ Table of methods:
 - `setMax(200);` default is 100.
 - `setProgress(120)` set sdialog progress.
 - `setOnProgressCallBack(progresscallback)` set on progress changed callback.
-- `setAccentColor(int color/string hex color);` Default color is 0xFFA7B4C5/#FFA7B4C5 you can access it by `SDialog.DEFAULT_COLOR`.
-- `setTheme(SDialog.SYSTEM_THEME);` or `LIGHT_THEME / DARK_THEME`.
+- `setAccentColor(int color/string hex color);` Default color is 0xFFA7B4C5/#FFA7B4C5 you can access it by `SDialog.COLOR_DEFAULT`.
+- `setTheme(SDialog.THEME_SYSTEM);` or `THEME_LIGHT / THEME_DARK`.
 - `setOnDismissCallBack(dismisscallback);` (Optional).
 - `show();` to show it.
 - `dismiss();` to hide it.
@@ -217,8 +218,8 @@ Table of methods:
 - `setIconDrawable(icon)` add icon from a Drawable.
 - `setIconBitmap(icon)` add icon from bitmap.
 - `setTitle("Title");`
-- `setAccentColor(int color/string hex color);` Default color is 0xFFA7B4C5/#FFA7B4C5 you can access it by `SDialog.DEFAULT_COLOR`.
-- `setTheme(SDialog.SYSTEM_THEME);` or `LIGHT_THEME / DARK_THEME`.
+- `setAccentColor(int color/string hex color);` Default color is 0xFFA7B4C5/#FFA7B4C5 you can access it by `SDialog.COLOR_DEFAULT`.
+- `setTheme(SDialog.THEME_SYSTEM);` or `THEME_LIGHT / THEME_DARK`.
 - `setOnSingleSelectCallBack(singleselectcallback);` get checked radio button id & text.
 - `addItem(intId, "item text")` add new item(1, "Holow").
 - `setCheckedItem(intId)` set the checked item by default by its id.
@@ -252,8 +253,8 @@ Table of methods:
 - `setIconBitmap(icon)` add icon from bitmap.
 - `setTitle("Title");`
 - `setPositiveButton("button text", multiselectcallback)`
-- `setAccentColor(int color/string hex color);` Default color is 0xFFA7B4C5/#FFA7B4C5 you can access it by `SDialog.DEFAULT_COLOR`.
-- `setTheme(SDialog.SYSTEM_THEME);` or `LIGHT_THEME / DARK_THEME`.
+- `setAccentColor(int color/string hex color);` Default color is 0xFFA7B4C5/#FFA7B4C5 you can access it by `SDialog.COLOR_DEFAULT`.
+- `setTheme(SDialog.THEME_SYSTEM);` or `THEME_LIGHT / THEME_DARK`.
 - `addItem(intId, "item text", isChecked)` add new item(1, "Holow", true).
 - `setCheckedItem(intId)` set the checked item by default by its id.
 - `removeItem(2)` remove an item by its **index** from the list.
@@ -268,6 +269,39 @@ Table of methods:
 > SDialog.KEY_ITEM_ID | KEY_ITEM_TEXT | KEY_ITEM_CHECKED
 - `getAccentColor()` get accent color.
 - `getTitleColor()` get accent color.
+- `getBackgroundColor()` get accent color.
+- `getTextColor()` get text color.
+
+## SliderSDialog
+![progress](https://te.legra.ph/file/2a4f52ad59c300bbff95c.jpg)
+
+Create new instance of MultiSelectSDialog:
+```java
+    SliderSDialog sdialog = new SliderSDialog(this);
+```
+Table of methods:
+
+**Setters**
+- `setIconResource(icon)` add icon from resources.
+- `setIconDrawable(icon)` add icon from a Drawable.
+- `setIconBitmap(icon)` add icon from bitmap.
+- `setTitle("Title");`
+- `setText("text hint" || int res)` (Optional) set a hint below title.
+- `setPositiveButtonAction("button text", slidercallback)`
+- `setNegativeButtonText("Cancel")` negative (cancel) button text.
+- `setAccentColor(int color/string hex color);` Default color is 0xFFA7B4C5/#FFA7B4C5 you can access it by `SDialog.COLOR_DEFAULT`.
+- `setTheme(SDialog.THEME_SYSTEM);` or `THEME_LIGHT / THEME_DARK`.
+- `setMin(float)` set min value (from).
+- `setMax(float)` set max value (to).
+- `setValue(float)` set current slider value (from min to max).
+- `setStepBy(int)` how likely you want to walk through values in slider.
+
+**Getters:**
+- `getMinValue()` get min.
+- `getValue()` get value.
+- `getMaxValue()` get max.
+- `getAccentColor()` get accent color.
+- `getTitleColor()` get title color.
 - `getBackgroundColor()` get accent color.
 - `getTextColor()` get text color.
 
@@ -339,6 +373,13 @@ CallBacks used in SDialogs:
             // use itemsList to get all items selected
             // to access their id, text, isChecked use:
             // SDialog.KEY_ITEM_ID | KEY_ITEM_TEXT | KEY_ITEM_CHECKED
+        }
+    }
+    
+    OnSlideCallBack slidercallback = new OnSlideCallBack() {
+        @Override
+        public void onValueSelected(float value) {
+            // use value
         }
     }
 ```
