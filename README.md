@@ -29,7 +29,7 @@ allprojects {
 > **Step 2.** Add the dependency:
 ```gradle
 dependencies {
-    implementation 'com.github.smith8h:SDialogs:3.0.0'
+    implementation 'com.github.smith8h:SDialogs:2.0.0'
 }
 ```
 
