@@ -35,14 +35,25 @@ dependencies {
 }
 
 afterEvaluate {
-    publishing {
+    /*publishing {
         publications {
             release(MavenPublication) {
                 from components.release
+                
                 groupId = 'smith.lib.alerts'
                 artifactId = 'SDialogs'
                 version = '2.1'
             }
         }
-    }
+    }*/
+    
+    android.libraryVariants.each(variant ->
+        publishing.publications.create(variant.name, MavenPublication) {
+            from components.findByName(variant.name)
+            
+            groupId = 'smith.lib.alerts'
+            artifactId = 'SDialogs'
+            version = '2.1'
+        }
+    )
 }
