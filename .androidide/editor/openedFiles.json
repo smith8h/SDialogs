@@ -4,14 +4,14 @@
       "file": "/storage/emulated/0/.AndroidIDE/SDialogs lib/build.gradle",
       "selection": {
         "end": {
-          "column": 0,
+          "column": 84,
           "index": -1,
-          "line": 0
+          "line": 20
         },
         "start": {
-          "column": 0,
+          "column": 84,
           "index": -1,
-          "line": 0
+          "line": 20
         }
       }
     },
@@ -21,12 +21,12 @@
         "end": {
           "column": 7,
           "index": -1,
-          "line": 47
+          "line": 3
         },
         "start": {
           "column": 7,
           "index": -1,
-          "line": 47
+          "line": 3
         }
       }
     }

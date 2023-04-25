@@ -1,7 +1,7 @@
 plugins {
     id 'com.android.library'
     // id 'com.github.dcendents.android-maven-gradle'
-    id 'maven-publish'
+    // id 'maven-publish'
 }
 
 android {
@@ -34,8 +34,8 @@ dependencies {
     implementation 'com.google.android.material:material:1.6.1'
 }
 
-afterEvaluate {
-    /*publishing {
+/*afterEvaluate {
+    publishing {
         publications {
             release(MavenPublication) {
                 from components.release
@@ -45,7 +45,7 @@ afterEvaluate {
                 version = '2.1'
             }
         }
-    }*/
+    }
     
     android.libraryVariants.each(variant ->
         publishing.publications.create(variant.name, MavenPublication) {
@@ -56,4 +56,4 @@ afterEvaluate {
             version = '2.1'
         }
     )
-}
+}*/
