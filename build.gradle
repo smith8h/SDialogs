@@ -11,6 +11,23 @@ buildscript {
 plugins {
     id 'com.android.application' version '7.4.1' apply false
     id 'com.android.library' version '7.4.1' apply false
+    id 'java'
+    id 'maven-publish'
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId 'com.github.smith8h'
+            artifactId 'SDialogs'
+            version '2.0'
+            from components.java
+        }
+    }
+    
+    repositories {
+        mavenLocal()
+    }
 }
 
 allprojects {
@@ -23,6 +40,6 @@ allprojects {
     }
 }
 
-task clean(type: Delete) {
+task clear(type: Delete) {
     delete rootProject.buildDir
 }

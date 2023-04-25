@@ -1,0 +1,35 @@
+{
+  "allFiles": [
+    {
+      "file": "/storage/emulated/0/.AndroidIDE/SDialogs/build.gradle",
+      "selection": {
+        "end": {
+          "column": 10,
+          "index": -1,
+          "line": 42
+        },
+        "start": {
+          "column": 10,
+          "index": -1,
+          "line": 42
+        }
+      }
+    },
+    {
+      "file": "/storage/emulated/0/.AndroidIDE/SDialogs/app/build.gradle",
+      "selection": {
+        "end": {
+          "column": 62,
+          "index": -1,
+          "line": 32
+        },
+        "start": {
+          "column": 62,
+          "index": -1,
+          "line": 32
+        }
+      }
+    }
+  ],
+  "selectedFile": "/storage/emulated/0/.AndroidIDE/SDialogs/build.gradle"
+}
