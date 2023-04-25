@@ -1,48 +1,32 @@
 buildscript { 
     repositories {
         mavenCentral()
-        mavenLocal()
-        
         gradlePluginPortal()
         google()
         jcenter()
-        
         maven { url "https://s01.oss.sonatype.org/content/repositories/snapshots/" }
     }
 }
 
 plugins {
-    id 'java'
-    id 'maven'
-    
     id 'com.android.application' version '7.4.1' apply false
     id 'com.android.library' version '7.4.1' apply false
-}
-
-publishing {
-    publications {
-        mavenJava(MavenPublication) {
-            groupId = 'com.github.smith8h'
-            artifactId = 'SDialogs'
-            version = '2.0'
-            from components.java
-        }
-    }
 }
 
 allprojects {
     repositories {
     	mavenCentral()
-        mavenLocal()
-        
         google()
         jcenter()
-        
         maven { url "https://s01.oss.sonatype.org/content/repositories/snapshots/" }
         maven { url 'https://jitpack.io' }
     }
 }
 
-task clear(type: Delete) {
+/*dependencies {
+    classpath 'com.github.dcendents:android-maven-gradle-plugin:1.5'
+}*/
+
+task clean(type: Delete) {
     delete rootProject.buildDir
 }

@@ -1,9 +1,12 @@
 plugins {
     id 'com.android.library'
+    // id 'com.github.dcendents.android-maven-gradle'
+    id 'maven-publish'
 }
 
 android {
     namespace 'smith.lib.alerts.dialog'
+    
     compileSdk 33
 
     defaultConfig {
@@ -36,7 +39,7 @@ afterEvaluate {
         publications {
             release(MavenPublication) {
                 from components.release
-                groupId = 'com.github.smith8h'
+                groupId = 'smith.lib.alerts'
                 artifactId = 'SDialogs'
                 version = '2.1'
             }
