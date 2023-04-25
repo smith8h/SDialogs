@@ -1,40 +1,43 @@
 buildscript { 
     repositories {
         mavenCentral()
+        mavenLocal()
+        
         gradlePluginPortal()
         google()
         jcenter()
+        
         maven { url "https://s01.oss.sonatype.org/content/repositories/snapshots/" }
     }
 }
 
 plugins {
+    id 'java'
+    id 'maven'
+    
     id 'com.android.application' version '7.4.1' apply false
     id 'com.android.library' version '7.4.1' apply false
-    id 'java'
-    id 'maven-publish'
 }
 
 publishing {
     publications {
-        maven(MavenPublication) {
-            groupId 'com.github.smith8h'
-            artifactId 'SDialogs'
-            version '2.0'
+        mavenJava(MavenPublication) {
+            groupId = 'com.github.smith8h'
+            artifactId = 'SDialogs'
+            version = '2.0'
             from components.java
         }
-    }
-    
-    repositories {
-        mavenLocal()
     }
 }
 
 allprojects {
     repositories {
     	mavenCentral()
+        mavenLocal()
+        
         google()
         jcenter()
+        
         maven { url "https://s01.oss.sonatype.org/content/repositories/snapshots/" }
         maven { url 'https://jitpack.io' }
     }

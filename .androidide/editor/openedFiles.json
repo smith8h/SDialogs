@@ -4,32 +4,32 @@
       "file": "/storage/emulated/0/.AndroidIDE/SDialogs/build.gradle",
       "selection": {
         "end": {
-          "column": 10,
+          "column": 8,
           "index": -1,
-          "line": 42
+          "line": 39
         },
         "start": {
-          "column": 10,
+          "column": 8,
           "index": -1,
-          "line": 42
+          "line": 39
         }
       }
     },
     {
-      "file": "/storage/emulated/0/.AndroidIDE/SDialogs/app/build.gradle",
+      "file": "/storage/emulated/0/.AndroidIDE/SDialogs/SDialogs/build.gradle",
       "selection": {
         "end": {
-          "column": 62,
+          "column": 21,
           "index": -1,
-          "line": 32
+          "line": 11
         },
         "start": {
-          "column": 62,
+          "column": 21,
           "index": -1,
-          "line": 32
+          "line": 11
         }
       }
     }
   ],
-  "selectedFile": "/storage/emulated/0/.AndroidIDE/SDialogs/build.gradle"
+  "selectedFile": "/storage/emulated/0/.AndroidIDE/SDialogs/SDialogs/build.gradle"
 }
