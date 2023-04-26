@@ -1,2 +1,7 @@
+before_install:
+  - sudo apt-get update && sudo apt-get install dos2unix
+  - find . -type f -exec dos2unix {} \;
+
+
 jdk:
  -openjdk17
