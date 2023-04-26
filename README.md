@@ -1,4 +1,4 @@
-# SDialogs
+# SDialogs  [![](https://jitpack.io/v/kimoandroid/SDialogs.svg)](https://jitpack.io/#kimoandroid/SDialogs)
 Beautiful custom android dialogs ( alert, multiselect checkbox, singleselect radiobutton, string list items, loading, progress, input and custom sdialog ).
 
 # Menu Of Contents

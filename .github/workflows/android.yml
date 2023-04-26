@@ -22,10 +22,5 @@ jobs:
 
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
-    - name: Convert line endings to Unix format
-      run: |
-        sudo apt-get install -y dos2unix
-        find . -type f -print0 | xargs -0 dos2unix
-
     - name: Build with Gradle
       run: ./gradlew build
