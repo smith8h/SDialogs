@@ -1,5 +1,6 @@
 package smith.test;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.text.SpannableString;
 import android.view.View;
@@ -10,7 +11,6 @@ import smith.lib.alerts.dialog.*;
 import smith.lib.alerts.dialog.callbacks.OnProgressCallBack;
 
 public class MainActivity extends AppCompatActivity {
-    
     int p = 0;
     
     @Override
@@ -50,14 +50,16 @@ public class MainActivity extends AppCompatActivity {
         
         sdialog.setPositiveButton("Save & Search", (itemsList) -> {
             StringBuilder builder = new StringBuilder();
-            itemsList.forEach(item -> {
-                builder.append(item.get(SDialog.KEY_ITEM_ID));
-                builder.append(" ");
-                builder.append(item.get(SDialog.KEY_ITEM_TEXT));
-                builder.append(" ");
-                builder.append(item.get(SDialog.KEY_ITEM_CHECKED));
-                builder.append("\n");
-            });
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                itemsList.forEach(item -> {
+                    builder.append(item.get(SDialog.KEY_ITEM_ID));
+                    builder.append(" ");
+                    builder.append(item.get(SDialog.KEY_ITEM_TEXT));
+                    builder.append(" ");
+                    builder.append(item.get(SDialog.KEY_ITEM_CHECKED));
+                    builder.append("\n");
+                });
+            }
             Toast.makeText(this, builder.toString(), Toast.LENGTH_SHORT).show();
         });
         
