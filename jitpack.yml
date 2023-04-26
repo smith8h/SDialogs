@@ -1,5 +1,5 @@
 before_install:
-  - sudo apt-get update && sudo apt-get install dos2unix
+  - apt-get update && apt-get install dos2unix
   - find . -type f -exec dos2unix {} \;
 
 
