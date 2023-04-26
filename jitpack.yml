@@ -1,29 +1,21 @@
+env:
+  global:
+    - GRADLE_OPTS="-Xmx512m"
+    - JAVA_HOME="$HOME/.sdkman/candidates/java/current"
+    - PATH="$JAVA_HOME/bin:$PATH"
+
+
 before_install:
+  - curl -s "https://get.sdkman.io" | bash
+  - source "$HOME/.sdkman/bin/sdkman-init.sh"
+  - sdk install java 17.0.1-open
+  - sdk use java 17.0.1-open
   - sdk update
+  - chmod +x gradlew
 
-jobs:
-  build:
+script:
+  - ./gradlew build
 
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v3
-      - name: set up JDK 17
-        uses: actions/setup-java@v3
-        with:
-          java-version: '17'
-          distribution: 'temurin'
-          cache: gradle
-
-      - name: Grant execute permission for gradlew
-        run: chmod +x gradlew
-      - name: Convert line endings to Unix format
-        run: |
-          sudo apt-get install -y dos2unix
-          find . -type f -print0 | xargs -0 dos2unix
-
-      - name: Build with Gradle
-        run: ./gradlew build
 
 jdk:
  -openjdk17
