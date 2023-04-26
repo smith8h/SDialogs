@@ -26,6 +26,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -165,7 +167,7 @@ public class SingleSelectSDialog extends SDialog {
         
         SSingleSelectAdapter adapter = new SSingleSelectAdapter(data, callback, this);
         ((SRecyclerView) dialogView.findViewById(R.id.recycler))
-            .setLayoutManager(new LinearLayoutManager(context, LinearLayout.VERTICAL, false));
+            .setLayoutManager(new LinearLayoutManager(context, RecyclerView.VERTICAL, false));
         ((SRecyclerView) dialogView.findViewById(R.id.recycler)).setAdapter(adapter);
     }
 }

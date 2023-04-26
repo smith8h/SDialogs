@@ -21,10 +21,14 @@ import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.graphics.Bitmap;
+import android.os.Build;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+
+import androidx.annotation.RequiresApi;
+
 import smith.lib.alerts.dialog.callbacks.OnProgressCallBack;
 
 public class ProgressSDialog extends SDialog {
@@ -37,8 +41,10 @@ public class ProgressSDialog extends SDialog {
         this.context = context;
         dialogView = ((Activity) context).getLayoutInflater().inflate(R.layout.sdialog_progress, null);
         init();
-        
-        ((ProgressBar) dialogView.findViewById(R.id.progress)).setMin(MIN);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            ((ProgressBar) dialogView.findViewById(R.id.progress)).setMin(MIN);
+        }
         ((ProgressBar) dialogView.findViewById(R.id.progress)).setMax(MAX);
     }
     
@@ -70,7 +76,9 @@ public class ProgressSDialog extends SDialog {
     }
     
     public void setMin(int min) {
-        ((ProgressBar) dialogView.findViewById(R.id.progress)).setMin(min);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            ((ProgressBar) dialogView.findViewById(R.id.progress)).setMin(min);
+        }
     }
     
     public void setMax(int max) {
@@ -115,6 +123,7 @@ public class ProgressSDialog extends SDialog {
         return ((ProgressBar) dialogView.findViewById(R.id.progress)).getProgress();
     }
     
+    @RequiresApi(api = Build.VERSION_CODES.O)
     public int getMin() {
         return ((ProgressBar) dialogView.findViewById(R.id.progress)).getMin();
     }

@@ -4,7 +4,7 @@
     <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="colorPrimary">@color/acc</item>
         <item name="colorPrimaryDark">@color/bg1</item>
-        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
         <item name="colorAccent">@color/acc</item>
         <item name="colorControlHighlight">@color/txt</item>
         <item name="colorControlNormal">@color/bg1</item>

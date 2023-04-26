@@ -33,7 +33,7 @@ import smith.lib.alerts.dialog.callbacks.OnSingleSelectCallBack;
 
 public class SSingleSelectAdapter extends RecyclerView.Adapter<SSingleSelectAdapter.ViewHolder> {
 
-    List<Map<String, Object>> data = new ArrayList<>();
+    List<Map<String, Object>> data;
 
     OnSingleSelectCallBack callback;
 

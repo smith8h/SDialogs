@@ -31,7 +31,7 @@ import smith.lib.alerts.dialog.callbacks.OnItemClickCallBack;
 
 public class SItemsAdapter extends RecyclerView.Adapter<SItemsAdapter.ViewHolder> {
 
-    List<String> data = new ArrayList<>();
+    List<String> data;
     
     OnItemClickCallBack callback;
     

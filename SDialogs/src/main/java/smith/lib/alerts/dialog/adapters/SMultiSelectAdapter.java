@@ -30,7 +30,7 @@ import smith.lib.alerts.dialog.MultiSelectSDialog;
 
 public class SMultiSelectAdapter extends RecyclerView.Adapter<SMultiSelectAdapter.ViewHolder> {
 
-    List<Map<String, Object>> data = new ArrayList<>();
+    List<Map<String, Object>> data;
     List<Map<String, Object>> checkedList = new ArrayList<>();
     
     MultiSelectSDialog sdialog;
