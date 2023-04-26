@@ -1,4 +1,13 @@
-# SDialogs  [![](https://jitpack.io/v/kimoandroid/SDialogs.svg)](https://jitpack.io/#kimoandroid/SDialogs)
+# SDialogs
+
+[![](https://jitpack.io/v/smith8h/SDialogs.svg)](https://jitpack.io/#smith8h/SDialogs)
+![stability-stable](https://img.shields.io/badge/stability-stable-green.svg)
+![minimumSDK](https://img.shields.io/badge/minSDK-21-f39f37)
+![stable version](https://img.shields.io/badge/stable_version-2.0-blue)
+![Repository size](https://img.shields.io/github/repo-size/smith8h/sdialogs)
+
+</br>
+
 Beautiful custom android dialogs ( alert, multiselect checkbox, singleselect radiobutton, string list items, loading, progress, input and custom sdialog ).
 
 # Menu Of Contents
@@ -29,7 +38,7 @@ allprojects {
 > **Step 2.** Add the dependency:
 ```gradle
 dependencies {
-    implementation 'com.github.smith8h:SDialogs:1.0.1'
+    implementation 'com.github.smith8h:SDialogs:2.0'
 }
 ```
 
@@ -392,7 +401,7 @@ Your donation is highly appreciated. Thank you!
 You can **choose what you want to donate**, all donations are awesome!</br>
 <br/>
 
-[![Buy me a coffee](https://img.shields.io/badge/Buy_Me_A_Coffee-FFDD00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black)](https://www.buymeacoffee.com/HusseinShakir)
+[![PayPal](https://img.shields.io/badge/PayPal-00457C?style=for-the-badge&logo=paypal&logoColor=white)](https://www.paypal.me/husseinshakir)
 
 <br/>
 
