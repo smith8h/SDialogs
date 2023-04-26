@@ -1,7 +1,5 @@
 plugins {
     id 'com.android.library'
-    // id 'com.github.dcendents.android-maven-gradle'
-    // id 'maven-publish'
 }
 
 android {
@@ -15,7 +13,7 @@ android {
         versionCode 2
         versionName "2.0"
     }
-    
+
     buildTypes {
         release {
             minifyEnabled false
@@ -24,36 +22,12 @@ android {
     }
     
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_17
-        targetCompatibility JavaVersion.VERSION_17
-    }
+		sourceCompatibility JavaVersion.VERSION_17
+		targetCompatibility JavaVersion.VERSION_17
+	}
 }
 
 dependencies {
     implementation 'androidx.appcompat:appcompat:1.4.2'
-    implementation 'com.google.android.material:material:1.6.1'
+    implementation 'com.google.android.material:material:1.8.0'
 }
-
-/*afterEvaluate {
-    publishing {
-        publications {
-            release(MavenPublication) {
-                from components.release
-                
-                groupId = 'smith.lib.alerts'
-                artifactId = 'SDialogs'
-                version = '2.1'
-            }
-        }
-    }
-    
-    android.libraryVariants.each(variant ->
-        publishing.publications.create(variant.name, MavenPublication) {
-            from components.findByName(variant.name)
-            
-            groupId = 'smith.lib.alerts'
-            artifactId = 'SDialogs'
-            version = '2.1'
-        }
-    )
-}*/
