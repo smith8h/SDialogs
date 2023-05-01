@@ -29,6 +29,7 @@ import android.view.Window;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import androidx.appcompat.app.AlertDialog;
+import com.andrognito.patternlockview.PatternLockView;
 import smith.lib.alerts.dialog.callbacks.OnBindCustomViewCallBack;
 import smith.lib.alerts.dialog.callbacks.OnDismissCallBack;
 
@@ -43,6 +44,14 @@ public class SDialog {
     public static final String KEY_ITEM_ID = "id";
     public static final String KEY_ITEM_TEXT = "text";
     public static final String KEY_ITEM_CHECKED = "checked";
+    
+    public static final int PATTERN_MODE_CORRECT  = PatternLockView.PatternViewMode.CORRECT;
+    public static final int PATTERN_MODE_WRONG  = PatternLockView.PatternViewMode.WRONG;
+    public static final int PATTERN_MODE_AUTO_DRAW  = PatternLockView.PatternViewMode.AUTO_DRAW;
+    
+    public static final int PATTERN_ASPECT_RATIO_HEIGHT_BIAS  = PatternLockView.AspectRatio.ASPECT_RATIO_HEIGHT_BIAS;
+    public static final int PATTERN_ASPECT_RATIO_WIDTH_BIAS  = PatternLockView.AspectRatio.ASPECT_RATIO_WIDTH_BIAS;
+    public static final int PATTERN_ASPECT_RATIO_SQUARE  = PatternLockView.AspectRatio.ASPECT_RATIO_SQUARE;
     
     protected Context context;
     protected View dialogView;

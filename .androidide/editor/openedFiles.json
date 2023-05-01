@@ -1,20 +1,35 @@
 {
   "allFiles": [
     {
-      "file": "/storage/emulated/0/.AndroidIDE/SDialogs lib/SDialogs/src/main/res/layout/sdialog_pattern.xml",
+      "file": "/storage/emulated/0/.AndroidIDE/SDialogs lib/SDialogs/src/main/java/smith/lib/alerts/dialog/PatternSDialog.java",
+      "selection": {
+        "end": {
+          "column": 51,
+          "index": -1,
+          "line": 149
+        },
+        "start": {
+          "column": 51,
+          "index": -1,
+          "line": 149
+        }
+      }
+    },
+    {
+      "file": "/storage/emulated/0/.AndroidIDE/SDialogs lib/SDialogs/src/main/java/smith/lib/alerts/dialog/AlertSDialog.java",
       "selection": {
         "end": {
           "column": 37,
           "index": -1,
-          "line": 67
+          "line": 134
         },
         "start": {
           "column": 37,
           "index": -1,
-          "line": 67
+          "line": 134
         }
       }
     }
   ],
-  "selectedFile": "/storage/emulated/0/.AndroidIDE/SDialogs lib/SDialogs/src/main/res/layout/sdialog_pattern.xml"
+  "selectedFile": "/storage/emulated/0/.AndroidIDE/SDialogs lib/SDialogs/src/main/java/smith/lib/alerts/dialog/PatternSDialog.java"
 }
