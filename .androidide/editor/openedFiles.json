@@ -1,0 +1,20 @@
+{
+  "allFiles": [
+    {
+      "file": "/storage/emulated/0/.AndroidIDE/SDialogs lib/SDialogs/src/main/res/layout/sdialog_pattern.xml",
+      "selection": {
+        "end": {
+          "column": 37,
+          "index": -1,
+          "line": 67
+        },
+        "start": {
+          "column": 37,
+          "index": -1,
+          "line": 67
+        }
+      }
+    }
+  ],
+  "selectedFile": "/storage/emulated/0/.AndroidIDE/SDialogs lib/SDialogs/src/main/res/layout/sdialog_pattern.xml"
+}

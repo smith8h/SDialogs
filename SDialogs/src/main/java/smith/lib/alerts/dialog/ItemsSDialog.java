@@ -31,6 +31,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 import smith.lib.alerts.dialog.adapters.SItemsAdapter;
+import smith.lib.alerts.dialog.callbacks.OnClickCallBack;
 import smith.lib.alerts.dialog.callbacks.OnItemClickCallBack;
 import smith.lib.views.recyclerview.SRecyclerView;
 
@@ -82,6 +83,12 @@ public class ItemsSDialog extends SDialog {
     
     public void setOnItemClickCallBack(OnItemClickCallBack callback) {
         this.callback = callback;
+    }
+    
+    public void setNegativeButtonText(String btnText) {
+    	((LinearLayout) dialogView.findViewById(R.id.holder)).setVisibility(View.VISIBLE);
+        ((TextView) dialogView.findViewById(R.id.positive)).setText(btnText);
+        ((TextView) dialogView.findViewById(R.id.positive)).setOnClickListener(v->this.dismiss());
     }
     
     public void addItem(String item) {
