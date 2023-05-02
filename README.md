@@ -1,10 +1,25 @@
 # SDialogs
 
-[![](https://jitpack.io/v/smith8h/SDialogs.svg)](https://jitpack.io/#smith8h/SDialogs)
-![stability-stable](https://img.shields.io/badge/stability-stable-green.svg)
-![minimumSDK](https://img.shields.io/badge/minSDK-21-f39f37)
-![stable version](https://img.shields.io/badge/stable_version-2.0-blue)
-![Repository size](https://img.shields.io/github/repo-size/smith8h/sdialogs)
+<p align="center">
+    <!-- Latest release -->
+    <img src="https://img.shields.io/github/v/release/smith8h/SDialogs?include_prereleases&amp;label=latest%20release" alt="Latest release"/>
+    <!-- Build and test -->
+    <img src="https://github.com/smith8h/SDialogs/actions/workflows/build.yml/badge.svg" alt="Builds and tests"/>
+    <!-- CodeFactor -->
+    <img src="https://www.codefactor.io/repository/github/smith8h/sdialogs/badge/main" alt="CodeFactor"/>
+    <!-- JitPack release -->
+    <a href="https://jitpack.io/#smith8h/SDialogs">
+        <img src="https://jitpack.io/v/smith8h/SDialogs.svg" />
+    </a>
+    <!-- Stability -->
+    <img src="https://img.shields.io/badge/stability-stable-green.svg" alt="stability" />
+    <!-- minSDK -->
+    <img src="https://img.shields.io/badge/minSDK-21-f39f37" alt="minsdk" />
+    <!-- stable version -->
+    <img src="https://img.shields.io/badge/stable_version-2.0-blue" alt="stable"/>
+    <!-- repo size -->
+    <img src="https://img.shields.io/github/repo-size/smith8h/sdialogs" alt="size"/>
+</p>
 
 </br>
 
@@ -22,6 +37,8 @@ Beautiful custom android dialogs ( alert, multiselect checkbox, singleselect rad
   - [SingleSelectSDialog](#singleselectsdialog)
   - [MultiSelectSDialog](#multiselectsdialog)
   - [SliderSDialog](#slidersdialog)
+  - [PatternSDialog](#patternsdialog)
+- [CallBacks](#callbacks)
 - [Support library improvements (Donations)](#donations)
 
 # Setup
@@ -38,7 +55,7 @@ allprojects {
 > **Step 2.** Add the dependency:
 ```gradle
 dependencies {
-    implementation 'com.github.smith8h:SDialogs:2.0'
+    implementation 'com.github.smith8h:SDialogs:3.0'
 }
 ```
 
@@ -182,6 +199,7 @@ Table of methods:
 
 ## ProgressSDialog
 ![progress](https://te.legra.ph/file/d025c806be8d64eb9ae07.jpg)
+
 Create new instance of ProgressSDialog:
 ```java
     ProgressSDialog sdialog = new ProgressSDialog(this);
@@ -284,7 +302,7 @@ Table of methods:
 ## SliderSDialog
 ![progress](https://te.legra.ph/file/2a4f52ad59c300bbff95c.jpg)
 
-Create new instance of MultiSelectSDialog:
+Create new instance of SliderSDialog:
 ```java
     SliderSDialog sdialog = new SliderSDialog(this);
 ```
@@ -314,7 +332,32 @@ Table of methods:
 - `getBackgroundColor()` get accent color.
 - `getTextColor()` get text color.
 
-## CallBacks
+## PatternSDialog
+![progress](https://te.legra.ph/file/dd7a15aec00c543fcd147.jpg)
+
+Create new instance of PatternSDialog:
+```java
+    PatternSDialog sdialog = new PatternSDialog(this);
+```
+Table of methods:
+
+**Setters**
+- `setIconResource(icon)` add icon from resources.
+- `setIconDrawable(icon)` add icon from a Drawable.
+- `setIconBitmap(icon)` add icon from bitmap.
+- `setTitle("Title");`
+- `setOnDrawPatternCallBack(ondrawpatterncallback)` set a callback to get pattern after draw it.
+- `setPatternMode(SDialog.PATTERN_MODE_WRONG)` set mode after drawing using `PATTERN_MODE_WRONG` or `PATTERN_MODE_CORRECT` (functional in callback).
+- `setAccentColor(int color/string hex color);` Default color is 0xFFA7B4C5/#FFA7B4C5 you can access it by `SDialog.COLOR_DEFAULT`.
+- `setTheme(SDialog.THEME_SYSTEM);` or `THEME_LIGHT / THEME_DARK`.
+> `dismiss()` method in this type of sdialog is accepting duration to auto dismiss after a duration of time in milliseconds.
+**Getters:**
+- `getAccentColor()` get accent color.
+- `getTitleColor()` get title color.
+- `getBackgroundColor()` get accent color.
+- `getPatternColor()` get pattern in normal state color.
+
+# CallBacks
 CallBacks used in SDialogs:
 ```java
     // onClick button in alert sdialog
@@ -391,6 +434,26 @@ CallBacks used in SDialogs:
             // use value
         }
     }
+    
+    // onDraw pattern callback
+    OnDrawPatternCallBack ondrawpatterncallback = new OnDrawPatternCallBack() {
+        @Override
+        public void onStartDrawing() {
+        
+        }
+        
+        @Override
+        public void onCompleteDrawing(String pattern) {
+            // use pattern
+            d.setPatternMode(SDialog.PATTERN_MODE_CORRECT);
+            d.dismiss(500);
+        }
+        
+        @Override
+        public void onClearDrawing() {
+        
+        }
+    };
 ```
 
 # Donations

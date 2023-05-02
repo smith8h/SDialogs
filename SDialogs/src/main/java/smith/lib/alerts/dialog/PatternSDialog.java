@@ -56,27 +56,6 @@ public class PatternSDialog extends SDialog {
     	b.pattern.setViewMode(patternMode);
     }
     
-    public void setPatternAnimationDuration(int milliseconds) {
-        b.pattern.setDotAnimationDuration(milliseconds);
-    	b.pattern.setPathEndAnimationDuration(milliseconds);
-    }
-    
-    public void setPatternDotCount(int count) {
-    	b.pattern.setDotCount(count);
-    }
-    
-    public void setPatternDotNormalSizeDp(int size) {
-    	b.pattern.setDotNormalSize(dpToPx(size));
-    }
-    
-    public void setPatternDotSelectedSizeDp(int size) {
-    	b.pattern.setDotSelectedSize(dpToPx(size));
-    }
-    
-    public void setPatternPathWidthDp(int width) {
-    	b.pattern.setPathWidth(dpToPx(width));
-    }
-    
     public void setAccentColor(int color) {
         accentColor = color;
     }
@@ -101,8 +80,8 @@ public class PatternSDialog extends SDialog {
         return backgroundColor;
     }
     
-    public int getPatternNormalStateColor() {
-        return textColor;
+    public int getPatternColor() {
+        return accentColor;
     }
     
     @Override
@@ -140,6 +119,6 @@ public class PatternSDialog extends SDialog {
         setBackgroundColor(b.main, backgroundColor);
         b.icon.setColorFilter(iconColor);
         b.title.setTextColor(titleColor);
-        b.pattern.setNormalStateColor(textColor);
+        b.pattern.setNormalStateColor(accentColor);
     }
 }

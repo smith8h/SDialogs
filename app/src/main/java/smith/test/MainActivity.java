@@ -40,11 +40,6 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, "Pattern drawing cleared!", Toast.LENGTH_SHORT).show();
             }
         });
-        d.setPatternAnimationDuration(230);
-        d.setPatternDotCount(3);
-        d.setPatternDotNormalSizeDp(10);
-        d.setPatternDotSelectedSizeDp(15);
-        d.setPatternPathWidthDp(6);
         d.setTheme(SDialog.THEME_BY_SYSTEM);
         d.setTitle("Draw Pattern To Unlock");
         d.show();
