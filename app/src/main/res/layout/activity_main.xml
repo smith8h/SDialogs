@@ -92,6 +92,15 @@
              android:textSize="18sp"
              android:textColor="#000000"
              android:text="show slider dialog" />
+             
+         <TextView
+             android:layout_height="wrap_content"
+             android:layout_width="wrap_content"
+             android:padding="10dp"
+             android:onClick="pattern"
+             android:textSize="18sp"
+             android:textColor="#000000"
+             android:text="show pattern dialog"/>
 
     </LinearLayout>
 

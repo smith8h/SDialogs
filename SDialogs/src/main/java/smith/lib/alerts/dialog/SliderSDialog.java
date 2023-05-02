@@ -20,11 +20,9 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.graphics.drawable.Drawable;
-import android.graphics.Bitmap;
 import android.view.View;
-import android.widget.*;
 import com.google.android.material.slider.Slider;
-import android.graphics.Color;
+import android.graphics.*;
 import smith.lib.alerts.dialog.callbacks.OnSlideCallBack;
 
 public class SliderSDialog extends SDialog {
@@ -37,73 +35,72 @@ public class SliderSDialog extends SDialog {
         dialogView = ((Activity) context).getLayoutInflater().inflate(R.layout.sdialog_seek, null);
         init();
         
-        Slider s = (Slider) dialogView.findViewById(R.id.seek);
-        s.setValueFrom(MIN);
-        s.setValueTo(MAX);
+        b.seek.setValueFrom(MIN);
+        b.seek.setValueTo(MAX);
         
-        int height = s.getTrackHeight();
-        s.addOnSliderTouchListener(new Slider.OnSliderTouchListener() {
+        int height = b.seek.getTrackHeight();
+        b.seek.addOnSliderTouchListener(new Slider.OnSliderTouchListener() {
             @Override public void onStartTrackingTouch(Slider slider) { slider.setTrackHeight(50); }
             @Override public void onStopTrackingTouch(Slider slider) { slider.setTrackHeight(height); }
         });
     }
     
     public void setIconResource(int icon) {
-        ((ImageView) dialogView.findViewById(R.id.icon)).setVisibility(View.VISIBLE);
-    	((ImageView) dialogView.findViewById(R.id.icon)).setImageResource(icon);
+        b.icon.setVisibility(View.VISIBLE);
+    	b.icon.setImageResource(icon);
     }
     
     public void setIconDrawable(Drawable icon) {
-        ((ImageView) dialogView.findViewById(R.id.icon)).setVisibility(View.VISIBLE);
-    	((ImageView) dialogView.findViewById(R.id.icon)).setImageDrawable(icon);
+        b.icon.setVisibility(View.VISIBLE);
+    	b.icon.setImageDrawable(icon);
     }
     
     public void setIconBitmap(Bitmap icon) {
-        ((ImageView) dialogView.findViewById(R.id.icon)).setVisibility(View.VISIBLE);
-    	((ImageView) dialogView.findViewById(R.id.icon)).setImageBitmap(icon);
+        b.icon.setVisibility(View.VISIBLE);
+    	b.icon.setImageBitmap(icon);
     }
 
     public void setTitle(String title) {
-        ((TextView) dialogView.findViewById(R.id.title)).setText(title);
+        b.title.setText(title);
     }
 
     public void setText(String text) {
-        ((TextView) dialogView.findViewById(R.id.text)).setVisibility(View.VISIBLE);
-        ((TextView) dialogView.findViewById(R.id.text)).setText(text);
+        b.text.setVisibility(View.VISIBLE);
+        b.text.setText(text);
     }
     
     public void setText(int text) {
-        ((TextView) dialogView.findViewById(R.id.text)).setText(text);
+        b.text.setText(text);
     }
     
     public void setMin(float min) {
-        ((Slider) dialogView.findViewById(R.id.seek)).setValueFrom(min);
-        ((Slider) dialogView.findViewById(R.id.seek)).setValue(min);
+        b.seek.setValueFrom(min);
+        b.seek.setValue(min);
     }
     
     public void setMax(float max) {
-        ((Slider) dialogView.findViewById(R.id.seek)).setValueTo(max);
+        b.seek.setValueTo(max);
     }
     
     public void setValue(float value) {
-        ((Slider) dialogView.findViewById(R.id.seek)).setValue(value);
+        b.seek.setValue(value);
     }
     
     public void setStepBy(float stepBy) {
-    	((Slider) dialogView.findViewById(R.id.seek)).setStepSize(stepBy);
+    	b.seek.setStepSize(stepBy);
     }
     
     public void setPositiveButtonAction(String positive, OnSlideCallBack callback) {
-        ((TextView) dialogView.findViewById(R.id.positive)).setText(positive);
-        ((TextView) dialogView.findViewById(R.id.positive)).setOnClickListener(v-> {
-            callback.onValueSelected(((Slider) dialogView.findViewById(R.id.seek)).getValue());
+        b.positive.setText(positive);
+        b.positive.setOnClickListener(v-> {
+            callback.onValueSelected(b.seek.getValue());
             dismiss();
         });
     }
     
     public void setNegativeButtonText(String negative) {
-        ((TextView) dialogView.findViewById(R.id.negative)).setText(negative);
-        ((TextView) dialogView.findViewById(R.id.negative)).setOnClickListener(v-> dismiss());
+        b.negative.setText(negative);
+        b.negative.setOnClickListener(v-> dismiss());
     }
     
     public void setAccentColor(int color) {
@@ -119,15 +116,15 @@ public class SliderSDialog extends SDialog {
     }
     
     public float getValue() {
-        return ((Slider) dialogView.findViewById(R.id.seek)).getValue();
+        return b.seek.getValue();
     }
     
     public float getMinValue() {
-        return ((Slider) dialogView.findViewById(R.id.seek)).getValueFrom();
+        return b.seek.getValueFrom();
     }
     
     public float getMaxValue() {
-        return ((Slider) dialogView.findViewById(R.id.seek)).getValueTo();
+        return b.seek.getValueTo();
     }
     
     public int getAccentColor() {
@@ -165,12 +162,12 @@ public class SliderSDialog extends SDialog {
         } else if (theme == THEME_DARK) darkThemeColors();
         else if (theme == THEME_LIGHT) lightThemeColors();
 
-        setBackgroundColor(dialogView.findViewById(R.id.main), backgroundColor);
-        ((ImageView) dialogView.findViewById(R.id.icon)).setColorFilter(iconColor);
-        ((TextView) dialogView.findViewById(R.id.title)).setTextColor(titleColor);
-        ((TextView) dialogView.findViewById(R.id.text)).setTextColor(textColor);
-        ((TextView) dialogView.findViewById(R.id.positive)).setTextColor(accentColor);
-        ((TextView) dialogView.findViewById(R.id.negative)).setTextColor(accentColor);
+        setBackgroundColor(b.main, backgroundColor);
+        b.icon.setColorFilter(iconColor);
+        b.title.setTextColor(titleColor);
+        b.text.setTextColor(textColor);
+        b.positive.setTextColor(accentColor);
+        b.negative.setTextColor(accentColor);
         
         int[][] states = new int[][] {
             new int[] { android.R.attr.state_active },
@@ -185,7 +182,7 @@ public class SliderSDialog extends SDialog {
             hintColor
         };
         
-        ((Slider) dialogView.findViewById(R.id.seek)).setThumbTintList(ColorStateList.valueOf(accentColor));
-        ((Slider) dialogView.findViewById(R.id.seek)).setTrackTintList(new ColorStateList(states, colors));
+        b.seek.setThumbTintList(ColorStateList.valueOf(accentColor));
+        b.seek.setTrackTintList(new ColorStateList(states, colors));
     }
 }

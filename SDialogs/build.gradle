@@ -13,6 +13,11 @@ android {
         versionCode 2
         versionName "2.0"
     }
+    
+    /*configurations {
+        implementation.exclude module: 'support-compat'
+        implementation.exclude module: 'core'
+    }*/
 
     buildTypes {
         release {
@@ -30,6 +35,5 @@ android {
 dependencies {
     implementation 'androidx.appcompat:appcompat:1.4.2'
     implementation 'com.google.android.material:material:1.8.0'
-    
     implementation 'com.andrognito.patternlockview:patternlockview:1.0.0'
 }

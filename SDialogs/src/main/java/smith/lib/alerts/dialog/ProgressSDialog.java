@@ -18,17 +18,11 @@ package smith.lib.alerts.dialog;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.ColorStateList;
-import android.graphics.Color;
+import android.graphics.*;
 import android.graphics.drawable.Drawable;
-import android.graphics.Bitmap;
 import android.os.Build;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import android.widget.TextView;
-
 import androidx.annotation.RequiresApi;
-
 import smith.lib.alerts.dialog.callbacks.OnProgressCallBack;
 
 public class ProgressSDialog extends SDialog {
@@ -43,50 +37,50 @@ public class ProgressSDialog extends SDialog {
         init();
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            ((ProgressBar) dialogView.findViewById(R.id.progress)).setMin(MIN);
+            b.progress.setMin(MIN);
         }
-        ((ProgressBar) dialogView.findViewById(R.id.progress)).setMax(MAX);
+        b.progress.setMax(MAX);
     }
     
     public void setIconResource(int icon) {
-        ((ImageView) dialogView.findViewById(R.id.icon)).setVisibility(View.VISIBLE);
-    	((ImageView) dialogView.findViewById(R.id.icon)).setImageResource(icon);
+        b.icon.setVisibility(View.VISIBLE);
+    	b.icon.setImageResource(icon);
     }
     
     public void setIconDrawable(Drawable icon) {
-        ((ImageView) dialogView.findViewById(R.id.icon)).setVisibility(View.VISIBLE);
-    	((ImageView) dialogView.findViewById(R.id.icon)).setImageDrawable(icon);
+        b.icon.setVisibility(View.VISIBLE);
+    	b.icon.setImageDrawable(icon);
     }
     
     public void setIconBitmap(Bitmap icon) {
-        ((ImageView) dialogView.findViewById(R.id.icon)).setVisibility(View.VISIBLE);
-    	((ImageView) dialogView.findViewById(R.id.icon)).setImageBitmap(icon);
+        b.icon.setVisibility(View.VISIBLE);
+    	b.icon.setImageBitmap(icon);
     }
 
     public void setTitle(String title) {
-        ((TextView) dialogView.findViewById(R.id.title)).setText(title);
+        b.title.setText(title);
     }
 
     public void setText(String text) {
-        ((TextView) dialogView.findViewById(R.id.text)).setText(text);
+        b.text.setText(text);
     }
     
     public void setText(int text) {
-        ((TextView) dialogView.findViewById(R.id.text)).setText(text);
+        b.text.setText(text);
     }
     
     public void setMin(int min) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            ((ProgressBar) dialogView.findViewById(R.id.progress)).setMin(min);
+            b.progress.setMin(min);
         }
     }
     
     public void setMax(int max) {
-        ((ProgressBar) dialogView.findViewById(R.id.progress)).setMax(max);
+        b.progress.setMax(max);
     }
     
     public void setProgress(int progress) {
-        ((ProgressBar) dialogView.findViewById(R.id.progress)).setProgress(progress);
+        b.progress.setProgress(progress);
         
         setProgressText(getProgress());
         
@@ -111,7 +105,7 @@ public class ProgressSDialog extends SDialog {
     private void setProgressText(int progress) {
         int percent = (getProgress() * 100) / getMax();
         String info = getProgress() + "/" + getMax() + " (" + percent + "%)";
-        ((TextView) dialogView.findViewById(R.id.percent)).setText(info);
+        b.percent.setText(info);
         if (callback != null) callback.onProgress(getProgress(), percent);
     }
     
@@ -120,16 +114,16 @@ public class ProgressSDialog extends SDialog {
     }
     
     public int getProgress() {
-        return ((ProgressBar) dialogView.findViewById(R.id.progress)).getProgress();
+        return b.progress.getProgress();
     }
     
     @RequiresApi(api = Build.VERSION_CODES.O)
     public int getMin() {
-        return ((ProgressBar) dialogView.findViewById(R.id.progress)).getMin();
+        return b.progress.getMin();
     }
     
     public int getMax() {
-        return ((ProgressBar) dialogView.findViewById(R.id.progress)).getMax();
+        return b.progress.getMax();
     }
     
     public int getAccentColor() {
@@ -169,11 +163,11 @@ public class ProgressSDialog extends SDialog {
         } else if (theme == THEME_DARK) darkThemeColors();
         else if (theme == THEME_LIGHT) lightThemeColors();
 
-        setBackgroundColor(dialogView.findViewById(R.id.main), backgroundColor);
-        ((ImageView) dialogView.findViewById(R.id.icon)).setColorFilter(iconColor);
-        ((TextView) dialogView.findViewById(R.id.title)).setTextColor(titleColor);
-        ((TextView) dialogView.findViewById(R.id.text)).setTextColor(textColor);
-        ((TextView) dialogView.findViewById(R.id.percent)).setTextColor(textColor);
-        ((ProgressBar) dialogView.findViewById(R.id.progress)).setProgressTintList(ColorStateList.valueOf(accentColor));
+        setBackgroundColor(b.main, backgroundColor);
+        b.icon.setColorFilter(iconColor);
+        b.title.setTextColor(titleColor);
+        b.text.setTextColor(textColor);
+        b.percent.setTextColor(textColor);
+        b.progress.setProgressTintList(ColorStateList.valueOf(accentColor));
     }
 }

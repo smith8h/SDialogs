@@ -26,6 +26,12 @@ import android.graphics.drawable.GradientDrawable;
 import android.os.CountDownTimer;
 import android.view.View;
 import android.view.Window;
+import android.widget.LinearLayout;
+import android.widget.ImageView;
+import com.google.android.material.slider.Slider;
+import com.google.android.material.textfield.TextInputLayout;
+import com.google.android.material.textfield.TextInputEditText;
+import smith.lib.views.recyclerview.SRecyclerView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import androidx.appcompat.app.AlertDialog;
@@ -47,15 +53,11 @@ public class SDialog {
     
     public static final int PATTERN_MODE_CORRECT  = PatternLockView.PatternViewMode.CORRECT;
     public static final int PATTERN_MODE_WRONG  = PatternLockView.PatternViewMode.WRONG;
-    public static final int PATTERN_MODE_AUTO_DRAW  = PatternLockView.PatternViewMode.AUTO_DRAW;
-    
-    public static final int PATTERN_ASPECT_RATIO_HEIGHT_BIAS  = PatternLockView.AspectRatio.ASPECT_RATIO_HEIGHT_BIAS;
-    public static final int PATTERN_ASPECT_RATIO_WIDTH_BIAS  = PatternLockView.AspectRatio.ASPECT_RATIO_WIDTH_BIAS;
-    public static final int PATTERN_ASPECT_RATIO_SQUARE  = PatternLockView.AspectRatio.ASPECT_RATIO_SQUARE;
     
     protected Context context;
     protected View dialogView;
     protected AlertDialog alertdialog;
+    protected DialogBinding b;
     
     protected int iconColor;
     protected int titleColor;
@@ -70,6 +72,8 @@ public class SDialog {
         alertdialog.setView(dialogView);
         alertdialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         alertdialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        
+        b = new DialogBinding(dialogView);
     }
     
     public void setCancelable(boolean cancelable) {
@@ -166,5 +170,43 @@ public class SDialog {
                 Color.blue(color), hsv);
         hsv[0] = (hsv[0] + 180) % 360;
         return Color.HSVToColor(hsv);
+    }
+    
+    protected int dpToPx(int dp) {
+        float density = context.getResources().getDisplayMetrics().density;
+        int px = Math.round(dp * density);
+        return px;
+    }
+    
+    protected class DialogBinding {
+        
+        LinearLayout main, holder;
+        ImageView icon;
+        TextView title, text, positive, negative, neutral, percent;
+        SRecyclerView recycler;
+        TextInputLayout input;
+        TextInputEditText inputed;
+        ProgressBar loading, progress;
+        PatternLockView pattern;
+        Slider seek;
+        
+        public DialogBinding(View view) {
+            main = view.findViewById(R.id.main);
+            holder = view.findViewById(R.id.holder);
+            icon = view.findViewById(R.id.icon);
+            title = view.findViewById(R.id.title);
+            text = view.findViewById(R.id.text);
+            positive = view.findViewById(R.id.positive);
+            negative = view.findViewById(R.id.negative);
+            neutral = view.findViewById(R.id.percent);
+            percent = view.findViewById(R.id.neutral);
+            recycler = view.findViewById(R.id.recycler);
+            input = view.findViewById(R.id.input);
+            inputed = view.findViewById(R.id.inputed);
+            loading = view.findViewById(R.id.loading);
+            pattern = view.findViewById(R.id.pattern);
+            progress = view.findViewById(R.id.progress);
+            seek = view.findViewById(R.id.seek);
+        }
     }
 }

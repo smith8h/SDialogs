@@ -19,8 +19,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
-import android.widget.ProgressBar;
-import android.widget.TextView;
 
 public class LoadingSDialog extends SDialog {
 
@@ -31,15 +29,15 @@ public class LoadingSDialog extends SDialog {
     }
 
     public void setTitle(String title) {
-        ((TextView) dialogView.findViewById(R.id.title)).setText(title);
+        b.title.setText(title);
     }
 
     public void setText(String text) {
-        ((TextView) dialogView.findViewById(R.id.text)).setText(text);
+        b.text.setText(text);
     }
     
     public void setText(int text) {
-        ((TextView) dialogView.findViewById(R.id.text)).setText(text);
+        b.text.setText(text);
     }
 
     public void setAccentColor(int color) {
@@ -91,9 +89,9 @@ public class LoadingSDialog extends SDialog {
         } else if (theme == THEME_DARK) darkThemeColors();
         else if (theme == THEME_LIGHT) lightThemeColors();
 
-        setBackgroundColor(dialogView.findViewById(R.id.main), backgroundColor);
-        ((TextView) dialogView.findViewById(R.id.title)).setTextColor(titleColor);
-        ((TextView) dialogView.findViewById(R.id.text)).setTextColor(textColor);
-        ((ProgressBar) dialogView.findViewById(R.id.loading)).setIndeterminateTintList(ColorStateList.valueOf(accentColor));
+        setBackgroundColor(b.main, backgroundColor);
+        b.title.setTextColor(titleColor);
+        b.text.setTextColor(textColor);
+        b.loading.setIndeterminateTintList(ColorStateList.valueOf(accentColor));
     }
 }

@@ -18,23 +18,13 @@ package smith.lib.alerts.dialog;
 
 import android.app.Activity;
 import android.content.Context;
-import android.graphics.Color;
+import android.graphics.*;
 import android.graphics.drawable.Drawable;
-import android.graphics.Bitmap;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import androidx.recyclerview.widget.*;
+import java.util.*;
 import smith.lib.alerts.dialog.adapters.SSingleSelectAdapter;
 import smith.lib.alerts.dialog.callbacks.OnSingleSelectCallBack;
-import smith.lib.views.recyclerview.SRecyclerView;
 
 public class SingleSelectSDialog extends SDialog {
     
@@ -50,22 +40,22 @@ public class SingleSelectSDialog extends SDialog {
     }
     
     public void setIconResource(int icon) {
-        ((ImageView) dialogView.findViewById(R.id.icon)).setVisibility(View.VISIBLE);
-    	((ImageView) dialogView.findViewById(R.id.icon)).setImageResource(icon);
+        b.icon.setVisibility(View.VISIBLE);
+    	b.icon.setImageResource(icon);
     }
     
     public void setIconDrawable(Drawable icon) {
-        ((ImageView) dialogView.findViewById(R.id.icon)).setVisibility(View.VISIBLE);
-    	((ImageView) dialogView.findViewById(R.id.icon)).setImageDrawable(icon);
+        b.icon.setVisibility(View.VISIBLE);
+    	b.icon.setImageDrawable(icon);
     }
     
     public void setIconBitmap(Bitmap icon) {
-        ((ImageView) dialogView.findViewById(R.id.icon)).setVisibility(View.VISIBLE);
-    	((ImageView) dialogView.findViewById(R.id.icon)).setImageBitmap(icon);
+        b.icon.setVisibility(View.VISIBLE);
+    	b.icon.setImageBitmap(icon);
     }
     
     public void setTitle(String title) {
-        ((TextView) dialogView.findViewById(R.id.title)).setText(title);
+        b.title.setText(title);
     }
     
     public void setOnSingleSelectCallBack(OnSingleSelectCallBack callback) {
@@ -161,13 +151,12 @@ public class SingleSelectSDialog extends SDialog {
         } else if (theme == THEME_DARK) darkThemeColors();
         else if (theme == THEME_LIGHT) lightThemeColors();
         
-        setBackgroundColor(dialogView.findViewById(R.id.main), backgroundColor);
-        ((ImageView) dialogView.findViewById(R.id.icon)).setColorFilter(iconColor);
-        ((TextView) dialogView.findViewById(R.id.title)).setTextColor(titleColor);
+        setBackgroundColor(b.main, backgroundColor);
+        b.icon.setColorFilter(iconColor);
+        b.title.setTextColor(titleColor);
         
         SSingleSelectAdapter adapter = new SSingleSelectAdapter(data, callback, this);
-        ((SRecyclerView) dialogView.findViewById(R.id.recycler))
-            .setLayoutManager(new LinearLayoutManager(context, RecyclerView.VERTICAL, false));
-        ((SRecyclerView) dialogView.findViewById(R.id.recycler)).setAdapter(adapter);
+        b.recycler.setLayoutManager(new LinearLayoutManager(context, RecyclerView.VERTICAL, false));
+        b.recycler.setAdapter(adapter);
     }
 }

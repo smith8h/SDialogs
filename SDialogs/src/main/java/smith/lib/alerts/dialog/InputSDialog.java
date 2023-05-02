@@ -18,18 +18,13 @@ package smith.lib.alerts.dialog;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.ColorStateList;
-import android.graphics.Color;
+import android.graphics.*;
 import android.graphics.drawable.Drawable;
-import android.graphics.Bitmap;
-import android.widget.ImageView;
 import android.view.View;
-import android.widget.TextView;
-import com.google.android.material.textfield.TextInputEditText;
-import com.google.android.material.textfield.TextInputLayout;
 import smith.lib.alerts.dialog.callbacks.OnInputClickCallBack;
 
 public class InputSDialog extends SDialog {
-    
+
     public InputSDialog(Context context) {
         this.context = context;
         dialogView = ((Activity) context).getLayoutInflater().inflate(R.layout.sdialog_input, null);
@@ -37,53 +32,53 @@ public class InputSDialog extends SDialog {
     }
     
     public void setIconResource(int icon) {
-        ((ImageView) dialogView.findViewById(R.id.icon)).setVisibility(View.VISIBLE);
-    	((ImageView) dialogView.findViewById(R.id.icon)).setImageResource(icon);
+        b.icon.setVisibility(View.VISIBLE);
+    	b.icon.setImageResource(icon);
     }
     
     public void setIconDrawable(Drawable icon) {
-        ((ImageView) dialogView.findViewById(R.id.icon)).setVisibility(View.VISIBLE);
-    	((ImageView) dialogView.findViewById(R.id.icon)).setImageDrawable(icon);
+        b.icon.setVisibility(View.VISIBLE);
+    	b.icon.setImageDrawable(icon);
     }
     
     public void setIconBitmap(Bitmap icon) {
-        ((ImageView) dialogView.findViewById(R.id.icon)).setVisibility(View.VISIBLE);
-    	((ImageView) dialogView.findViewById(R.id.icon)).setImageBitmap(icon);
+        b.icon.setVisibility(View.VISIBLE);
+    	b.icon.setImageBitmap(icon);
     }
     
     public void setTitle(String title) {
-        ((TextView) dialogView.findViewById(R.id.title)).setText(title);
+        b.title.setText(title);
     }
 
     public void setText(String text) {
-        ((TextView) dialogView.findViewById(R.id.text)).setVisibility(View.VISIBLE);
-        ((TextView) dialogView.findViewById(R.id.text)).setText(text);
+        b.text.setVisibility(View.VISIBLE);
+        b.text.setText(text);
     }
     
     public void setText(int text) {
-        ((TextView) dialogView.findViewById(R.id.text)).setVisibility(View.VISIBLE);
-        ((TextView) dialogView.findViewById(R.id.text)).setText(text);
+        b.text.setVisibility(View.VISIBLE);
+        b.text.setText(text);
     }
     
     public void setPositiveButtonAction(String positive, OnInputClickCallBack callback) {
-        ((TextView) dialogView.findViewById(R.id.positive)).setText(positive);
-        ((TextView) dialogView.findViewById(R.id.positive)).setOnClickListener(v-> {
-            callback.onClick(((TextInputEditText) dialogView.findViewById(R.id.inputed)).getText().toString());
+        b.positive.setText(positive);
+        b.positive.setOnClickListener(v-> {
+            callback.onClick(b.inputed.getText().toString());
             dismiss();
         });
     }
     
     public void setNegativeButtonText(String negative) {
-        ((TextView) dialogView.findViewById(R.id.negative)).setText(negative);
-        ((TextView) dialogView.findViewById(R.id.negative)).setOnClickListener(v-> dismiss());
+        b.negative.setText(negative);
+        b.negative.setOnClickListener(v-> dismiss());
     }
     
     public void setInputFieldHint(String hint) {
-        ((TextInputLayout) dialogView.findViewById(R.id.input)).setHint(hint);
+        b.input.setHint(hint);
     }
     
     public void setInputFieldText(String text) {
-    	((TextInputLayout) dialogView.findViewById(R.id.input)).getEditText().setText(text);
+    	b.input.getEditText().setText(text);
     }
     
     public void setAccentColor(int color) {
@@ -137,12 +132,12 @@ public class InputSDialog extends SDialog {
         } else if (theme == THEME_DARK) darkThemeColors();
         else if (theme == THEME_LIGHT) lightThemeColors();
         
-        setBackgroundColor(dialogView.findViewById(R.id.main), backgroundColor);
-        ((ImageView) dialogView.findViewById(R.id.icon)).setColorFilter(iconColor);
-        ((TextView) dialogView.findViewById(R.id.title)).setTextColor(titleColor);
-        ((TextView) dialogView.findViewById(R.id.text)).setTextColor(textColor);
-        ((TextView) dialogView.findViewById(R.id.positive)).setTextColor(accentColor);
-        ((TextView) dialogView.findViewById(R.id.negative)).setTextColor(accentColor);
+        setBackgroundColor(b.main, backgroundColor);
+        b.icon.setColorFilter(iconColor);
+        b.title.setTextColor(titleColor);
+        b.text.setTextColor(textColor);
+        b.positive.setTextColor(accentColor);
+        b.negative.setTextColor(accentColor);
         
         int[][] states = new int[][] {
             new int[] { android.R.attr.state_focused },
@@ -157,10 +152,10 @@ public class InputSDialog extends SDialog {
             hintColor
         };
         
-        ((TextInputLayout) dialogView.findViewById(R.id.input)).setBoxStrokeColorStateList(new ColorStateList(states, colors));
-        ((TextInputLayout) dialogView.findViewById(R.id.input)).setDefaultHintTextColor(new ColorStateList(states, colors));
-        ((TextInputLayout) dialogView.findViewById(R.id.input)).setHintTextColor(new ColorStateList(states, colors));
-        ((TextInputEditText) dialogView.findViewById(R.id.inputed)).setTextColor(textColor);
-        ((TextInputEditText) dialogView.findViewById(R.id.inputed)).setHintTextColor(hintColor);
+        b.input.setBoxStrokeColorStateList(new ColorStateList(states, colors));
+        b.input.setDefaultHintTextColor(new ColorStateList(states, colors));
+        b.input.setHintTextColor(new ColorStateList(states, colors));
+        b.inputed.setTextColor(textColor);
+        b.inputed.setHintTextColor(hintColor);
     }
 }

@@ -1,0 +1,6 @@
+<resources>
+
+    <color name="pattern_correct">#FF00D927</color>
+    <color name="pattern_wrong">#FFFF6060</color>
+    
+</resources>

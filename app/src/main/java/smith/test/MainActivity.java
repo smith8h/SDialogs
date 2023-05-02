@@ -8,6 +8,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import java.util.*;
 import smith.lib.alerts.dialog.*;
+import smith.lib.alerts.dialog.callbacks.OnDrawPatternCallBack;
 import smith.lib.alerts.dialog.callbacks.OnProgressCallBack;
 
 public class MainActivity extends AppCompatActivity {
@@ -17,6 +18,37 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+    }
+    
+    public void pattern(View v) {
+    	PatternSDialog d = new PatternSDialog(this);
+        d.setAccentColor(SDialog.COLOR_DEFAULT);
+        d.setIconResource(R.drawable.ok_img);
+        d.setOnDrawPatternCallBack(new OnDrawPatternCallBack() {
+            @Override
+            public void onStartDrawing() {
+                Toast.makeText(MainActivity.this, "Pattern drawing started!", Toast.LENGTH_SHORT).show();
+            }
+            @Override
+            public void onCompleteDrawing(String pattern) {
+                Toast.makeText(MainActivity.this, "Pattern drawing completed, pattern is: " + pattern, Toast.LENGTH_SHORT).show();
+                d.setPatternMode(SDialog.PATTERN_MODE_CORRECT);
+                d.dismiss(500);
+            }
+            @Override
+            public void onClearDrawing() {
+                Toast.makeText(MainActivity.this, "Pattern drawing cleared!", Toast.LENGTH_SHORT).show();
+            }
+        });
+        d.setPatternAnimationDuration(230);
+        d.setPatternDotCount(3);
+        d.setPatternDotNormalSizeDp(10);
+        d.setPatternDotSelectedSizeDp(15);
+        d.setPatternPathWidthDp(6);
+        d.setTheme(SDialog.THEME_BY_SYSTEM);
+        d.setTitle("Draw Pattern To Unlock");
+        d.show();
+        
     }
     
     public void seek(View v) {
