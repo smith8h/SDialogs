@@ -11,8 +11,6 @@ import android.view.View;
 import androidx.annotation.DrawableRes;
 import androidx.annotation.StringRes;
 
-import smith.lib.alerts.dialog.callbacks.OnFeedbackSubmitCallBack;
-
 public class FeedbackSDialog extends SDialog {
 
     private OnFeedbackSubmitCallBack callBack = isLiked -> {

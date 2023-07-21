@@ -25,9 +25,8 @@ import androidx.recyclerview.widget.*;
 import java.util.*;
 
 import smith.lib.alerts.dialog.adapters.SItemsAdapter;
-import smith.lib.alerts.dialog.callbacks.OnItemClickCallBack;
 
-public class ItemsSDialog extends SDialog {
+    public class ItemsSDialog extends SDialog {
     
     private List<String> data = new ArrayList<>();
     private OnItemClickCallBack callback;

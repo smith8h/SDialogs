@@ -7,7 +7,6 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import java.util.*;
 import smith.lib.alerts.dialog.*;
-import smith.lib.alerts.dialog.callbacks.OnDrawPatternCallBack;
 import smith.lib.alerts.dialog.callbacks.OnProgressCallBack;
 
 public class MainActivity extends AppCompatActivity {

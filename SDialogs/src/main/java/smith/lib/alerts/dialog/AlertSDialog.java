@@ -25,9 +25,7 @@ import android.view.View;
 import androidx.annotation.DrawableRes;
 import androidx.annotation.StringRes;
 
-import smith.lib.alerts.dialog.callbacks.OnClickCallBack;
-
-public class AlertSDialog extends SDialog {
+    public class AlertSDialog extends SDialog {
 
     @SuppressLint("InflateParams")
     public AlertSDialog(Context context) {

@@ -21,7 +21,6 @@
     import android.content.res.Configuration;
     import android.graphics.Color;
     import android.graphics.drawable.*;
-    import android.os.Build;
     import android.os.CountDownTimer;
     import android.view.*;
     import android.widget.*;
@@ -35,8 +34,6 @@
     import androidx.appcompat.app.AlertDialog;
 
     import com.andrognito.patternlockview.PatternLockView;
-
-    import smith.lib.alerts.dialog.callbacks.OnDismissCallBack;
 
     public class SDialog {
 

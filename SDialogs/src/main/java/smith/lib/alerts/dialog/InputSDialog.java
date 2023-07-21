@@ -21,9 +21,8 @@ import android.content.res.ColorStateList;
 import android.graphics.*;
 import android.graphics.drawable.Drawable;
 import android.view.View;
-import smith.lib.alerts.dialog.callbacks.OnInputClickCallBack;
 
-public class InputSDialog extends SDialog {
+    public class InputSDialog extends SDialog {
 
     public InputSDialog(Context context) {
         this.context = context;

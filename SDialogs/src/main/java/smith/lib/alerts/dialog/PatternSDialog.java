@@ -11,7 +11,6 @@ import com.andrognito.patternlockview.PatternLockView;
 import com.andrognito.patternlockview.listener.PatternLockViewListener;
 import com.andrognito.patternlockview.utils.*;
 import java.util.List;
-import smith.lib.alerts.dialog.callbacks.OnDrawPatternCallBack;
 
 public class PatternSDialog extends SDialog {
 
