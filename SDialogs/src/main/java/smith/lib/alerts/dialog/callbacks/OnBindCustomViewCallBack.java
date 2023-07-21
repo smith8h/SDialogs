@@ -18,6 +18,5 @@ package smith.lib.alerts.dialog.callbacks;
 import android.view.View;
 
 public interface OnBindCustomViewCallBack {
-    public void onBindCustomView(View customView);
-    
+    void onBindCustomView(View customView);
 }

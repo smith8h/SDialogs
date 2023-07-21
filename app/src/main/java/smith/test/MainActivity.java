@@ -2,7 +2,6 @@ package smith.test;
 
 import android.os.Build;
 import android.os.Bundle;
-import android.text.SpannableString;
 import android.view.View;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
@@ -242,5 +241,17 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, "onDismiss", Toast.LENGTH_SHORT).show();
         });
         sdialog.show();
+    }
+
+    public void feedback(View view) {
+        FeedbackSDialog sDialog = new FeedbackSDialog(this);
+        sDialog.setTitle("Feedback SDialog!");
+        sDialog.setText("Your feedback is valuable, please rate our work.");
+        sDialog.setAccentColor(0xFFAD97BE);
+        sDialog.setTheme(SDialog.THEME_BY_SYSTEM);
+        sDialog.setOnFeedbackSubmitCallBack(isLiked -> {
+            Toast.makeText(this, "isLiked " + isLiked, Toast.LENGTH_SHORT).show();
+        });
+        sDialog.show();
     }
 }

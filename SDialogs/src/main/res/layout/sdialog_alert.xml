@@ -2,7 +2,8 @@
 <LinearLayout
      xmlns:android="http://schemas.android.com/apk/res/android"
      xmlns:app="http://schemas.android.com/apk/res-auto"
-     android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="wrap_content"
      android:layout_width="match_parent"
      android:orientation="vertical">
 
@@ -15,7 +16,8 @@
          android:paddingBottom="20dp"
          android:paddingStart="24dp"
          android:id="@+id/main"
-         android:paddingTop="20dp">
+         android:paddingTop="20dp"
+        tools:ignore="UselessParent">
 
         <LinearLayout
              android:layout_height="wrap_content"
@@ -30,17 +32,18 @@
                  android:scaleType="centerInside"
                  android:layout_marginEnd="18dp"
                  android:visibility="gone"
-                 android:id="@+id/icon" />
+                 android:id="@+id/icon"
+                android:contentDescription="@string/sdialog_icon" />
 
             <TextView
                  android:layout_height="wrap_content"
                  android:layout_width="wrap_content"
                  android:alpha=".9"
                  android:textSize="19sp"
-                 android:textColor="@android:color/white"
+                 android:textColor="#000"
                  android:id="@+id/title"
                  android:textStyle="bold"
-                 android:text="Title of SDialog" />
+                 tools:text="Title of SDialog" />
         </LinearLayout>
 
         <smith.lib.views.scroll.SScrollView
@@ -58,7 +61,7 @@
                  android:textSize="16sp"
                  android:textColor="@android:color/white"
                  android:id="@+id/text"
-                 android:text="Dummy long text of SDialog" />
+                 tools:text="Dummy long text of SDialog" />
         </smith.lib.views.scroll.SScrollView>
 
         <LinearLayout
@@ -77,12 +80,12 @@
                  android:textSize="16sp"
                  android:textColor="#A7B4C5"
                  android:id="@+id/neutral"
-                 android:text="Neutral"
+                 tools:text="Neutral"
                  android:textStyle="bold" />
 
             <View
                  android:layout_height="1dp"
-                 android:layout_width="1dp"
+                 android:layout_width="0dp"
                  android:layout_weight="1" />
 
             <TextView
@@ -94,7 +97,7 @@
                  android:textSize="16sp"
                  android:textColor="#A7B4C5"
                  android:id="@+id/negative"
-                 android:text="Negative"
+                 tools:text="Negative"
                  android:textStyle="bold" />
 
             <TextView
@@ -105,7 +108,7 @@
                  android:textSize="16sp"
                  android:textColor="#A7B4C5"
                  android:id="@+id/positive"
-                 android:text="Positive"
+                 tools:text="Positive"
                  android:textStyle="bold" />
         </LinearLayout>
     </LinearLayout>

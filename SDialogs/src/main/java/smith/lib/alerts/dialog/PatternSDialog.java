@@ -26,7 +26,7 @@ public class PatternSDialog extends SDialog {
     
     public void setIconResource(int icon) {
         b.icon.setVisibility(View.VISIBLE);
-    	b.icon.setImageResource(icon);
+        b.icon.setImageResource(icon);
     }
     
     public void setIconDrawable(Drawable icon) {

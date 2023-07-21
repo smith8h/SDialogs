@@ -21,6 +21,10 @@ import android.content.Context;
 import android.graphics.*;
 import android.graphics.drawable.Drawable;
 import android.view.View;
+
+import androidx.annotation.DrawableRes;
+import androidx.annotation.StringRes;
+
 import smith.lib.alerts.dialog.callbacks.OnClickCallBack;
 
 public class AlertSDialog extends SDialog {
@@ -32,9 +36,9 @@ public class AlertSDialog extends SDialog {
         init();
     }
     
-    public void setIconResource(int icon) {
+    public void setIconResource(@DrawableRes int icon) {
         b.icon.setVisibility(View.VISIBLE);
-    	b.icon.setImageResource(icon);
+        b.icon.setImageResource(icon);
     }
     
     public void setIconDrawable(Drawable icon) {
@@ -55,7 +59,7 @@ public class AlertSDialog extends SDialog {
         b.text.setText(text);
     }
     
-    public void setText(int text) {
+    public void setText(@StringRes int text) {
     	b.text.setText(text);
     }
 

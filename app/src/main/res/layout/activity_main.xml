@@ -1,106 +1,116 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-     xmlns:android="http://schemas.android.com/apk/res/android"
-     xmlns:app="http://schemas.android.com/apk/res-auto"
-     android:layout_height="match_parent"
-     android:layout_width="match_parent"
-     android:id="@+id/nested_scroll_view">
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nested_scroll_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
 
     <LinearLayout
-         android:layout_height="match_parent"
-         android:layout_width="match_parent"
-         android:gravity="center"
-         android:orientation="vertical">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
 
         <TextView
-             android:layout_height="wrap_content"
-             android:layout_width="wrap_content"
-             android:padding="10dp"
-             android:onClick="alert"
-             android:textSize="18sp"
-             android:textColor="#000000"
-             android:text="show alert dialog" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="alert"
+            android:padding="10dp"
+            android:text="show alert dialog"
+            android:textColor="#000000"
+            android:textSize="18sp" />
 
         <TextView
-             android:layout_height="wrap_content"
-             android:layout_width="wrap_content"
-             android:padding="10dp"
-             android:onClick="loading"
-             android:textSize="18sp"
-             android:textColor="#000000"
-             android:text="show loading dialog" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="loading"
+            android:padding="10dp"
+            android:text="show loading dialog"
+            android:textColor="#000000"
+            android:textSize="18sp" />
 
         <TextView
-             android:layout_height="wrap_content"
-             android:layout_width="wrap_content"
-             android:padding="10dp"
-             android:onClick="input"
-             android:textSize="18sp"
-             android:textColor="#000000"
-             android:text="show input dialog" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="input"
+            android:padding="10dp"
+            android:text="show input dialog"
+            android:textColor="#000000"
+            android:textSize="18sp" />
 
         <TextView
-             android:layout_height="wrap_content"
-             android:layout_width="wrap_content"
-             android:padding="10dp"
-             android:onClick="items"
-             android:textSize="18sp"
-             android:textColor="#000000"
-             android:text="show items dialog" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="items"
+            android:padding="10dp"
+            android:text="show items dialog"
+            android:textColor="#000000"
+            android:textSize="18sp" />
 
         <TextView
-             android:layout_height="wrap_content"
-             android:layout_width="wrap_content"
-             android:padding="10dp"
-             android:onClick="single"
-             android:textSize="18sp"
-             android:textColor="#000000"
-             android:text="show single select items dialog" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="single"
+            android:padding="10dp"
+            android:text="show single select items dialog"
+            android:textColor="#000000"
+            android:textSize="18sp" />
 
         <TextView
-             android:layout_height="wrap_content"
-             android:layout_width="wrap_content"
-             android:padding="10dp"
-             android:onClick="multi"
-             android:textSize="18sp"
-             android:textColor="#000000"
-             android:text="show multi select items dialog" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="multi"
+            android:padding="10dp"
+            android:text="show multi select items dialog"
+            android:textColor="#000000"
+            android:textSize="18sp" />
 
         <TextView
-             android:layout_height="wrap_content"
-             android:layout_width="wrap_content"
-             android:padding="10dp"
-             android:onClick="progress"
-             android:textSize="18sp"
-             android:textColor="#000000"
-             android:text="show progress dialog" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="progress"
+            android:padding="10dp"
+            android:text="show progress dialog"
+            android:textColor="#000000"
+            android:textSize="18sp" />
 
         <TextView
-             android:layout_height="wrap_content"
-             android:layout_width="wrap_content"
-             android:padding="10dp"
-             android:onClick="custom"
-             android:textSize="18sp"
-             android:textColor="#000000"
-             android:text="show custom dialog" />
-             
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="custom"
+            android:padding="10dp"
+            android:text="show custom dialog"
+            android:textColor="#000000"
+            android:textSize="18sp" />
+
         <TextView
-             android:layout_height="wrap_content"
-             android:layout_width="wrap_content"
-             android:padding="10dp"
-             android:onClick="seek"
-             android:textSize="18sp"
-             android:textColor="#000000"
-             android:text="show slider dialog" />
-             
-         <TextView
-             android:layout_height="wrap_content"
-             android:layout_width="wrap_content"
-             android:padding="10dp"
-             android:onClick="pattern"
-             android:textSize="18sp"
-             android:textColor="#000000"
-             android:text="show pattern dialog"/>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="seek"
+            android:padding="10dp"
+            android:text="show slider dialog"
+            android:textColor="#000000"
+            android:textSize="18sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="pattern"
+            android:padding="10dp"
+            android:text="show pattern dialog"
+            android:textColor="#000000"
+            android:textSize="18sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="feedback"
+            android:padding="10dp"
+            android:text="show feedback dialog"
+            android:textColor="#000000"
+            android:textSize="18sp" />
 
     </LinearLayout>
 

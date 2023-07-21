@@ -3,7 +3,7 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/ok_img"
+        android:icon="@drawable/sdialog_ok_img"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme" >
