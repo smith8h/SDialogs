@@ -46,15 +46,15 @@
                  android:text="Title of SDialog" />
         </LinearLayout>
 
-        <com.andrognito.patternlockview.PatternLockView
+        <co.encept.patternlockview.PatternLockView
              android:layout_height="280dp"
              android:layout_width="280dp"
              android:id="@+id/pattern"
              app:dotCount="3"
              app:dotAnimationDuration="230"
              app:pathEndAnimationDuration="230"
-             app:dotSelectedSize="15dp"
-             app:dotNormalSize="10dp"
+             app:dotSelectedSize="16dp"
+             app:dotNormalSize="12dp"
              app:pathWidth="6dp"
              app:correctStateColor="@color/pattern_correct"
              app:wrongStateColor="@color/pattern_wrong"

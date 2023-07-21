@@ -26,7 +26,7 @@ allprojects {
 //        maven { url 'https://repo.maven.apache.org' }
 //        maven { url 'https://maven.google.com' }
 //        maven { url 'https://repo.maven.apache.org/maven2' }
-        maven { url 'https://jcenter.bintray.com' }
+//        maven { url 'https://jcenter.bintray.com' }
 //        maven { url 'https://dl.google.com' }
     }
 }
