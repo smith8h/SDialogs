@@ -1,115 +1,114 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-     xmlns:android="http://schemas.android.com/apk/res/android"
-     xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-     android:layout_width="match_parent"
-     android:orientation="vertical">
+    android:orientation="vertical">
 
     <LinearLayout
-         android:layout_height="wrap_content"
-         android:layout_width="match_parent"
-         android:paddingEnd="24dp"
-         android:layout_margin="20dp"
-         android:orientation="vertical"
-         android:paddingBottom="20dp"
-         android:paddingStart="24dp"
-         android:id="@+id/main"
-         android:paddingTop="20dp"
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:orientation="vertical"
+        android:paddingStart="24dp"
+        android:paddingTop="20dp"
+        android:paddingEnd="24dp"
+        android:paddingBottom="20dp"
         tools:ignore="UselessParent">
 
         <LinearLayout
-             android:layout_height="wrap_content"
-             android:layout_width="match_parent"
-             android:layout_marginBottom="20dp"
-             android:gravity="center_vertical"
-             android:orientation="horizontal">
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
 
             <ImageView
-                 android:layout_height="32dp"
-                 android:layout_width="32dp"
-                 android:scaleType="centerInside"
-                 android:layout_marginEnd="18dp"
-                 android:visibility="gone"
-                 android:id="@+id/icon"
-                android:contentDescription="@string/sdialog_icon" />
+                android:id="@+id/icon"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_marginEnd="18dp"
+                android:contentDescription="@string/sdialog_icon"
+                android:scaleType="centerInside"
+                android:visibility="gone" />
 
             <TextView
-                 android:layout_height="wrap_content"
-                 android:layout_width="wrap_content"
-                 android:alpha=".9"
-                 android:textSize="19sp"
-                 android:textColor="#000"
-                 android:id="@+id/title"
-                 android:textStyle="bold"
-                 tools:text="Title of SDialog" />
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:alpha=".9"
+                android:textColor="#000"
+                android:textSize="19sp"
+                android:textStyle="bold"
+                tools:text="Title of SDialog" />
         </LinearLayout>
 
         <smith.lib.views.scroll.SScrollView
-             android:layout_height="wrap_content"
-             android:layout_width="match_parent"
-             android:scrollbars="none"
-             android:padding="0dp"
-             app:maxHeight="460dp"
-             android:overScrollMode="ifContentScrolls">
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:overScrollMode="ifContentScrolls"
+            android:padding="0dp"
+            android:scrollbars="none"
+            app:maxHeight="460dp">
 
             <TextView
-                 android:layout_height="wrap_content"
-                 android:layout_width="match_parent"
-                 android:alpha=".8"
-                 android:textSize="16sp"
-                 android:textColor="@android:color/white"
-                 android:id="@+id/text"
-                 tools:text="Dummy long text of SDialog" />
+                android:id="@+id/text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:alpha=".8"
+                android:textColor="@android:color/white"
+                android:textSize="16sp"
+                tools:text="Dummy long text of SDialog" />
         </smith.lib.views.scroll.SScrollView>
 
         <LinearLayout
-             android:layout_height="wrap_content"
-             android:layout_width="match_parent"
-             android:visibility="gone"
-             android:orientation="horizontal"
-             android:layout_marginTop="20dp"
-             android:id="@+id/holder">
+            android:id="@+id/holder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal"
+            android:visibility="gone">
 
             <TextView
-                 android:layout_height="wrap_content"
-                 android:layout_width="wrap_content"
-                 android:visibility="gone"
-                 android:padding="8dp"
-                 android:textSize="16sp"
-                 android:textColor="#A7B4C5"
-                 android:id="@+id/neutral"
-                 tools:text="Neutral"
-                 android:textStyle="bold" />
+                android:id="@+id/neutral"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:textColor="#A7B4C5"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:visibility="gone"
+                tools:text="Neutral" />
 
             <View
-                 android:layout_height="1dp"
-                 android:layout_width="0dp"
-                 android:layout_weight="1" />
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1" />
 
             <TextView
-                 android:layout_height="wrap_content"
-                 android:layout_width="wrap_content"
-                 android:visibility="gone"
-                 android:layout_marginEnd="15dp"
-                 android:padding="8dp"
-                 android:textSize="16sp"
-                 android:textColor="#A7B4C5"
-                 android:id="@+id/negative"
-                 tools:text="Negative"
-                 android:textStyle="bold" />
+                android:id="@+id/negative"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="15dp"
+                android:padding="8dp"
+                android:textColor="#A7B4C5"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:visibility="gone"
+                tools:text="Negative" />
 
             <TextView
-                 android:layout_height="wrap_content"
-                 android:layout_width="wrap_content"
-                 android:visibility="gone"
-                 android:padding="8dp"
-                 android:textSize="16sp"
-                 android:textColor="#A7B4C5"
-                 android:id="@+id/positive"
-                 tools:text="Positive"
-                 android:textStyle="bold" />
+                android:id="@+id/positive"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:textColor="#A7B4C5"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:visibility="gone"
+                tools:text="Positive" />
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>
