@@ -87,19 +87,15 @@
         public void show() {
             alertdialog.show();
             animateView(dialogView);
-
         }
 
         public void show(long dur) {
             alertdialog.show();
             animateView(dialogView);
             new CountDownTimer(dur, 1) {
-                @Override
-                public void onTick(long duration) {
-                }
+                @Override public void onTick(long duration) {}
 
-                @Override
-                public void onFinish() {
+                @Override public void onFinish() {
                     dismiss();
                 }
             }.start();
@@ -172,15 +168,6 @@
             int green = (int) ((Color.green(color) * (1 - factor) / 255 + factor) * 255);
             int blue = (int) ((Color.blue(color) * (1 - factor) / 255 + factor) * 255);
             return Color.argb(alpha, red, green, blue);
-        }
-
-        protected int oppositeColor(int color) {
-            float[] hsv = new float[3];
-            Color.RGBToHSV(Color.red(color),
-                    Color.green(color),
-                    Color.blue(color), hsv);
-            hsv[0] = (hsv[0] + 180) % 360;
-            return Color.HSVToColor(hsv);
         }
 
         protected int dp(int dp) {
