@@ -1,23 +1,24 @@
 plugins {
     id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+    id 'maven-publish'
 }
+
+def artifactId = "SDialogs"
+def groupId = "smith.lib"
 
 android {
     namespace 'smith.lib.alerts.dialog'
-    
+
     compileSdk 33
+    buildToolsVersion '33.0.2'
 
     defaultConfig {
-        minSdk 21
+        minSdk 24
         targetSdk 33
-        versionCode 2
-        versionName "2.0"
+        versionCode 3
+        versionName 'v2.1'
     }
-    
-    /*configurations {
-        implementation.exclude module: 'support-compat'
-        implementation.exclude module: 'core'
-    }*/
 
     buildTypes {
         release {
@@ -25,15 +26,32 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-    
+
     compileOptions {
-		sourceCompatibility JavaVersion.VERSION_17
-		targetCompatibility JavaVersion.VERSION_17
-	}
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    buildFeatures {
+        viewBinding true
+    }
 }
 
 dependencies {
-    implementation 'androidx.appcompat:appcompat:1.4.2'
-    implementation 'com.google.android.material:material:1.8.0'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.9.0'
     implementation 'com.andrognito.patternlockview:patternlockview:1.0.0'
+}
+
+project.afterEvaluate {
+    publishing {
+        publications {
+            library(MavenPublication) {
+                setGroupId groupId
+                setArtifactId artifactId
+                version android.defaultConfig.versionName
+                artifact bundleReleaseAar
+            }
+        }
+    }
 }

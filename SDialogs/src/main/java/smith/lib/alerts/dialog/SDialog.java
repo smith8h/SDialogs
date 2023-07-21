@@ -16,9 +16,7 @@
 package smith.lib.alerts.dialog;
 
 import android.animation.ObjectAnimator;
-import android.app.Activity;
 import android.content.Context;
-import android.content.res.ColorStateList;
 import android.content.res.Configuration;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -36,7 +34,6 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import androidx.appcompat.app.AlertDialog;
 import com.andrognito.patternlockview.PatternLockView;
-import smith.lib.alerts.dialog.callbacks.OnBindCustomViewCallBack;
 import smith.lib.alerts.dialog.callbacks.OnDismissCallBack;
 
 public class SDialog {
@@ -132,9 +129,7 @@ public class SDialog {
 
     protected boolean nightModeON() {
         int flags = context.getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
-        boolean isNightModeOn = flags == Configuration.UI_MODE_NIGHT_YES;
-        if (isNightModeOn) return true;
-        else return false;
+        return flags == Configuration.UI_MODE_NIGHT_YES;
     }
 
     protected void setBackgroundColor(View view, int color) {
@@ -174,11 +169,10 @@ public class SDialog {
     
     protected int dpToPx(int dp) {
         float density = context.getResources().getDisplayMetrics().density;
-        int px = Math.round(dp * density);
-        return px;
+        return Math.round(dp * density);
     }
     
-    protected class DialogBinding {
+    protected static class DialogBinding {
         
         LinearLayout main, holder;
         ImageView icon;
@@ -198,8 +192,8 @@ public class SDialog {
             text = view.findViewById(R.id.text);
             positive = view.findViewById(R.id.positive);
             negative = view.findViewById(R.id.negative);
-            neutral = view.findViewById(R.id.percent);
-            percent = view.findViewById(R.id.neutral);
+            neutral = view.findViewById(R.id.neutral);
+            percent = view.findViewById(R.id.percent);
             recycler = view.findViewById(R.id.recycler);
             input = view.findViewById(R.id.input);
             inputed = view.findViewById(R.id.inputed);

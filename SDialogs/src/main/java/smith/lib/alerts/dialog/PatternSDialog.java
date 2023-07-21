@@ -1,5 +1,6 @@
 package smith.lib.alerts.dialog;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.*;
@@ -14,6 +15,7 @@ import smith.lib.alerts.dialog.callbacks.OnDrawPatternCallBack;
 
 public class PatternSDialog extends SDialog {
 
+    @SuppressLint("InflateParams")
     public PatternSDialog(Context context) {
     	super.context = context;
         dialogView = ((Activity) context).getLayoutInflater().inflate(R.layout.sdialog_pattern, null);
@@ -34,7 +36,7 @@ public class PatternSDialog extends SDialog {
     
     public void setIconBitmap(Bitmap icon) {
         b.icon.setVisibility(View.VISIBLE);
-    	b.icon.setImageBitmap(icon);
+        b.icon.setImageBitmap(icon);
     }
 
     public void setTitle(String title) {
