@@ -28,7 +28,7 @@ public class ProgressSDialog extends SDialog {
     
     public void setIconResource(int icon) {
         b.icon.setVisibility(View.VISIBLE);
-    	b.icon.setImageResource(icon);
+        b.icon.setImageResource(icon);
     }
     
     public void setIconDrawable(Drawable icon) {
@@ -152,6 +152,10 @@ public class ProgressSDialog extends SDialog {
         b.title.setTextColor(titleColor);
         b.text.setTextColor(textColor);
         b.percent.setTextColor(textColor);
-        b.progress.setProgressTintList(ColorStateList.valueOf(accentColor));
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            b.progress.setProgressDrawable(utils.createProgressLayerList(accentColor, iconBackground));
+        } else {
+            b.progress.setProgressTintList(ColorStateList.valueOf(accentColor));
+        }
     }
 }
