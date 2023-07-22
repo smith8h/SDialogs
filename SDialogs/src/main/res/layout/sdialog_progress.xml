@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
      xmlns:android="http://schemas.android.com/apk/res/android"
-     xmlns:app="http://schemas.android.com/apk/res-auto"
-     android:layout_height="wrap_content"
-     android:layout_width="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="wrap_content"
+     android:layout_width="match_parent"
      android:gravity="center"
      android:orientation="vertical">
 
@@ -17,7 +17,8 @@
          android:paddingBottom="20dp"
          android:paddingStart="24dp"
          android:id="@+id/main"
-         android:paddingTop="20dp">
+         android:paddingTop="20dp"
+        tools:ignore="UselessParent">
 
         <LinearLayout
              android:layout_height="wrap_content"
@@ -32,26 +33,28 @@
                  android:visibility="gone"
                  android:scaleType="centerInside"
                  android:layout_marginEnd="18dp"
-                 android:id="@+id/icon" />
+                 android:id="@+id/icon"
+                android:contentDescription="@string/sdialog_icon" />
 
             <TextView
                  android:layout_height="wrap_content"
                  android:layout_width="wrap_content"
                  android:alpha=".9"
                  android:textSize="19sp"
-                 android:textColor="@android:color/white"
+                 android:textColor="#000"
                  android:id="@+id/title"
                  android:textStyle="bold"
-                 android:text="Title of SDialog" />
+                 tools:text="Title of SDialog" />
         </LinearLayout>
 
         <ProgressBar
-             android:layout_height="3dp"
+             android:layout_height="8dp"
              android:layout_width="match_parent"
              android:layout_marginBottom="10dp"
              android:indeterminate="false"
-             style="?android:progressBarStyleHorizontal"
-             android:id="@+id/progress" />
+             style="?android:attr/progressBarStyleHorizontal"
+             android:id="@+id/progress"
+             android:progressDrawable="@drawable/bg_sdialog_progress"/>
 
         <LinearLayout
              android:layout_height="wrap_content"
@@ -61,13 +64,13 @@
 
             <TextView
                  android:layout_height="wrap_content"
-                 android:layout_width="wrap_content"
+                 android:layout_width="0dp"
                  android:alpha=".8"
                  android:textSize="14sp"
-                 android:textColor="@android:color/white"
+                 android:textColor="#000"
                  android:layout_weight="1"
                  android:id="@+id/text"
-                 android:text="Getting Resources..." />
+                 tools:text="Getting Resources..." />
 
             <TextView
                  android:layout_height="wrap_content"
@@ -75,9 +78,9 @@
                  android:alpha=".8"
                  android:textSize="12sp"
                  android:lines="1"
-                 android:textColor="@android:color/white"
+                 android:textColor="#000"
                  android:id="@+id/percent"
-                 android:text="0%" />
+                 tools:text="0%" />
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

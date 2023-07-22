@@ -7,10 +7,13 @@ import android.graphics.*;
 import android.graphics.drawable.Drawable;
 import android.os.CountDownTimer;
 import android.view.View;
-import com.andrognito.patternlockview.PatternLockView;
-import com.andrognito.patternlockview.listener.PatternLockViewListener;
-import com.andrognito.patternlockview.utils.*;
+
 import java.util.List;
+
+import co.encept.patternlockview.PatternLockView;
+import co.encept.patternlockview.listener.PatternLockViewListener;
+import co.encept.patternlockview.utils.PatternLockUtils;
+import smith.lib.alerts.dialog.callbacks.OnDrawPatternCallBack;
 
 public class PatternSDialog extends SDialog {
 

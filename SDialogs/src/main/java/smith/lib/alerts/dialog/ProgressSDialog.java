@@ -1,20 +1,6 @@
-    /*
-     *
-     *
-     *    THIS LIBRARY CREATED BY HUSSEIN SHAKIR (SMITH)
-     *
-     *	TELEGRAM : @SMITHDEV
-     *	YOUTUBE : HUSSEIN SMITH (@SMITH8H)
-     *
-     *	YOU GUYS ARE NOT ALLOWED TO MODIFY THIS LIBRARY,
-     *	WITHOT ANY PERMISSION FROM ME PERSONALLY..
-     *	ALL RIGHTS RESERVED © HUSSEIN SHAKIR, Dec 2022.
-     *
-     *
-     */
-
 package smith.lib.alerts.dialog;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.ColorStateList;
@@ -28,18 +14,16 @@ import smith.lib.alerts.dialog.callbacks.OnProgressCallBack;
 public class ProgressSDialog extends SDialog {
     
     private OnProgressCallBack callback;
-    private final int MAX = 100;
-    private final int MIN = 0;
-    
+
+    @SuppressLint("InflateParams")
     public ProgressSDialog(Context context) {
-        this.context = context;
+        super(context);
         dialogView = ((Activity) context).getLayoutInflater().inflate(R.layout.sdialog_progress, null);
-        init();
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            b.progress.setMin(MIN);
+            b.progress.setMin(0);
         }
-        b.progress.setMax(MAX);
+        b.progress.setMax(100);
     }
     
     public void setIconResource(int icon) {
@@ -82,7 +66,7 @@ public class ProgressSDialog extends SDialog {
     public void setProgress(int progress) {
         b.progress.setProgress(progress);
         
-        setProgressText(getProgress());
+        setProgressText();
         
         if (getProgress() == getMax()) {
             dismiss();
@@ -102,7 +86,7 @@ public class ProgressSDialog extends SDialog {
         this.theme = theme;
     }
     
-    private void setProgressText(int progress) {
+    private void setProgressText() {
         int percent = (getProgress() * 100) / getMax();
         String info = getProgress() + "/" + getMax() + " (" + percent + "%)";
         b.percent.setText(info);
@@ -158,12 +142,12 @@ public class ProgressSDialog extends SDialog {
         
     private void update() {
         if (theme == THEME_BY_SYSTEM) {
-            if (nightModeON()) darkThemeColors();
+            if (utils.nightModeON()) darkThemeColors();
             else lightThemeColors();
         } else if (theme == THEME_DARK) darkThemeColors();
         else if (theme == THEME_LIGHT) lightThemeColors();
 
-        setBackgroundColor(b.main, backgroundColor);
+        utils.backgroundColor(b.main, backgroundColor);
         b.icon.setColorFilter(iconColor);
         b.title.setTextColor(titleColor);
         b.text.setTextColor(textColor);
