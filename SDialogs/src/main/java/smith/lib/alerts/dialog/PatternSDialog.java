@@ -114,13 +114,8 @@ public class PatternSDialog extends SDialog {
     }
     
     private void update() {
-        if (theme == THEME_BY_SYSTEM) {
-            if (nightModeON()) darkThemeColors();
-            else lightThemeColors();
-        } else if (theme == THEME_DARK) darkThemeColors();
-        else if (theme == THEME_LIGHT) lightThemeColors();
-        
-        setBackgroundColor(b.main, backgroundColor);
+        updateTheme();
+        utils.backgroundColor(b.main, backgroundColor);
         b.icon.setColorFilter(iconColor);
         b.title.setTextColor(titleColor);
         b.pattern.setNormalStateColor(accentColor);

@@ -4,9 +4,12 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import java.util.*;
 import smith.lib.alerts.dialog.*;
+import smith.lib.alerts.dialog.callbacks.OnDrawPatternCallBack;
 import smith.lib.alerts.dialog.callbacks.OnProgressCallBack;
 
 public class MainActivity extends AppCompatActivity {
@@ -28,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, "Pattern drawing started!", Toast.LENGTH_SHORT).show();
             }
             @Override
-            public void onCompleteDrawing(String pattern) {
+            public void onCompleteDrawing(@NonNull String pattern) {
                 Toast.makeText(MainActivity.this, "Pattern drawing completed, pattern is: " + pattern, Toast.LENGTH_SHORT).show();
                 d.setPatternMode(SDialog.PATTERN_MODE_CORRECT);
                 d.dismiss(500);

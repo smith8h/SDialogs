@@ -17,8 +17,9 @@ public class ProgressSDialog extends SDialog {
 
     @SuppressLint("InflateParams")
     public ProgressSDialog(Context context) {
-        super(context);
+        super.context = context;
         dialogView = ((Activity) context).getLayoutInflater().inflate(R.layout.sdialog_progress, null);
+        init();
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             b.progress.setMin(0);
@@ -33,12 +34,12 @@ public class ProgressSDialog extends SDialog {
     
     public void setIconDrawable(Drawable icon) {
         b.icon.setVisibility(View.VISIBLE);
-    	b.icon.setImageDrawable(icon);
+        b.icon.setImageDrawable(icon);
     }
     
     public void setIconBitmap(Bitmap icon) {
         b.icon.setVisibility(View.VISIBLE);
-    	b.icon.setImageBitmap(icon);
+        b.icon.setImageBitmap(icon);
     }
 
     public void setTitle(String title) {

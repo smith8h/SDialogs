@@ -1,18 +1,3 @@
-    /*
-     *
-     *
-     *    THIS LIBRARY CREATED BY HUSSEIN SHAKIR (SMITH)
-     *
-     *	TELEGRAM : @SMITHDEV
-     *	YOUTUBE : HUSSEIN SMITH (@SMITH8H)
-     *
-     *	YOU GUYS ARE NOT ALLOWED TO MODIFY THIS LIBRARY,
-     *	WITHOT ANY PERMISSION FROM ME PERSONALLY..
-     *	ALL RIGHTS RESERVED © HUSSEIN SHAKIR, Dec 2022.
-     *
-     *
-     */
-
 package smith.lib.alerts.dialog;
 
 import android.annotation.SuppressLint;
@@ -25,7 +10,9 @@ import android.view.View;
 import androidx.annotation.DrawableRes;
 import androidx.annotation.StringRes;
 
-    public class AlertSDialog extends SDialog {
+import smith.lib.alerts.dialog.callbacks.OnClickCallBack;
+
+public class AlertSDialog extends SDialog {
 
     @SuppressLint("InflateParams")
     public AlertSDialog(Context context) {
@@ -132,13 +119,8 @@ import androidx.annotation.StringRes;
     }
     
     private void update() {
-        if (theme == THEME_BY_SYSTEM) {
-            if (nightModeON()) darkThemeColors();
-            else lightThemeColors();
-        } else if (theme == THEME_DARK) darkThemeColors();
-        else if (theme == THEME_LIGHT) lightThemeColors();
-        
-        setBackgroundColor(b.main, backgroundColor);
+        updateTheme();
+        utils.backgroundColor(b.main, backgroundColor);
         b.icon.setColorFilter(iconColor);
         b.title.setTextColor(titleColor);
         b.text.setTextColor(textColor);

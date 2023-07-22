@@ -1,21 +1,6 @@
-    /*
-     *
-     *
-     *    THIS LIBRARY CREATED BY HUSSEIN SHAKIR (SMITH)
-     *
-     *	TELEGRAM : @SMITHDEV
-     *	YOUTUBE : HUSSEIN SMITH (@SMITH8H)
-     *
-     *	YOU GUYS ARE NOT ALLOWED TO MODIFY THIS LIBRARY,
-     *	WITHOT ANY PERMISSION FROM ME PERSONALLY..
-     *	ALL RIGHTS RESERVED © HUSSEIN SHAKIR, Dec 2022.
-     *
-     *
-     */
-
-
 package smith.lib.alerts.dialog;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.*;
@@ -30,9 +15,10 @@ import smith.lib.alerts.dialog.callbacks.OnMultiSelectCallBack;
 public class MultiSelectSDialog extends SDialog {
     
     private SMultiSelectAdapter adapter;
-    private List<Map<String, Object>> data = new ArrayList<>();
+    private final List<Map<String, Object>> data = new ArrayList<>();
     private Map<String, Object> item = new HashMap<>();
     
+    @SuppressLint("InflateParams")
     public MultiSelectSDialog(Context context) {
         this.context = context;
         dialogView = ((Activity) context).getLayoutInflater().inflate(R.layout.sdialog_items, null);
@@ -78,7 +64,8 @@ public class MultiSelectSDialog extends SDialog {
     
     public void setCheckedItem(int id) {
         for (int i = 0; i < data.size(); i++) {
-            if (data.get(i).get(KEY_ITEM_ID).equals(id)) {
+            int ids = (int) data.get(i).get(KEY_ITEM_ID);
+            if (ids == id) {
                 item = data.get(i);
                 data.remove(i);
                 item.put(KEY_ITEM_CHECKED, true);
@@ -91,7 +78,9 @@ public class MultiSelectSDialog extends SDialog {
     
     public void removeItem(String itemText) {
         for (int i = 0; i < data.size(); i++) {
-            if (data.get(i).get("text").toString().equals(itemText)) data.remove(i);
+            Map<String, Object> item = data.get(i);
+            if (Objects.requireNonNull(item.get("text")).toString().equals(itemText))
+                data.remove(item);
         }
         update();
     }
@@ -146,13 +135,8 @@ public class MultiSelectSDialog extends SDialog {
     }
     
     private void update() {
-        if (theme == THEME_BY_SYSTEM) {
-            if (nightModeON()) darkThemeColors();
-            else lightThemeColors();
-        } else if (theme == THEME_DARK) darkThemeColors();
-        else if (theme == THEME_LIGHT) lightThemeColors();
-        
-        setBackgroundColor(b.main, backgroundColor);
+        updateTheme();
+        utils.backgroundColor(b.main, backgroundColor);
         b.icon.setColorFilter(iconColor);
         b.title.setTextColor(titleColor);
         b.positive.setTextColor(accentColor);

@@ -7,14 +7,14 @@ import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.view.View;
-
 import androidx.annotation.DrawableRes;
 import androidx.annotation.StringRes;
+import smith.lib.alerts.dialog.callbacks.OnFeedbackSubmitCallBack;
 
 public class FeedbackSDialog extends SDialog {
 
     private OnFeedbackSubmitCallBack callBack = isLiked -> {
-
+        dismiss();
     };
 
     @SuppressLint("InflateParams")
@@ -27,6 +27,7 @@ public class FeedbackSDialog extends SDialog {
             callBack.onSubmit(true);
             dismiss();
         });
+
         b.dislike.setOnClickListener(v -> {
             callBack.onSubmit(false);
             dismiss();
@@ -105,18 +106,10 @@ public class FeedbackSDialog extends SDialog {
     }
 
     private void update() {
-        switch (theme) {
-            case THEME_BY_SYSTEM -> {
-                if (nightModeON()) darkThemeColors();
-                else lightThemeColors();
-            }
-            case THEME_DARK -> darkThemeColors();
-            case THEME_LIGHT -> lightThemeColors();
-        }
-
-        setBackgroundColor(b.main, backgroundColor);
-        setBackgroundColor(b.like, iconBackground);
-        setBackgroundColor(b.dislike, iconBackground);
+        updateTheme();
+        utils.backgroundColor(b.main, backgroundColor);
+        utils.backgroundColor(b.like, iconBackground);
+        utils.backgroundColor(b.dislike, iconBackground);
         b.icon.setColorFilter(iconColor);
         b.title.setTextColor(titleColor);
         b.text.setTextColor(textColor);

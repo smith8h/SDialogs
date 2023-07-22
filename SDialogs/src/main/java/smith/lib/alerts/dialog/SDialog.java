@@ -30,6 +30,7 @@ public class SDialog {
     public static final int PATTERN_MODE_CORRECT = PatternLockView.PatternViewMode.CORRECT;
     public static final int PATTERN_MODE_WRONG = PatternLockView.PatternViewMode.WRONG;
 
+    protected Context context;
     protected View dialogView;
     protected AlertDialog alertdialog;
     protected DialogBinding b;
@@ -44,7 +45,7 @@ public class SDialog {
     protected int hintColor;
     protected SDialogUtils utils;
 
-    protected SDialog(Context context) {
+    protected void init() {
         alertdialog = new AlertDialog.Builder(context).create();
         alertdialog.setView(dialogView);
         alertdialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -104,6 +105,17 @@ public class SDialog {
         backgroundColor = utils.darkerColor(accentColor, .1f);
         hintColor = utils.lighterColor(accentColor, .4f);
         accentColor = utils.lighterColor(accentColor, .1f);
+    }
+
+    protected void updateTheme() {
+        switch (theme) {
+            case THEME_BY_SYSTEM -> {
+                if (utils.nightModeON()) darkThemeColors();
+                else lightThemeColors();
+            }
+            case THEME_DARK -> darkThemeColors();
+            case THEME_LIGHT -> lightThemeColors();
+        }
     }
 
     protected static class DialogBinding {

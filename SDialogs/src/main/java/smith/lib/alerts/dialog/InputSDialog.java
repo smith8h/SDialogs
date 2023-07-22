@@ -22,6 +22,8 @@ import android.graphics.*;
 import android.graphics.drawable.Drawable;
 import android.view.View;
 
+import smith.lib.alerts.dialog.callbacks.OnInputClickCallBack;
+
     public class InputSDialog extends SDialog {
 
     public InputSDialog(Context context) {
@@ -125,13 +127,8 @@ import android.view.View;
     }
     
     private void update() {
-        if (theme == THEME_BY_SYSTEM) {
-            if (nightModeON()) darkThemeColors();
-            else lightThemeColors();
-        } else if (theme == THEME_DARK) darkThemeColors();
-        else if (theme == THEME_LIGHT) lightThemeColors();
-        
-        setBackgroundColor(b.main, backgroundColor);
+        updateTheme();
+        utils.backgroundColor(b.main, backgroundColor);
         b.icon.setColorFilter(iconColor);
         b.title.setTextColor(titleColor);
         b.text.setTextColor(textColor);

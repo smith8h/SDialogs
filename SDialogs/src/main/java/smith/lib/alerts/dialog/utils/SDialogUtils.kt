@@ -8,6 +8,7 @@ import android.graphics.drawable.*
 import android.graphics.drawable.shapes.RoundRectShape
 import android.os.Build
 import android.util.TypedValue
+import android.view.Gravity
 import android.view.View
 import androidx.annotation.RequiresApi
 
@@ -119,7 +120,7 @@ class SDialogUtils(var context: Context) {
         // Set the layer list
         val layers = arrayOfNulls<Drawable>(2)
         layers[0] = backgroundDrawable
-        layers[1] = ScaleDrawable(progressDrawable, 0, 1f, -1f)
+        layers[1] = ScaleDrawable(progressDrawable, Gravity.START, 1f, -1f)
 
         val layerDrawable = LayerDrawable(layers)
         layerDrawable.setId(0, android.R.id.background)
