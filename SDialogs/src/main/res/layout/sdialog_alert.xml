@@ -40,7 +40,7 @@
                 android:layout_height="wrap_content"
                 android:alpha=".9"
                 android:textColor="#000"
-                android:textSize="19sp"
+                android:textSize="20sp"
                 android:textStyle="bold"
                 tools:text="Title of SDialog" />
         </LinearLayout>
@@ -48,17 +48,16 @@
         <smith.lib.views.scroll.SScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:overScrollMode="ifContentScrolls"
-            android:padding="0dp"
+            android:overScrollMode="always"
             android:scrollbars="none"
-            app:maxHeight="460dp">
+            app:maxHeight="450dp">
 
             <TextView
                 android:id="@+id/text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:alpha=".8"
-                android:textColor="@android:color/white"
+                android:textColor="#000"
                 android:textSize="16sp"
                 tools:text="Dummy long text of SDialog" />
         </smith.lib.views.scroll.SScrollView>
@@ -75,7 +74,8 @@
                 android:id="@+id/neutral"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="8dp"
+                android:paddingVertical="8dp"
+                android:paddingHorizontal="18dp"
                 android:textColor="#A7B4C5"
                 android:textSize="16sp"
                 android:textStyle="bold"
@@ -91,8 +91,8 @@
                 android:id="@+id/negative"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="15dp"
-                android:padding="8dp"
+                android:paddingVertical="8dp"
+                android:paddingHorizontal="18dp"
                 android:textColor="#A7B4C5"
                 android:textSize="16sp"
                 android:textStyle="bold"
@@ -103,7 +103,8 @@
                 android:id="@+id/positive"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="8dp"
+                android:paddingVertical="8dp"
+                android:paddingHorizontal="18dp"
                 android:textColor="#A7B4C5"
                 android:textSize="16sp"
                 android:textStyle="bold"
