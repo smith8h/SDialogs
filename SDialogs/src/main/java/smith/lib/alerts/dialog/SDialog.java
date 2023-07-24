@@ -17,6 +17,10 @@ import androidx.annotation.*;
 import androidx.appcompat.app.AlertDialog;
 import co.encept.patternlockview.PatternLockView;
 
+/**
+ * The parent and main class of SDialog lib.
+ * this class handles the repeated and main methods of setters and getters for all types of SDialogs.
+ */
 public class SDialog {
 
     /**
@@ -91,6 +95,9 @@ public class SDialog {
 
     /**
      * Set icon for the current SDialog.
+     * <ul>
+     *     <li> This setter wont work on {@link CustomSDialog} as it is only for customization.</li>
+     * </ul>
      * @param icon As Int resource (R.drawable.icon).
      */
     public void setIconResource(@DrawableRes int icon) {
@@ -100,6 +107,9 @@ public class SDialog {
 
     /**
      * Set icon for the current SDialog.
+     * <ul>
+     *     <li> This setter wont work on {@link CustomSDialog} as it is only for customization.</li>
+     * </ul>
      * @param icon As {@link Drawable}.
      */
     public void setIconDrawable(Drawable icon) {
@@ -109,6 +119,9 @@ public class SDialog {
 
     /**
      * Set icon for the current SDialog.
+     * <ul>
+     *     <li> This setter wont work on {@link CustomSDialog} as it is only for customization.</li>
+     * </ul>
      * @param icon As {@link Bitmap}.
      */
     public void setIconBitmap(Bitmap icon) {
@@ -118,6 +131,10 @@ public class SDialog {
 
     /**
      * Set title from string to current SDialog.
+     * <ul>
+     *     <li> This setter wont work on {@link CustomSDialog} as it is only for customization.</li>
+     * </ul>
+     * @param title String title.
      */
     public void setTitle(String title) {
         b.title.setText(title);
@@ -125,13 +142,21 @@ public class SDialog {
 
     /**
      * Set text from int resource to current SDialog.
+     * <ul>
+     *     <li> This setter wont work on {@link CustomSDialog} as it is only for customization.</li>
+     * </ul>
+     * @param resTitle Int resource title (R.string.title).
      */
     public void setTitle(@StringRes int resTitle) {
         b.title.setText(resTitle);
     }
 
     /**
-     * Set text from string to current SDialog.
+     * Set text from {@link String} or {@link CharSequence} to current SDialog.
+     * <ul>
+     *     <li> This setter wont work on {@link CustomSDialog} as it is only for customization.</li>
+     * </ul>
+     * @param text {@link CharSequence} text.
      */
     public void setText(CharSequence text) {
         b.text.setText(text);
@@ -139,6 +164,10 @@ public class SDialog {
 
     /**
      * Set text from int resource to current SDialog.
+     * <ul>
+     *     <li> This setter wont work on {@link CustomSDialog} as it is only for customization.</li>
+     * </ul>
+     * @param text Int resource text (R.string.text).
      */
     public void setText(@StringRes int text) {
         b.text.setText(text);
@@ -146,6 +175,10 @@ public class SDialog {
 
     /**
      * Set the accent color of current SDialog to create the theme from it.
+     * <ul>
+     *     <li> This setter wont work on {@link CustomSDialog} as it is only for customization.</li>
+     * </ul>
+     * @param color As Int color.
      */
     public void setAccentColor(int color) {
         accentColor = color;
@@ -153,6 +186,10 @@ public class SDialog {
 
     /**
      * Set the accent color of current SDialog to create the whole theme colors.
+     * <ul>
+     *     <li> This setter wont work on {@link CustomSDialog} as it is only for customization.</li>
+     * </ul>
+     * @param color As string hex color.
      */
     public void setAccentColor(String color) {
         accentColor = Color.parseColor(color);
@@ -160,6 +197,9 @@ public class SDialog {
 
     /**
      * Set SDialog theme as light, dark or by system.
+     * <ul>
+     *     <li> This setter wont work on {@link CustomSDialog} as it is only for customization.</li>
+     * </ul>
      * @param theme Options are {@link SDialog#THEME_DARK},
      * {@link SDialog#THEME_LIGHT} and {@link SDialog#THEME_BY_SYSTEM}.
      */
@@ -169,6 +209,9 @@ public class SDialog {
 
     /**
      * @return Accent color of current SDialog showed as light theme or dark theme.
+     * <ul>
+     *     <li> This setter wont work on {@link CustomSDialog} as it is only for customization.</li>
+     * </ul>
      */
     public int getAccentColor() {
         return accentColor;
@@ -176,6 +219,9 @@ public class SDialog {
 
     /**
      * @return Title color of current SDialog showed as light theme or dark theme.
+     * <ul>
+     *     <li> This setter wont work on {@link CustomSDialog} as it is only for customization.</li>
+     * </ul>
      */
     public int getTitleColor() {
         return titleColor;
@@ -183,6 +229,9 @@ public class SDialog {
 
     /**
      * @return Background color of current SDialog showed as light theme or dark theme.
+     * <ul>
+     *     <li> This setter wont work on {@link CustomSDialog} as it is only for customization.</li>
+     * </ul>
      */
     public int getBackgroundColor() {
         return backgroundColor;
@@ -190,7 +239,7 @@ public class SDialog {
 
     /**
      * Lock the SDialog to the dismissing when click outside the sdialog window.
-     * @param cancelable The situation to lock/ unlock cancel when click outside the border.
+     * @param cancelable As {@link Boolean} to lock/ unlock cancel when click outside the border.
      */
     public void setCancelable(boolean cancelable) {
         alertdialog.setCancelable(cancelable);
@@ -232,10 +281,12 @@ public class SDialog {
     }
 
     /**
-     * Dismiss the current showed SDialog.
+     * Dismiss the current displayed SDialog.
      */
     public void dismiss() {
-        alertdialog.dismiss();
+        ((Activity)context).runOnUiThread(() -> {
+            alertdialog.dismiss();
+        });
     }
 
     protected void lightThemeColors() {

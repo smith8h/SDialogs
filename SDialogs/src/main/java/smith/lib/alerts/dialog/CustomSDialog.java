@@ -2,6 +2,8 @@ package smith.lib.alerts.dialog;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
 import android.view.View;
 
 import androidx.annotation.NonNull;
@@ -28,8 +30,41 @@ public class CustomSDialog extends SDialog {
     }
 
     @Override
+    public void setIconResource(int icon) {}
+
+    @Override
+    public void setIconDrawable(Drawable icon) {}
+
+    @Override
+    public void setIconBitmap(Bitmap icon) {}
+
+    @Override
     public void setTitle(String title) {}
 
     @Override
     public void setTitle(int resTitle) {}
+
+    @Override
+    public void setText(CharSequence text) {}
+
+    @Override
+    public void setText(int text) {}
+
+    @Override
+    public void setTheme(int theme) {}
+
+    @Override
+    public int getBackgroundColor() {
+        return -1;
+    }
+
+    @Override
+    public int getTitleColor() {
+        return -1;
+    }
+
+    @Override
+    public int getAccentColor() {
+        return -1;
+    }
 }
