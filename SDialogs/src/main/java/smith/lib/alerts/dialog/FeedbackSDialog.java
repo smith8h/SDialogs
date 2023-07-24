@@ -49,10 +49,6 @@ public class FeedbackSDialog extends SDialog {
         b.icon.setImageBitmap(icon);
     }
 
-    public void setTitle(String title) {
-        b.title.setText(title);
-    }
-
     public void setText(String text) {
         b.text.setText(text);
     }
@@ -100,9 +96,9 @@ public class FeedbackSDialog extends SDialog {
     }
 
     @Override
-    public void show(long dur) {
+    public void show(long duration) {
         update();
-        super.show(dur);
+        super.show(duration);
     }
 
     private void update() {

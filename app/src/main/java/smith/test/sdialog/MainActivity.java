@@ -1,4 +1,4 @@
-package smith.test;
+package smith.test.sdialog;
 
 import android.os.Build;
 import android.os.Bundle;

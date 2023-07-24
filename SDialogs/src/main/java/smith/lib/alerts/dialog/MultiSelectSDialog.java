@@ -129,7 +129,7 @@ public class MultiSelectSDialog extends SDialog {
     }
     
     @Override
-    public void show(long dur) {
+    public void show(long duration) {
         update();
         super.show();
     }

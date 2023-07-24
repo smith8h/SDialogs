@@ -135,7 +135,7 @@ public class ProgressSDialog extends SDialog {
     }
     
     @Override
-    public void show(long dur) {
+    public void show(long duration) {
         setCancelable(false);
         update();
         super.show();

@@ -48,13 +48,12 @@
         </LinearLayout>
 
         <ProgressBar
-             android:layout_height="8dp"
+             android:layout_height="6dp"
              android:layout_width="match_parent"
              android:layout_marginBottom="10dp"
              android:indeterminate="false"
              style="?android:attr/progressBarStyleHorizontal"
-             android:id="@+id/progress"
-             android:progressDrawable="@drawable/bg_sdialog_progress"/>
+             android:id="@+id/progress" />
 
         <LinearLayout
              android:layout_height="wrap_content"

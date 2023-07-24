@@ -101,9 +101,9 @@ public class PatternSDialog extends SDialog {
     }
     
     @Override
-    public void show(long dur) {
+    public void show(long duration) {
         update();
-        super.show(dur);
+        super.show(duration);
     }
     
     public void dismiss(int duration) {

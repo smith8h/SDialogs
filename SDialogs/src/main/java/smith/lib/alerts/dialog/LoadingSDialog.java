@@ -63,10 +63,10 @@ public class LoadingSDialog extends SDialog {
     }
     
     @Override
-    public void show(long dur) {
+    public void show(long duration) {
         setCancelable(false);
         update();
-        super.show(dur);
+        super.show(duration);
     }
         
     private void update() {

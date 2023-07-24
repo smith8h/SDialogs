@@ -5,14 +5,15 @@ plugins {
 }
 
 android {
-    namespace 'smith.test'
+    namespace 'smith.test.sdialog'
 
-    compileSdk 33
+    compileSdk 34
+    buildToolsVersion '34.0.0'
 
     defaultConfig {
-        applicationId 'smith.test'
+        applicationId 'smith.test.sdialog'
         minSdk 21
-        targetSdk 33
+        targetSdk 34
         versionCode 1
         versionName '1.0'
     }
@@ -28,15 +29,14 @@ android {
         sourceCompatibility JavaVersion.VERSION_17
         targetCompatibility JavaVersion.VERSION_17
     }
+
 }
 
 dependencies {
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation 'com.google.android.material:material:1.9.0'
-
-    implementation project(path: ':SDialogs')
-
     implementation 'androidx.core:core-ktx:1.10.1'
+    implementation project(path: ':SDialogs')
 }
 

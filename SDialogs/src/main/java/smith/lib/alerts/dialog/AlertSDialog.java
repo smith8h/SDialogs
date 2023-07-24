@@ -3,15 +3,12 @@ package smith.lib.alerts.dialog;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
-import android.graphics.*;
-import android.graphics.drawable.Drawable;
 import android.view.View;
 
-import androidx.annotation.DrawableRes;
-import androidx.annotation.StringRes;
-
+import kotlin.Suppress;
 import smith.lib.alerts.dialog.callbacks.OnClickCallBack;
 
+@Suppress(names = {"Unused"})
 public class AlertSDialog extends SDialog {
 
     @SuppressLint("InflateParams")
@@ -19,33 +16,6 @@ public class AlertSDialog extends SDialog {
         super.context = context;
         dialogView = ((Activity) context).getLayoutInflater().inflate(R.layout.sdialog_alert, null);
         init();
-    }
-    
-    public void setIconResource(@DrawableRes int icon) {
-        b.icon.setVisibility(View.VISIBLE);
-        b.icon.setImageResource(icon);
-    }
-    
-    public void setIconDrawable(Drawable icon) {
-        b.icon.setVisibility(View.VISIBLE);
-    	b.icon.setImageDrawable(icon);
-    }
-    
-    public void setIconBitmap(Bitmap icon) {
-        b.icon.setVisibility(View.VISIBLE);
-    	b.icon.setImageBitmap(icon);
-    }
-
-    public void setTitle(String title) {
-        b.title.setText(title);
-    }
-
-    public void setText(CharSequence text) {
-        b.text.setText(text);
-    }
-    
-    public void setText(@StringRes int text) {
-    	b.text.setText(text);
     }
 
     public void setPositiveButton(String positive, OnClickCallBack callback) {
@@ -77,30 +47,6 @@ public class AlertSDialog extends SDialog {
             dismiss();
         });
     }
-
-    public void setAccentColor(int color) {
-        accentColor = color;
-    }
-
-    public void setAccentColor(String color) {
-        accentColor = Color.parseColor(color);
-    }
-
-    public void setTheme(int theme) {
-        super.theme = theme;
-    }
-    
-    public int getAccentColor() {
-        return accentColor;
-    }
-    
-    public int getTitleColor() {
-        return titleColor;
-    }
-    
-    public int getBackgroundColor() {
-        return backgroundColor;
-    }
     
     public int getTextColor() {
         return textColor;
@@ -113,9 +59,9 @@ public class AlertSDialog extends SDialog {
     }
     
     @Override
-    public void show(long dur) {
+    public void show(long duration) {
         update();
-        super.show(dur);
+        super.show(duration);
     }
     
     private void update() {

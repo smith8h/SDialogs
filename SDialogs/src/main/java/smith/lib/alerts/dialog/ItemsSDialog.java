@@ -104,7 +104,7 @@ import smith.lib.alerts.dialog.callbacks.OnItemClickCallBack;
     }
     
     @Override
-    public void show(long dur) {
+    public void show(long duration) {
         update();
         super.show();
     }

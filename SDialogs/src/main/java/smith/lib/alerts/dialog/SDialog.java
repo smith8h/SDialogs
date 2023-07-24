@@ -1,6 +1,8 @@
 package smith.lib.alerts.dialog;
 
+import android.app.Activity;
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.*;
 import android.os.CountDownTimer;
@@ -11,29 +13,62 @@ import com.google.android.material.textfield.*;
 import smith.lib.alerts.dialog.callbacks.OnDismissCallBack;
 import smith.lib.alerts.dialog.utils.SDialogUtils;
 import smith.lib.views.recyclerview.SRecyclerView;
-import androidx.annotation.NonNull;
+import androidx.annotation.*;
 import androidx.appcompat.app.AlertDialog;
 import co.encept.patternlockview.PatternLockView;
 
 public class SDialog {
 
+    /**
+     * The default color suggested for use in SDialogs.
+     */
     public static final int COLOR_DEFAULT = 0xFFA7B4C5;
 
+    /**
+     * The light or dark theme setting of SDialogs, based on device's settings.
+     */
     public static final int THEME_BY_SYSTEM = 0;
+    /**
+     * The dark theme setting of SDialogs.
+     */
     public static final int THEME_DARK = 1;
+    /**
+     * The light theme setting of SDialogs.
+     */
     public static final int THEME_LIGHT = 2;
 
+    /**
+     * The constant key of id of items in {@link  MultiSelectSDialog}.
+     * Used to return the id of checked items.
+     */
     public static final String KEY_ITEM_ID = "id";
+    /**
+     * The constant key of text of items in {@link  MultiSelectSDialog}.
+     * Used to return the text string of checked items.
+     */
     public static final String KEY_ITEM_TEXT = "text";
+    /**
+     * The constant key of checked items in {@link  MultiSelectSDialog}.
+     * Used to return the condition of checked items.
+     */
     public static final String KEY_ITEM_CHECKED = "checked";
 
+    /**
+     * The correct mode of pattern drew in PatternSDialog.
+     * Will show the green color to refer to correct pattern.
+     */
     public static final int PATTERN_MODE_CORRECT = PatternLockView.PatternViewMode.CORRECT;
+    /**
+     * The wrong mode of pattern drew in PatternSDialog.
+     * Will show the red color to refer to wrong pattern.
+     */
     public static final int PATTERN_MODE_WRONG = PatternLockView.PatternViewMode.WRONG;
 
     protected Context context;
     protected View dialogView;
     protected AlertDialog alertdialog;
     protected DialogBinding b;
+    protected SDialogUtils utils;
 
     protected int iconColor;
     protected int titleColor;
@@ -43,7 +78,6 @@ public class SDialog {
     protected int backgroundColor;
     protected int theme = THEME_BY_SYSTEM;
     protected int hintColor;
-    protected SDialogUtils utils;
 
     protected void init() {
         alertdialog = new AlertDialog.Builder(context).create();
@@ -55,34 +89,151 @@ public class SDialog {
         utils = new SDialogUtils(context);
     }
 
+    /**
+     * Set icon for the current SDialog.
+     * @param icon As Int resource (R.drawable.icon).
+     */
+    public void setIconResource(@DrawableRes int icon) {
+        b.icon.setVisibility(View.VISIBLE);
+        b.icon.setImageResource(icon);
+    }
+
+    /**
+     * Set icon for the current SDialog.
+     * @param icon As {@link Drawable}.
+     */
+    public void setIconDrawable(Drawable icon) {
+        b.icon.setVisibility(View.VISIBLE);
+        b.icon.setImageDrawable(icon);
+    }
+
+    /**
+     * Set icon for the current SDialog.
+     * @param icon As {@link Bitmap}.
+     */
+    public void setIconBitmap(Bitmap icon) {
+        b.icon.setVisibility(View.VISIBLE);
+        b.icon.setImageBitmap(icon);
+    }
+
+    /**
+     * Set title from string to current SDialog.
+     */
+    public void setTitle(String title) {
+        b.title.setText(title);
+    }
+
+    /**
+     * Set text from int resource to current SDialog.
+     */
+    public void setTitle(@StringRes int resTitle) {
+        b.title.setText(resTitle);
+    }
+
+    /**
+     * Set text from string to current SDialog.
+     */
+    public void setText(CharSequence text) {
+        b.text.setText(text);
+    }
+
+    /**
+     * Set text from int resource to current SDialog.
+     */
+    public void setText(@StringRes int text) {
+        b.text.setText(text);
+    }
+
+    /**
+     * Set the accent color of current SDialog to create the theme from it.
+     */
+    public void setAccentColor(int color) {
+        accentColor = color;
+    }
+
+    /**
+     * Set the accent color of current SDialog to create the whole theme colors.
+     */
+    public void setAccentColor(String color) {
+        accentColor = Color.parseColor(color);
+    }
+
+    /**
+     * Set SDialog theme as light, dark or by system.
+     * @param theme Options are {@link SDialog#THEME_DARK},
+     * {@link SDialog#THEME_LIGHT} and {@link SDialog#THEME_BY_SYSTEM}.
+     */
+    public void setTheme(int theme) {
+        this.theme = theme;
+    }
+
+    /**
+     * @return Accent color of current SDialog showed as light theme or dark theme.
+     */
+    public int getAccentColor() {
+        return accentColor;
+    }
+
+    /**
+     * @return Title color of current SDialog showed as light theme or dark theme.
+     */
+    public int getTitleColor() {
+        return titleColor;
+    }
+
+    /**
+     * @return Background color of current SDialog showed as light theme or dark theme.
+     */
+    public int getBackgroundColor() {
+        return backgroundColor;
+    }
+
+    /**
+     * Lock the SDialog to the dismissing when click outside the sdialog window.
+     * @param cancelable The situation to lock/ unlock cancel when click outside the border.
+     */
     public void setCancelable(boolean cancelable) {
         alertdialog.setCancelable(cancelable);
     }
 
+    /**
+     * OnDismissCallBack triggered whenever the sdialog is dismissed.
+     * @param callback OnDismissCallBack interface.
+     */
     public void setOnDismissCallBack(OnDismissCallBack callback) {
         alertdialog.setOnDismissListener(dialogInterface -> callback.onDismiss());
     }
 
+    /**
+     * Show the SDialog.
+     */
     public void show() {
-        alertdialog.show();
-        utils.animateView(dialogView);
+        ((Activity)context).runOnUiThread(() -> {
+            alertdialog.show();
+            utils.animateView(dialogView);
+        });
     }
 
-    public void show(long dur) {
-        alertdialog.show();
-        utils.animateView(dialogView);
-        new CountDownTimer(dur, 1) {
-            @Override
-            public void onTick(long duration) {
-            }
-
-            @Override
-            public void onFinish() {
-                dismiss();
-            }
-        }.start();
+    /**
+     * Show the SDialog for a duration of time.
+     * @param duration The duration in milliseconds.
+     */
+    public void show(long duration) {
+        ((Activity)context).runOnUiThread(() -> {
+            alertdialog.show();
+            utils.animateView(dialogView);
+            new CountDownTimer(duration, 10) {
+                @Override public void onTick(long duration) {}
+                @Override public void onFinish() {
+                    dismiss();
+                }
+            }.start();
+        });
     }
 
+    /**
+     * Dismiss the current showed SDialog.
+     */
     public void dismiss() {
         alertdialog.dismiss();
     }

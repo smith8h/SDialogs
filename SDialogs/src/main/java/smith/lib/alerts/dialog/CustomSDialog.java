@@ -3,10 +3,12 @@ package smith.lib.alerts.dialog;
 import android.app.Activity;
 import android.content.Context;
 import android.view.View;
+
 import androidx.annotation.NonNull;
+
 import smith.lib.alerts.dialog.callbacks.OnBindCustomViewCallBack;
 
-    public class CustomSDialog extends SDialog {
+public class CustomSDialog extends SDialog {
 
     public CustomSDialog(Context context) {
         this.context = context;
@@ -24,4 +26,10 @@ import smith.lib.alerts.dialog.callbacks.OnBindCustomViewCallBack;
         callback.onBindCustomView(view);
         init();
     }
+
+    @Override
+    public void setTitle(String title) {}
+
+    @Override
+    public void setTitle(int resTitle) {}
 }
