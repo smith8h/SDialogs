@@ -7,9 +7,17 @@ import android.view.View;
 import kotlin.Suppress;
 import smith.lib.alerts.dialog.callbacks.OnClickCallBack;
 
+/**
+ * The beautiful and coolest class of SDialog lib.
+ * this class create an alert SDialogs that alerts the user what going on.
+ */
 @Suppress(names = {"Unused"})
 public class AlertSDialog extends SDialog {
 
+    /**
+     * Pass the current context you using this sdialog from.
+     * @param context Current context (or Activity).
+     */
     @SuppressLint("InflateParams")
     public AlertSDialog(Context context) {
         super.context = context;
@@ -17,36 +25,54 @@ public class AlertSDialog extends SDialog {
         init();
     }
 
-    public void setPositiveButton(String positive, OnClickCallBack callback) {
+    /**
+     * Declare displayed positive button text and its functionality.
+     * @param text String represent the text of positive button (e.g. "OK")
+     * @param callback Click callback using {@link OnClickCallBack}
+     */
+    public void setPositiveButton(String text, OnClickCallBack callback) {
         b.holder.setVisibility(View.VISIBLE);
         b.positive.setVisibility(View.VISIBLE);
-        b.positive.setText(positive);
+        b.positive.setText(text);
         b.positive.setOnClickListener(v -> {
             callback.onClick();
             dismiss();
         });
     }
 
-    public void setNegativeButton(String negative, OnClickCallBack callback) {
+    /**
+     * Declare displayed negative button text and its functionality.
+     * @param text String represent the text of negative button (e.g. "CANCEL")
+     * @param callback Click callback using {@link OnClickCallBack}
+     */
+    public void setNegativeButton(String text, OnClickCallBack callback) {
         b.holder.setVisibility(View.VISIBLE);
         b.negative.setVisibility(View.VISIBLE);
-        b.negative.setText(negative);
+        b.negative.setText(text);
         b.negative.setOnClickListener(v -> {
             callback.onClick();
             dismiss();
         });
     }
 
-    public void setNeutralButton(String neutral, OnClickCallBack callback) {
+    /**
+     * Declare displayed neutral button text and its functionality.
+     * @param text String represent the text of neutral button (e.g. "HIDE")
+     * @param callback Click callback using {@link OnClickCallBack}
+     */
+    public void setNeutralButton(String text, OnClickCallBack callback) {
         b.holder.setVisibility(View.VISIBLE);
         b.neutral.setVisibility(View.VISIBLE);
-        b.neutral.setText(neutral);
+        b.neutral.setText(text);
         b.neutral.setOnClickListener(v -> {
             callback.onClick();
             dismiss();
         });
     }
-    
+
+    /**
+     * @return Text color of AlertSDialog as displayed as Dark or Light Theme.
+     */
     public int getTextColor() {
         return textColor;
     }

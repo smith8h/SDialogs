@@ -2,25 +2,27 @@ package smith.lib.alerts.dialog;
 
 import android.app.Activity;
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.Color;
+import android.graphics.*;
 import android.graphics.drawable.*;
 import android.os.CountDownTimer;
 import android.view.*;
 import android.widget.*;
 import com.google.android.material.slider.Slider;
 import com.google.android.material.textfield.*;
+import kotlin.Suppress;
 import smith.lib.alerts.dialog.callbacks.OnDismissCallBack;
 import smith.lib.alerts.dialog.utils.SDialogUtils;
 import smith.lib.views.recyclerview.SRecyclerView;
 import androidx.annotation.*;
 import androidx.appcompat.app.AlertDialog;
+import java.util.Objects;
 import co.encept.patternlockview.PatternLockView;
 
 /**
  * The parent and main class of SDialog lib.
  * this class handles the repeated and main methods of setters and getters for all types of SDialogs.
  */
+@Suppress(names = {"Unused"})
 public class SDialog {
 
     /**
@@ -87,7 +89,8 @@ public class SDialog {
         alertdialog = new AlertDialog.Builder(context).create();
         alertdialog.setView(dialogView);
         alertdialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        alertdialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        Objects.requireNonNull(alertdialog.getWindow())
+                .setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
         b = new DialogBinding(dialogView);
         utils = new SDialogUtils(context);
@@ -284,9 +287,7 @@ public class SDialog {
      * Dismiss the current displayed SDialog.
      */
     public void dismiss() {
-        ((Activity)context).runOnUiThread(() -> {
-            alertdialog.dismiss();
-        });
+        ((Activity)context).runOnUiThread(() -> alertdialog.dismiss());
     }
 
     protected void lightThemeColors() {

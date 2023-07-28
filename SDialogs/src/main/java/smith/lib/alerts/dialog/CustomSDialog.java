@@ -5,11 +5,20 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.view.View;
-
 import androidx.annotation.NonNull;
 
+import kotlin.Suppress;
 import smith.lib.alerts.dialog.callbacks.OnBindCustomViewCallBack;
 
+/**
+ * The fully customized SDialog, this SDialog type will only handle the view the dialog that you
+ * desire to design it you way.
+ * <ul>
+ *     <li>Pass {@link View} as dialog view.</li>
+ *     <li>Pass layout resource as dialog layout.</li>
+ * </ul>
+ */
+@Suppress(names = {"Unused"})
 public class CustomSDialog extends SDialog {
 
     public CustomSDialog(Context context) {
