@@ -1,20 +1,6 @@
-    /*
-     *
-     *
-     *    THIS LIBRARY CREATED BY HUSSEIN SHAKIR (SMITH)
-     *
-     *	TELEGRAM : @SMITHDEV
-     *	YOUTUBE : HUSSEIN SMITH (@SMITH8H)
-     *
-     *	YOU GUYS ARE NOT ALLOWED TO MODIFY THIS LIBRARY,
-     *	WITHOT ANY PERMISSION FROM ME PERSONALLY..
-     *	ALL RIGHTS RESERVED © HUSSEIN SHAKIR, Dec 2022.
-     *
-     *
-     */
-     
 package smith.lib.alerts.dialog;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.ColorStateList;
@@ -22,110 +8,206 @@ import android.graphics.*;
 import android.graphics.drawable.Drawable;
 import android.view.View;
 
+import androidx.annotation.DrawableRes;
+import androidx.annotation.StringRes;
+
+import java.util.Objects;
+
+import smith.lib.alerts.dialog.callbacks.OnClickCallBack;
 import smith.lib.alerts.dialog.callbacks.OnInputClickCallBack;
 
-    public class InputSDialog extends SDialog {
+public class InputSDialog extends SDialog {
 
+    /**
+     * Pass the current context you using this sdialog from.
+     * @param context Current context (or Activity).
+     */
+    @SuppressLint("InflateParams")
     public InputSDialog(Context context) {
         this.context = context;
-        dialogView = ((Activity) context).getLayoutInflater().inflate(R.layout.sdialog_input, null);
+        dialogView = ((Activity)context).getLayoutInflater().inflate(R.layout.sdialog_input, null);
         init();
     }
-    
-    public void setIconResource(int icon) {
+
+    /**
+     * Set icon for the current SDialog.
+     *
+     * @param icon As Int resource (R.drawable.icon).
+     */
+    public void setIconResource(@DrawableRes int icon) {
         b.icon.setVisibility(View.VISIBLE);
-    	b.icon.setImageResource(icon);
+        b.icon.setImageResource(icon);
     }
-    
+
+    /**
+     * Set icon for the current SDialog.
+     *
+     * @param icon As {@link Drawable}.
+     */
     public void setIconDrawable(Drawable icon) {
         b.icon.setVisibility(View.VISIBLE);
-    	b.icon.setImageDrawable(icon);
+        b.icon.setImageDrawable(icon);
     }
-    
+
+    /**
+     * Set icon for the current SDialog.
+     *
+     * @param icon As {@link Bitmap}.
+     */
     public void setIconBitmap(Bitmap icon) {
         b.icon.setVisibility(View.VISIBLE);
-    	b.icon.setImageBitmap(icon);
+        b.icon.setImageBitmap(icon);
     }
-    
+
+    /**
+     * Set title from string to current SDialog.
+     *
+     * @param title String title.
+     */
     public void setTitle(String title) {
         b.title.setText(title);
     }
 
-    public void setText(String text) {
-        b.text.setVisibility(View.VISIBLE);
+    /**
+     * Set text from int resource to current SDialog.
+     *
+     * @param resTitle Int resource title (R.string.title).
+     */
+    public void setTitle(@StringRes int resTitle) {
+        b.title.setText(resTitle);
+    }
+
+    /**
+     * Set text from {@link String} or {@link CharSequence} to current SDialog.
+     *
+     * @param text {@link CharSequence} text.
+     */
+    public void setText(CharSequence text) {
         b.text.setText(text);
     }
-    
-    public void setText(int text) {
-        b.text.setVisibility(View.VISIBLE);
+
+    /**
+     * Set text from int resource to current SDialog.
+     *
+     * @param text Int resource text (R.string.text).
+     */
+    public void setText(@StringRes int text) {
         b.text.setText(text);
     }
-    
-    public void setPositiveButtonAction(String positive, OnInputClickCallBack callback) {
-        b.positive.setText(positive);
-        b.positive.setOnClickListener(v-> {
-            callback.onClick(b.inputed.getText().toString());
+
+    /**
+     * Declare displayed positive button text and its functionality.
+     * @param text     String represent the text of positive button (e.g. "Confirm")
+     * @param callback Click callback using {@link OnInputClickCallBack}
+     */
+    public void setPositiveButtonAction(String text, OnInputClickCallBack callback) {
+        b.positive.setText(text);
+        b.positive.setOnClickListener(v -> {
+            callback.onClick(Objects.requireNonNull(b.inputed.getText()).toString());
             dismiss();
         });
     }
-    
-    public void setNegativeButtonText(String negative) {
-        b.negative.setText(negative);
-        b.negative.setOnClickListener(v-> dismiss());
+
+    /**
+     * Declare displayed negative button text.
+     * @param text     String represent the text of negative button (e.g. "Cancel")
+     */
+    public void setNegativeButtonText(String text) {
+        b.negative.setText(text);
+        b.negative.setOnClickListener(v -> dismiss());
     }
-    
+
+    /**
+     * The hint displayed inside the text input field.
+     * @param hint Text as {@link String}
+     */
     public void setInputFieldHint(String hint) {
         b.input.setHint(hint);
     }
-    
+
+    /**
+     * The text in the text input field.
+     * @param text As {@link String}
+     */
     public void setInputFieldText(String text) {
-    	b.input.getEditText().setText(text);
+        Objects.requireNonNull(b.input.getEditText()).setText(text);
     }
-    
+
+    /**
+     * Set the accent color of current SDialog to create the theme from it.
+     *
+     * @param color As Int color.
+     */
     public void setAccentColor(int color) {
         accentColor = color;
     }
 
+    /**
+     * Set the accent color of current SDialog to create the whole theme colors.
+     *
+     * @param color As string hex color.
+     */
     public void setAccentColor(String color) {
         accentColor = Color.parseColor(color);
     }
 
+    /**
+     * Set SDialog theme as light, dark or by system.
+     *
+     * @param theme Options are {@link SDialog#THEME_DARK},
+     *              {@link SDialog#THEME_LIGHT} and {@link SDialog#THEME_BY_SYSTEM}.
+     */
     public void setTheme(int theme) {
-        super.theme = theme;
+        this.theme = theme;
     }
-    
+
+    /**
+     * @return Accent color of current SDialog showed as light theme or dark theme.
+     */
     public int getAccentColor() {
         return accentColor;
     }
-    
+
+    /**
+     * @return Title color of current SDialog showed as light theme or dark theme.
+     */
     public int getTitleColor() {
         return titleColor;
     }
-    
+
+    /**
+     * @return Background color of current SDialog showed as light theme or dark theme.
+     */
     public int getBackgroundColor() {
         return backgroundColor;
     }
-    
+
+    /**
+     * @return Text color of AlertSDialog as displayed as Dark or Light Theme.
+     */
     public int getTextColor() {
         return textColor;
     }
-    
+
+    /**
+     * @return Hint color of AlertSDialog as displayed as Dark or Light Theme.
+     */
     public int getHintColor() {
         return hintColor;
     }
-    
+
     @Override
     public void show() {
         update();
         super.show();
     }
-    
+
     @Override
     public void show(long duration) {
         update();
         super.show();
     }
-    
+
     private void update() {
         updateTheme();
         utils.backgroundColor(b.main, backgroundColor);
@@ -134,20 +216,15 @@ import smith.lib.alerts.dialog.callbacks.OnInputClickCallBack;
         b.text.setTextColor(textColor);
         b.positive.setTextColor(accentColor);
         b.negative.setTextColor(accentColor);
-        
-        int[][] states = new int[][] {
-            new int[] { android.R.attr.state_focused },
-            new int[] { android.R.attr.state_hovered },
-            new int[] { android.R.attr.state_enabled },
-            new int[] { }
+
+        int[][] states = new int[][]{
+                new int[]{android.R.attr.state_focused},
+                new int[]{android.R.attr.state_hovered},
+                new int[]{android.R.attr.state_enabled},
+                new int[]{}
         };
-        int[] colors = new int[] {
-            accentColor,
-            accentColor,
-            accentColor,
-            hintColor
-        };
-        
+        int[] colors = new int[]{ accentColor, accentColor, accentColor, hintColor };
+
         b.input.setBoxStrokeColorStateList(new ColorStateList(states, colors));
         b.input.setDefaultHintTextColor(new ColorStateList(states, colors));
         b.input.setHintTextColor(new ColorStateList(states, colors));

@@ -4,12 +4,9 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
-import androidx.core.content.res.ResourcesCompat;
-
 import java.util.*;
 import smith.lib.alerts.dialog.*;
 import smith.lib.alerts.dialog.callbacks.OnDrawPatternCallBack;
@@ -56,6 +53,36 @@ public class MainActivity extends AppCompatActivity {
 
         });
         sdialog.setCancelable(true);
+        sdialog.setOnDismissCallBack(() -> {
+            Toast.makeText(this, "onDismiss", Toast.LENGTH_SHORT).show();
+        });
+        sdialog.show();
+    }
+
+    public void feedback(View view) {
+        FeedbackSDialog sDialog = new FeedbackSDialog(this);
+        sDialog.setTitle("Feedback SDialog!");
+        sDialog.setText("Your feedback is valuable, please rate our work.");
+        sDialog.setAccentColor(0xFFAD97BE);
+        sDialog.setTheme(SDialog.THEME_BY_SYSTEM);
+        sDialog.setOnFeedbackSubmitCallBack(isLiked ->
+                Toast.makeText(this, "isLiked " + isLiked, Toast.LENGTH_SHORT).show()
+        );
+        sDialog.show();
+    }
+
+    public void input(View v) {
+        InputSDialog sdialog = new InputSDialog(this);
+        sdialog.setAccentColor(0xFFAD97BE);
+        sdialog.setTheme(SDialog.THEME_BY_SYSTEM);
+        sdialog.setCancelable(false);
+        sdialog.setTitle("Input Your Name");
+        sdialog.setText("please write your full name in no more than 20 characters.");
+        sdialog.setInputFieldHint("Your Name");
+        sdialog.setPositiveButtonAction("Save", inputText -> {
+            Toast.makeText(this, inputText, Toast.LENGTH_SHORT).show();
+        });
+        sdialog.setNegativeButtonText("Close");
         sdialog.setOnDismissCallBack(() -> {
             Toast.makeText(this, "onDismiss", Toast.LENGTH_SHORT).show();
         });
@@ -218,23 +245,7 @@ public class MainActivity extends AppCompatActivity {
         sdialog.show();
     }
     
-    public void input(View v) {
-        InputSDialog sdialog = new InputSDialog(this);
-        sdialog.setAccentColor(0xFFAD97BE);
-        sdialog.setTheme(SDialog.THEME_BY_SYSTEM);
-        sdialog.setCancelable(false);
-        sdialog.setTitle("Input Your Name");
-        sdialog.setText("please write your full name in no more than 20 characters.");
-        sdialog.setInputFieldHint("Your Name");
-        sdialog.setPositiveButtonAction("Save", inputText -> {
-            Toast.makeText(this, inputText, Toast.LENGTH_SHORT).show();
-        });
-        sdialog.setNegativeButtonText("Close");
-        sdialog.setOnDismissCallBack(() -> {
-            Toast.makeText(this, "onDismiss", Toast.LENGTH_SHORT).show();
-        });
-        sdialog.show();
-    }
+
     
     public void loading(View v) {
         LoadingSDialog sdialog = new LoadingSDialog(this);
@@ -247,18 +258,6 @@ public class MainActivity extends AppCompatActivity {
         });
         sdialog.show(6*1000);
     }
-    
 
 
-    public void feedback(View view) {
-        FeedbackSDialog sDialog = new FeedbackSDialog(this);
-        sDialog.setTitle("Feedback SDialog!");
-        sDialog.setText("Your feedback is valuable, please rate our work.");
-        sDialog.setAccentColor(0xFFAD97BE);
-        sDialog.setTheme(SDialog.THEME_BY_SYSTEM);
-        sDialog.setOnFeedbackSubmitCallBack(isLiked -> {
-            Toast.makeText(this, "isLiked " + isLiked, Toast.LENGTH_SHORT).show();
-        });
-        sDialog.show();
-    }
 }

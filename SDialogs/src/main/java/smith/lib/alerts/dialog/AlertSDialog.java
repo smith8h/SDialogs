@@ -28,13 +28,14 @@ public class AlertSDialog extends SDialog {
     @SuppressLint("InflateParams")
     public AlertSDialog(Context context) {
         super.context = context;
-        dialogView = ((Activity)context).getLayoutInflater().inflate(R.layout.sdialog_alert, null);
+        dialogView = ((Activity) context).getLayoutInflater().inflate(R.layout.sdialog_alert, null);
         init();
     }
 
     /**
      * Declare displayed positive button text and its functionality.
-     * @param text String represent the text of positive button (e.g. "OK")
+     *
+     * @param text     String represent the text of positive button (e.g. "OK")
      * @param callback Click callback using {@link OnClickCallBack}
      */
     public void setPositiveButton(String text, OnClickCallBack callback) {
@@ -49,7 +50,8 @@ public class AlertSDialog extends SDialog {
 
     /**
      * Declare displayed negative button text and its functionality.
-     * @param text String represent the text of negative button (e.g. "CANCEL")
+     *
+     * @param text     String represent the text of negative button (e.g. "CANCEL")
      * @param callback Click callback using {@link OnClickCallBack}
      */
     public void setNegativeButton(String text, OnClickCallBack callback) {
@@ -64,7 +66,8 @@ public class AlertSDialog extends SDialog {
 
     /**
      * Declare displayed neutral button text and its functionality.
-     * @param text String represent the text of neutral button (e.g. "HIDE")
+     *
+     * @param text     String represent the text of neutral button (e.g. "HIDE")
      * @param callback Click callback using {@link OnClickCallBack}
      */
     public void setNeutralButton(String text, OnClickCallBack callback) {
@@ -79,6 +82,7 @@ public class AlertSDialog extends SDialog {
 
     /**
      * Set icon for the current SDialog.
+     *
      * @param icon As Int resource (R.drawable.icon).
      */
     public void setIconResource(@DrawableRes int icon) {
@@ -88,6 +92,7 @@ public class AlertSDialog extends SDialog {
 
     /**
      * Set icon for the current SDialog.
+     *
      * @param icon As {@link Drawable}.
      */
     public void setIconDrawable(Drawable icon) {
@@ -97,6 +102,7 @@ public class AlertSDialog extends SDialog {
 
     /**
      * Set icon for the current SDialog.
+     *
      * @param icon As {@link Bitmap}.
      */
     public void setIconBitmap(Bitmap icon) {
@@ -106,6 +112,7 @@ public class AlertSDialog extends SDialog {
 
     /**
      * Set title from string to current SDialog.
+     *
      * @param title String title.
      */
     public void setTitle(String title) {
@@ -114,6 +121,7 @@ public class AlertSDialog extends SDialog {
 
     /**
      * Set text from int resource to current SDialog.
+     *
      * @param resTitle Int resource title (R.string.title).
      */
     public void setTitle(@StringRes int resTitle) {
@@ -122,6 +130,7 @@ public class AlertSDialog extends SDialog {
 
     /**
      * Set text from {@link String} or {@link CharSequence} to current SDialog.
+     *
      * @param text {@link CharSequence} text.
      */
     public void setText(CharSequence text) {
@@ -130,6 +139,7 @@ public class AlertSDialog extends SDialog {
 
     /**
      * Set text from int resource to current SDialog.
+     *
      * @param text Int resource text (R.string.text).
      */
     public void setText(@StringRes int text) {
@@ -138,6 +148,7 @@ public class AlertSDialog extends SDialog {
 
     /**
      * Set the accent color of current SDialog to create the theme from it.
+     *
      * @param color As Int color.
      */
     public void setAccentColor(int color) {
@@ -146,6 +157,7 @@ public class AlertSDialog extends SDialog {
 
     /**
      * Set the accent color of current SDialog to create the whole theme colors.
+     *
      * @param color As string hex color.
      */
     public void setAccentColor(String color) {
@@ -154,8 +166,9 @@ public class AlertSDialog extends SDialog {
 
     /**
      * Set SDialog theme as light, dark or by system.
+     *
      * @param theme Options are {@link SDialog#THEME_DARK},
-     * {@link SDialog#THEME_LIGHT} and {@link SDialog#THEME_BY_SYSTEM}.
+     *              {@link SDialog#THEME_LIGHT} and {@link SDialog#THEME_BY_SYSTEM}.
      */
     public void setTheme(int theme) {
         this.theme = theme;
@@ -188,19 +201,19 @@ public class AlertSDialog extends SDialog {
     public int getTextColor() {
         return textColor;
     }
-    
+
     @Override
     public void show() {
         update();
         super.show();
     }
-    
+
     @Override
     public void show(long duration) {
         update();
         super.show(duration);
     }
-    
+
     private void update() {
         updateTheme();
         utils.backgroundColor(b.main, backgroundColor);
