@@ -7,6 +7,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
+import androidx.fragment.app.FragmentTransaction;
 import java.util.*;
 import smith.lib.alerts.dialog.*;
 import smith.lib.alerts.dialog.callbacks.OnDrawPatternCallBack;
@@ -19,6 +20,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.add(R.id.container, new TestFragment());
+        transaction.commit();
     }
 
     public void alert(View v) {
@@ -207,14 +212,14 @@ public class MainActivity extends AppCompatActivity {
         
         Timer timer = new Timer();
         TimerTask task = new TimerTask() { @Override public void run() {
-            runOnUiThread(new Runnable() { @Override public void run() {
+            runOnUiThread(() -> {
                 p++;
                 sdialog.setProgress(p);
                 if (sdialog.getProgress() == sdialog.getMax()) {
                     timer.cancel();
                     p = 0;
                 }
-            }});
+            });
         }};
         timer.scheduleAtFixedRate(task, 0, 100);
     }
@@ -244,9 +249,7 @@ public class MainActivity extends AppCompatActivity {
         
         sdialog.show();
     }
-    
 
-    
     public void loading(View v) {
         LoadingSDialog sdialog = new LoadingSDialog(this);
         sdialog.setTitle("Loading SDialog!");

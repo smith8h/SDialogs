@@ -5,6 +5,8 @@ import android.content.Context;
 import android.graphics.*;
 import android.graphics.drawable.*;
 import android.os.CountDownTimer;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.*;
 import android.widget.*;
 import com.google.android.material.slider.Slider;
@@ -116,9 +118,11 @@ public class SDialog {
      * Show the SDialog.
      */
     public void show() {
-        ((Activity)context).runOnUiThread(() -> {
-            alertdialog.show();
-            utils.animateView(dialogView);
+        new Handler(Looper.getMainLooper()).post(() -> {
+            ((Activity)context).runOnUiThread(() -> {
+                alertdialog.show();
+                utils.animateView(dialogView);
+            });
         });
     }
 
@@ -127,15 +131,15 @@ public class SDialog {
      * @param duration The duration in milliseconds.
      */
     public void show(long duration) {
-        ((Activity)context).runOnUiThread(() -> {
-            alertdialog.show();
-            utils.animateView(dialogView);
-            new CountDownTimer(duration, 10) {
-                @Override public void onTick(long duration) {}
-                @Override public void onFinish() {
-                    dismiss();
-                }
-            }.start();
+        new Handler(Looper.getMainLooper()).post(() -> {
+            ((Activity) context).runOnUiThread(() -> {
+                alertdialog.show();
+                utils.animateView(dialogView);
+                new CountDownTimer(duration, 10) {
+                    @Override public void onTick(long duration) {}
+                    @Override public void onFinish() {dismiss();}
+                }.start();
+            });
         });
     }
 
@@ -143,7 +147,9 @@ public class SDialog {
      * Dismiss the current displayed SDialog.
      */
     public void dismiss() {
-        ((Activity)context).runOnUiThread(() -> alertdialog.dismiss());
+        new Handler(Looper.getMainLooper()).post(() -> {
+            ((Activity)context).runOnUiThread(() -> alertdialog.dismiss());
+        });
     }
 
     protected void lightThemeColors() {
