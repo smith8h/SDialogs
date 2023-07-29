@@ -11,6 +11,10 @@ import androidx.annotation.DrawableRes;
 import androidx.annotation.StringRes;
 import smith.lib.alerts.dialog.callbacks.OnFeedbackSubmitCallBack;
 
+/**
+ * The beautiful and fastest class of SDialog lib.
+ * this class create a feedback SDialogs that let the user suggests the most liked or unliked things on your app.
+ */
 public class FeedbackSDialog extends SDialog {
 
     private OnFeedbackSubmitCallBack callBack = isLiked -> dismiss();

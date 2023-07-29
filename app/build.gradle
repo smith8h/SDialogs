@@ -6,9 +6,9 @@ plugins {
 
 android {
     namespace 'smith.test.sdialog'
+    compileSdk 33
 
-    compileSdk 34
-    buildToolsVersion '34.0.0'
+    buildToolsVersion '33.0.2'
 
     defaultConfig {
         applicationId 'smith.test.sdialog'

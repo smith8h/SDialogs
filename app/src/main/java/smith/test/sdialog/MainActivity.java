@@ -94,6 +94,29 @@ public class MainActivity extends AppCompatActivity {
         sdialog.show();
     }
 
+    public void items(View v) {
+        ItemsSDialog sdialog = new ItemsSDialog(this);
+        sdialog.setAccentColor(0xFFAD97BE);
+        sdialog.setCancelable(false);
+        sdialog.setTheme(SDialog.THEME_BY_SYSTEM);
+        sdialog.setTitle("Set Your Gender:");
+
+        ArrayList<String> genders = new ArrayList<>();
+        genders.add("Male");
+        genders.add("Female");
+        genders.add("Prefer not to say");
+
+        sdialog.setItemsList(genders);
+        sdialog.setOnItemClickCallBack((itemValue, itemIndex) -> {
+            Toast.makeText(this, itemValue + (itemIndex+1), Toast.LENGTH_SHORT).show();
+        });
+
+        sdialog.removeItem("Prefer not to say");
+        // sdialog.removeItem(2);
+
+        sdialog.show();
+    }
+
     public void pattern(View v) {
     	PatternSDialog d = new PatternSDialog(this);
         d.setAccentColor(SDialog.COLOR_DEFAULT);
@@ -224,31 +247,7 @@ public class MainActivity extends AppCompatActivity {
         timer.scheduleAtFixedRate(task, 0, 100);
     }
     
-    public void items(View v) {
-        ItemsSDialog sdialog = new ItemsSDialog(this);
-        sdialog.setAccentColor(0xFFAD97BE);
-        sdialog.setCancelable(false);
-        sdialog.setTheme(SDialog.THEME_BY_SYSTEM);
-        sdialog.setTitle("Set Your Gender:");
-        
-        ArrayList<String> genders = new ArrayList<>();
-        genders.add("Male");
-        genders.add("Female");
-        genders.add("Bigender");
-        genders.add("Prefer not to say");
-        
-        sdialog.setItemsList(genders);
-        sdialog.setOnItemClickCallBack((itemValue, itemIndex) -> {
-            Toast.makeText(this, itemValue + (itemIndex+1), Toast.LENGTH_SHORT).show();
-        });
-        sdialog.addItem("Male to Female");
-        sdialog.addItem("Female to Male");
-        
-        sdialog.removeItem("Prefer not to say");
-        // sdialog.removeItem(2);
-        
-        sdialog.show();
-    }
+
 
     public void loading(View v) {
         LoadingSDialog sdialog = new LoadingSDialog(this);

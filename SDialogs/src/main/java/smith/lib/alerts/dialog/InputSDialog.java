@@ -7,15 +7,15 @@ import android.content.res.ColorStateList;
 import android.graphics.*;
 import android.graphics.drawable.Drawable;
 import android.view.View;
-
 import androidx.annotation.DrawableRes;
 import androidx.annotation.StringRes;
-
 import java.util.Objects;
-
-import smith.lib.alerts.dialog.callbacks.OnClickCallBack;
 import smith.lib.alerts.dialog.callbacks.OnInputClickCallBack;
 
+/**
+ * The beautiful and well designed class of SDialog lib.
+ * this class create an input field SDialogs that let the user input some info you want to collect.
+ */
 public class InputSDialog extends SDialog {
 
     /**
@@ -110,7 +110,7 @@ public class InputSDialog extends SDialog {
 
     /**
      * Declare displayed negative button text.
-     * @param text     String represent the text of negative button (e.g. "Cancel")
+     * @param text String represent the text of negative button (e.g. "Cancel")
      */
     public void setNegativeButtonText(String text) {
         b.negative.setText(text);
