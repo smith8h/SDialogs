@@ -3,7 +3,6 @@ package smith.lib.alerts.dialog.utils
 import android.animation.ObjectAnimator
 import android.content.Context
 import android.content.res.*
-import android.graphics.Color
 import android.graphics.drawable.*
 import android.graphics.drawable.shapes.RoundRectShape
 import android.os.Build
@@ -11,6 +10,7 @@ import android.util.TypedValue
 import android.view.Gravity
 import android.view.View
 import androidx.annotation.RequiresApi
+import smith.lib.tools.color.SColor
 
 class SDialogUtils(var context: Context) {
 
@@ -29,11 +29,19 @@ class SDialogUtils(var context: Context) {
         anim.start()
     }
 
+    /**
+     * Check if devise dark mode enabled.
+     *
+     * @return true if dark mode is enabled.
+     */
     fun nightModeON(): Boolean {
         val flags: Int = context.resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
         return flags == Configuration.UI_MODE_NIGHT_YES
     }
 
+    /**
+     * Set a Drawable background with round corners by 24dp.
+     */
     fun backgroundColor(view: View, color: Int) {
         val gradientDrawable = GradientDrawable()
         gradientDrawable.setColor(color)
@@ -45,33 +53,20 @@ class SDialogUtils(var context: Context) {
     }
 
     fun darkerColor(color: Int, factor: Float): Int {
-        val alpha = Color.alpha(color)
-        val red = Color.red(color)
-        val green = Color.green(color)
-        val blue = Color.blue(color)
-        return Color.argb(
-            alpha,
-            (red * factor).toInt().coerceAtLeast(0),
-            (green * factor).toInt().coerceAtLeast(0),
-            (blue * factor).toInt().coerceAtLeast(0)
-        )
+        return SColor.darkerColor(color, factor)
     }
 
     fun lighterColor(color: Int, factor: Float): Int {
-        val alpha = Color.alpha(color)
-        val red = ((Color.red(color) * (1 - factor) / 255 + factor) * 255).toInt()
-        val green = ((Color.green(color) * (1 - factor) / 255 + factor) * 255).toInt()
-        val blue = ((Color.blue(color) * (1 - factor) / 255 + factor) * 255).toInt()
-        return Color.argb(alpha, red, green, blue)
+        return SColor.lighterColor(color, factor)
     }
 
     /**
-     * Convert pixels to its related density dependent pixels.
+     * Convert pixels to its equivalent density dependent pixels.
      *
      * @param dp Int value of density pixels.
      * @return Returns Int value of dp.
      */
-    fun dp(dp: Int): Int {
+    private fun dp(dp: Int): Int {
         return TypedValue.applyDimension(
             TypedValue.COMPLEX_UNIT_DIP,
             dp.toFloat(),
