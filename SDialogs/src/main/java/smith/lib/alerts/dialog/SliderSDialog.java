@@ -5,11 +5,14 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.view.View;
 import com.google.android.material.slider.Slider;
 import android.graphics.*;
 
+import androidx.annotation.DrawableRes;
 import androidx.annotation.NonNull;
+import androidx.annotation.StringRes;
 
 import smith.lib.alerts.dialog.callbacks.OnSlideCallBack;
 
@@ -20,6 +23,10 @@ import smith.lib.alerts.dialog.callbacks.OnSlideCallBack;
 @SuppressWarnings({"unused"})
 public class SliderSDialog extends SDialog {
 
+    /**
+     * Pass the current context you using this sdialog from.
+     * @param context Current context (or Activity).
+     */
     @SuppressLint("InflateParams")
     public SliderSDialog(Context context) {
         this.context = context;
@@ -28,111 +35,184 @@ public class SliderSDialog extends SDialog {
 
         b.seek.setValueFrom(0);
         b.seek.setValueTo(100);
-        
+
         int height = b.seek.getTrackHeight();
+        float newHeight = height * 2.5f;
         b.seek.addOnSliderTouchListener(new Slider.OnSliderTouchListener() {
-            @Override public void onStartTrackingTouch(@NonNull Slider slider) { slider.setTrackHeight(50); }
-            @Override public void onStopTrackingTouch(@NonNull Slider slider) {
-                double h = height * .7;
-                slider.setTrackHeight((int)h);
-            }
+            @Override public void onStartTrackingTouch(@NonNull Slider slider) { slider.setTrackHeight((int) newHeight); }
+            @Override public void onStopTrackingTouch(@NonNull Slider slider) { slider.setTrackHeight(height); }
         });
     }
-    
-    public void setIconResource(int icon) {
+
+    /**
+     * Set icon for the current SDialog.
+     *
+     * @param icon As Int resource (R.drawable.icon).
+     */
+    public void setIconResource(@DrawableRes int icon) {
         b.icon.setVisibility(View.VISIBLE);
-    	b.icon.setImageResource(icon);
-    }
-    
-    public void setIconDrawable(Drawable icon) {
-        b.icon.setVisibility(View.VISIBLE);
-    	b.icon.setImageDrawable(icon);
-    }
-    
-    public void setIconBitmap(Bitmap icon) {
-        b.icon.setVisibility(View.VISIBLE);
-    	b.icon.setImageBitmap(icon);
+        b.icon.setImageResource(icon);
     }
 
+    /**
+     * Set icon for the current SDialog.
+     *
+     * @param icon As {@link Drawable}.
+     */
+    public void setIconDrawable(Drawable icon) {
+        b.icon.setVisibility(View.VISIBLE);
+        b.icon.setImageDrawable(icon);
+    }
+
+    /**
+     * Set icon for the current SDialog.
+     *
+     * @param icon As {@link Bitmap}.
+     */
+    public void setIconBitmap(Bitmap icon) {
+        b.icon.setVisibility(View.VISIBLE);
+        b.icon.setImageBitmap(icon);
+    }
+
+    /**
+     * Set title from string to current SDialog.
+     *
+     * @param title String title.
+     */
     public void setTitle(String title) {
         b.title.setText(title);
     }
 
+    /**
+     * Set text from int resource to current SDialog.
+     *
+     * @param resTitle Int resource title (R.string.title).
+     */
+    public void setTitle(@StringRes int resTitle) {
+        b.title.setText(resTitle);
+    }
+
+    /**
+     * Set progress text to current SDialog.
+     *
+     * @param text {@link String} text.
+     */
     public void setText(String text) {
-        b.text.setVisibility(View.VISIBLE);
         b.text.setText(text);
     }
-    
-    public void setText(int text) {
+
+    /**
+     * Set text from int resource to current SDialog.
+     *
+     * @param text Int resource text (R.string.text).
+     */
+    public void setText(@StringRes int text) {
         b.text.setText(text);
     }
-    
-    public void setMin(float min) {
-        b.seek.setValueFrom(min);
-        b.seek.setValue(min);
+
+    /**
+     * Set th min value to the slider.
+     * @param min the minimum no. to start the slider from, as {@link Integer}.
+     */
+    public void setMin(int min) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            b.seek.setValueFrom(min);
+        }
     }
-    
-    public void setMax(float max) {
+
+    /**
+     * Set th max value to the slider.
+     * @param max the maximum no. to end the slider at, as {@link Integer}.
+     */
+    public void setMax(int max) {
         b.seek.setValueTo(max);
     }
-    
+
+    /**
+     * Set the value to slider by default.
+     * @param value an int value represent the default value set by the slider.
+     */
     public void setValue(float value) {
         b.seek.setValue(value);
     }
-    
+
+    /**
+     * Set the step to go through values.
+     * @param stepBy a steps that the slider will go through.
+     */
     public void setStepBy(float stepBy) {
     	b.seek.setStepSize(stepBy);
     }
-    
-    public void setPositiveButtonAction(String positive, OnSlideCallBack callback) {
-        b.positive.setText(positive);
+
+    /**
+     * Set a functional interface to the positive button.
+     * @param text string text that displayed on the button.
+     * @param callback a callback using {@link OnSlideCallBack}.
+     */
+    public void setPositiveButtonAction(String text, OnSlideCallBack callback) {
+        b.positive.setText(text);
         b.positive.setOnClickListener(v-> {
             callback.onValueSelected(b.seek.getValue());
             dismiss();
         });
     }
-    
-    public void setNegativeButtonText(String negative) {
-        b.negative.setText(negative);
+
+    /**
+     * @param text string text that displayed on the button.
+     */
+    public void setNegativeButtonText(String text) {
+        b.negative.setText(text);
         b.negative.setOnClickListener(v-> dismiss());
     }
-    
-    public void setAccentColor(int color) {
-        accentColor = color;
-    }
 
-    public void setAccentColor(String color) {
-        accentColor = Color.parseColor(color);
-    }
-
-    public void setTheme(int theme) {
-        this.theme = theme;
-    }
-    
+    /**
+     * Get the current value.
+     * @return an int value of the current slider value.
+     */
     public float getValue() {
         return b.seek.getValue();
     }
-    
+
+    /**
+     * Get the min value set to the SDialog.
+     * @return an integer value represent the minimum value set to the SDialog.
+     */
     public float getMinValue() {
         return b.seek.getValueFrom();
     }
-    
+
+    /**
+     * Get the max value set to the SDialog.
+     * @return an integer value represent the maximum value set to the SDialog.
+     */
     public float getMaxValue() {
         return b.seek.getValueTo();
     }
-    
+
+    /**
+     * @return Accent color of current SDialog showed as light theme or dark theme.
+     */
     public int getAccentColor() {
         return accentColor;
     }
-    
+
+    /**
+     * @return Title color of current SDialog showed as light theme or dark theme.
+     */
     public int getTitleColor() {
         return titleColor;
     }
-    
+
+    /**
+     * @return Background color of current SDialog showed as light theme or dark theme.
+     */
     public int getBackgroundColor() {
         return backgroundColor;
     }
-    
+
+    /**
+     * @return Text color of AlertSDialog as displayed as Dark or Light Theme.
+     */
     public int getTextColor() {
         return textColor;
     }
@@ -164,12 +244,7 @@ public class SliderSDialog extends SDialog {
             new int[] { android.R.attr.state_enabled },
             new int[] { -android.R.attr.state_active }
         };
-        int[] colors = new int[] {
-            accentColor,
-            accentColor,
-            accentColor,
-            hintColor
-        };
+        int[] colors = new int[] {accentColor, accentColor, accentColor, hintColor};
         
         b.seek.setThumbTintList(ColorStateList.valueOf(accentColor));
         b.seek.setTrackTintList(new ColorStateList(states, colors));
