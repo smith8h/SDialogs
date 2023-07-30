@@ -134,34 +134,6 @@ public class InputSDialog extends SDialog {
     }
 
     /**
-     * Set the accent color of current SDialog to create the theme from it.
-     *
-     * @param color As Int color.
-     */
-    public void setAccentColor(int color) {
-        accentColor = color;
-    }
-
-    /**
-     * Set the accent color of current SDialog to create the whole theme colors.
-     *
-     * @param color As string hex color.
-     */
-    public void setAccentColor(String color) {
-        accentColor = Color.parseColor(color);
-    }
-
-    /**
-     * Set SDialog theme as light, dark or by system.
-     *
-     * @param theme Options are {@link SDialog#THEME_DARK},
-     *              {@link SDialog#THEME_LIGHT} and {@link SDialog#THEME_BY_SYSTEM}.
-     */
-    public void setTheme(int theme) {
-        this.theme = theme;
-    }
-
-    /**
      * @return Accent color of current SDialog showed as light theme or dark theme.
      */
     public int getAccentColor() {

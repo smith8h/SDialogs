@@ -117,6 +117,47 @@ public class MainActivity extends AppCompatActivity {
         sdialog.show();
     }
 
+    public void loading(View v) {
+        LoadingSDialog sdialog = new LoadingSDialog(this);
+        sdialog.setTitle("Loading SDialog!");
+        sdialog.setText("Please wait a second...");
+        sdialog.setAccentColor(0xFFAD97BE);
+        sdialog.setTheme(SDialog.THEME_BY_SYSTEM);
+        sdialog.setOnDismissCallBack(() -> {
+            Toast.makeText(this, "onDismiss", Toast.LENGTH_SHORT).show();
+        });
+        sdialog.show(6 * 1000);
+    }
+
+    public void multi(View v) {
+        MultiSelectSDialog sdialog = new MultiSelectSDialog(this);
+        sdialog.setAccentColor(SDialog.COLOR_DEFAULT);
+        sdialog.setTheme(SDialog.THEME_BY_SYSTEM);
+        sdialog.setTitle("Search Filters");
+        sdialog.setCancelable(true);
+
+        sdialog.addItem(1, "Images (jpg/jpeg/png)", true);
+        sdialog.addItem(2, "GIF", false);
+        sdialog.addItem(3, "Videos (mp4)", true);
+
+        sdialog.setPositiveButton("Save & Search", (itemsList) -> {
+            StringBuilder builder = new StringBuilder();
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                itemsList.forEach(item -> {
+                    builder.append(item.get(SDialog.KEY_ITEM_ID));
+                    builder.append(" ");
+                    builder.append(item.get(SDialog.KEY_ITEM_TEXT));
+                    builder.append(" ");
+                    builder.append(item.get(SDialog.KEY_ITEM_CHECKED));
+                    builder.append("\n");
+                });
+            }
+            Toast.makeText(this, builder.toString(), Toast.LENGTH_SHORT).show();
+        });
+
+        sdialog.show();
+    }
+
     public void pattern(View v) {
     	PatternSDialog d = new PatternSDialog(this);
         d.setAccentColor(SDialog.COLOR_DEFAULT);
@@ -142,74 +183,7 @@ public class MainActivity extends AppCompatActivity {
         d.show();
         
     }
-    
-    public void seek(View v) {
-    	SliderSDialog d = new SliderSDialog(this);
-        d.setAccentColor(SDialog.COLOR_DEFAULT);
-        d.setCancelable(false);
-        d.setIconResource(R.drawable.ok_img);
-        d.setMax(70f);
-        d.setMin(10f);
-        //d.setStepBy(1f);
-        d.setNegativeButtonText("Cancel");
-        d.setPositiveButtonAction("Confirm", value -> {
-            Toast.makeText(this, "" + value, Toast.LENGTH_SHORT).show();
-        });
-        d.setTheme(SDialog.THEME_DARK);
-        d.setTitle("Confirm Your Age");
-        //d.setText("In order to use our app, you must confirm your age is over 13!");
-        d.show();
-    }
-    
-    public void multi(View v) {
-        MultiSelectSDialog sdialog = new MultiSelectSDialog(this);
-        sdialog.setAccentColor(SDialog.COLOR_DEFAULT);
-        sdialog.setTheme(SDialog.THEME_BY_SYSTEM);
-        sdialog.setTitle("Search Filters");
-        sdialog.setCancelable(true);
-        
-        sdialog.addItem(1, "Images (jpg/jpeg/png)", true);
-        sdialog.addItem(2, "GIF", false);
-        sdialog.addItem(3, "Videos (mp4)", true);
-        
-        sdialog.setPositiveButton("Save & Search", (itemsList) -> {
-            StringBuilder builder = new StringBuilder();
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                itemsList.forEach(item -> {
-                    builder.append(item.get(SDialog.KEY_ITEM_ID));
-                    builder.append(" ");
-                    builder.append(item.get(SDialog.KEY_ITEM_TEXT));
-                    builder.append(" ");
-                    builder.append(item.get(SDialog.KEY_ITEM_CHECKED));
-                    builder.append("\n");
-                });
-            }
-            Toast.makeText(this, builder.toString(), Toast.LENGTH_SHORT).show();
-        });
-        
-        sdialog.show();
-    }
-    
-    public void single(View v) {
-        SingleSelectSDialog sdialog = new SingleSelectSDialog(this);
-        sdialog.setAccentColor(SDialog.COLOR_DEFAULT);
-        sdialog.setTheme(SDialog.THEME_BY_SYSTEM);
-        sdialog.setTitle("Notifications Sounds");
-        sdialog.setCancelable(true);
-        
-        sdialog.addItem(1, "ON");
-        sdialog.addItem(2, "OFF");
-        sdialog.addItem(3, "ON (SILENT)");
-        
-        sdialog.setCheckedItem(2);
-        
-        sdialog.setOnSingleSelectCallBack((itemId, itemText) -> {
-            Toast.makeText(this, itemId + " " + itemText, Toast.LENGTH_SHORT).show();
-        });
-        
-        sdialog.show();
-    }
-    
+
     public void progress(View v) {
         ProgressSDialog sdialog = new ProgressSDialog(this);
         sdialog.setAccentColor(0xFFAD97BE);
@@ -226,13 +200,13 @@ public class MainActivity extends AppCompatActivity {
                 if (percent > 80 && percent <= 98) sdialog.setText("Installing Resources...");
                 if (percent >= 99) sdialog.setText("Resources Installed.");
             }
-            
+
             @Override public void onFinish() {
                 Toast.makeText(MainActivity.this, "Download Complete!", Toast.LENGTH_SHORT).show();
             }
         });
         sdialog.show();
-        
+
         Timer timer = new Timer();
         TimerTask task = new TimerTask() { @Override public void run() {
             runOnUiThread(() -> {
@@ -246,20 +220,42 @@ public class MainActivity extends AppCompatActivity {
         }};
         timer.scheduleAtFixedRate(task, 0, 100);
     }
-    
 
-
-    public void loading(View v) {
-        LoadingSDialog sdialog = new LoadingSDialog(this);
-        sdialog.setTitle("Loading SDialog!");
-        sdialog.setText("Please wait a second...");
-        sdialog.setAccentColor(0xFFAD97BE);
+    public void single(View v) {
+        SingleSelectSDialog sdialog = new SingleSelectSDialog(this);
+        sdialog.setAccentColor(SDialog.COLOR_DEFAULT);
         sdialog.setTheme(SDialog.THEME_BY_SYSTEM);
-        sdialog.setOnDismissCallBack(() -> {
-            Toast.makeText(this, "onDismiss", Toast.LENGTH_SHORT).show();
+        sdialog.setTitle("Notifications Sounds");
+        sdialog.setCancelable(true);
+
+        sdialog.addItem(1, "ON");
+        sdialog.addItem(2, "OFF");
+        sdialog.addItem(3, "ON (SILENT)");
+
+        sdialog.setCheckedItem(2);
+
+        sdialog.setOnSingleSelectCallBack((itemId, itemText) -> {
+            Toast.makeText(this, itemId + " " + itemText, Toast.LENGTH_SHORT).show();
         });
-        sdialog.show(6*1000);
+
+        sdialog.show();
     }
 
-
+    public void slider(View v) {
+    	SliderSDialog d = new SliderSDialog(this);
+        d.setAccentColor(SDialog.COLOR_DEFAULT);
+        d.setCancelable(false);
+        d.setIconResource(R.drawable.ok_img);
+        d.setMax(70f);
+        d.setMin(10f);
+        //d.setStepBy(1f);
+        d.setNegativeButtonText("Cancel");
+        d.setPositiveButtonAction("Confirm", value -> {
+            Toast.makeText(this, "" + value, Toast.LENGTH_SHORT).show();
+        });
+        d.setTheme(SDialog.THEME_DARK);
+        d.setTitle("Confirm Your Age");
+        //d.setText("In order to use our app, you must confirm your age is over 13!");
+        d.show();
+    }
 }

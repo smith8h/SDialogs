@@ -1,7 +1,8 @@
 package smith.lib.alerts.dialog.callbacks
 
 interface OnDrawPatternCallBack {
-    fun onStartDrawing();
-    fun onCompleteDrawing(pattern: String);
-    fun onClearDrawing();
+    fun onDrawingStarted()
+    fun onDrawingProgress(pattern: String)
+    fun onDrawingCompleted(pattern: String)
+    fun onDrawingCleared()
 }

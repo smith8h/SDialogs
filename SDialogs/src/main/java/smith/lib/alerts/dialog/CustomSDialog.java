@@ -46,4 +46,25 @@ public class CustomSDialog extends SDialog {
         init();
         callback.onBindCustomView(view);
     }
+
+    /**
+     * This setter wont work on custom type of SDialog.
+     */
+    @Override
+    public void setAccentColor(int color) {
+    }
+
+    /**
+     * This setter wont work on custom type of SDialog.
+     */
+    @Override
+    public void setAccentColor(String color) {
+    }
+
+    /**
+     * This setter wont work on custom type of SDialog.
+     */
+    @Override
+    public void setTheme(int theme) {
+    }
 }
