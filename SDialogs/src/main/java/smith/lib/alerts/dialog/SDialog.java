@@ -146,11 +146,9 @@ public class SDialog {
      * Show the SDialog.
      */
     public void show() {
-        new Handler(Looper.getMainLooper()).post(() -> {
-            ((Activity)context).runOnUiThread(() -> {
-                alertdialog.show();
-                utils.animateView(dialogView);
-            });
+        ((Activity)context).runOnUiThread(() -> {
+            alertdialog.show();
+            utils.animateView(dialogView);
         });
     }
 
@@ -159,15 +157,13 @@ public class SDialog {
      * @param duration The duration in milliseconds.
      */
     public void show(long duration) {
-        new Handler(Looper.getMainLooper()).post(() -> {
-            ((Activity) context).runOnUiThread(() -> {
-                alertdialog.show();
-                utils.animateView(dialogView);
-                new CountDownTimer(duration, 10) {
-                    @Override public void onTick(long duration) {}
-                    @Override public void onFinish() {dismiss();}
-                }.start();
-            });
+        ((Activity) context).runOnUiThread(() -> {
+            alertdialog.show();
+            utils.animateView(dialogView);
+            new CountDownTimer(duration, 10) {
+                @Override public void onTick(long duration) {}
+                @Override public void onFinish() {dismiss();}
+            }.start();
         });
     }
 
@@ -175,9 +171,18 @@ public class SDialog {
      * Dismiss the current displayed SDialog.
      */
     public void dismiss() {
-        new Handler(Looper.getMainLooper()).post(() -> {
-            ((Activity)context).runOnUiThread(() -> alertdialog.dismiss());
-        });
+        ((Activity)context).runOnUiThread(() -> alertdialog.dismiss());
+    }
+
+    /**
+     * Dismiss the current displayed SDialog.
+     * @param duration The duration in milliseconds.
+     */
+    public void dismiss(long duration) {
+        ((Activity)context).runOnUiThread(() -> new CountDownTimer(duration, 1) {
+            @Override public void onTick(long dur) {}
+            @Override public void onFinish() {dismiss();}
+        }.start());
     }
 
     protected void lightThemeColors() {

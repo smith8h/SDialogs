@@ -164,17 +164,21 @@ public class MainActivity extends AppCompatActivity {
         d.setIconResource(R.drawable.ok_img);
         d.setOnDrawPatternCallBack(new OnDrawPatternCallBack() {
             @Override
-            public void onStartDrawing() {
+            public void onDrawingStarted() {
                 Toast.makeText(MainActivity.this, "Pattern drawing started!", Toast.LENGTH_SHORT).show();
             }
             @Override
-            public void onCompleteDrawing(@NonNull String pattern) {
-                Toast.makeText(MainActivity.this, "Pattern drawing completed, pattern is: " + pattern, Toast.LENGTH_SHORT).show();
-                d.setPatternMode(SDialog.PATTERN_MODE_CORRECT);
-                d.dismiss(500);
+            public void onDrawingProgress(@NonNull String pattern) {
+                Toast.makeText(MainActivity.this, pattern, Toast.LENGTH_SHORT).show();
             }
             @Override
-            public void onClearDrawing() {
+            public void onDrawingCompleted(@NonNull String pattern) {
+                Toast.makeText(MainActivity.this, "Pattern drawing completed, pattern is: " + pattern, Toast.LENGTH_SHORT).show();
+                d.setPatternMode(SDialog.PATTERN_MODE_CORRECT);
+                d.dismiss(500L);
+            }
+            @Override
+            public void onDrawingCleared() {
                 Toast.makeText(MainActivity.this, "Pattern drawing cleared!", Toast.LENGTH_SHORT).show();
             }
         });

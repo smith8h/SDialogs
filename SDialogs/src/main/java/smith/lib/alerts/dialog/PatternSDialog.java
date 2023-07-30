@@ -101,39 +101,51 @@ public class PatternSDialog extends SDialog {
             @Override public void onStarted() { callback.onDrawingStarted(); }
         });
     }
-    
+
+    /**
+     * Set the pattern mode after completing the drawing.
+     * @param patternMode modes options are
+     *     <ul>
+     *         <li>{@link SDialog#PATTERN_MODE_CORRECT} for correct pattern.</li>
+     *         <li>{@link SDialog#PATTERN_MODE_WRONG} for wrong pattern.</li>
+     *     </ul>
+     */
     public void setPatternMode(int patternMode) {
     	b.pattern.setViewMode(patternMode);
     }
-    
-    public void setAccentColor(int color) {
-        accentColor = color;
-    }
 
-    public void setAccentColor(String color) {
-        accentColor = Color.parseColor(color);
-    }
-
-    public void setTheme(int theme) {
-        super.theme = theme;
-    }
-    
+    /**
+     * @return Accent color of current SDialog showed as light theme or dark theme.
+     */
     public int getAccentColor() {
         return accentColor;
     }
-    
+
+    /**
+     * @return Title color of current SDialog showed as light theme or dark theme.
+     */
     public int getTitleColor() {
         return titleColor;
     }
-    
+
+    /**
+     * @return Background color of current SDialog showed as light theme or dark theme.
+     */
     public int getBackgroundColor() {
         return backgroundColor;
     }
-    
+
+    /**
+     * @return Pattern color of current SDialog showed as light theme or dark theme.
+     */
     public int getPatternColor() {
         return accentColor;
     }
-    
+
+    /**
+     * This setter wont work on pattern SDialog as it designed for safety.
+     * it will be cancelled as far as you draw a pattern.
+     */
     @Override
     public void setCancelable(boolean cancelable) {
         super.setCancelable(false);
@@ -150,13 +162,6 @@ public class PatternSDialog extends SDialog {
     public void show(long duration) {
         update();
         super.show(duration);
-    }
-    
-    public void dismiss(int duration) {
-    	new CountDownTimer(duration, 1) {
-            @Override public void onTick(long dur) {}
-            @Override public void onFinish() { dismiss(); }
-        }.start();
     }
     
     private void update() {
