@@ -5,13 +5,10 @@ import android.content.Context;
 import android.graphics.*;
 import android.graphics.drawable.*;
 import android.os.CountDownTimer;
-import android.os.Handler;
-import android.os.Looper;
 import android.view.*;
 import android.widget.*;
 import com.google.android.material.slider.Slider;
 import com.google.android.material.textfield.*;
-import kotlin.Suppress;
 import smith.lib.alerts.dialog.callbacks.OnDismissCallBack;
 import smith.lib.alerts.dialog.utils.SDialogUtils;
 import smith.lib.views.recyclerview.SRecyclerView;
@@ -24,7 +21,7 @@ import co.encept.patternlockview.PatternLockView;
  * The parent and main class of SDialog lib.
  * this class handles the repeated and main methods of setters and getters for all types of SDialogs.
  */
-@Suppress(names = {"Unused"})
+@SuppressWarnings({"unused"})
 public class SDialog {
 
     /**

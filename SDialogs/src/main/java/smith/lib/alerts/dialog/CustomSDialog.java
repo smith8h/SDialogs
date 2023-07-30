@@ -4,15 +4,13 @@ import android.app.Activity;
 import android.content.Context;
 import android.view.View;
 import androidx.annotation.NonNull;
-
-import kotlin.Suppress;
 import smith.lib.alerts.dialog.callbacks.OnBindCustomViewCallBack;
 
 /**
  * The fully customizable class of SDialog lib.
  * this class create an alert SDialogs that is full depends on you as you set its layout and design and functionality.
  */
-@Suppress(names = {"Unused"})
+@SuppressWarnings({"unused"})
 public class CustomSDialog extends SDialog {
 
     /**

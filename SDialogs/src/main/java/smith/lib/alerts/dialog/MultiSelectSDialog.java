@@ -6,12 +6,10 @@ import android.content.Context;
 import android.graphics.*;
 import android.graphics.drawable.Drawable;
 import android.view.View;
-
 import androidx.annotation.DrawableRes;
 import androidx.annotation.StringRes;
 import androidx.recyclerview.widget.*;
 import java.util.*;
-
 import smith.lib.alerts.dialog.adapters.SMultiSelectAdapter;
 import smith.lib.alerts.dialog.callbacks.OnMultiSelectCallBack;
 
@@ -19,6 +17,7 @@ import smith.lib.alerts.dialog.callbacks.OnMultiSelectCallBack;
  * The beautiful and most functional class of SDialog lib.
  * this class create an items with checkboxes SDialogs that allow the user to select multiple items.
  */
+@SuppressWarnings({"all"})
 public class MultiSelectSDialog extends SDialog {
     
     private SMultiSelectAdapter adapter;

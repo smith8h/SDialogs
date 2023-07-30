@@ -8,14 +8,13 @@ import android.graphics.drawable.Drawable;
 import android.view.View;
 import androidx.annotation.DrawableRes;
 import androidx.annotation.StringRes;
-import kotlin.Suppress;
 import smith.lib.alerts.dialog.callbacks.OnClickCallBack;
 
 /**
  * The beautiful and coolest class of SDialog lib.
  * this class create an alert SDialogs that alerts the user what going on.
  */
-@Suppress(names = {"Unused"})
+@SuppressWarnings({"unused"})
 public class AlertSDialog extends SDialog {
 
     /**

@@ -18,6 +18,7 @@ import smith.lib.alerts.dialog.callbacks.OnItemClickCallBack;
  * The beautiful and most sorted class of SDialog lib.
  * this class create a list of items SDialogs that let the user choose the item he/she prefer.
  */
+@SuppressWarnings({"unused"})
 public class ItemsSDialog extends SDialog {
     
     private List<String> data = new ArrayList<>();

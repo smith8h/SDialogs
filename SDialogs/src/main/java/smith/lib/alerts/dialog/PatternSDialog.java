@@ -5,14 +5,9 @@ import android.app.Activity;
 import android.content.Context;
 import android.graphics.*;
 import android.graphics.drawable.Drawable;
-import android.os.CountDownTimer;
 import android.view.View;
-
-import androidx.annotation.DrawableRes;
-import androidx.annotation.StringRes;
-
+import androidx.annotation.*;
 import java.util.List;
-
 import co.encept.patternlockview.PatternLockView;
 import co.encept.patternlockview.listener.PatternLockViewListener;
 import co.encept.patternlockview.utils.PatternLockUtils;
@@ -22,6 +17,7 @@ import smith.lib.alerts.dialog.callbacks.OnDrawPatternCallBack;
  * The beautiful and safest class of SDialog lib.
  * this class create a lock view SDialog using pattern that alerts the user to unlock something.
  */
+@SuppressWarnings({"unused"})
 public class PatternSDialog extends SDialog {
 
     /**

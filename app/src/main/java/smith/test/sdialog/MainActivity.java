@@ -46,9 +46,7 @@ public class MainActivity extends AppCompatActivity {
         sdialog.setAccentColor(0xFFAD97BE);
         sdialog.setTheme(SDialog.THEME_BY_SYSTEM);
         sdialog.setCancelable(true);
-        sdialog.setOnDismissCallBack(() -> {
-            Toast.makeText(this, "onDismiss", Toast.LENGTH_SHORT).show();
-        });
+        sdialog.setOnDismissCallBack(() -> Toast.makeText(this, "onDismiss", Toast.LENGTH_SHORT).show());
         sdialog.show();
     }
 
@@ -58,9 +56,7 @@ public class MainActivity extends AppCompatActivity {
 
         });
         sdialog.setCancelable(true);
-        sdialog.setOnDismissCallBack(() -> {
-            Toast.makeText(this, "onDismiss", Toast.LENGTH_SHORT).show();
-        });
+        sdialog.setOnDismissCallBack(() -> Toast.makeText(this, "onDismiss", Toast.LENGTH_SHORT).show());
         sdialog.show();
     }
 
@@ -84,13 +80,9 @@ public class MainActivity extends AppCompatActivity {
         sdialog.setTitle("Input Your Name");
         sdialog.setText("please write your full name in no more than 20 characters.");
         sdialog.setInputFieldHint("Your Name");
-        sdialog.setPositiveButtonAction("Save", inputText -> {
-            Toast.makeText(this, inputText, Toast.LENGTH_SHORT).show();
-        });
+        sdialog.setPositiveButtonAction("Save", inputText -> Toast.makeText(this, inputText, Toast.LENGTH_SHORT).show());
         sdialog.setNegativeButtonText("Close");
-        sdialog.setOnDismissCallBack(() -> {
-            Toast.makeText(this, "onDismiss", Toast.LENGTH_SHORT).show();
-        });
+        sdialog.setOnDismissCallBack(() -> Toast.makeText(this, "onDismiss", Toast.LENGTH_SHORT).show());
         sdialog.show();
     }
 
@@ -107,9 +99,7 @@ public class MainActivity extends AppCompatActivity {
         genders.add("Prefer not to say");
 
         sdialog.setItemsList(genders);
-        sdialog.setOnItemClickCallBack((itemValue, itemIndex) -> {
-            Toast.makeText(this, itemValue + (itemIndex+1), Toast.LENGTH_SHORT).show();
-        });
+        sdialog.setOnItemClickCallBack((itemValue, itemIndex) -> Toast.makeText(this, itemValue + (itemIndex+1), Toast.LENGTH_SHORT).show());
 
         sdialog.removeItem("Prefer not to say");
         // sdialog.removeItem(2);
@@ -123,9 +113,7 @@ public class MainActivity extends AppCompatActivity {
         sdialog.setText("Please wait a second...");
         sdialog.setAccentColor(0xFFAD97BE);
         sdialog.setTheme(SDialog.THEME_BY_SYSTEM);
-        sdialog.setOnDismissCallBack(() -> {
-            Toast.makeText(this, "onDismiss", Toast.LENGTH_SHORT).show();
-        });
+        sdialog.setOnDismissCallBack(() -> Toast.makeText(this, "onDismiss", Toast.LENGTH_SHORT).show());
         sdialog.show(6 * 1000);
     }
 
@@ -195,10 +183,10 @@ public class MainActivity extends AppCompatActivity {
         sdialog.setMax(200);
         sdialog.setMin(0);
         sdialog.setTitle("Downloading Files");
-        sdialog.setText("Gethering Resources...");
+        sdialog.setText("Gathering Resources...");
         sdialog.setOnProgressCallBack(new OnProgressCallBack() {
             @Override public void onProgress(int progress, int percent) {
-                if (percent > 0 && percent <= 20) sdialog.setText("Gethering Resources...");
+                if (percent > 0 && percent <= 20) sdialog.setText("Gathering Resources...");
                 if (percent > 20 && percent <= 50) sdialog.setText("Downloading Resources...");
                 if (percent > 50 && percent <= 80) sdialog.setText("Extracting Resources...");
                 if (percent > 80 && percent <= 98) sdialog.setText("Installing Resources...");
@@ -238,9 +226,7 @@ public class MainActivity extends AppCompatActivity {
 
         sdialog.setCheckedItem(2);
 
-        sdialog.setOnSingleSelectCallBack((itemId, itemText) -> {
-            Toast.makeText(this, itemId + " " + itemText, Toast.LENGTH_SHORT).show();
-        });
+        sdialog.setOnSingleSelectCallBack((itemId, itemText) -> Toast.makeText(this, itemId + " " + itemText, Toast.LENGTH_SHORT).show());
 
         sdialog.show();
     }
@@ -250,16 +236,14 @@ public class MainActivity extends AppCompatActivity {
         d.setAccentColor(SDialog.COLOR_DEFAULT);
         d.setCancelable(false);
         d.setIconResource(R.drawable.ok_img);
-        d.setMax(70f);
-        d.setMin(10f);
-        //d.setStepBy(1f);
+        d.setMax(120);
+        d.setMin(0);
+        d.setStepBy(3);
         d.setNegativeButtonText("Cancel");
-        d.setPositiveButtonAction("Confirm", value -> {
-            Toast.makeText(this, "" + value, Toast.LENGTH_SHORT).show();
-        });
+        d.setPositiveButtonAction("Confirm", value -> Toast.makeText(this, "" + value, Toast.LENGTH_SHORT).show());
         d.setTheme(SDialog.THEME_DARK);
         d.setTitle("Confirm Your Age");
-        //d.setText("In order to use our app, you must confirm your age is over 13!");
+        d.setText("Select the distance between you and the people you want to met.");
         d.show();
     }
 }

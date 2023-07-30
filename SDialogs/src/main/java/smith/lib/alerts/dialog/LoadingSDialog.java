@@ -4,14 +4,13 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.ColorStateList;
-import android.graphics.Color;
-
 import androidx.annotation.StringRes;
 
 /**
  * The beautiful and coolest class of SDialog lib.
  * this class create a loading SDialogs that inform the user to wait for some time while doing something in backend.
  */
+@SuppressWarnings({"unused"})
 public class LoadingSDialog extends SDialog {
 
     /**

@@ -4,7 +4,6 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.view.View;
 import androidx.annotation.DrawableRes;
@@ -15,6 +14,7 @@ import smith.lib.alerts.dialog.callbacks.OnFeedbackSubmitCallBack;
  * The beautiful and fastest class of SDialog lib.
  * this class create a feedback SDialogs that let the user suggests the most liked or unliked things on your app.
  */
+@SuppressWarnings({"unused"})
 public class FeedbackSDialog extends SDialog {
 
     private OnFeedbackSubmitCallBack callBack = isLiked -> dismiss();

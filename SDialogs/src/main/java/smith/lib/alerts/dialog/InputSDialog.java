@@ -16,6 +16,7 @@ import smith.lib.alerts.dialog.callbacks.OnInputClickCallBack;
  * The beautiful and well designed class of SDialog lib.
  * this class create an input field SDialogs that let the user input some info you want to collect.
  */
+@SuppressWarnings({"unused"})
 public class InputSDialog extends SDialog {
 
     /**
