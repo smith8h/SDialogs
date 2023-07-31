@@ -9,13 +9,13 @@ def groupId = "smith.lib"
 
 android {
     namespace 'smith.lib.alerts.dialog'
-    compileSdk 33
 
+    compileSdk 33
     buildToolsVersion '33.0.2'
 
     defaultConfig {
         minSdk 21
-        targetSdk 34
+        targetSdk 33
         versionCode 3
         versionName 'v2.1'
     }

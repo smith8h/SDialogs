@@ -9,6 +9,8 @@ import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.view.View;
 import androidx.annotation.*;
+
+import smith.lib.alerts.dialog.callbacks.OnClickCallBack;
 import smith.lib.alerts.dialog.callbacks.OnProgressCallBack;
 
 /**
@@ -18,7 +20,7 @@ import smith.lib.alerts.dialog.callbacks.OnProgressCallBack;
 @SuppressWarnings({"unused"})
 public class ProgressSDialog extends SDialog {
     
-    private OnProgressCallBack callback;
+    private OnProgressCallBack callback = null;
 
     /**
      * Pass the current context you using this sdialog from.
@@ -149,6 +151,21 @@ public class ProgressSDialog extends SDialog {
     }
 
     /**
+     * Set the negative button text and a functional interface to it.
+     * @param text a string text to display on the negative button.
+     * @param clickCallBack a callback using {@link OnClickCallBack}.
+     */
+    public void setNegativeButtonAction(String text, OnClickCallBack clickCallBack) {
+        b.negative.setVisibility(View.VISIBLE);
+        b.negative.setText(text);
+        b.negative.setOnClickListener(v -> {
+            clickCallBack.onClick();
+            this.callback = null;
+            dismiss();
+        });
+    }
+
+    /**
      * Get the current progress.
      * @return an int value of the current progress.
      */
@@ -218,10 +235,12 @@ public class ProgressSDialog extends SDialog {
     private void update() {
         updateTheme();
         utils.backgroundColor(b.main, backgroundColor);
+        utils.backgroundColor(b.negative, iconBackground);
         b.icon.setColorFilter(iconColor);
         b.title.setTextColor(titleColor);
         b.text.setTextColor(textColor);
         b.percent.setTextColor(textColor);
+        b.negative.setTextColor(iconColor);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q)
             b.progress.setProgressDrawable(utils.createProgressLayerList(accentColor, iconBackground));
         else

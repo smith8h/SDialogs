@@ -15,6 +15,8 @@ import smith.lib.alerts.dialog.callbacks.OnProgressCallBack;
 
 public class MainActivity extends AppCompatActivity {
     int p = 0;
+    Timer timer = new Timer();
+    TimerTask task = null;
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
         sDialog.setTitle("Feedback SDialog!");
         sDialog.setText("Your feedback is valuable, please rate our work.");
         sDialog.setAccentColor(0xFFAD97BE);
+        sDialog.setIconResource(R.drawable.ok_img);
         sDialog.setTheme(SDialog.THEME_BY_SYSTEM);
         sDialog.setOnFeedbackSubmitCallBack(isLiked ->
                 Toast.makeText(this, "isLiked " + isLiked, Toast.LENGTH_SHORT).show()
@@ -77,6 +80,7 @@ public class MainActivity extends AppCompatActivity {
         sdialog.setAccentColor(0xFFAD97BE);
         sdialog.setTheme(SDialog.THEME_BY_SYSTEM);
         sdialog.setCancelable(false);
+        sdialog.setIconResource(R.drawable.ok_img);
         sdialog.setTitle("Input Your Name");
         sdialog.setText("please write your full name in no more than 20 characters.");
         sdialog.setInputFieldHint("Your Name");
@@ -100,6 +104,7 @@ public class MainActivity extends AppCompatActivity {
 
         sdialog.setItemsList(genders);
         sdialog.setOnItemClickCallBack((itemValue, itemIndex) -> Toast.makeText(this, itemValue + (itemIndex+1), Toast.LENGTH_SHORT).show());
+        sdialog.setNegativeButtonText("Cancel");
 
         sdialog.removeItem("Prefer not to say");
         // sdialog.removeItem(2);
@@ -180,6 +185,7 @@ public class MainActivity extends AppCompatActivity {
         ProgressSDialog sdialog = new ProgressSDialog(this);
         sdialog.setAccentColor(0xFFAD97BE);
         sdialog.setTheme(SDialog.THEME_BY_SYSTEM);
+        sdialog.setIconResource(R.drawable.ok_img);
         sdialog.setMax(200);
         sdialog.setMin(0);
         sdialog.setTitle("Downloading Files");
@@ -197,10 +203,10 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, "Download Complete!", Toast.LENGTH_SHORT).show();
             }
         });
+        sdialog.setNegativeButtonAction("Cancel Process", () -> timer.cancel());
         sdialog.show();
 
-        Timer timer = new Timer();
-        TimerTask task = new TimerTask() { @Override public void run() {
+        task = new TimerTask() { @Override public void run() {
             runOnUiThread(() -> {
                 p++;
                 sdialog.setProgress(p);
