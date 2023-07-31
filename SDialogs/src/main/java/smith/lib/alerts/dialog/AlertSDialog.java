@@ -191,5 +191,6 @@ public class AlertSDialog extends SDialog {
         b.positive.setTextColor(accentColor);
         b.negative.setTextColor(accentColor);
         b.neutral.setTextColor(accentColor);
+
     }
 }

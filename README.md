@@ -1,32 +1,30 @@
 # SDialogs
 
-    <p align="center">
-
-        <!-- Latest release -->
-        <img src="https://img.shields.io/github/v/release/smith8h/SDialogs?include_prereleases&amp;label=latest%20release" alt="Latest release"/>
-        <!-- Build and test -->
-        <img src="https://github.com/smith8h/SDialogs/actions/workflows/build.yml/badge.svg" alt="Builds and tests"/>
-        <!-- CodeFactor -->
-        <img src="https://www.codefactor.io/repository/github/smith8h/sdialogs/badge/main" alt="CodeFactor"/>
-        <!-- JitPack release -->
-        <a href="https://jitpack.io/#smith8h/SDialogs">
-            <img src="https://jitpack.io/v/smith8h/SDialogs.svg" />
-        </a>
-        <!-- Stability -->
-        <img src="https://img.shields.io/badge/stability-stable-green.svg" alt="stability" />
-        <!-- minSDK -->
-        <img src="https://img.shields.io/badge/minSDK-21-f39f37" alt="minsdk" />
-        <!-- stable version -->
-        <img src="https://img.shields.io/badge/stable_version-2.0-blue" alt="stable"/>
-        <!-- repo size -->
-        <img src="https://img.shields.io/github/repo-size/smith8h/sdialogs" alt="size"/>
-    </p>
+<!-- Latest release -->
+<img src="https://img.shields.io/github/v/release/smith8h/SDialogs?include_prereleases&amp;label=latest%20release" alt="Latest release"/>
+<!-- Build and test -->
+<img src="https://github.com/smith8h/SDialogs/actions/workflows/build.yml/badge.svg" alt="Builds and tests"/>
+<!-- CodeFactor -->
+<img src="https://www.codefactor.io/repository/github/smith8h/SDialogs/badge/main" alt="CodeFactor"/>
+<!-- JitPack release -->
+<a href="https://jitpack.io/#smith8h/SDialogs">
+    <img src="https://jitpack.io/v/smith8h/SDialogs.svg" />
+</a>
+<!-- Stability -->
+<img src="https://img.shields.io/badge/stability-stable-green.svg" alt="stability" />
+<!-- minSDK -->
+<img src="https://img.shields.io/badge/minSDK-21-f39f37" alt="minsdk" />
+<!-- stable version -->
+<img src="https://img.shields.io/badge/stable_version-2.0-blue" alt="stable"/>
+<!-- repo size -->
+<img src="https://img.shields.io/github/repo-size/smith8h/sdialogs" alt="size"/>
 
 </br>
 
 Beautiful custom android dialogs ( alert, multiselect checkbox, singleselect radiobutton, string list items, loading, progress, input and custom sdialog ).
 
 # Menu Of Contents
+
 - [How to setup](#setup)
 - [How to implement (Documentation)](#documentation)
   - [AlertSDialog](#alertsdialog)
@@ -39,46 +37,58 @@ Beautiful custom android dialogs ( alert, multiselect checkbox, singleselect rad
   - [MultiSelectSDialog](#multiselectsdialog)
   - [SliderSDialog](#slidersdialog)
   - [PatternSDialog](#patternsdialog)
+  - [FeedbackSDialog](#feedbacksdialog)
 - [CallBacks](#callbacks)
 - [Support library improvements (Donations)](#donations)
 
 # Setup
+>
 > **Step 1.** Add the JitPack repository to your build file.</br>
 Add it in your root build.gradle at the end of repositories:
+
 ```gradle
 allprojects {
     repositories {
-	...
-	maven { url 'https://jitpack.io' }
+ ...
+ maven { url 'https://jitpack.io' }
     }
 }
 ```
+
 > **Step 2.** Add the dependency:
+
 ```gradle
 dependencies {
-    implementation 'com.github.smith8h:SDialogs:3.0'
+    implementation 'com.github.smith8h:SDialogs:4.0'
 }
 ```
 
 # Documentation
+
 This library composed of 8 types of **SDialogs** and an additional one type that represent the customizable **SDialog** (use a custom view/layout of your own design and logic) for fast and small codes of initializing new dialog.
 </br>
-All these SDialogs using an algorithm to calculate and extract colors lighter/darker from the accent color you set in method `setAccentColor()`. 
+All these SDialogs using an algorithm to calculate and extract colors lighter/darker from the accent color you set in method `setAccentColor()`.
 
 ## AlertSDialog
-![progress](https://te.legra.ph/file/29a07cd23e39721c24002.jpg)
 
+<p align="center">
+    <img src="https://te.legra.ph/file/29a07cd23e39721c24002.jpg" style="width: 35%;" />
+</p>
 Create new instance of AlertSDialog:
+
 ```java
     AlertSDialog sdialog = new AlertSDialog(this);
 ```
+
 Table of methods:
 
 **Setters**
+
 - `setIconResource(icon)` add icon from res.
 - `setIconDrawable(icon)` add icon from a Drawable.
 - `setIconBitmap(icon)` add icon from bitmap.
-- `setTitle("Title");`
+- `setTitle("Title");` set title as string text.
+- `setTitle(R.string.title);` set title as string resource.
 - `setText(text);` accepts span text | int string res | string text...
 - `setPositiveButton("Button Text", clickcallback);` (Optional) the code here in java8, to use java7 or below syntax see in [CallBacks](#callbacks).
 - `setNegativeButton("Button Text", clickcallback);` (Optional) onClick callback used.
@@ -88,19 +98,23 @@ Table of methods:
 - `setCancelable(false);` (*Optional).
 - `setOnDismissCallBack(dismisscallback);` (Optional).
 - `show(); / show(1200);` to show always or for a duration of time (auto hide).
-- `dismiss();` to hide it.
+- `dismiss(); / dismiss(500);` to hide it immediately or after duration of time (auto dismiss).
 
 **Getters**
+
 - `getAccentColor()` get accent color.
 - `getTitleColor()` get accent color.
 - `getBackgroundColor()` get accent color.
 - `getTextColor()` get accent color.
 
 ## CustomSDialog
+
 Create new instance of CustomSDialog:
+
 ```java
     CustomSDialog sdialog = new CustomSDialog(this);
 ```
+
 Table of methods:
 
 - `setView(view, bindviewcallback);` set a view and liatener onBindCustomView.
@@ -111,19 +125,26 @@ Table of methods:
 - `dismiss();` to hide it.
 
 ## InputSDialog
-![progress](https://te.legra.ph/file/f398e834ab82ae6367776.jpg)
+
+<p align="center">
+    <img src="https://te.legra.ph/file/f398e834ab82ae6367776.jpg" style="width: 35%;" />
+</p>
 
 Create new instance of InputSDialog:
+
 ```java
     InputSDialog sdialog = new InputSDialog(this);
 ```
+
 Table of methods:
 
 **Setters**
+
 - `setIconResource(icon)` add icon from res.
 - `setIconDrawable(icon)` add icon from a Drawable.
 - `setIconBitmap(icon)` add icon from bitmap.
-- `setTitle("Title");`
+- `setTitle("Title");` set title as string text.
+- `setTitle(R.string.title);` set title as string resource.
 - `setText(text);` string | int res, (Optional) set a docs above the input field.
 - `setPositiveButtonAction("Button Text", inputclickclickcallback);` use OnInputClickCallBack.
 - `setNegativeButtonText("Button Text");` dismissing sdialog by default (no need for callback).
@@ -134,9 +155,10 @@ Table of methods:
 - `setCancelable(false);` (*Optional).
 - `setOnDismissCallBack(dismisscallback);` (Optional).
 - `show(); / show(1200);` to show always or for a duration of time (auto hide).
-- `dismiss();` to hide it.
+- `dismiss(); / dismiss(500);` to hide it immediately or after duration of time (auto dismiss).
 
 **Getters**
+
 - `getAccentColor()` get accent color.
 - `getTitleColor()` get accent color.
 - `getBackgroundColor()` get accent color.
@@ -144,19 +166,26 @@ Table of methods:
 - `getHintColor()` get hint color.
 
 ## ItemsSDialog
-![progress](https://te.legra.ph/file/11810e2ec43ec98511739.jpg)
+
+<p align="center">
+    <img src="https://te.legra.ph/file/11810e2ec43ec98511739.jpg" style="width: 35%;" />
+</p>
 
 Create new instance of ItemsSDialog:
+
 ```java
     ItemsSDialog sdialog = new ItemsSDialog(this);
 ```
+
 Table of methods:
 
 **Setters**
+
 - `setIconResource(icon)` add icon from res.
 - `setIconDrawable(icon)` add icon from a Drawable.
 - `setIconBitmap(icon)` add icon from bitmap.
-- `setTitle("Title");`
+- `setTitle("Title");` set title as string text.
+- `setTitle(R.string.title);` set title as string resource.
 - `setAccentColor(int color/string hex color);` Default color is 0xFFA7B4C5/#FFA7B4C5 you can access it by `SDialog.COLOR_DEFAULT`.
 - `setTheme(SDialog.THEME_SYSTEM);` or `THEME_LIGHT / THEME_DARK`.
 - `setItemsList(ArrayList<String>);` set items from existing arraylist of strings `ArrayList<String>`.
@@ -167,51 +196,67 @@ Table of methods:
 - `setCancelable(false);` (Optional).
 - `setOnDismissCallBack(dismisscallback);` (Optional).
 - `show();` to show it.
-- `dismiss();` to hide it.
+- `dismiss(); / dismiss(500);` to hide it immediately or after duration of time (auto dismiss).
 
 **Getters**
+
 - `getAccentColor()` get accent color.
 - `getTitleColor()` get accent color.
 - `getBackgroundColor()` get accent color.
 
 ## LoadingSDialog
-![progress](https://te.legra.ph/file/646416c965f2227515195.jpg)
+
+<p align="center">
+    <img src="https://te.legra.ph/file/646416c965f2227515195.jpg" style="width: 35%;" />
+</p>
 
 Create new instance of LoadingSDialog:
+
 ```java
     LoadingSDialog sdialog = new LoadingSDialog(this);
 ```
+
 Table of methods:
 
 **Setters**
-- `setTitle("Loading");`
+
+- `setTitle("Loading");` set title as string text.
+- `setTitle(R.string.title);` set title as string resource.
 - `setText(text);` string | int string res.
 - `setAccentColor(int color/string hex color);` Default color is 0xFFA7B4C5/#FFA7B4C5 you can access it by `SDialog.COLOR_DEFAULT`.
 - `setTheme(SDialog.THEME_SYSTEM);` or `THEME_LIGHT / THEME_DARK`.
 - `setOnDismissCallBack(dismisscallback);` (Optional).
 - `show(); / show(1200);` to show it always or for a duration of time.
-- `dismiss();` to hide it.
+- `dismiss(); / dismiss(500);` to hide it immediately or after duration of time (auto dismiss).
 
 **Getters**
+
 - `getAccentColor()` get accent color.
 - `getTitleColor()` get accent color.
 - `getBackgroundColor()` get accent color.
 - `getTextColor()` get text color.
 
 ## ProgressSDialog
-![progress](https://te.legra.ph/file/d025c806be8d64eb9ae07.jpg)
+
+<p align="center">
+    <img src="https://te.legra.ph/file/cbaec92d9dd58602a7e8b.jpg" style="width: 35%;" />
+</p>
 
 Create new instance of ProgressSDialog:
+
 ```java
     ProgressSDialog sdialog = new ProgressSDialog(this);
 ```
+
 Table of methods:
 
 **Setters**
+
 - `setIconResource(icon)` add icon from res.
 - `setIconDrawable(icon)` add icon from a Drawable.
 - `setIconBitmap(icon)` add icon from bitmap.
-- `setTitle("Downloading Files");`
+- `setTitle("Downloading Files");` set title as string text.
+- `setTitle(R.string.title);` set title as string resource.
 - `setText(text);` string | int res, set text under progress bar (can be changed onProgress)
 - `setMin(9);` default is 0.
 - `setMax(200);` default is 100.
@@ -220,10 +265,10 @@ Table of methods:
 - `setAccentColor(int color/string hex color);` Default color is 0xFFA7B4C5/#FFA7B4C5 you can access it by `SDialog.COLOR_DEFAULT`.
 - `setTheme(SDialog.THEME_SYSTEM);` or `THEME_LIGHT / THEME_DARK`.
 - `setOnDismissCallBack(dismisscallback);` (Optional).
-- `show();` to show it.
-- `dismiss();` to hide it.
-
+- `show(); / show(2100);` to show it always or for duration of time (auto hide).
+- `dismiss(); / dismiss(500);` to hide it immediately or after duration of time (auto dismiss).
 **Getters**
+
 - `getProgress()`
 - `getMax()`
 - `getMin()`
@@ -233,19 +278,26 @@ Table of methods:
 - `getTextColor()`
 
 ## SingleSelectSDialog
-![progress](https://te.legra.ph/file/e5f52e32d27c0b0d7ab66.jpg)
+
+<p align="center">
+    <img src="https://te.legra.ph/file/e5f52e32d27c0b0d7ab66.jpg" style="width: 35%;" />
+</p>
 
 Create new instance of SingleSelectSDialog:
+
 ```java
     SingleSelectSDialog sdialog = new SingleSelectSDialog(this);
 ```
+
 Table of methods:
 
 **Setters**
+
 - `setIconResource(icon)` add icon from res.
 - `setIconDrawable(icon)` add icon from a Drawable.
 - `setIconBitmap(icon)` add icon from bitmap.
-- `setTitle("Title");`
+- `setTitle("Title");` set title as string text.
+- `setTitle(R.string.title);` set title as string resource.
 - `setAccentColor(int color/string hex color);` Default color is 0xFFA7B4C5/#FFA7B4C5 you can access it by `SDialog.COLOR_DEFAULT`.
 - `setTheme(SDialog.THEME_SYSTEM);` or `THEME_LIGHT / THEME_DARK`.
 - `setOnSingleSelectCallBack(singleselectcallback);` get checked radio button id & text.
@@ -255,31 +307,41 @@ Table of methods:
 - `removeItem("item text")` remove an item by its **text** from the list.
 - `setCancelable(false);` (Optional).
 - `setOnDismissCallBack(dismisscallback);` (Optional).
-- `show();` to show it.
-- `dismiss();` to hide it.
+- `show(); / show(2100);` to show it always or for duration of time (auto hide).
+- `dismiss(); / dismiss(500);` to hide it immediately or after duration of time (auto dismiss).
 
 **Getters**
+
 - `getItemsList()` returns a list of Map<String, Object> containing all the items, to access their id, text, isChecked use:
+
 > SDialog.KEY_ITEM_ID | KEY_ITEM_TEXT | KEY_ITEM_CHECKED
+
 - `getAccentColor()` get accent color.
 - `getTitleColor()` get accent color.
 - `getBackgroundColor()` get accent color.
 - `getTextColor()` get text color.
 
 ## MultiSelectSDialog
-![progress](https://te.legra.ph/file/329172778299d06c611af.jpg)
+
+<p align="center">
+    <img src="https://te.legra.ph/file/329172778299d06c611af.jpg" style="width: 35%;" />
+</p>
 
 Create new instance of MultiSelectSDialog:
+
 ```java
     MultiSelectSDialog sdialog = new MultiSelectSDialog(this);
 ```
+
 Table of methods:
 
 **Setters**
+
 - `setIconResource(icon)` add icon from res.
 - `setIconDrawable(icon)` add icon from a Drawable.
 - `setIconBitmap(icon)` add icon from bitmap.
-- `setTitle("Title");`
+- `setTitle("Title");` set title as string text.
+- `setTitle(R.string.title);` set title as string resource.
 - `setPositiveButton("button text", multiselectcallback)`
 - `setAccentColor(int color/string hex color);` Default color is 0xFFA7B4C5/#FFA7B4C5 you can access it by `SDialog.COLOR_DEFAULT`.
 - `setTheme(SDialog.THEME_SYSTEM);` or `THEME_LIGHT / THEME_DARK`.
@@ -289,31 +351,41 @@ Table of methods:
 - `removeItem("item text")` remove an item by its **text** from the list.
 - `setCancelable(false);` (Optional).
 - `setOnDismissCallBack(dismisscallback);` (Optional).
-- `show();` to show it.
-- `dismiss();` to hide it.
+- `show(); / show(2100);` to show it always or for duration of time (auto hide).
+- `dismiss(); / dismiss(500);` to hide it immediately or after duration of time (auto dismiss).
 
 **Getters**
+
 - `getItemsList()` returns a list of Map<String, Object> containing all the items, to access their id, text, isChecked use:
+
 > SDialog.KEY_ITEM_ID | KEY_ITEM_TEXT | KEY_ITEM_CHECKED
+
 - `getAccentColor()` get accent color.
 - `getTitleColor()` get accent color.
 - `getBackgroundColor()` get accent color.
 - `getTextColor()` get text color.
 
 ## SliderSDialog
-![progress](https://te.legra.ph/file/2a4f52ad59c300bbff95c.jpg)
+
+<p align="center">
+    <img src="https://te.legra.ph/file/2a4f52ad59c300bbff95c.jpg" style="width: 35%;" />
+</p>
 
 Create new instance of SliderSDialog:
+
 ```java
     SliderSDialog sdialog = new SliderSDialog(this);
 ```
+
 Table of methods:
 
 **Setters**
+
 - `setIconResource(icon)` add icon from resources.
 - `setIconDrawable(icon)` add icon from a Drawable.
 - `setIconBitmap(icon)` add icon from bitmap.
-- `setTitle("Title");`
+- `setTitle("Title");` set title as string text.
+- `setTitle(R.string.title);` set title as string resource.
 - `setText("text hint" || int res)` (Optional) set a hint below title.
 - `setPositiveButtonAction("button text", slidercallback)`
 - `setNegativeButtonText("Cancel")` negative (cancel) button text.
@@ -323,8 +395,11 @@ Table of methods:
 - `setMax(float)` set max value (to).
 - `setValue(float)` set current slider value (from min to max).
 - `setStepBy(int)` how likely you want to walk through values in slider.
+- `show(); / show(2100);` to show it always or for duration of time (auto hide).
+- `dismiss(); / dismiss(500);` to hide it immediately or after duration of time (auto dismiss).
 
 **Getters:**
+
 - `getMinValue()` get min.
 - `getValue()` get value.
 - `getMaxValue()` get max.
@@ -334,32 +409,80 @@ Table of methods:
 - `getTextColor()` get text color.
 
 ## PatternSDialog
-![progress](https://te.legra.ph/file/dd7a15aec00c543fcd147.jpg)
+
+<p align="center">
+    <img src="https://te.legra.ph/file/dd7a15aec00c543fcd147.jpg" style="width: 35%;" />
+</p>
 
 Create new instance of PatternSDialog:
+
 ```java
     PatternSDialog sdialog = new PatternSDialog(this);
 ```
+
 Table of methods:
 
 **Setters**
+
 - `setIconResource(icon)` add icon from resources.
 - `setIconDrawable(icon)` add icon from a Drawable.
 - `setIconBitmap(icon)` add icon from bitmap.
-- `setTitle("Title");`
+- `setTitle("Title");` set title as string text.
+- `setTitle(R.string.title);` set title as string resource.
 - `setOnDrawPatternCallBack(ondrawpatterncallback)` set a callback to get pattern after draw it.
 - `setPatternMode(SDialog.PATTERN_MODE_WRONG)` set mode after drawing using `PATTERN_MODE_WRONG` or `PATTERN_MODE_CORRECT` (functional in callback).
 - `setAccentColor(int color/string hex color);` Default color is 0xFFA7B4C5/#FFA7B4C5 you can access it by `SDialog.COLOR_DEFAULT`.
 - `setTheme(SDialog.THEME_SYSTEM);` or `THEME_LIGHT / THEME_DARK`.
-> `dismiss()` method in this type of sdialog is accepting duration to auto dismiss after a duration of time in milliseconds.
+- `show(); / show(2100);` to show it always or for duration of time (auto hide).
+- `dismiss(); / dismiss(500);` to hide it immediately or after duration of time (auto dismiss).
+
 **Getters:**
+
+- `getAccentColor()` get accent color.
+- `getTitleColor()` get title color.
+- `getBackgroundColor()` get accent color.
+- `getPatternColor()` get pattern in normal state color.
+
+## FeedbackSDialog
+
+<p align="center">
+    <img src="https://te.legra.ph/file/6b803421661ac0548124e.jpg" style="width: 35%;" />
+</p>
+
+Create new instance of FeedbackSDialog:
+
+```java
+    FeedbackSDialog sdialog = new FeedbackSDialog(this);
+```
+
+Table of methods:
+
+**Setters**
+
+- `setIconResource(icon)` add icon from resources.
+- `setIconDrawable(icon)` add icon from a Drawable.
+- `setIconBitmap(icon)` add icon from bitmap.
+- `setTitle("Title");` set title as string text.
+- `setTitle(R.string.title);` set title as string resource.
+- `setText("Text");` set text as string.
+- `setText(R.string.text);` set text as string resource.
+- `setOnFeedbackSubmitCallBack(onfeedbacksubmitcallback)` set a callback to get the feedback submitted.
+- `setAccentColor(int color/string hex color);` Default color is 0xFFA7B4C5/#FFA7B4C5 you can access it by `SDialog.COLOR_DEFAULT`.
+- `setTheme(SDialog.THEME_SYSTEM);` or `THEME_LIGHT / THEME_DARK`.
+- `show(); / show(2100);` to show it always or for duration of time (auto hide).
+- `dismiss(); / dismiss(500);` to hide it immediately or after duration of time (auto dismiss).
+
+**Getters:**
+
 - `getAccentColor()` get accent color.
 - `getTitleColor()` get title color.
 - `getBackgroundColor()` get accent color.
 - `getPatternColor()` get pattern in normal state color.
 
 # CallBacks
+
 CallBacks used in SDialogs:
+
 ```java
     // onClick button in alert sdialog
     OnClickCallBack clickcallback = new OnClickCallBack() {
@@ -442,6 +565,11 @@ CallBacks used in SDialogs:
         public void onStartDrawing() {
         
         }
+
+        @Override
+        public void onDrawingProgress(String pattern) {
+            // use pattern
+        }
         
         @Override
         public void onCompleteDrawing(String pattern) {
@@ -455,9 +583,18 @@ CallBacks used in SDialogs:
         
         }
     };
+
+    // onFeedback submit callback
+    OnFeedbackSubmitCallBack onfeedbacksubmitcallback = new OnFeedbackSubmitCallBack() {
+        @Override
+        public void onSubmit(boolean isLiked) {
+            // use isLiked
+        }
+    };
 ```
 
 # Donations
+>
 > If you would like to support this project's further development, the creator of this projects or the continuous maintenance of the project **feel free to donate**.
 Your donation is highly appreciated. Thank you!
 <br/>
@@ -470,6 +607,6 @@ You can **choose what you want to donate**, all donations are awesome!</br>
 <br/>
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/smith8h/smith8h/main/20221103_150053.png" style="width: 38%;"/>
+  <img src="https://raw.githubusercontent.com/smith8h/smith8h/main/20221103_150053.png" style="width: 20%;"/>
   <br><b>With :heart:</b>
 </p>

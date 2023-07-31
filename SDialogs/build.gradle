@@ -16,13 +16,13 @@ android {
     defaultConfig {
         minSdk 21
         targetSdk 33
-        versionCode 3
-        versionName 'v2.1'
+        versionCode 4
+        versionName '4.0'
+        multiDexEnabled true
     }
 
     buildTypes {
         release {
-            minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
