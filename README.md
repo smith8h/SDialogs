@@ -4,8 +4,6 @@
 <img src="https://img.shields.io/github/v/release/smith8h/SDialogs?include_prereleases&amp;label=latest%20release" alt="Latest release"/>
 <!-- Build and test -->
 <img src="https://github.com/smith8h/SDialogs/actions/workflows/build.yml/badge.svg" alt="Builds and tests"/>
-<!-- CodeFactor -->
-<img src="https://www.codefactor.io/repository/github/smith8h/SDialogs/badge/main" alt="CodeFactor"/>
 <!-- JitPack release -->
 <a href="https://jitpack.io/#smith8h/SDialogs">
     <img src="https://jitpack.io/v/smith8h/SDialogs.svg" />
@@ -15,13 +13,13 @@
 <!-- minSDK -->
 <img src="https://img.shields.io/badge/minSDK-21-f39f37" alt="minsdk" />
 <!-- stable version -->
-<img src="https://img.shields.io/badge/stable_version-2.0-blue" alt="stable"/>
+<img src="https://img.shields.io/badge/stable_version-4.0-blue" alt="stable"/>
 <!-- repo size -->
 <img src="https://img.shields.io/github/repo-size/smith8h/sdialogs" alt="size"/>
 
 </br>
 
-Beautiful custom android dialogs ( alert, multiselect checkbox, singleselect radiobutton, string list items, loading, progress, input and custom sdialog ).
+Beautiful custom Android dialogs (alert, multiselect checkbox, singleselect radiobutton, string list items, loading, progress, input, and custom dialog)
 
 # Menu Of Contents
 
@@ -39,6 +37,8 @@ Beautiful custom android dialogs ( alert, multiselect checkbox, singleselect rad
   - [PatternSDialog](#patternsdialog)
   - [FeedbackSDialog](#feedbacksdialog)
 - [CallBacks](#callbacks)
+- [Used By](#used-by)
+- [Contributors](#contributors)
 - [Support library improvements (Donations)](#donations)
 
 # Setup
@@ -592,6 +592,22 @@ CallBacks used in SDialogs:
         }
     };
 ```
+
+# Used By
+List of apps on Play Store where this library used. Contact me if you want your app listed.
+
+Icon | Application
+------------ | -------------
+<img src="https://play-lh.googleusercontent.com/I0i7O7IBTeuRDwjogpu9W5LFZU2X4IMPSs7fCxUOT5sMrTsaJauaEJXYOJCxSPGkm_ps=w240-h480-rw" width="48" height="48" /> | Coding Oasis - Learn Programming
+<img src="https://play-lh.googleusercontent.com/nah9O-xROZI1Av_fRpLlUf4hq2pJpDVLQynCQ9ZQn5JFBGpo_kppnkMwpfr0zSB0jGQ=s256-rw" width="48" height="48" /> | Azkary
+
+<br>
+
+# Contributors
+<a href="https://github.com/smith8h/sdialogs/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=kimoandroid/glide-slider" />
+</a>
+<br>
 
 # Donations
 >
