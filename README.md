@@ -1,6 +1,5 @@
 # SDialogs
 
-<<<<<<< HEAD
 ![Builds and tests](https://github.com/smith8h/SDialogs/actions/workflows/build.yml/badge.svg)
 [![JitPack release](https://jitpack.io/v/smith8h/SDialogs.svg)](https://jitpack.io/#smith8h/SDialogs)
 ![Latest release](https://img.shields.io/github/v/release/smith8h/SDialogs?include_prereleases&amp;label=latest%20release)
@@ -8,24 +7,6 @@
 ![Stability](https://img.shields.io/badge/stability-stable-green.svg)
 ![minSDK](https://img.shields.io/badge/minSDK-21-f39f37)
 ![repo size](https://img.shields.io/github/repo-size/smith8h/sdialogs)
-=======
-<!-- Latest release -->
-<img src="https://img.shields.io/github/v/release/smith8h/SDialogs?include_prereleases&amp;label=latest%20release" alt="Latest release"/>
-<!-- Build and test -->
-<img src="https://github.com/smith8h/SDialogs/actions/workflows/build.yml/badge.svg" alt="Builds and tests"/>
-<!-- JitPack release -->
-<a href="https://jitpack.io/#smith8h/SDialogs">
-    <img src="https://jitpack.io/v/smith8h/SDialogs.svg" />
-</a>
-<!-- Stability -->
-<img src="https://img.shields.io/badge/stability-stable-green.svg" alt="stability" />
-<!-- minSDK -->
-<img src="https://img.shields.io/badge/minSDK-21-f39f37" alt="minsdk" />
-<!-- stable version -->
-<img src="https://img.shields.io/badge/stable_version-4.0-blue" alt="stable"/>
-<!-- repo size -->
-<img src="https://img.shields.io/github/repo-size/smith8h/sdialogs" alt="size"/>
->>>>>>> origin/main
 
 </br>
 
