@@ -9,7 +9,6 @@ import smith.lib.alerts.dialog.R;
 public class SScrollView extends ScrollView {
     
     private int maxHeight;
-    private final int defaultHeight = 200;
 
     public SScrollView(Context context) {
         super(context);
@@ -29,20 +28,18 @@ public class SScrollView extends ScrollView {
         }
     }
 
-    public SScrollView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
-        super(context, attrs, defStyleAttr, defStyleRes);
-        if (!isInEditMode()) {
-            init(context, attrs);
-        }
-    }
-
     private void init(Context context, AttributeSet attrs) {
         if (attrs != null) {
             TypedArray styledAttrs = context.obtainStyledAttributes(attrs, R.styleable.SScrollView);
+            int defaultHeight = 200;
             maxHeight = styledAttrs.getDimensionPixelSize(R.styleable.SScrollView_maxHeight, defaultHeight);
             styledAttrs.recycle();
-            
         }
+    }
+
+    public void setMaxHeight(int height) {
+        maxHeight = height;
+        postInvalidate();
     }
 
     @Override

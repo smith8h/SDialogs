@@ -76,7 +76,7 @@ public class SDialogUtils {
      * @param dp Int value of density pixels.
      * @return Returns Int value of dp.
      */
-    private float dp(int dp) {
+    public float dp(int dp) {
         return TypedValue.applyDimension(
             TypedValue.COMPLEX_UNIT_DIP,
             dp,

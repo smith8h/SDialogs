@@ -48,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
         sdialog.setAccentColor(0xFFAD97BE);
         sdialog.setTheme(SDialog.THEME_BY_SYSTEM);
         sdialog.setCancelable(true);
+        sdialog.setMaxHeight(150);
         sdialog.setOnDismissCallBack(() -> Toast.makeText(this, "onDismiss", Toast.LENGTH_SHORT).show());
         sdialog.show();
     }
@@ -191,7 +192,8 @@ public class MainActivity extends AppCompatActivity {
         sdialog.setTitle("Downloading Files");
         sdialog.setText("Gathering Resources...");
         sdialog.setOnProgressCallBack(new OnProgressCallBack() {
-            @Override public void onProgress(int progress, int percent) {
+            @Override
+            public void onProgress(int progress, int percent) {
                 if (percent > 0 && percent <= 20) sdialog.setText("Gathering Resources...");
                 if (percent > 20 && percent <= 50) sdialog.setText("Downloading Resources...");
                 if (percent > 50 && percent <= 80) sdialog.setText("Extracting Resources...");
@@ -199,11 +201,15 @@ public class MainActivity extends AppCompatActivity {
                 if (percent >= 99) sdialog.setText("Resources Installed.");
             }
 
-            @Override public void onFinish() {
+            @Override
+            public void onFinish() {
                 Toast.makeText(MainActivity.this, "Download Complete!", Toast.LENGTH_SHORT).show();
             }
         });
-        sdialog.setNegativeButtonAction("Cancel Process", () -> timer.cancel());
+        sdialog.setNegativeButtonAction("Cancel Process", () -> {
+            timer.cancel();
+            p = 0;
+        });
         sdialog.show();
 
         task = new TimerTask() { @Override public void run() {

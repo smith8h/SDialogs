@@ -16,6 +16,7 @@ import androidx.annotation.*;
 import androidx.appcompat.app.AlertDialog;
 import java.util.Objects;
 import co.encept.patternlockview.PatternLockView;
+import smith.lib.views.scroll.SScrollView;
 
 /**
  * The parent and main class of SDialog lib.
@@ -224,6 +225,7 @@ public class SDialog {
         ProgressBar loading, progress;
         PatternLockView pattern;
         Slider seek;
+        SScrollView scroll;
 
         public DialogBinding(@NonNull View view) {
             main = view.findViewById(R.id.main);
@@ -244,6 +246,7 @@ public class SDialog {
             seek = view.findViewById(R.id.seek);
             like = view.findViewById(R.id.like);
             dislike = view.findViewById(R.id.dislike);
+            scroll = view.findViewById(R.id.scroll);
         }
     }
 }

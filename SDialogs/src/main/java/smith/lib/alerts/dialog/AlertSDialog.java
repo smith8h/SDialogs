@@ -133,6 +133,10 @@ public class AlertSDialog extends SDialog {
         b.text.setText(text);
     }
 
+    public void setMaxHeight(int maxHeight) {
+        b.scroll.setMaxHeight((int) utils.dp(maxHeight));
+    }
+
     /**
      * Set text from int resource to current SDialog.
      *
