@@ -82,7 +82,7 @@ Table of methods:
 - `setTitle("Title");` set title as string text.
 - `setTitle(R.string.title);` set title as string resource.
 - `setText(text);` accepts span text | int string res | string text...
-- 'setMaxHeight(340);' set max height to ignore screen overriding (default is 360).
+- `setMaxHeight(340);` set max height to ignore screen overriding (default is 360).
 - `setPositiveButton("Button Text", clickcallback);` (Optional) the code here in java8, to use java7 or below syntax see in [CallBacks](#callbacks).
 - `setNegativeButton("Button Text", clickcallback);` (Optional) onClick callback used.
 - `setNeutralButton("Button Text", clickcallback);` (Optional) .
@@ -179,7 +179,7 @@ Table of methods:
 - `setIconBitmap(icon)` add icon from bitmap.
 - `setTitle("Title");` set title as string text.
 - `setTitle(R.string.title);` set title as string resource.
-- 'setMaxHeight(340);' set max height to ignore screen overriding (default is 360).
+- `setMaxHeight(340);` set max height to ignore screen overriding (default is 360).
 - `setAccentColor(int color/string hex color);` Default color is 0xFFA7B4C5/#FFA7B4C5 you can access it by `SDialog.COLOR_DEFAULT`.
 - `setTheme(SDialog.THEME_SYSTEM);` or `THEME_LIGHT / THEME_DARK`.
 - `setItemsList(ArrayList<String>);` set items from existing arraylist of strings `ArrayList<String>`.
@@ -292,7 +292,7 @@ Table of methods:
 - `setIconBitmap(icon)` add icon from bitmap.
 - `setTitle("Title");` set title as string text.
 - `setTitle(R.string.title);` set title as string resource.
-- 'setMaxHeight(340);' set max height to ignore screen overriding (default is 360).
+- `setMaxHeight(340);` set max height to ignore screen overriding (default is 360).
 - `setAccentColor(int color/string hex color);` Default color is 0xFFA7B4C5/#FFA7B4C5 you can access it by `SDialog.COLOR_DEFAULT`.
 - `setTheme(SDialog.THEME_SYSTEM);` or `THEME_LIGHT / THEME_DARK`.
 - `setOnSingleSelectCallBack(singleselectcallback);` get checked radio button id & text.
@@ -337,7 +337,7 @@ Table of methods:
 - `setIconBitmap(icon)` add icon from bitmap.
 - `setTitle("Title");` set title as string text.
 - `setTitle(R.string.title);` set title as string resource.
-- 'setMaxHeight(340);' set max height to ignore screen overriding (default is 360).
+- `setMaxHeight(340);` set max height to ignore screen overriding (default is 360).
 - `setPositiveButton("button text", multiselectcallback)`
 - `setAccentColor(int color/string hex color);` Default color is 0xFFA7B4C5/#FFA7B4C5 you can access it by `SDialog.COLOR_DEFAULT`.
 - `setTheme(SDialog.THEME_SYSTEM);` or `THEME_LIGHT / THEME_DARK`.
@@ -425,8 +425,8 @@ Table of methods:
 - `setIconBitmap(icon)` add icon from bitmap.
 - `setTitle("Title");` set title as string text.
 - `setTitle(R.string.title);` set title as string resource.
-- 'setPatternViewHeight(340);' set height to patterview (default is 260).
-- 'setPatternViewWidth(340);' set width to patternview (default is 260).
+- `setPatternViewHeight(340);` set height to patterview (default is 260).
+- `setPatternViewWidth(340);` set width to patternview (default is 260).
 - `setOnDrawPatternCallBack(ondrawpatterncallback)` set a callback to get pattern after draw it.
 - `setPatternMode(SDialog.PATTERN_MODE_WRONG)` set mode after drawing using `PATTERN_MODE_WRONG` or `PATTERN_MODE_CORRECT` (functional in callback).
 - `setAccentColor(int color/string hex color);` Default color is 0xFFA7B4C5/#FFA7B4C5 you can access it by `SDialog.COLOR_DEFAULT`.
