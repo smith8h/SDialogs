@@ -6,6 +6,7 @@ import android.content.Context;
 import android.graphics.*;
 import android.graphics.drawable.Drawable;
 import android.view.View;
+import android.widget.LinearLayout;
 import androidx.annotation.*;
 import java.util.List;
 import co.encept.patternlockview.PatternLockView;
@@ -20,6 +21,9 @@ import smith.lib.alerts.dialog.callbacks.OnDrawPatternCallBack;
 @SuppressWarnings({"unused"})
 public class PatternSDialog extends SDialog {
 
+    private int height;
+    private int width;
+
     /**
      * Pass the current context you using this sdialog from.
      * @param context Current context (or Activity).
@@ -29,7 +33,10 @@ public class PatternSDialog extends SDialog {
     	super.context = context;
         dialogView = ((Activity) context).getLayoutInflater().inflate(R.layout.sdialog_pattern, null);
         init();
-        
+
+        height = (int) utils.dp(280);
+        width = (int) utils.dp(280);
+
         setCancelable(false);
     }
 
@@ -110,6 +117,14 @@ public class PatternSDialog extends SDialog {
     	b.pattern.setViewMode(patternMode);
     }
 
+    public void setPatternViewHeight(int height) {
+        this.height = (int) utils.dp(height);
+    }
+
+    public void setPatternViewWidth(int width) {
+        this.width = (int) utils.dp(width);
+    }
+
     /**
      * @return Accent color of current SDialog showed as light theme or dark theme.
      */
@@ -139,15 +154,15 @@ public class PatternSDialog extends SDialog {
     }
 
     /**
-     * This setter wont work on pattern SDialog as it designed for safety.
+     * This setter wont work on pattern SDialog as it designed for security.
      * it will be cancelled as far as you draw a pattern.
+     * <p>
+     *     Don't forget to set a {@link OnDrawPatternCallBack} listener to get pattern drawn and deal with it.
+     * </p>
      */
     @Override
-    public void setCancelable(boolean cancelable) {
-        super.setCancelable(false);
-    }
-    
-    
+    public void setCancelable(boolean cancelable) {}
+
     @Override
     public void show() {
         update();
@@ -166,5 +181,6 @@ public class PatternSDialog extends SDialog {
         b.icon.setColorFilter(iconColor);
         b.title.setTextColor(titleColor);
         b.pattern.setNormalStateColor(accentColor);
+        b.pattern.setLayoutParams(new LinearLayout.LayoutParams(width, height, 0));
     }
 }

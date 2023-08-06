@@ -176,10 +176,11 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, "Pattern drawing cleared!", Toast.LENGTH_SHORT).show();
             }
         });
+        d.setPatternViewWidth(200);
+        d.setPatternViewHeight(200);
         d.setTheme(SDialog.THEME_BY_SYSTEM);
         d.setTitle("Draw Pattern To Unlock");
         d.show();
-        
     }
 
     public void progress(View v) {
