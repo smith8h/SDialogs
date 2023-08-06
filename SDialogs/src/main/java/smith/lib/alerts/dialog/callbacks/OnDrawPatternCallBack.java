@@ -1,28 +1,30 @@
-package smith.lib.alerts.dialog.callbacks
+package smith.lib.alerts.dialog.callbacks;
 
 /**
  * On drawing pattern callback for PatternSDialog.
  */
-interface OnDrawPatternCallBack {
+public interface OnDrawPatternCallBack {
     /**
      * triggered whenever drawing started (immediately when you touch a dot and move you finger).
      */
-    fun onDrawingStarted()
+    void onDrawingStarted();
 
     /**
      * triggered when drawing is on progress.
+     *
      * @param pattern returns the current pattern progress as string of numbers represent the patterns.
      */
-    fun onDrawingProgress(pattern: String)
+    void onDrawingProgress(String pattern);
 
     /**
      * triggered whenever the drawing is finished after releasing your finger.
+     *
      * @param pattern returns the full pattern as string of numbers represent the patterns.
      */
-    fun onDrawingCompleted(pattern: String)
+    void onDrawingCompleted(String pattern);
 
     /**
      * triggered after releasing your finger and the drawn pattern cleared.
      */
-    fun onDrawingCleared()
+    void onDrawingCleared();
 }

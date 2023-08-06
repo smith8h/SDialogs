@@ -155,12 +155,14 @@ public class ProgressSDialog extends SDialog {
      * @param text a string text to display on the negative button.
      * @param clickCallBack a callback using {@link OnClickCallBack}.
      */
+    @SuppressLint("NewApi")
     public void setNegativeButtonAction(String text, OnClickCallBack clickCallBack) {
         b.negative.setVisibility(View.VISIBLE);
         b.negative.setText(text);
         b.negative.setOnClickListener(v -> {
             clickCallBack.onClick();
             this.callback = null;
+            b.progress.setProgress(getMin());
             dismiss();
         });
     }

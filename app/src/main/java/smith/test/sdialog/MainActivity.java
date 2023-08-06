@@ -10,7 +10,6 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentTransaction;
 import java.util.*;
 import smith.lib.alerts.dialog.*;
-import smith.lib.alerts.dialog.callbacks.OnBindCustomViewCallBack;
 import smith.lib.alerts.dialog.callbacks.OnDrawPatternCallBack;
 import smith.lib.alerts.dialog.callbacks.OnProgressCallBack;
 
@@ -217,6 +216,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
         }};
+        timer = new Timer();
         timer.scheduleAtFixedRate(task, 0, 100);
     }
 

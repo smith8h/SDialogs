@@ -1,14 +1,15 @@
-package smith.lib.alerts.dialog.callbacks
+package smith.lib.alerts.dialog.callbacks;
 
-import android.view.View
+import android.view.View;
 
 /**
  * Binding view callback to do logic when attaching a view to CustomSDialog.
  */
-interface OnBindCustomViewCallBack {
+@FunctionalInterface
+public interface OnBindCustomViewCallBack {
     /**
      * Triggered whenever a new view/layout been attached to CustomSDialog.
      * @param customView the view that been attached to th SDialog.
      */
-    fun onBindCustomView(customView: View)
+    void onBindCustomView(View customView);
 }
