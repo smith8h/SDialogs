@@ -16,7 +16,7 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "SDialigs Library"
+rootProject.name = "SDialogs Library"
 
 include ':app'
 include ':SDialogs'
