@@ -17,6 +17,8 @@ import smith.lib.alerts.dialog.callbacks.OnClickCallBack;
 @SuppressWarnings({"unused"})
 public class AlertSDialog extends SDialog {
 
+    private int maxHeight;
+
     /**
      * Pass the current context you using this sdialog from.
      * @param context Current context (or Activity).
@@ -26,6 +28,8 @@ public class AlertSDialog extends SDialog {
         super.context = context;
         dialogView = ((Activity) context).getLayoutInflater().inflate(R.layout.sdialog_alert, null);
         init();
+
+        maxHeight = (int) utils.dp(360);
     }
 
     /**
@@ -138,7 +142,7 @@ public class AlertSDialog extends SDialog {
      * @param maxHeight an int value as maxHeight (it will automatically converted to dp);
      */
     public void setMaxHeight(int maxHeight) {
-        b.scroll.setMaxHeight((int) utils.dp(maxHeight));
+        this.maxHeight = (int) utils.dp(maxHeight);
     }
 
     /**
@@ -196,9 +200,9 @@ public class AlertSDialog extends SDialog {
         b.icon.setColorFilter(iconColor);
         b.title.setTextColor(titleColor);
         b.text.setTextColor(textColor);
+        b.recycler.setMaxHeight(maxHeight);
         b.positive.setTextColor(accentColor);
         b.negative.setTextColor(accentColor);
         b.neutral.setTextColor(accentColor);
-
     }
 }

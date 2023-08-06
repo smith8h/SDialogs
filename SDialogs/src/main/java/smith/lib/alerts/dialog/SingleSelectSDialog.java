@@ -24,6 +24,7 @@ public class SingleSelectSDialog extends SDialog {
     private final List<Map<String, Object>> data = new ArrayList<>();
     private Map<String, Object> item = new HashMap<>();
     private OnSingleSelectCallBack callback;
+    private int maxHeight;
 
     /**
      * Pass the current context you using this sdialog from.
@@ -34,6 +35,8 @@ public class SingleSelectSDialog extends SDialog {
         this.context = context;
         dialogView = ((Activity) context).getLayoutInflater().inflate(R.layout.sdialog_items, null);
         init();
+
+        maxHeight = (int) utils.dp(360);
     }
 
     /**
@@ -89,7 +92,7 @@ public class SingleSelectSDialog extends SDialog {
      * @param maxHeight an int value as maxHeight (it will automatically converted to dp);
      */
     public void setMaxHeight(int maxHeight) {
-        b.recycler.setMaxHeight((int) utils.dp(maxHeight));
+        this.maxHeight = (int) utils.dp(maxHeight);
     }
 
     /**
@@ -212,5 +215,6 @@ public class SingleSelectSDialog extends SDialog {
         SSingleSelectAdapter adapter = new SSingleSelectAdapter(data, callback, this);
         b.recycler.setLayoutManager(new LinearLayoutManager(context, RecyclerView.VERTICAL, false));
         b.recycler.setAdapter(adapter);
+        b.recycler.setMaxHeight(maxHeight);
     }
 }

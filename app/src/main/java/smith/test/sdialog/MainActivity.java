@@ -179,7 +179,7 @@ public class MainActivity extends AppCompatActivity {
         d.setPatternViewWidth(200);
         d.setPatternViewHeight(200);
         d.setTheme(SDialog.THEME_BY_SYSTEM);
-        d.setTitle("Draw Pattern To Unlock");
+        d.setTitle("Unlock");
         d.show();
     }
 
