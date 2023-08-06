@@ -1,12 +1,23 @@
 # SDialogs
 
-![Builds and tests](https://github.com/smith8h/SDialogs/actions/workflows/build.yml/badge.svg)
-[![JitPack release](https://jitpack.io/v/smith8h/SDialogs.svg)](https://jitpack.io/#smith8h/SDialogs)
-![Latest release](https://img.shields.io/github/v/release/smith8h/SDialogs?include_prereleases&amp;label=latest%20release)
-![Stable Version](https://img.shields.io/badge/stable_version-4.1-blue)
-![Stability](https://img.shields.io/badge/stability-stable-green.svg)
-![minSDK](https://img.shields.io/badge/minSDK-21-f39f37)
-![repo size](https://img.shields.io/github/repo-size/smith8h/sdialogs)
+<!-- Latest release -->
+<img src="https://img.shields.io/github/v/release/smith8h/SDialogs?include_prereleases&amp;label=latest%20release" alt="Latest release"/>
+<!-- Build and test -->
+<img src="https://github.com/smith8h/SDialogs/actions/workflows/build.yml/badge.svg" alt="Builds and tests"/>
+<!-- CodeFactor -->
+<img src="https://www.codefactor.io/repository/github/smith8h/SDialogs/badge/main" alt="CodeFactor"/>
+<!-- JitPack release -->
+<a href="https://jitpack.io/#smith8h/SDialogs">
+    <img src="https://jitpack.io/v/smith8h/SDialogs.svg" />
+</a>
+<!-- Stability -->
+<img src="https://img.shields.io/badge/stability-stable-green.svg" alt="stability" />
+<!-- minSDK -->
+<img src="https://img.shields.io/badge/minSDK-21-f39f37" alt="minsdk" />
+<!-- stable version -->
+<img src="https://img.shields.io/badge/stable_version-2.0-blue" alt="stable"/>
+<!-- repo size -->
+<img src="https://img.shields.io/github/repo-size/smith8h/sdialogs" alt="size"/>
 
 </br>
 
@@ -38,8 +49,8 @@ Add it in your root build.gradle at the end of repositories:
 ```gradle
 allprojects {
     repositories {
-        ...
-        maven { url 'https://jitpack.io' }
+ ...
+ maven { url 'https://jitpack.io' }
     }
 }
 ```
@@ -48,8 +59,7 @@ allprojects {
 
 ```gradle
 dependencies {
-    ...
-    implementation 'com.github.smith8h:SDialogs:4.1'
+    implementation 'com.github.smith8h:SDialogs:4.0'
 }
 ```
 
@@ -80,7 +90,6 @@ Table of methods:
 - `setTitle("Title");` set title as string text.
 - `setTitle(R.string.title);` set title as string resource.
 - `setText(text);` accepts span text | int string res | string text...
-- 'setMaxHeight(340);' set max height to ignore screen overriding (default is 360).
 - `setPositiveButton("Button Text", clickcallback);` (Optional) the code here in java8, to use java7 or below syntax see in [CallBacks](#callbacks).
 - `setNegativeButton("Button Text", clickcallback);` (Optional) onClick callback used.
 - `setNeutralButton("Button Text", clickcallback);` (Optional) .
@@ -177,7 +186,6 @@ Table of methods:
 - `setIconBitmap(icon)` add icon from bitmap.
 - `setTitle("Title");` set title as string text.
 - `setTitle(R.string.title);` set title as string resource.
-- 'setMaxHeight(340);' set max height to ignore screen overriding (default is 360).
 - `setAccentColor(int color/string hex color);` Default color is 0xFFA7B4C5/#FFA7B4C5 you can access it by `SDialog.COLOR_DEFAULT`.
 - `setTheme(SDialog.THEME_SYSTEM);` or `THEME_LIGHT / THEME_DARK`.
 - `setItemsList(ArrayList<String>);` set items from existing arraylist of strings `ArrayList<String>`.
@@ -290,7 +298,6 @@ Table of methods:
 - `setIconBitmap(icon)` add icon from bitmap.
 - `setTitle("Title");` set title as string text.
 - `setTitle(R.string.title);` set title as string resource.
-- 'setMaxHeight(340);' set max height to ignore screen overriding (default is 360).
 - `setAccentColor(int color/string hex color);` Default color is 0xFFA7B4C5/#FFA7B4C5 you can access it by `SDialog.COLOR_DEFAULT`.
 - `setTheme(SDialog.THEME_SYSTEM);` or `THEME_LIGHT / THEME_DARK`.
 - `setOnSingleSelectCallBack(singleselectcallback);` get checked radio button id & text.
@@ -335,7 +342,6 @@ Table of methods:
 - `setIconBitmap(icon)` add icon from bitmap.
 - `setTitle("Title");` set title as string text.
 - `setTitle(R.string.title);` set title as string resource.
-- 'setMaxHeight(340);' set max height to ignore screen overriding (default is 360).
 - `setPositiveButton("button text", multiselectcallback)`
 - `setAccentColor(int color/string hex color);` Default color is 0xFFA7B4C5/#FFA7B4C5 you can access it by `SDialog.COLOR_DEFAULT`.
 - `setTheme(SDialog.THEME_SYSTEM);` or `THEME_LIGHT / THEME_DARK`.
@@ -423,8 +429,6 @@ Table of methods:
 - `setIconBitmap(icon)` add icon from bitmap.
 - `setTitle("Title");` set title as string text.
 - `setTitle(R.string.title);` set title as string resource.
-- 'setPatternViewHeight(340);' set height to patterview (default is 260).
-- 'setPatternViewWidth(340);' set width to patternview (default is 260).
 - `setOnDrawPatternCallBack(ondrawpatterncallback)` set a callback to get pattern after draw it.
 - `setPatternMode(SDialog.PATTERN_MODE_WRONG)` set mode after drawing using `PATTERN_MODE_WRONG` or `PATTERN_MODE_CORRECT` (functional in callback).
 - `setAccentColor(int color/string hex color);` Default color is 0xFFA7B4C5/#FFA7B4C5 you can access it by `SDialog.COLOR_DEFAULT`.
@@ -518,7 +522,7 @@ CallBacks used in SDialogs:
         public void onItemClick(String itemValue, int itemIndex) {
             // use itemValue to get item text, itemIndex to get item index.
         }
-    };
+    }
     
     // onProgressCallBack used in progress sdialog
     OnProgressCallBack progresscallback = new OnProgressCallBack() {
@@ -527,7 +531,7 @@ CallBacks used in SDialogs:
             // use progress to get the progress 120 of max 200 eg..
             // use percent to get progress percentage 20 of 100% eg..
         }
-    };
+    }
     
     // onSingleSelect used in single select sdialog
     OnSingleSelectCallBack multiselectcallback = new OnSingleSelectCallBack() {
@@ -536,7 +540,7 @@ CallBacks used in SDialogs:
             // use itemId to get selected item id
             // use itemText to get selected itemText
         }
-    };
+    }
     
     // onMultiSelect used in multi select sdialog in positive button
     OnMultiSelectCallBack multiselectcallback = new OnMultiSelectCallBack() {
@@ -546,14 +550,14 @@ CallBacks used in SDialogs:
             // to access their id, text, isChecked use:
             // SDialog.KEY_ITEM_ID | KEY_ITEM_TEXT | KEY_ITEM_CHECKED
         }
-    };
+    }
     
     OnSlideCallBack slidercallback = new OnSlideCallBack() {
         @Override
         public void onValueSelected(float value) {
             // use value
         }
-    };
+    }
     
     // onDraw pattern callback
     OnDrawPatternCallBack ondrawpatterncallback = new OnDrawPatternCallBack() {
