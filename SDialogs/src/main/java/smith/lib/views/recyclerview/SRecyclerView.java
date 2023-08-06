@@ -1,5 +1,6 @@
 package smith.lib.views.recyclerview;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
@@ -9,7 +10,6 @@ import smith.lib.alerts.dialog.R;
 public class SRecyclerView extends RecyclerView {
     
     private int maxHeight;
-    private final int defaultHeight = 200;
 
     public SRecyclerView(Context context) {
         super(context);
@@ -29,13 +29,19 @@ public class SRecyclerView extends RecyclerView {
         }
     }
 
+    @SuppressLint("CustomViewStyleable")
     private void init(Context context, AttributeSet attrs) {
         if (attrs != null) {
             TypedArray styledAttrs = context.obtainStyledAttributes(attrs, R.styleable.SScrollView);
+            int defaultHeight = 200;
             maxHeight = styledAttrs.getDimensionPixelSize(R.styleable.SScrollView_maxHeight, defaultHeight);
             styledAttrs.recycle();
-            
         }
+    }
+
+    public void setMaxHeight(int height) {
+        maxHeight = height;
+        postInvalidate();
     }
 
     @Override

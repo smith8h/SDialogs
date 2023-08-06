@@ -85,6 +85,14 @@ public class SingleSelectSDialog extends SDialog {
     }
 
     /**
+     * Set a max height to fix screen overriding content.
+     * @param maxHeight an int value as maxHeight (it will automatically converted to dp);
+     */
+    public void setMaxHeight(int maxHeight) {
+        b.recycler.setMaxHeight((int) utils.dp(maxHeight));
+    }
+
+    /**
      * Set a functional interface to get the chosen items when selected.
      * @param callback a callback using {@link OnSingleSelectCallBack}.
      */

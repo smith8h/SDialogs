@@ -90,6 +90,14 @@ public class ItemsSDialog extends SDialog {
     }
 
     /**
+     * Set a max height to fix screen overriding content.
+     * @param maxHeight an int value as maxHeight (it will automatically converted to dp);
+     */
+    public void setMaxHeight(int maxHeight) {
+        b.recycler.setMaxHeight((int) utils.dp(maxHeight));
+    }
+
+    /**
      * Add functionality to when an item clicked.
      * @param callback A callback using {@link OnItemClickCallBack}
      */

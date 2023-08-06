@@ -84,6 +84,14 @@ public class MultiSelectSDialog extends SDialog {
     }
 
     /**
+     * Set a max height to fix screen overriding content.
+     * @param maxHeight an int value as maxHeight (it will automatically converted to dp);
+     */
+    public void setMaxHeight(int maxHeight) {
+        b.recycler.setMaxHeight((int) utils.dp(maxHeight));
+    }
+
+    /**
      * Set the text to be displayed on positive button.
      * @param text as {@link String} text.
      * @param callback a callback using {@link OnMultiSelectCallBack}

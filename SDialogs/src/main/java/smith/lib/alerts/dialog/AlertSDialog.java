@@ -133,6 +133,10 @@ public class AlertSDialog extends SDialog {
         b.text.setText(text);
     }
 
+    /**
+     * Set a max height to fix screen overriding content.
+     * @param maxHeight an int value as maxHeight (it will automatically converted to dp);
+     */
     public void setMaxHeight(int maxHeight) {
         b.scroll.setMaxHeight((int) utils.dp(maxHeight));
     }
