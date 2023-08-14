@@ -12,6 +12,7 @@ import java.util.*;
 import smith.lib.alerts.dialog.*;
 import smith.lib.alerts.dialog.callbacks.OnDrawPatternCallBack;
 import smith.lib.alerts.dialog.callbacks.OnProgressCallBack;
+import smith.lib.alerts.dialog.utils.MenuSDialogItem;
 
 public class MainActivity extends AppCompatActivity {
     int p = 0;
@@ -92,24 +93,21 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void items(View v) {
-        ItemsSDialog sdialog = new ItemsSDialog(this);
+        MenuSDialog sdialog = new MenuSDialog(this);
         sdialog.setAccentColor(0xFFAD97BE);
-        sdialog.setCancelable(false);
         sdialog.setTheme(SDialog.THEME_BY_SYSTEM);
-        sdialog.setTitle("Set Your Gender:");
+        sdialog.setMaxHeight(360);
 
-        ArrayList<String> genders = new ArrayList<>();
-        genders.add("Male");
-        genders.add("Female");
-        genders.add("Prefer not to say");
+        List<MenuSDialogItem> items = new ArrayList<>();
+        items.add(new MenuSDialogItem(ContextCompat.getDrawable(this, R.drawable.ok_img),
+                getString(R.string.app_name)));
+        items.add(new MenuSDialogItem(ContextCompat.getDrawable(this, R.drawable.ok_img),
+                getString(R.string.app_name)));
+        sdialog.setItemsList(items);
+        sdialog.addItem(R.drawable.ok_img, getString(R.string.app_name));
 
-        sdialog.setItemsList(genders);
-        sdialog.setOnItemClickCallBack((itemValue, itemIndex) -> Toast.makeText(this, itemValue + (itemIndex+1), Toast.LENGTH_SHORT).show());
-        sdialog.setNegativeButtonText("Cancel");
-
-        sdialog.removeItem("Prefer not to say");
-        // sdialog.removeItem(2);
-
+        sdialog.setOnItemClickCallBack((index, item) -> Toast.makeText(this, index + " " + (item.getTitle()), Toast.LENGTH_SHORT).show());
+        sdialog.removeItem(2);
         sdialog.show();
     }
 

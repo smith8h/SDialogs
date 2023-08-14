@@ -2,9 +2,22 @@
 <android.widget.LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:padding="10dp">
+    android:paddingVertical="10dp"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:background="@drawable/bg_menu_sdialog_item">
+    
+    <ImageView
+        android:id="@+id/icon"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        tools:src="@drawable/sdialog_ok_img"
+        tools:tint="#000"
+        android:layout_marginEnd="10dp"
+        android:scaleType="fitXY"
+        android:importantForAccessibility="no" />
 
     <android.widget.TextView
         android:id="@+id/text"
@@ -12,6 +25,6 @@
         android:layout_height="wrap_content"
         android:textSize="16sp"
         tools:textColor="#000"
-        tools:text="item" />
+        tools:text="Use As Template" />
 
 </android.widget.LinearLayout>

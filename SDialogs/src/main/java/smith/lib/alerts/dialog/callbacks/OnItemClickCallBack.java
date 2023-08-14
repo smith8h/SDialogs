@@ -1,5 +1,7 @@
 package smith.lib.alerts.dialog.callbacks;
 
+import smith.lib.alerts.dialog.utils.MenuSDialogItem;
+
 /**
  * On item selected callback for ItemsSDialog.
  */
@@ -8,8 +10,8 @@ public interface OnItemClickCallBack {
     /**
      * triggered on selecting item from the list and returns:
      *
-     * @param itemValue the value of that item as string.
-     * @param itemIndex the id of that item as int.
+     * @param index the index of that item clicked.
+     * @param item the item clicked on the menu.
      */
-    void onItemClick(String itemValue, int itemIndex);
+    void onItemClick(int index, MenuSDialogItem item);
 }
