@@ -23,7 +23,7 @@ public class MultiSelectSDialog extends SDialog {
     private SMultiSelectAdapter adapter;
     private final List<Map<String, Object>> data = new ArrayList<>();
     private Map<String, Object> item = new HashMap<>();
-    private int maxHeight;
+    private int maxHeight, maxWidth;
 
     /**
      * Pass the current context you using this sdialog from.
@@ -34,8 +34,6 @@ public class MultiSelectSDialog extends SDialog {
         this.context = context;
         dialogView = ((Activity) context).getLayoutInflater().inflate(R.layout.sdialog_items, null);
         init();
-
-        maxHeight = (int) utils.dp(360);
     }
 
     /**
@@ -92,6 +90,14 @@ public class MultiSelectSDialog extends SDialog {
      */
     public void setMaxHeight(int maxHeight) {
         this.maxHeight = (int) utils.dp(maxHeight);
+    }
+
+    /**
+     * Set a max width to fix screen overriding content.
+     * @param maxWidth an int value as maxWidth (it will automatically converted to dp);
+     */
+    public void setMaxWidth(int maxWidth) {
+        this.maxWidth = (int) utils.dp(maxWidth);
     }
 
     /**
@@ -221,6 +227,7 @@ public class MultiSelectSDialog extends SDialog {
         adapter = new SMultiSelectAdapter(data, this);
         b.recycler.setLayoutManager(new LinearLayoutManager(context, RecyclerView.VERTICAL, false));
         b.recycler.setAdapter(adapter);
-        b.recycler.setMaxHeight(maxHeight);
+        if (maxHeight != 0) b.recycler.setMaxHeight(maxHeight);
+        if (maxWidth != 0) b.recycler.setMaxWidth(maxWidth);
     }
 }

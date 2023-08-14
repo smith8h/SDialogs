@@ -21,7 +21,7 @@ public class ItemsSDialog extends SDialog {
     
     private List<String> data = new ArrayList<>();
     private OnItemClickCallBack callback;
-    private int maxHeight;
+    private int maxHeight, maxWidth;
 
     /**
      * Pass the current context you using this sdialog from.
@@ -32,8 +32,6 @@ public class ItemsSDialog extends SDialog {
         this.context = context;
         dialogView = ((Activity) context).getLayoutInflater().inflate(R.layout.sdialog_items, null);
         init();
-
-        maxHeight = (int) utils.dp(360);
     }
 
     /**
@@ -72,6 +70,7 @@ public class ItemsSDialog extends SDialog {
      * @param title String title.
      */
     public void setTitle(String title) {
+        b.title.setVisibility(View.VISIBLE);
         b.title.setText(title);
     }
 
@@ -81,6 +80,7 @@ public class ItemsSDialog extends SDialog {
      * @param resTitle Int resource title (R.string.title).
      */
     public void setTitle(@StringRes int resTitle) {
+        b.title.setVisibility(View.VISIBLE);
         b.title.setText(resTitle);
     }
 
@@ -98,6 +98,14 @@ public class ItemsSDialog extends SDialog {
      */
     public void setMaxHeight(int maxHeight) {
         this.maxHeight = (int) utils.dp(maxHeight);
+    }
+
+    /**
+     * Set a max width to fix screen overriding content.
+     * @param maxWidth an int value as maxWidth (it will automatically converted to dp);
+     */
+    public void setMaxWidth(int maxWidth) {
+        this.maxWidth = (int) utils.dp(maxWidth);
     }
 
     /**
@@ -189,6 +197,7 @@ public class ItemsSDialog extends SDialog {
         SItemsAdapter adapter = new SItemsAdapter(data, callback, this);
         b.recycler.setLayoutManager(new LinearLayoutManager(context, RecyclerView.VERTICAL, false));
         b.recycler.setAdapter(adapter);
-        b.recycler.setMaxHeight(maxHeight);
+        if (maxHeight != 0) b.recycler.setMaxHeight(maxHeight);
+        if (maxWidth != 0) b.recycler.setMaxWidth(maxWidth);
     }
 }

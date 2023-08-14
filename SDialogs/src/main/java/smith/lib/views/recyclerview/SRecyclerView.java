@@ -9,7 +9,7 @@ import smith.lib.alerts.dialog.R;
 
 public class SRecyclerView extends RecyclerView {
     
-    private int maxHeight;
+    private int maxHeight, maxWidth;
 
     public SRecyclerView(Context context) {
         super(context);
@@ -35,6 +35,8 @@ public class SRecyclerView extends RecyclerView {
             TypedArray styledAttrs = context.obtainStyledAttributes(attrs, R.styleable.SScrollView);
             int defaultHeight = 200;
             maxHeight = styledAttrs.getDimensionPixelSize(R.styleable.SScrollView_maxHeight, defaultHeight);
+            int defaultWidth = 300;
+            maxWidth = styledAttrs.getDimensionPixelSize(R.styleable.SScrollView_maxWidth, defaultWidth);
             styledAttrs.recycle();
         }
     }
@@ -44,9 +46,15 @@ public class SRecyclerView extends RecyclerView {
         postInvalidate();
     }
 
+    public void setMaxWidth(int width) {
+        maxWidth = width;
+        postInvalidate();
+    }
+
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         heightMeasureSpec = MeasureSpec.makeMeasureSpec(maxHeight, MeasureSpec.AT_MOST);
+        widthMeasureSpec = MeasureSpec.makeMeasureSpec(maxWidth, MeasureSpec.AT_MOST);
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
     }
 }

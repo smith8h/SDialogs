@@ -1,11 +1,7 @@
 plugins {
     id 'com.android.library'
-    id 'org.jetbrains.kotlin.android'
     id 'maven-publish'
 }
-
-def artifactId = "SDialogs"
-def groupId = "smith.lib"
 
 android {
     namespace 'smith.lib.alerts.dialog'
@@ -16,8 +12,8 @@ android {
     defaultConfig {
         minSdk 21
         targetSdk 33
-        versionCode 4
-        versionName '4.0'
+        versionCode 5
+        versionName '4.2'
         multiDexEnabled true
     }
 
@@ -38,20 +34,19 @@ android {
 }
 
 dependencies {
-    implementation 'androidx.appcompat:appcompat:1.6.1'
-    implementation 'com.google.android.material:material:1.9.0'
-    implementation 'androidx.core:core-ktx:1.10.1'
-    implementation 'com.github.kimoandroid:patternlockview:1.0'
-    implementation 'com.github.smith8h:SColor:1.0.0'
+    implementation('androidx.appcompat:appcompat:1.6.1') { transitive true }
+    implementation('com.google.android.material:material:1.9.0') { transitive true }
+    implementation('com.github.kimoandroid:patternlockview:1.0') { transitive true }
+    implementation('com.github.smith8h:SColor:1.0.0') { transitive true }
 }
 
 project.afterEvaluate {
     publishing {
         publications {
             library(MavenPublication) {
-                setGroupId groupId
-                setArtifactId artifactId
-                version android.defaultConfig.versionName
+                groupId "smith.lib"
+                artifactId "sdialogs"
+                version '4.2'
                 artifact bundleReleaseAar
             }
         }
