@@ -106,7 +106,7 @@ public class MainActivity extends AppCompatActivity {
         sdialog.setItemsList(items);
         sdialog.addItem(R.drawable.ok_img, getString(R.string.app_name));
 
-        sdialog.setOnItemClickCallBack((index, item) -> Toast.makeText(this, index + " " + (item.getTitle()), Toast.LENGTH_SHORT).show());
+        sdialog.setOnItemClickCallBack((index, item) -> Toast.makeText(this, index + " " + (item.title()), Toast.LENGTH_SHORT).show());
         sdialog.removeItem(2);
         sdialog.show();
     }

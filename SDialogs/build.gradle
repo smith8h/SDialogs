@@ -34,10 +34,8 @@ android {
 }
 
 dependencies {
-    api('androidx.appcompat:appcompat:1.6.1') { transitive true }
-    api('com.google.android.material:material:1.9.0') { transitive true }
-    api('com.github.kimoandroid:patternlockview:1.0') { transitive true }
-    api('com.github.smith8h:SColor:1.0.0') { transitive true }
+    implementation('androidx.appcompat:appcompat:1.6.1')
+    implementation('com.google.android.material:material:1.9.0')
 }
 
 project.afterEvaluate {

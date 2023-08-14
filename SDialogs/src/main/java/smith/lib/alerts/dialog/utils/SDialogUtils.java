@@ -3,6 +3,7 @@ package smith.lib.alerts.dialog.utils;
 import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.content.res.*;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.LayerDrawable;
@@ -17,7 +18,6 @@ import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
-import smith.lib.tools.color.SColor;
 
 public class SDialogUtils {
 
@@ -62,12 +62,37 @@ public class SDialogUtils {
         view.setBackground(rippleDrawable);
     }
 
+    /**
+     * Get a darker color from existing one.
+     *
+     * @param color  the color you want to get a darker degree of it.
+     * @param factor the factor to make the color darker or less darker, values are a range of 0.0f-1.0f.
+     * @return the new darker color from that original one using the factor as degree of brightness.
+     */
     public int darkerColor(int color, float factor) {
-        return SColor.darkerColor(color, factor);
+        int alpha = Color.alpha(color);
+        int red = Color.red(color);
+        int green = Color.green(color);
+        int blue = Color.blue(color);
+        return Color.argb(alpha,
+                Math.max((int) (red * factor), 0),
+                Math.max((int) (green * factor), 0),
+                Math.max((int) (blue * factor), 0));
     }
 
+    /**
+     * Get a lighter color from existing one.
+     *
+     * @param color  the color you want to get a lighter degree of it.
+     * @param factor the factor to make the color lighter or less lighter, values are a range of 0.0f-1.0f.
+     * @return the new lighter color from that original one using the factor as degree of brightness.
+     */
     public int lighterColor(int color, float factor) {
-        return SColor.lighterColor(color, factor);
+        int alpha = Color.alpha(color);
+        int red = (int) ((Color.red(color) * (1 - factor) / 255 + factor) * 255);
+        int green = (int) ((Color.green(color) * (1 - factor) / 255 + factor) * 255);
+        int blue = (int) ((Color.blue(color) * (1 - factor) / 255 + factor) * 255);
+        return Color.argb(alpha, red, green, blue);
     }
 
     /**
@@ -78,12 +103,20 @@ public class SDialogUtils {
      */
     public float dp(int dp) {
         return TypedValue.applyDimension(
-            TypedValue.COMPLEX_UNIT_DIP,
-            dp,
-            context.getResources().getDisplayMetrics()
+                TypedValue.COMPLEX_UNIT_DIP,
+                dp,
+                context.getResources().getDisplayMetrics()
         );
     }
 
+    /**
+     * Create the progress drawable for {@link smith.lib.alerts.dialog.ProgressSDialog}.
+     * this progress will only be shown in SDK 29 and up..
+     *
+     * @param progressColor   the foreground color (the progress track).
+     * @param backgroundColor the background color (the track background).
+     * @return progress layer list as drawable.
+     */
     @RequiresApi(Build.VERSION_CODES.Q)
     public Drawable createProgressLayerList(int progressColor, int backgroundColor) {
         var cornerRadius = dp(6);
@@ -106,17 +139,17 @@ public class SDialogUtils {
         backgroundDrawable.getPaint().setColor(backgroundColor);
 
         var progressShape = new RoundRectShape(
-            new float[]{
-                    cornerRadius,
-                    cornerRadius,
-                    cornerRadius,
-                    cornerRadius,
-                    cornerRadius,
-                    cornerRadius,
-                    cornerRadius,
-                    cornerRadius
-            },
-            null, null
+                new float[]{
+                        cornerRadius,
+                        cornerRadius,
+                        cornerRadius,
+                        cornerRadius,
+                        cornerRadius,
+                        cornerRadius,
+                        cornerRadius,
+                        cornerRadius
+                },
+                null, null
         );
 
         var progressDrawable = new ShapeDrawable(progressShape);
