@@ -32,7 +32,7 @@ public class SMenuAdapter extends RecyclerView.Adapter<SMenuAdapter.ViewHolder> 
     @SuppressLint("InflateParams")
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.sitem_items, null);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.sitem_menu, null);
         view.setLayoutParams(new RecyclerView.LayoutParams(RecyclerView.LayoutParams.WRAP_CONTENT,
             RecyclerView.LayoutParams.WRAP_CONTENT));
         return new ViewHolder(view);

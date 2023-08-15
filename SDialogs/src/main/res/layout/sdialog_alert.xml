@@ -1,18 +1,15 @@
-<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:gravity="center">
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent">
 
     <LinearLayout
         android:id="@+id/main"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
         android:orientation="vertical"
+        android:layout_margin="20dp"
         android:paddingStart="24dp"
         android:paddingTop="20dp"
         android:paddingEnd="24dp"
@@ -49,10 +46,9 @@
         <smith.lib.views.scroll.SScrollView
             android:id="@+id/scroll"
             android:layout_width="match_parent"
-            android:layout_weight="1"
             android:layout_height="0dp"
-            android:overScrollMode="always"
-            android:scrollbars="none">
+            android:layout_weight="1"
+            android:overScrollMode="always">
 
             <TextView
                 android:id="@+id/text"
@@ -76,8 +72,8 @@
                 android:id="@+id/neutral"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingVertical="8dp"
                 android:paddingHorizontal="18dp"
+                android:paddingVertical="8dp"
                 android:textColor="#A7B4C5"
                 android:textSize="16sp"
                 android:textStyle="bold"
@@ -93,8 +89,8 @@
                 android:id="@+id/negative"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingVertical="8dp"
                 android:paddingHorizontal="18dp"
+                android:paddingVertical="8dp"
                 android:textColor="#A7B4C5"
                 android:textSize="16sp"
                 android:textStyle="bold"
@@ -105,8 +101,8 @@
                 android:id="@+id/positive"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingVertical="8dp"
                 android:paddingHorizontal="18dp"
+                android:paddingVertical="8dp"
                 android:textColor="#A7B4C5"
                 android:textSize="16sp"
                 android:textStyle="bold"

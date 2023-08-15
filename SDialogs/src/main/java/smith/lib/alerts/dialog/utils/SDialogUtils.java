@@ -3,22 +3,15 @@ package smith.lib.alerts.dialog.utils;
 import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.content.res.*;
-import android.graphics.Color;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.GradientDrawable;
-import android.graphics.drawable.LayerDrawable;
-import android.graphics.drawable.RippleDrawable;
-import android.graphics.drawable.ScaleDrawable;
-import android.graphics.drawable.ShapeDrawable;
+import android.graphics.drawable.*;
 import android.graphics.drawable.shapes.RoundRectShape;
 import android.os.Build;
 import android.util.TypedValue;
-import android.view.Gravity;
-import android.view.View;
+import android.view.*;
+import androidx.annotation.*;
+import smith.lib.tools.color.SColor;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
-
+@SuppressWarnings({"unused", "all"})
 public class SDialogUtils {
 
     private final Context context;
@@ -70,14 +63,15 @@ public class SDialogUtils {
      * @return the new darker color from that original one using the factor as degree of brightness.
      */
     public int darkerColor(int color, float factor) {
-        int alpha = Color.alpha(color);
+        /*int alpha = Color.alpha(color);
         int red = Color.red(color);
         int green = Color.green(color);
         int blue = Color.blue(color);
         return Color.argb(alpha,
                 Math.max((int) (red * factor), 0),
                 Math.max((int) (green * factor), 0),
-                Math.max((int) (blue * factor), 0));
+                Math.max((int) (blue * factor), 0));*/
+        return SColor.darkerColor(color, factor);
     }
 
     /**
@@ -88,11 +82,12 @@ public class SDialogUtils {
      * @return the new lighter color from that original one using the factor as degree of brightness.
      */
     public int lighterColor(int color, float factor) {
-        int alpha = Color.alpha(color);
+        /*int alpha = Color.alpha(color);
         int red = (int) ((Color.red(color) * (1 - factor) / 255 + factor) * 255);
         int green = (int) ((Color.green(color) * (1 - factor) / 255 + factor) * 255);
         int blue = (int) ((Color.blue(color) * (1 - factor) / 255 + factor) * 255);
-        return Color.argb(alpha, red, green, blue);
+        return Color.argb(alpha, red, green, blue);*/
+        return SColor.lighterColor(color, factor);
     }
 
     /**
@@ -101,8 +96,8 @@ public class SDialogUtils {
      * @param dp Int value of density pixels.
      * @return Returns Int value of dp.
      */
-    public float dp(int dp) {
-        return TypedValue.applyDimension(
+    public int dp(int dp) {
+        return (int) TypedValue.applyDimension(
                 TypedValue.COMPLEX_UNIT_DIP,
                 dp,
                 context.getResources().getDisplayMetrics()

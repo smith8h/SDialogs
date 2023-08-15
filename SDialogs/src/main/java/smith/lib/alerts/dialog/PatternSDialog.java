@@ -181,6 +181,11 @@ public class PatternSDialog extends SDialog {
         b.icon.setColorFilter(iconColor);
         b.title.setTextColor(titleColor);
         b.pattern.setNormalStateColor(accentColor);
+        if (height == 0 && width == 0) {
+            width = (int) utils.dp(220);
+            height = (int) utils.dp(220);
+        } else if (height == 0) height = (int) utils.dp(220);
+        else if (width == 0) width = (int) utils.dp(220);
         b.pattern.setLayoutParams(new LinearLayout.LayoutParams(width, height, 0));
     }
 }

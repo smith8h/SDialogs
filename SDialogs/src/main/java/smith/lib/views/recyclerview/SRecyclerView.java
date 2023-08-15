@@ -6,10 +6,11 @@ import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import androidx.recyclerview.widget.RecyclerView;
 import smith.lib.alerts.dialog.R;
+import smith.lib.alerts.dialog.utils.SDialogUtils;
 
 public class SRecyclerView extends RecyclerView {
     
-    private int maxHeight, maxWidth;
+    private int maxHeight;
 
     public SRecyclerView(Context context) {
         super(context);
@@ -31,12 +32,10 @@ public class SRecyclerView extends RecyclerView {
 
     @SuppressLint("CustomViewStyleable")
     private void init(Context context, AttributeSet attrs) {
+        SDialogUtils utils = new SDialogUtils(context);
         if (attrs != null) {
             TypedArray styledAttrs = context.obtainStyledAttributes(attrs, R.styleable.SScrollView);
-            int defaultHeight = 200;
-            maxHeight = styledAttrs.getDimensionPixelSize(R.styleable.SScrollView_maxHeight, defaultHeight);
-            int defaultWidth = 300;
-            maxWidth = styledAttrs.getDimensionPixelSize(R.styleable.SScrollView_maxWidth, defaultWidth);
+            maxHeight = styledAttrs.getDimensionPixelSize(R.styleable.SScrollView_maxHeight, utils.dp(150));
             styledAttrs.recycle();
         }
     }
@@ -46,15 +45,9 @@ public class SRecyclerView extends RecyclerView {
         postInvalidate();
     }
 
-    public void setMaxWidth(int width) {
-        maxWidth = width;
-        postInvalidate();
-    }
-
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         heightMeasureSpec = MeasureSpec.makeMeasureSpec(maxHeight, MeasureSpec.AT_MOST);
-        widthMeasureSpec = MeasureSpec.makeMeasureSpec(maxWidth, MeasureSpec.AT_MOST);
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
     }
 }

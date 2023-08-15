@@ -31,36 +31,38 @@ android {
     buildFeatures {
         viewBinding true
     }
-}
 
-repositories {
-    flatDir {
-        dirs 'libs'
+    publishing {
+        singleVariant("release") {
+            withSourcesJar()
+            withJavadocJar()
+        }
     }
 }
+
+//repositories {
+//    flatDir {
+//        dirs 'libs'
+//    }
+//}
 
 dependencies {
-    implementation('androidx.appcompat:appcompat:1.6.1') {
-        transitive = true
-    }
-    implementation('com.google.android.material:material:1.9.0') {
-        transitive = true
-    }
-
-    //noinspection GradlePath
-    implementation files('D:/Android Projects/Jar Libraries/patternlockview.aar')
-    //noinspection GradlePath
-    implementation files('D:/Android Projects/Jar Libraries/patternlockview_reactive.aar')
+    implementation('androidx.appcompat:appcompat:1.6.1')
+    implementation('com.google.android.material:material:1.9.0')
+//    implementation files('libs/patternlockview')
+//    implementation files('libs/patternlockview_reactive')
+    implementation('com.github.kimoandroid:patternlockview:1.0')
+    implementation('com.github.smith8h:SColor:1.0.0')
 }
 
-project.afterEvaluate {
+afterEvaluate {
     publishing {
         publications {
-            library(MavenPublication) {
+            release(MavenPublication) {
+                from components.release
                 groupId "smith.lib"
                 artifactId "sdialogs"
-                version '4.2'
-                artifact bundleReleaseAar
+                version '4.3'
             }
         }
     }

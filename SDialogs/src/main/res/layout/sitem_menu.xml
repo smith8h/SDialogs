@@ -11,19 +11,19 @@
     
     <ImageView
         android:id="@+id/icon"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
+        android:layout_width="34dp"
+        android:layout_height="34dp"
         tools:src="@drawable/sdialog_ok_img"
         tools:tint="#000"
         android:layout_marginEnd="10dp"
-        android:scaleType="fitXY"
+        android:scaleType="centerInside"
         android:importantForAccessibility="no" />
 
     <android.widget.TextView
         android:id="@+id/text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="16sp"
+        android:textSize="17sp"
         tools:textColor="#000"
         tools:text="Use As Template" />
 

@@ -1,0 +1,68 @@
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="http://maven.apache.org/POM/4.0.0"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>smith.lib</groupId>
+    <artifactId>sdialogs</artifactId>
+    <version>4.3</version>
+    <packaging>aar</packaging>
+
+    <name>SDialogs</name>
+    <description>Beautiful custom dialogs (Alert, Custom, Feedback, Input, Loading, Menu, MultiSelect, Pattern, Progress, SingleSelect and Slider SDialogs) for Android.</description>
+    <url>http://github.com/smith8h/SDialogs</url>
+
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <name>Hussein Shakir (DEV. Smith)</name>
+            <email>husseinshakir81@gmail.com</email>
+        </developer>
+    </developers>
+
+    <scm>
+        <connection>scm:git:git://github.com/smith8h/SDialogs.git</connection>
+        <developerConnection>scm:git:ssh://github.com:smith8h/SDialogs.git</developerConnection>
+        <url>http://github.com/smith8h/SDialogs/tree/master</url>
+    </scm>
+
+    <dependencies>
+        <dependency>
+            <groupId>androidx.databinding</groupId>
+            <artifactId>viewbinding</artifactId>
+            <version>8.1.0</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>androidx.appcompat</groupId>
+            <artifactId>appcompat</artifactId>
+            <version>1.6.1</version>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.google.android.material</groupId>
+            <artifactId>material</artifactId>
+            <version>1.9.0</version>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.github.kimoandroid</groupId>
+            <artifactId>patternlockview</artifactId>
+            <version>1.0</version>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.github.smith8h</groupId>
+            <artifactId>SColor</artifactId>
+            <version>1.0.0</version>
+            <scope>runtime</scope>
+        </dependency>
+    </dependencies>
+
+</project>

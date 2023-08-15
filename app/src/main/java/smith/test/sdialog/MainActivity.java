@@ -106,8 +106,8 @@ public class MainActivity extends AppCompatActivity {
         sdialog.setItemsList(items);
         sdialog.addItem(R.drawable.ok_img, getString(R.string.app_name));
 
-        sdialog.setOnItemClickCallBack((index, item) -> Toast.makeText(this, index + " " + (item.title()), Toast.LENGTH_SHORT).show());
-        sdialog.removeItem(2);
+        sdialog.setOnItemClickCallBack((index, item) -> Toast.makeText(this, index + " " + (item.getTitle()), Toast.LENGTH_SHORT).show());
+//        sdialog.removeItem(2);
         sdialog.show();
     }
 
@@ -127,6 +127,7 @@ public class MainActivity extends AppCompatActivity {
         sdialog.setTheme(SDialog.THEME_BY_SYSTEM);
         sdialog.setTitle("Search Filters");
         sdialog.setCancelable(true);
+        sdialog.setMaxHeight(150);
 
         sdialog.addItem(1, "Images (jpg/jpeg/png)", true);
         sdialog.addItem(2, "GIF", false);
@@ -174,8 +175,8 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, "Pattern drawing cleared!", Toast.LENGTH_SHORT).show();
             }
         });
-        d.setPatternViewWidth(200);
-        d.setPatternViewHeight(200);
+        d.setPatternViewWidth(220);
+        d.setPatternViewHeight(220);
         d.setTheme(SDialog.THEME_BY_SYSTEM);
         d.setTitle("Unlock");
         d.show();
@@ -231,6 +232,7 @@ public class MainActivity extends AppCompatActivity {
         sdialog.setTheme(SDialog.THEME_BY_SYSTEM);
         sdialog.setTitle("Notifications Sounds");
         sdialog.setCancelable(true);
+        sdialog.setMaxHeight(150);
 
         sdialog.addItem(1, "ON");
         sdialog.addItem(2, "OFF");
