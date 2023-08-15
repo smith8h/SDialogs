@@ -42,10 +42,10 @@ public class SMenuAdapter extends RecyclerView.Adapter<SMenuAdapter.ViewHolder> 
     public void onBindViewHolder(@NonNull ViewHolder holder, int p) {
         MenuSDialogItem item = data.get(p);
 
-        holder.icon.setImageDrawable(item.icon());
+        holder.icon.setImageDrawable(item.getIcon());
         holder.icon.setColorFilter(sdialog.getAccentColor());
 
-        holder.text.setText(item.title());
+        holder.text.setText(item.getTitle());
         holder.text.setTextColor(sdialog.getAccentColor());
 
         holder.main.setOnClickListener(v -> {

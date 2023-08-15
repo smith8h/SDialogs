@@ -33,9 +33,24 @@ android {
     }
 }
 
+repositories {
+    flatDir {
+        dirs 'libs'
+    }
+}
+
 dependencies {
-    implementation('androidx.appcompat:appcompat:1.6.1')
-    implementation('com.google.android.material:material:1.9.0')
+    implementation('androidx.appcompat:appcompat:1.6.1') {
+        transitive = true
+    }
+    implementation('com.google.android.material:material:1.9.0') {
+        transitive = true
+    }
+
+    //noinspection GradlePath
+    implementation files('D:/Android Projects/Jar Libraries/patternlockview.aar')
+    //noinspection GradlePath
+    implementation files('D:/Android Projects/Jar Libraries/patternlockview_reactive.aar')
 }
 
 project.afterEvaluate {
