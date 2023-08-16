@@ -97,15 +97,6 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="pattern"
-            android:padding="10dp"
-            android:text="show pattern dialog"
-            android:textColor="#000000"
-            android:textSize="18sp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:onClick="feedback"
             android:padding="10dp"
             android:text="show feedback dialog"

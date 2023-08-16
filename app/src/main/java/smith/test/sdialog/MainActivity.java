@@ -4,14 +4,12 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentTransaction;
 import java.util.*;
 import smith.lib.alerts.dialog.*;
-import smith.lib.alerts.dialog.callbacks.OnDrawPatternCallBack;
-import smith.lib.alerts.dialog.callbacks.OnProgressCallBack;
+import smith.lib.alerts.dialog.callbacks.*;
 import smith.lib.alerts.dialog.utils.MenuSDialogItem;
 
 public class MainActivity extends AppCompatActivity {
@@ -150,37 +148,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
         sdialog.show();
-    }
-
-    public void pattern(View v) {
-    	PatternSDialog d = new PatternSDialog(this);
-        d.setAccentColor(SDialog.COLOR_DEFAULT);
-        d.setIconResource(R.drawable.ok_img);
-        d.setOnDrawPatternCallBack(new OnDrawPatternCallBack() {
-            @Override
-            public void onDrawingStarted() {
-                Toast.makeText(MainActivity.this, "Pattern drawing started!", Toast.LENGTH_SHORT).show();
-            }
-            @Override
-            public void onDrawingProgress(@NonNull String pattern) {
-                Toast.makeText(MainActivity.this, pattern, Toast.LENGTH_SHORT).show();
-            }
-            @Override
-            public void onDrawingCompleted(@NonNull String pattern) {
-                Toast.makeText(MainActivity.this, "Pattern drawing completed, pattern is: " + pattern, Toast.LENGTH_SHORT).show();
-                d.setPatternMode(SDialog.PATTERN_MODE_CORRECT);
-                d.dismiss(500L);
-            }
-            @Override
-            public void onDrawingCleared() {
-                Toast.makeText(MainActivity.this, "Pattern drawing cleared!", Toast.LENGTH_SHORT).show();
-            }
-        });
-        d.setPatternViewWidth(220);
-        d.setPatternViewHeight(220);
-        d.setTheme(SDialog.THEME_BY_SYSTEM);
-        d.setTitle("Unlock");
-        d.show();
     }
 
     public void progress(View v) {

@@ -3,7 +3,6 @@
 
     <declare-styleable name="SScrollView">
         <attr name="maxHeight" format="dimension" />
-        <attr name="maxWidth" format="dimension" />
     </declare-styleable>
 
 </resources>

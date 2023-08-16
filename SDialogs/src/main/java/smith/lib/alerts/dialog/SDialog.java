@@ -15,7 +15,6 @@ import smith.lib.views.recyclerview.SRecyclerView;
 import androidx.annotation.*;
 import androidx.appcompat.app.AlertDialog;
 import java.util.Objects;
-import co.encept.patternlockview.PatternLockView;
 import smith.lib.views.scroll.SScrollView;
 
 /**
@@ -59,17 +58,6 @@ public class SDialog {
      */
     public static final String KEY_ITEM_CHECKED = "checked";
 
-    /**
-     * The correct mode of pattern drew in PatternSDialog.
-     * Will show the green color to refer to correct pattern.
-     */
-    public static final int PATTERN_MODE_CORRECT = PatternLockView.PatternViewMode.CORRECT;
-    /**
-     * The wrong mode of pattern drew in PatternSDialog.
-     * Will show the red color to refer to wrong pattern.
-     */
-    public static final int PATTERN_MODE_WRONG = PatternLockView.PatternViewMode.WRONG;
-
     protected Context context;
     protected View dialogView;
     protected AlertDialog alertdialog;
@@ -98,6 +86,7 @@ public class SDialog {
 
     /**
      * Lock the SDialog to the dismissing when click outside the sdialog window.
+     *
      * @param cancelable As {@link Boolean} to lock/ unlock cancel when click outside the border.
      */
     public void setCancelable(boolean cancelable) {
@@ -106,6 +95,7 @@ public class SDialog {
 
     /**
      * OnDismissCallBack triggered whenever the sdialog is dismissed.
+     *
      * @param callback {@link OnDismissCallBack} interface.
      */
     public void setOnDismissCallBack(OnDismissCallBack callback) {
@@ -144,7 +134,7 @@ public class SDialog {
      * Show the SDialog.
      */
     public void show() {
-        ((Activity)context).runOnUiThread(() -> {
+        ((Activity) context).runOnUiThread(() -> {
             alertdialog.show();
             utils.animateView(dialogView);
         });
@@ -152,6 +142,7 @@ public class SDialog {
 
     /**
      * Show the SDialog for a duration of time.
+     *
      * @param duration The duration in milliseconds.
      */
     public void show(long duration) {
@@ -159,8 +150,14 @@ public class SDialog {
             alertdialog.show();
             utils.animateView(dialogView);
             new CountDownTimer(duration, 10) {
-                @Override public void onTick(long duration) {}
-                @Override public void onFinish() {dismiss();}
+                @Override
+                public void onTick(long duration) {
+                }
+
+                @Override
+                public void onFinish() {
+                    dismiss();
+                }
             }.start();
         });
     }
@@ -169,17 +166,24 @@ public class SDialog {
      * Dismiss the current displayed SDialog.
      */
     public void dismiss() {
-        ((Activity)context).runOnUiThread(() -> alertdialog.dismiss());
+        ((Activity) context).runOnUiThread(() -> alertdialog.dismiss());
     }
 
     /**
      * Dismiss the current displayed SDialog.
+     *
      * @param duration The duration in milliseconds.
      */
     public void dismiss(long duration) {
-        ((Activity)context).runOnUiThread(() -> new CountDownTimer(duration, 1) {
-            @Override public void onTick(long dur) {}
-            @Override public void onFinish() {dismiss();}
+        ((Activity) context).runOnUiThread(() -> new CountDownTimer(duration, 1) {
+            @Override
+            public void onTick(long dur) {
+            }
+
+            @Override
+            public void onFinish() {
+                dismiss();
+            }
         }.start());
     }
 
@@ -223,7 +227,6 @@ public class SDialog {
         TextInputLayout input;
         TextInputEditText inputed;
         ProgressBar loading, progress;
-        PatternLockView pattern;
         Slider seek;
         SScrollView scroll;
 
@@ -241,7 +244,6 @@ public class SDialog {
             input = view.findViewById(R.id.input);
             inputed = view.findViewById(R.id.inputed);
             loading = view.findViewById(R.id.loading);
-            pattern = view.findViewById(R.id.pattern);
             progress = view.findViewById(R.id.progress);
             seek = view.findViewById(R.id.seek);
             like = view.findViewById(R.id.like);
