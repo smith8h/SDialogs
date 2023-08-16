@@ -6,8 +6,7 @@
     android:layout_height="wrap_content"
     android:paddingVertical="10dp"
     android:gravity="center_vertical"
-    android:orientation="horizontal"
-    android:background="@drawable/bg_menu_sdialog_item">
+    android:orientation="horizontal">
     
     <ImageView
         android:id="@+id/icon"

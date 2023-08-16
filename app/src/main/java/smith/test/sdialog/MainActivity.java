@@ -97,12 +97,13 @@ public class MainActivity extends AppCompatActivity {
         sdialog.setAccentColor(0xFFAD97BE);
         sdialog.setTheme(SDialog.THEME_BY_SYSTEM);
         sdialog.setMaxHeight(360);
+        sdialog.setTitle("Sequence Options");
 
         List<MenuSDialogItem> items = new ArrayList<>();
         items.add(new MenuSDialogItem(ContextCompat.getDrawable(this, R.drawable.ok_img),
                 getString(R.string.app_name)));
-        items.add(new MenuSDialogItem(ContextCompat.getDrawable(this, R.drawable.ok_img),
-                getString(R.string.app_name)));
+        items.add(new MenuSDialogItem(this, R.drawable.ok_img, getString(R.string.app_name)));
+
         sdialog.setItemsList(items);
         sdialog.addItem(R.drawable.ok_img, getString(R.string.app_name));
 

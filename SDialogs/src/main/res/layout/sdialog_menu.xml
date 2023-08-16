@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.widget.LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     xmlns:tools="http://schemas.android.com/tools"
     android:gravity="center_horizontal"
@@ -8,13 +8,13 @@
 
     <android.widget.LinearLayout
         android:id="@+id/main"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="12dp">
+        android:padding="24dp">
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="12dp"
             android:gravity="center_vertical"
@@ -24,10 +24,12 @@
                 android:id="@+id/icon"
                 android:layout_width="32dp"
                 android:layout_height="32dp"
-                android:layout_marginEnd="18dp"
+                android:layout_marginEnd="12dp"
                 android:contentDescription="@string/sdialog_icon"
                 android:scaleType="centerInside"
-                android:visibility="gone" />
+                android:visibility="gone"
+                tools:src="@drawable/sdialog_ok_img"
+                tools:tint="#000"/>
 
             <TextView
                 android:id="@+id/title"
@@ -37,13 +39,12 @@
                 android:textColor="@android:color/black"
                 android:textSize="19sp"
                 android:textStyle="bold"
-                tools:text="Title of MenuSDialog" />
+                tools:text="Sequence Options" />
         </LinearLayout>
 
         <smith.lib.views.recyclerview.SRecyclerView
             android:id="@+id/recycler"
-            android:layout_marginEnd="10dp"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
     </android.widget.LinearLayout>
 </android.widget.LinearLayout>

@@ -3,9 +3,12 @@ package smith.lib.alerts.dialog;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
+import android.view.View;
 
 import androidx.annotation.DrawableRes;
+import androidx.annotation.StringRes;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.*;
 import java.util.*;
@@ -33,6 +36,54 @@ public class MenuSDialog extends SDialog {
         super.context = context;
         dialogView = ((Activity) context).getLayoutInflater().inflate(R.layout.sdialog_menu, null);
         init();
+    }
+
+    /**
+     * Set icon for the current SDialog.
+     *
+     * @param icon As Int resource (R.drawable.icon).
+     */
+    public void setIconResource(@DrawableRes int icon) {
+        b.icon.setVisibility(View.VISIBLE);
+        b.icon.setImageResource(icon);
+    }
+
+    /**
+     * Set icon for the current SDialog.
+     *
+     * @param icon As {@link Drawable}.
+     */
+    public void setIconDrawable(Drawable icon) {
+        b.icon.setVisibility(View.VISIBLE);
+        b.icon.setImageDrawable(icon);
+    }
+
+    /**
+     * Set icon for the current SDialog.
+     *
+     * @param icon As {@link Bitmap}.
+     */
+    public void setIconBitmap(Bitmap icon) {
+        b.icon.setVisibility(View.VISIBLE);
+        b.icon.setImageBitmap(icon);
+    }
+
+    /**
+     * Set title from string to current SDialog.
+     *
+     * @param title String title.
+     */
+    public void setTitle(String title) {
+        b.title.setText(title);
+    }
+
+    /**
+     * Set text from int resource to current SDialog.
+     *
+     * @param resTitle Int resource title (R.string.title).
+     */
+    public void setTitle(@StringRes int resTitle) {
+        b.title.setText(resTitle);
     }
 
     /**
@@ -118,7 +169,9 @@ public class MenuSDialog extends SDialog {
     private void update() {
         updateTheme();
         utils.backgroundColor(b.main, backgroundColor);
-        
+
+        b.icon.setColorFilter(iconColor);
+        b.title.setTextColor(titleColor);
         SMenuAdapter adapter = new SMenuAdapter(iconsItemsList, callback, this);
         b.recycler.setLayoutManager(new LinearLayoutManager(context, RecyclerView.VERTICAL, false));
         b.recycler.setAdapter(adapter);
