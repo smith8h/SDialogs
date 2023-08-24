@@ -28,7 +28,7 @@ public class MenuSDialog extends SDialog {
     private int maxHeight;
 
     /**
-     * Pass the current context you using this sdialog from.
+     * Pass the current context you're using this sdialog from.
      * @param context Current context (or Activity).
      */
     @SuppressLint("InflateParams")
@@ -96,7 +96,7 @@ public class MenuSDialog extends SDialog {
 
     /**
      * Set a max height to fix screen overriding content.
-     * @param maxHeight an int value as maxHeight (it will automatically converted to dp);
+     * @param maxHeight an int value as maxHeight (it will automatically convert to dp);
      */
     public void setMaxHeight(int maxHeight) {
         this.maxHeight = (int) utils.dp(maxHeight);

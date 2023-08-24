@@ -3,14 +3,14 @@
 ![Builds and tests](https://github.com/smith8h/SDialogs/actions/workflows/build.yml/badge.svg)
 [![JitPack release](https://jitpack.io/v/smith8h/SDialogs.svg)](https://jitpack.io/#smith8h/SDialogs)
 ![Latest release](https://img.shields.io/github/v/release/smith8h/SDialogs?include_prereleases&amp;label=latest%20release)
-![Stable Version](https://img.shields.io/badge/stable_version-4.1-blue)
+![Stable Version](https://img.shields.io/badge/stable_version-4.3-blue)
 ![Stability](https://img.shields.io/badge/stability-stable-green.svg)
 ![minSDK](https://img.shields.io/badge/minSDK-21-f39f37)
 ![repo size](https://img.shields.io/github/repo-size/smith8h/sdialogs)
 
 </br>
 
-Beautiful custom Android dialogs (alert, multiselect checkbox, singleselect radiobutton, string list items, loading, progress, input, and custom dialog)
+Beautiful custom Android dialogs (Alert, MultiSelect, CheckBox, SingleSelect, RadioButton, Menu, Loading, Progress, Input, and Custom)
 
 # Menu Of Contents
 
@@ -19,13 +19,12 @@ Beautiful custom Android dialogs (alert, multiselect checkbox, singleselect radi
   - [AlertSDialog](#alertsdialog)
   - [CustomSDialog](#customsdialog)
   - [InputSDialog](#inputsdialog)
-  - [ItemsSDialog](#itemssdialog)
+  - [MenuSDialog](#menusdialog)
   - [LoadingSDialog](#loadingsdialog)
   - [ProgressSDialog](#progresssdialog)
   - [SingleSelectSDialog](#singleselectsdialog)
   - [MultiSelectSDialog](#multiselectsdialog)
   - [SliderSDialog](#slidersdialog)
-  - [PatternSDialog](#patternsdialog)
   - [FeedbackSDialog](#feedbacksdialog)
 - [CallBacks](#callbacks)
 - [Used By](#used-by)
@@ -51,7 +50,7 @@ allprojects {
 ```gradle
 dependencies {
     ...
-    implementation 'com.github.smith8h:SDialogs:4.1'
+    implementation 'com.github.smith8h:SDialogs:4.3'
 }
 ```
 
@@ -182,15 +181,22 @@ Table of methods:
 - `setMaxHeight(340);` set max height to ignore screen overriding (default is 360).
 - `setAccentColor(int color/string hex color);` Default color is 0xFFA7B4C5/#FFA7B4C5 you can access it by `SDialog.COLOR_DEFAULT`.
 - `setTheme(SDialog.THEME_SYSTEM);` or `THEME_LIGHT / THEME_DARK`.
-- `setItemsList(ArrayList<String>);` set items from existing arraylist of strings `ArrayList<String>`.
+- `setItemsList(ArrayList<MenuSDialogItem>);` set items from existing arraylist of strings `ArrayList<String>`.
 - `setOnItemClickCallBack(itemclickcallback);`
-- `addItem("item text")` add new item.
+- `addItem(DrawableIcon, "item text")` add new item (drawable, string).
+- `addItem(DrawableIntRes, "item text")` add new item (int res, string).
 - `removeItem(2)` remove an item by its **index** from the list.
-- `removeItem("item text")` remove an item by its **text** from the list.
 - `setCancelable(false);` (Optional).
 - `setOnDismissCallBack(dismisscallback);` (Optional).
-- `show();` to show it.
+- `show(); / show(460);` to show it permanently or for a duration of time (auto dismiss).
 - `dismiss(); / dismiss(500);` to hide it immediately or after duration of time (auto dismiss).
+> if you want to add new item using `MenuSDialogItem` use it this way:
+</br>
+```
+List<MenuSDialogItem> items = new ArrayList<>();
+items.add(new MenuSDialogItem(context, R.drawable.icon, "text"));
+items.add(new MenuSDialogItem(drawable, "text"));
+```
 
 **Getters**
 
