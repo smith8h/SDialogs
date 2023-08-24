@@ -7,7 +7,7 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:8.1.0'
+        classpath 'com.android.tools.build:gradle:8.1.1'
         classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.8.0'
     }
 }
@@ -22,12 +22,12 @@ allprojects {
     	mavenCentral()
         google()
         maven { url 'https://jitpack.io' }
-//        maven { url 'https://repo1.maven.org/maven2' }
-//        maven { url 'https://repo.maven.apache.org' }
-//        maven { url 'https://maven.google.com' }
-//        maven { url 'https://repo.maven.apache.org/maven2' }
-//        maven { url 'https://jcenter.bintray.com' }
-//        maven { url 'https://dl.google.com' }
+//      maven { url 'https://repo1.maven.org/maven2' }
+//      maven { url 'https://repo.maven.apache.org' }
+//      maven { url 'https://maven.google.com' }
+//      maven { url 'https://repo.maven.apache.org/maven2' }
+//      maven { url 'https://jcenter.bintray.com' }
+//      maven { url 'https://dl.google.com' }
     }
 }
 
