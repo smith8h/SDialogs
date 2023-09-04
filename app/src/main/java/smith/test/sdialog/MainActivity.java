@@ -53,12 +53,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void custom(View v) {
-        CustomSDialog sdialog = new CustomSDialog(this);
-        sdialog.setView(R.layout.activity_main, customView -> {
-
-        });
+        CustomSDialog sdialog = new CustomSDialog(this, R.layout.activity_main);
         sdialog.setCancelable(true);
         sdialog.setOnDismissCallBack(() -> Toast.makeText(this, "onDismiss", Toast.LENGTH_SHORT).show());
+        sdialog.setOnBindViewCallBack(customView -> {
+
+        });
         sdialog.show();
     }
 
