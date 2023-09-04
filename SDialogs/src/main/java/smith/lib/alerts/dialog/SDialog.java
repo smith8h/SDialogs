@@ -231,24 +231,24 @@ public class SDialog {
         SScrollView scroll;
 
         public DialogBinding(@NonNull View view) {
-            main = view.findViewById(R.id.main);
-            holder = view.findViewById(R.id.holder);
-            icon = view.findViewById(R.id.icon);
-            title = view.findViewById(R.id.title);
-            text = view.findViewById(R.id.text);
-            positive = view.findViewById(R.id.positive);
-            negative = view.findViewById(R.id.negative);
-            neutral = view.findViewById(R.id.neutral);
-            percent = view.findViewById(R.id.percent);
-            recycler = view.findViewById(R.id.recycler);
-            input = view.findViewById(R.id.input);
-            inputed = view.findViewById(R.id.inputed);
-            loading = view.findViewById(R.id.loading);
-            progress = view.findViewById(R.id.progress);
-            seek = view.findViewById(R.id.seek);
-            like = view.findViewById(R.id.like);
-            dislike = view.findViewById(R.id.dislike);
-            scroll = view.findViewById(R.id.scroll);
+            main = view.findViewById(R.id.sdialog_main);
+            holder = view.findViewById(R.id.sdialog_holder);
+            icon = view.findViewById(R.id.sdialog_icon);
+            title = view.findViewById(R.id.sdialog_title);
+            text = view.findViewById(R.id.sdialog_text);
+            positive = view.findViewById(R.id.sdialog_positive);
+            negative = view.findViewById(R.id.sdialog_negative);
+            neutral = view.findViewById(R.id.sdialog_neutral);
+            percent = view.findViewById(R.id.sdialog_percent);
+            recycler = view.findViewById(R.id.sdialog_recycler);
+            input = view.findViewById(R.id.sdialog_input);
+            inputed = view.findViewById(R.id.sdialog_inputed);
+            loading = view.findViewById(R.id.sdialog_loading);
+            progress = view.findViewById(R.id.sdialog_progress);
+            seek = view.findViewById(R.id.sdialog_seek);
+            like = view.findViewById(R.id.sdialog_like);
+            dislike = view.findViewById(R.id.sdialog_dislike);
+            scroll = view.findViewById(R.id.sdialog_scroll);
         }
     }
 }

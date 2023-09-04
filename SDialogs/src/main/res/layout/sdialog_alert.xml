@@ -5,7 +5,7 @@
     android:layout_width="match_parent">
 
     <LinearLayout
-        android:id="@+id/main"
+        android:id="@+id/sdialog_main"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -24,7 +24,7 @@
             android:orientation="horizontal">
 
             <ImageView
-                android:id="@+id/icon"
+                android:id="@+id/sdialog_icon"
                 android:layout_width="32dp"
                 android:layout_height="32dp"
                 android:layout_marginEnd="18dp"
@@ -33,7 +33,7 @@
                 android:visibility="gone" />
 
             <TextView
-                android:id="@+id/title"
+                android:id="@+id/sdialog_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:alpha=".9"
@@ -44,14 +44,14 @@
         </LinearLayout>
 
         <smith.lib.views.scroll.SScrollView
-            android:id="@+id/scroll"
+            android:id="@+id/sdialog_scroll"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
             android:overScrollMode="always">
 
             <TextView
-                android:id="@+id/text"
+                android:id="@+id/sdialog_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:alpha=".8"
@@ -61,7 +61,7 @@
         </smith.lib.views.scroll.SScrollView>
 
         <LinearLayout
-            android:id="@+id/holder"
+            android:id="@+id/sdialog_holder"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
@@ -69,7 +69,7 @@
             android:visibility="gone">
 
             <TextView
-                android:id="@+id/neutral"
+                android:id="@+id/sdialog_neutral"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingHorizontal="18dp"
@@ -86,7 +86,7 @@
                 android:layout_weight="1" />
 
             <TextView
-                android:id="@+id/negative"
+                android:id="@+id/sdialog_negative"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingHorizontal="18dp"
@@ -98,7 +98,7 @@
                 tools:text="Negative" />
 
             <TextView
-                android:id="@+id/positive"
+                android:id="@+id/sdialog_positive"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingHorizontal="18dp"

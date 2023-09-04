@@ -7,7 +7,7 @@
     android:orientation="vertical" >
 
     <LinearLayout
-        android:id="@+id/main"
+        android:id="@+id/sdialog_main"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
@@ -27,7 +27,7 @@
             android:orientation="horizontal">
 
             <ImageView
-                android:id="@+id/icon"
+                android:id="@+id/sdialog_icon"
                 android:layout_width="32dp"
                 android:layout_height="32dp"
                 android:layout_marginEnd="18dp"
@@ -36,7 +36,7 @@
                 android:contentDescription="@string/sdialog_icon"/>
 
             <TextView
-                android:id="@+id/title"
+                android:id="@+id/sdialog_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:alpha=".9"
@@ -47,7 +47,7 @@
         </LinearLayout>
 
         <TextView
-            android:id="@+id/text"
+            android:id="@+id/sdialog_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
@@ -59,13 +59,13 @@
             android:visibility="gone" />
 
         <com.google.android.material.slider.Slider
-            android:id="@+id/seek"
+            android:id="@+id/sdialog_seek"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="0dp" />
 
         <LinearLayout
-            android:id="@+id/holder"
+            android:id="@+id/sdialog_holder"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
@@ -73,7 +73,7 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/negative"
+                android:id="@+id/sdialog_negative"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="15dp"
@@ -84,7 +84,7 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/positive"
+                android:id="@+id/sdialog_positive"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="8dp"

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.widget.LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/main"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/sdialog_main"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:paddingTop="10dp"
@@ -9,11 +9,11 @@
     android:gravity="center">
 
     <android.widget.RadioButton
-        android:id="@+id/choice"
+        android:id="@+id/sdialog_choice"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingStart="15dp"
         android:textSize="16sp"
-        android:text="System Theme" />
+        tools:text="System Theme" />
 
 </android.widget.LinearLayout>
