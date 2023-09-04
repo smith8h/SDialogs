@@ -69,6 +69,7 @@ public class MainActivity extends AppCompatActivity {
         sDialog.setAccentColor(0xFFAD97BE);
         sDialog.setIconResource(R.drawable.ok_img);
         sDialog.setTheme(SDialog.THEME_BY_SYSTEM);
+        sDialog.setInputFieldHint("Feedback...");
         sDialog.setSubmitFeedBackButton("Submit Feedback", (isLiked, feedbackText) ->
                 Toast.makeText(this, "isLiked " + isLiked, Toast.LENGTH_SHORT).show()
         );

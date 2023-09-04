@@ -113,6 +113,14 @@ public class FeedbackSDialog extends SDialog {
     }
 
     /**
+     * The hint displayed inside the text input field.
+     * @param hint Text as {@link String}
+     */
+    public void setInputFieldHint(String hint) {
+        b.input.setHint(hint);
+    }
+
+    /**
      * Add a functionality to submit feedback interface.
      * @param text a text to be displayed on submit button.
      * @param callBack a functional submit callback using {@link OnFeedbackSubmitCallBack}
@@ -151,6 +159,13 @@ public class FeedbackSDialog extends SDialog {
      */
     public int getTextColor() {
         return textColor;
+    }
+
+    /**
+     * @return Hint color of AlertSDialog as displayed as Dark or Light Theme.
+     */
+    public int getHintColor() {
+        return hintColor;
     }
 
     @Override
