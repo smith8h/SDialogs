@@ -67,9 +67,9 @@ public class SMenuAdapter extends RecyclerView.Adapter<SMenuAdapter.ViewHolder> 
 
         public ViewHolder(View view) {
             super(view);
-            text = view.findViewById(R.id.text);
-            main = view.findViewById(R.id.main);
-            icon = view.findViewById(R.id.icon);
+            text = view.findViewById(R.id.sdialog_text);
+            main = view.findViewById(R.id.sdialog_main);
+            icon = view.findViewById(R.id.sdialog_icon);
         }
     }
 }

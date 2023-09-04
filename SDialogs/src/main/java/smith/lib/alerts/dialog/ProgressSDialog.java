@@ -237,16 +237,15 @@ public class ProgressSDialog extends SDialog {
     private void update() {
         updateTheme();
         utils.backgroundColor(b.main, backgroundColor);
-        utils.backgroundColor(b.negative, iconBackground);
         b.icon.setColorFilter(iconColor);
         b.title.setTextColor(titleColor);
         b.text.setTextColor(textColor);
         b.percent.setTextColor(textColor);
         b.negative.setTextColor(iconColor);
+        utils.backgroundColor(b.negative, iconBackground);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q)
             b.progress.setProgressDrawable(utils.createProgressLayerList(accentColor, iconBackground));
         else
             b.progress.setProgressTintList(ColorStateList.valueOf(accentColor));
-
     }
 }

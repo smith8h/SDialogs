@@ -58,8 +58,8 @@ public class SSingleSelectAdapter extends RecyclerView.Adapter<SSingleSelectAdap
 
         public ViewHolder(View v) {
             super(v);
-            choice = v.findViewById(R.id.choice);
-            main = v.findViewById(R.id.main);
+            choice = v.findViewById(R.id.sdialog_choice);
+            main = v.findViewById(R.id.sdialog_main);
         }
     }
 }

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -29,7 +30,7 @@
                 android:layout_marginEnd="18dp"
                 android:contentDescription="@string/sdialog_icon"
                 android:scaleType="centerInside"
-                android:visibility="gone" />
+                android:visibility="visible" />
 
             <TextView
                 android:id="@+id/sdialog_title"
@@ -45,32 +46,66 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="24dp"
+            android:layout_marginBottom="12dp"
             android:orientation="horizontal">
 
             <ImageView
                 android:id="@+id/sdialog_like"
                 android:layout_width="0dp"
                 android:layout_height="48dp"
-                android:layout_weight="1"
                 android:layout_marginEnd="6dp"
-                android:scaleType="fitCenter"
+                android:layout_weight="1"
+                android:contentDescription="@string/sdialog_icon"
                 android:padding="8dp"
+                android:scaleType="fitCenter"
                 android:src="@drawable/sdialog_ok_img"
-                android:contentDescription="@string/sdialog_icon" />
+                tools:tint="#000" />
 
             <ImageView
                 android:id="@+id/sdialog_dislike"
                 android:layout_width="0dp"
                 android:layout_height="48dp"
-                android:layout_weight="1"
                 android:layout_marginStart="6dp"
+                android:layout_weight="1"
+                android:contentDescription="@string/sdialog_icon"
+                android:padding="8dp"
                 android:rotation="180"
                 android:scaleType="fitCenter"
-                android:padding="8dp"
                 android:src="@drawable/sdialog_ok_img"
-                android:contentDescription="@string/sdialog_icon" />
+                tools:tint="#000" />
         </LinearLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/sdialog_input"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:boxStrokeWidth="2dp"
+            android:visibility="gone"
+            android:layout_marginBottom="12dp"
+            app:shapeAppearance="@style/Rounded">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/sdialog_inputed"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLines="5"
+                android:textSize="16sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:visibility="gone"
+            android:id="@+id/sdialog_negative"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:alpha=".9"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:padding="12dp"
+            tools:textColor="#000"
+            android:textSize="16sp"
+            tools:text="Send Feedback"
+            android:layout_marginBottom="24dp"/>
 
         <TextView
             android:id="@+id/sdialog_text"

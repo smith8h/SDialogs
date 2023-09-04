@@ -10,5 +10,5 @@ public interface OnFeedbackSubmitCallBack {
      *
      * @param isLiked returns true if user hit the like button and false if hitting dislike button.
      */
-    void onSubmit(Boolean isLiked);
+    void onSubmit(Boolean isLiked, String feedbackText);
 }

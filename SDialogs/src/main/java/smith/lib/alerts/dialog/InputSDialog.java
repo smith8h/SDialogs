@@ -20,7 +20,7 @@ import smith.lib.alerts.dialog.callbacks.OnInputClickCallBack;
 public class InputSDialog extends SDialog {
 
     /**
-     * Pass the current context you using this sdialog from.
+     * Pass the current context you're using this sdialog from.
      * @param context Current context (or Activity).
      */
     @SuppressLint("InflateParams")

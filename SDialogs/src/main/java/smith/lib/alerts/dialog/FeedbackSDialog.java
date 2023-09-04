@@ -3,11 +3,18 @@ package smith.lib.alerts.dialog;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
+import android.content.res.ColorStateList;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.view.View;
+import android.widget.ImageView;
+
 import androidx.annotation.DrawableRes;
+import androidx.annotation.NonNull;
 import androidx.annotation.StringRes;
+
+import java.util.Objects;
+
 import smith.lib.alerts.dialog.callbacks.OnFeedbackSubmitCallBack;
 
 /**
@@ -17,10 +24,10 @@ import smith.lib.alerts.dialog.callbacks.OnFeedbackSubmitCallBack;
 @SuppressWarnings({"unused"})
 public class FeedbackSDialog extends SDialog {
 
-    private OnFeedbackSubmitCallBack callBack = isLiked -> dismiss();
+    private boolean isLiked;
 
     /**
-     * Pass the current context you using this sdialog from.
+     * Pass the current context you're using this sdialog from.
      * @param context Current context (or Activity).
      */
     @SuppressLint("InflateParams")
@@ -30,13 +37,19 @@ public class FeedbackSDialog extends SDialog {
         init();
 
         b.like.setOnClickListener(v -> {
-            callBack.onSubmit(true);
-            dismiss();
+            b.input.setVisibility(View.VISIBLE);
+            b.negative.setVisibility(View.VISIBLE);
+            updateButton(b.like, iconBackground, iconColor);
+            updateButton(b.dislike, iconColor, iconBackground);
+            isLiked = true;
         });
 
         b.dislike.setOnClickListener(v -> {
-            callBack.onSubmit(false);
-            dismiss();
+            b.input.setVisibility(View.VISIBLE);
+            b.negative.setVisibility(View.VISIBLE);
+            updateButton(b.dislike, iconBackground, iconColor);
+            updateButton(b.like, iconColor, iconBackground);
+            isLiked = false;
         });
     }
 
@@ -101,10 +114,15 @@ public class FeedbackSDialog extends SDialog {
 
     /**
      * Add a functionality to submit feedback interface.
+     * @param text a text to be displayed on submit button.
      * @param callBack a functional submit callback using {@link OnFeedbackSubmitCallBack}
      */
-    public void setOnFeedbackSubmitCallBack(OnFeedbackSubmitCallBack callBack) {
-        this.callBack = callBack;
+    public void setSubmitFeedBackButton(String text, OnFeedbackSubmitCallBack callBack) {
+        b.negative.setText(text);
+        b.negative.setOnClickListener(v -> {
+            callBack.onSubmit(isLiked, Objects.requireNonNull(b.inputed.getText()).toString());
+            dismiss();
+        });
     }
 
     /**
@@ -150,12 +168,31 @@ public class FeedbackSDialog extends SDialog {
     private void update() {
         updateTheme();
         utils.backgroundColor(b.main, backgroundColor);
-        utils.backgroundColor(b.like, iconBackground);
-        utils.backgroundColor(b.dislike, iconBackground);
         b.icon.setColorFilter(iconColor);
         b.title.setTextColor(titleColor);
         b.text.setTextColor(textColor);
-        b.like.setColorFilter(iconColor);
-        b.dislike.setColorFilter(iconColor);
+        updateButton(b.like, iconColor, iconBackground);
+        updateButton(b.dislike, iconColor, iconBackground);
+        b.negative.setTextColor(iconColor);
+        utils.backgroundColor(b.negative, iconBackground);
+
+        int[][] states = new int[][]{
+                new int[]{android.R.attr.state_focused},
+                new int[]{android.R.attr.state_hovered},
+                new int[]{android.R.attr.state_enabled},
+                new int[]{}
+        };
+        int[] colors = new int[]{ accentColor, accentColor, accentColor, hintColor };
+
+        b.input.setBoxStrokeColorStateList(new ColorStateList(states, colors));
+        b.input.setDefaultHintTextColor(new ColorStateList(states, colors));
+        b.input.setHintTextColor(new ColorStateList(states, colors));
+        b.inputed.setTextColor(textColor);
+        b.inputed.setHintTextColor(hintColor);
+    }
+
+    private void updateButton(@NonNull ImageView view, int color, int background) {
+        view.setColorFilter(color);
+        utils.backgroundColor(view, background);
     }
 }
