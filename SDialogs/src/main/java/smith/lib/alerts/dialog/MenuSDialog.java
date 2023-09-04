@@ -23,7 +23,7 @@ import smith.lib.alerts.dialog.utils.MenuSDialogItem;
 @SuppressWarnings({"unused"})
 public class MenuSDialog extends SDialog {
     
-    private final List<MenuSDialogItem> iconsItemsList = new ArrayList<>();
+    private List<MenuSDialogItem> iconsItemsList = new ArrayList<>();
     private OnItemClickCallBack callback;
     private int maxHeight;
 
@@ -87,19 +87,11 @@ public class MenuSDialog extends SDialog {
     }
 
     /**
-     * Set the list of items to display on ItemsSDialog.
-     * @param iconsItemsList A list of items as {@link List} of {@link MenuSDialogItem}
-     */
-    public void setItemsList(List<MenuSDialogItem> iconsItemsList) {
-        this.iconsItemsList.addAll(iconsItemsList);
-    }
-
-    /**
      * Set a max height to fix screen overriding content.
      * @param maxHeight an int value as maxHeight (it will automatically convert to dp);
      */
     public void setMaxHeight(int maxHeight) {
-        this.maxHeight = (int) utils.dp(maxHeight);
+        this.maxHeight = utils.dp(maxHeight);
     }
 
     /**
@@ -108,6 +100,22 @@ public class MenuSDialog extends SDialog {
      */
     public void setOnItemClickCallBack(OnItemClickCallBack callback) {
         this.callback = callback;
+    }
+
+    /**
+     * Set the list of items to be displayed on MenuSDialog.
+     * @param itemsList A list of items as {@link List} of {@link MenuSDialogItem}.
+     */
+    public void setItemsList(List<MenuSDialogItem> itemsList) {
+        this.iconsItemsList = itemsList;
+    }
+
+    /**
+     * Add a list of items to existing list to display on ItemsSDialog.
+     * @param itemsList A list of items as {@link List} of {@link MenuSDialogItem}.
+     */
+    public void addItemsList(List<MenuSDialogItem> itemsList) {
+        this.iconsItemsList.addAll(itemsList);
     }
 
     /**

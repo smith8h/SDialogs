@@ -57,7 +57,7 @@ dependencies {
 # Documentation
 
 This library composed of 8 types of **SDialogs** and an additional one type that represent the customizable **SDialog** (use a custom view/layout of your own design and logic) for fast and small codes of initializing new dialog.
-</br>
+</br> 
 All these SDialogs using an algorithm to calculate and extract colors lighter/darker from the accent color you set in method `setAccentColor()`.
 
 ## AlertSDialog

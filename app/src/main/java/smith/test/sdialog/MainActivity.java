@@ -102,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
                 getString(R.string.app_name)));
         items.add(new MenuSDialogItem(this, R.drawable.ok_img, getString(R.string.app_name)));
 
-        sdialog.setItemsList(items);
+        sdialog.addItemsList(items);
         sdialog.addItem(R.drawable.ok_img, getString(R.string.app_name));
 
         sdialog.setOnItemClickCallBack((index, item) -> Toast.makeText(this, index + " " + (item.getTitle()), Toast.LENGTH_SHORT).show());
