@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
         sdialog.setCancelable(true);
         sdialog.setOnDismissCallBack(() -> Toast.makeText(this, "onDismiss", Toast.LENGTH_SHORT).show());
         sdialog.setOnBindViewCallBack(customView -> {
-
+            // dialog logic here
         });
         sdialog.show();
     }

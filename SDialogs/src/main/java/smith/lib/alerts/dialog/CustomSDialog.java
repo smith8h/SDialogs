@@ -52,6 +52,7 @@ public class CustomSDialog extends SDialog {
     /**
      * This setter won't work on custom type of SDialog.
      */
+    @Deprecated
     @Override
     public void setAccentColor(int color) {
     }
@@ -59,6 +60,7 @@ public class CustomSDialog extends SDialog {
     /**
      * This setter won't work on custom type of SDialog.
      */
+    @Deprecated
     @Override
     public void setAccentColor(String color) {
     }
@@ -66,6 +68,7 @@ public class CustomSDialog extends SDialog {
     /**
      * This setter won't work on custom type of SDialog.
      */
+    @Deprecated
     @Override
     public void setTheme(int theme) {
     }
