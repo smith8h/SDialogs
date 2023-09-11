@@ -3,7 +3,7 @@
 ![Builds and tests](https://github.com/smith8h/SDialogs/actions/workflows/build.yml/badge.svg)
 [![JitPack release](https://jitpack.io/v/smith8h/SDialogs.svg)](https://jitpack.io/#smith8h/SDialogs)
 ![Latest release](https://img.shields.io/github/v/release/smith8h/SDialogs?include_prereleases&amp;label=latest%20release)
-![Stable Version](https://img.shields.io/badge/stable_version-4.3-blue)
+![Stable Version](https://img.shields.io/badge/stable_version-4.4-blue)
 ![Stability](https://img.shields.io/badge/stability-stable-green.svg)
 ![minSDK](https://img.shields.io/badge/minSDK-21-f39f37)
 ![repo size](https://img.shields.io/github/repo-size/smith8h/sdialogs)
@@ -15,6 +15,7 @@ Beautiful custom Android dialogs (Alert, MultiSelect, CheckBox, SingleSelect, Ra
 # Menu Of Contents
 
 - [How to setup](#setup)
+- [Changelog](https://github.com/smith8h/SDialogs/blob/main/CHANGELOG.md)
 - [How to implement (Documentation)](#documentation)
   - [AlertSDialog](#alertsdialog)
   - [CustomSDialog](#customsdialog)
@@ -32,7 +33,7 @@ Beautiful custom Android dialogs (Alert, MultiSelect, CheckBox, SingleSelect, Ra
 - [Support library improvements (Donations)](#donations)
 
 # Setup
->
+
 > **Step 1.** Add the JitPack repository to your build file.</br>
 > Add it in your root build.gradle at the end of repositories:
 
@@ -57,7 +58,8 @@ dependencies {
 # Documentation
 
 This library composed of 8 types of **SDialogs** and an additional one type that represent the customizable **SDialog** (use a custom view/layout of your own design and logic) for fast and small codes of initializing new dialog.
-</br> 
+
+
 All these SDialogs using an algorithm to calculate and extract colors lighter/darker from the accent color you set in method `setAccentColor()`.
 
 ## AlertSDialog
@@ -75,9 +77,9 @@ Table of methods:
 
 **Setters**
 
-- `setIconResource(icon)` add icon from res.
-- `setIconDrawable(icon)` add icon from a Drawable.
-- `setIconBitmap(icon)` add icon from bitmap.
+- `setIconResource(icon)` (optional) add icon from res.
+- `setIconDrawable(icon)` (optional) add icon from a Drawable.
+- `setIconBitmap(icon)` (optional) add icon from bitmap.
 - `setTitle("Title");` set title as string text.
 - `setTitle(R.string.title);` set title as string resource.
 - `setText(text);` accepts span text | int string res | string text...
@@ -87,7 +89,7 @@ Table of methods:
 - `setNeutralButton("Button Text", clickcallback);` (Optional) .
 - `setAccentColor(int color/string hex color);` Default color is 0xFFA7B4C5/#FFA7B4C5 you can access it by `SDialog.COLOR_DEFAULT`.
 - `setTheme(SDialog.THEME_SYSTEM);` or `THEME_LIGHT / THEME_DARK`.
-- `setCancelable(false);` (*Optional).
+- `setCancelable(false);` (Optional).
 - `setOnDismissCallBack(dismisscallback);` (Optional).
 - `show(); / show(1200);` to show always or for a duration of time (auto hide).
 - `dismiss(); / dismiss(500);` to hide it immediately or after duration of time (auto dismiss).
@@ -101,20 +103,21 @@ Table of methods:
 
 ## CustomSDialog
 
-Create new instance of CustomSDialog:
+Create new instance of CustomSDialog and set a view as dialog view:
 
 ```java
-    CustomSDialog sdialog = new CustomSDialog(this);
+    CustomSDialog sdialog = new CustomSDialog(this, View);
+    // or
+    CustomSDialog sdialog = new CustomSDialog(this, R.layout.your_layout);
 ```
 
 Table of methods:
 
-- `setView(view, bindviewcallback);` set a view and liatener onBindCustomView.
-- `setView(R.layout.your_layout_name, bindviewcallback);` set a int layout from resources and liatener onBindCustomView.
-- `setCancelable(false);` (*Optional).
+- `setCancelable(false);` (Optional).
 - `setOnDismissCallBack(dismisscallback);` (Optional).
+- `setOnBindViewCallBack(onBindViewCallBack);` set a callback or logic to get in touch with your custom dialog logic.
 - `show(); / show(1200);` to show always or for a duration of time (auto hide).
-- `dismiss();` to hide it.
+- `dismiss(); / dismiss(1200);` to hide it immediately or after a duration of time.
 
 ## InputSDialog
 
@@ -132,9 +135,9 @@ Table of methods:
 
 **Setters**
 
-- `setIconResource(icon)` add icon from res.
-- `setIconDrawable(icon)` add icon from a Drawable.
-- `setIconBitmap(icon)` add icon from bitmap.
+- `setIconResource(icon)` (optional) add icon from res.
+- `setIconDrawable(icon)` (optional) add icon from a Drawable.
+- `setIconBitmap(icon)` (optional) add icon from bitmap.
 - `setTitle("Title");` set title as string text.
 - `setTitle(R.string.title);` set title as string resource.
 - `setText(text);` string | int res, (Optional) set a docs above the input field.
@@ -157,7 +160,7 @@ Table of methods:
 - `getTextColor()` get accent color.
 - `getHintColor()` get hint color.
 
-## ItemsSDialog
+## MenuSDialog
 
 <p align="center">
     <img src="https://te.legra.ph/file/11810e2ec43ec98511739.jpg" style="width: 50%;" />
@@ -166,28 +169,29 @@ Table of methods:
 Create new instance of ItemsSDialog:
 
 ```java
-    ItemsSDialog sdialog = new ItemsSDialog(this);
+    MenuSDialog sdialog = new MenuSDialog(this);
 ```
 
 Table of methods:
 
 **Setters**
 
-- `setIconResource(icon)` add icon from res.
-- `setIconDrawable(icon)` add icon from a Drawable.
-- `setIconBitmap(icon)` add icon from bitmap.
+- `setIconResource(icon)` (optional) add icon from res.
+- `setIconDrawable(icon)` (optional) add icon from a Drawable.
+- `setIconBitmap(icon)` (optional) add icon from bitmap.
 - `setTitle("Title");` set title as string text.
 - `setTitle(R.string.title);` set title as string resource.
 - `setMaxHeight(340);` set max height to ignore screen overriding (default is 360).
 - `setAccentColor(int color/string hex color);` Default color is 0xFFA7B4C5/#FFA7B4C5 you can access it by `SDialog.COLOR_DEFAULT`.
 - `setTheme(SDialog.THEME_SYSTEM);` or `THEME_LIGHT / THEME_DARK`.
-- `setItemsList(ArrayList<MenuSDialogItem>);` set items from existing arraylist of strings `ArrayList<String>`.
-- `setOnItemClickCallBack(itemclickcallback);`
+- `setItemsList(List<MenuSDialogItem>);` set items from existing arraylist of `MenuSDialogItem`.
+- `addItemsList(List<MenuSDialogItem>);` add another items of `MenuSDialogItem` to existing items in `MenuSDialog` without resetting them.
 - `addItem(DrawableIcon, "item text")` add new item (drawable, string).
 - `addItem(DrawableIntRes, "item text")` add new item (int res, string).
 - `removeItem(2)` remove an item by its **index** from the list.
-- `setCancelable(false);` (Optional).
+- `setOnItemClickCallBack(itemclickcallback);` add a functionality to when item clicked.
 - `setOnDismissCallBack(dismisscallback);` (Optional).
+- `setCancelable(false);` (Optional).
 - `show(); / show(460);` to show it permanently or for a duration of time (auto dismiss).
 - `dismiss(); / dismiss(500);` to hide it immediately or after duration of time (auto dismiss).
 > if you want to add new item using `MenuSDialogItem` use it this way:
@@ -252,9 +256,9 @@ Table of methods:
 
 **Setters**
 
-- `setIconResource(icon)` add icon from res.
-- `setIconDrawable(icon)` add icon from a Drawable.
-- `setIconBitmap(icon)` add icon from bitmap.
+- `setIconResource(icon)` (optional) add icon from res.
+- `setIconDrawable(icon)` (optional) add icon from a Drawable.
+- `setIconBitmap(icon)` (optional) add icon from bitmap.
 - `setTitle("Downloading Files");` set title as string text.
 - `setTitle(R.string.title);` set title as string resource.
 - `setText(text);` string | int res, set text under progress bar (can be changed onProgress)
@@ -262,6 +266,7 @@ Table of methods:
 - `setMax(200);` default is 100.
 - `setProgress(120)` set sdialog progress.
 - `setOnProgressCallBack(progresscallback)` set on progress changed callback.
+- `setNegativeButtonAction("button text", clickCallBack);` (optional) set a cancel process or any other usage button.
 - `setAccentColor(int color/string hex color);` Default color is 0xFFA7B4C5/#FFA7B4C5 you can access it by `SDialog.COLOR_DEFAULT`.
 - `setTheme(SDialog.THEME_SYSTEM);` or `THEME_LIGHT / THEME_DARK`.
 - `setOnDismissCallBack(dismisscallback);` (Optional).
@@ -293,17 +298,17 @@ Table of methods:
 
 **Setters**
 
-- `setIconResource(icon)` add icon from res.
-- `setIconDrawable(icon)` add icon from a Drawable.
-- `setIconBitmap(icon)` add icon from bitmap.
+- `setIconResource(icon)` (optional) add icon from res.
+- `setIconDrawable(icon)` (optional) add icon from a Drawable.
+- `setIconBitmap(icon)` (optional) add icon from bitmap.
 - `setTitle("Title");` set title as string text.
 - `setTitle(R.string.title);` set title as string resource.
 - `setMaxHeight(340);` set max height to ignore screen overriding (default is 360).
 - `setAccentColor(int color/string hex color);` Default color is 0xFFA7B4C5/#FFA7B4C5 you can access it by `SDialog.COLOR_DEFAULT`.
 - `setTheme(SDialog.THEME_SYSTEM);` or `THEME_LIGHT / THEME_DARK`.
 - `setOnSingleSelectCallBack(singleselectcallback);` get checked radio button id & text.
-- `addItem(intId, "item text")` add new item(1, "Holow").
-- `setCheckedItem(intId)` set the checked item by default by its id.
+- `addItem(intId, "item text")` add new item(1, "Hollow").
+- `setCheckedItem(intId)` (optional) set the checked item by default by its id.
 - `removeItem(2)` remove an item by its **index** from the list.
 - `removeItem("item text")` remove an item by its **text** from the list.
 - `setCancelable(false);` (Optional).
@@ -338,9 +343,9 @@ Table of methods:
 
 **Setters**
 
-- `setIconResource(icon)` add icon from res.
-- `setIconDrawable(icon)` add icon from a Drawable.
-- `setIconBitmap(icon)` add icon from bitmap.
+- `setIconResource(icon)` (optional) add icon from res.
+- `setIconDrawable(icon)` (optional) add icon from a Drawable.
+- `setIconBitmap(icon)` (optional) add icon from bitmap.
 - `setTitle("Title");` set title as string text.
 - `setTitle(R.string.title);` set title as string resource.
 - `setMaxHeight(340);` set max height to ignore screen overriding (default is 360).
@@ -348,7 +353,7 @@ Table of methods:
 - `setAccentColor(int color/string hex color);` Default color is 0xFFA7B4C5/#FFA7B4C5 you can access it by `SDialog.COLOR_DEFAULT`.
 - `setTheme(SDialog.THEME_SYSTEM);` or `THEME_LIGHT / THEME_DARK`.
 - `addItem(intId, "item text", isChecked)` add new item(1, "Holow", true).
-- `setCheckedItem(intId)` set the checked item by default by its id.
+- `setCheckedItem(intId)` (optional) set the checked item by default by its id.
 - `removeItem(2)` remove an item by its **index** from the list.
 - `removeItem("item text")` remove an item by its **text** from the list.
 - `setCancelable(false);` (Optional).
@@ -383,9 +388,9 @@ Table of methods:
 
 **Setters**
 
-- `setIconResource(icon)` add icon from resources.
-- `setIconDrawable(icon)` add icon from a Drawable.
-- `setIconBitmap(icon)` add icon from bitmap.
+- `setIconResource(icon)` (optional) add icon from resources.
+- `setIconDrawable(icon)` (optional) add icon from a Drawable.
+- `setIconBitmap(icon)` (optional) add icon from bitmap.
 - `setTitle("Title");` set title as string text.
 - `setTitle(R.string.title);` set title as string resource.
 - `setText("text hint" || int res)` (Optional) set a hint below title.
@@ -396,7 +401,7 @@ Table of methods:
 - `setMin(float)` set min value (from).
 - `setMax(float)` set max value (to).
 - `setValue(float)` set current slider value (from min to max).
-- `setStepBy(int)` how likely you want to walk through values in slider.
+- `setStepBy(int)` (optional) how likely you want to walk through values in slider.
 - `show(); / show(2100);` to show it always or for duration of time (auto hide).
 - `dismiss(); / dismiss(500);` to hide it immediately or after duration of time (auto dismiss).
 
@@ -410,47 +415,10 @@ Table of methods:
 - `getBackgroundColor()` get accent color.
 - `getTextColor()` get text color.
 
-## PatternSDialog
-
-<p align="center">
-    <img src="https://te.legra.ph/file/dd7a15aec00c543fcd147.jpg" style="width: 50%;" />
-</p>
-
-Create new instance of PatternSDialog:
-
-```java
-    PatternSDialog sdialog = new PatternSDialog(this);
-```
-
-Table of methods:
-
-**Setters**
-
-- `setIconResource(icon)` add icon from resources.
-- `setIconDrawable(icon)` add icon from a Drawable.
-- `setIconBitmap(icon)` add icon from bitmap.
-- `setTitle("Title");` set title as string text.
-- `setTitle(R.string.title);` set title as string resource.
-- `setPatternViewHeight(340);` set height to patterview (default is 260).
-- `setPatternViewWidth(340);` set width to patternview (default is 260).
-- `setOnDrawPatternCallBack(ondrawpatterncallback)` set a callback to get pattern after draw it.
-- `setPatternMode(SDialog.PATTERN_MODE_WRONG)` set mode after drawing using `PATTERN_MODE_WRONG` or `PATTERN_MODE_CORRECT` (functional in callback).
-- `setAccentColor(int color/string hex color);` Default color is 0xFFA7B4C5/#FFA7B4C5 you can access it by `SDialog.COLOR_DEFAULT`.
-- `setTheme(SDialog.THEME_SYSTEM);` or `THEME_LIGHT / THEME_DARK`.
-- `show(); / show(2100);` to show it always or for duration of time (auto hide).
-- `dismiss(); / dismiss(500);` to hide it immediately or after duration of time (auto dismiss).
-
-**Getters:**
-
-- `getAccentColor()` get accent color.
-- `getTitleColor()` get title color.
-- `getBackgroundColor()` get accent color.
-- `getPatternColor()` get pattern in normal state color.
-
 ## FeedbackSDialog
 
 <p align="center">
-    <img src="https://te.legra.ph/file/6b803421661ac0548124e.jpg" style="width: 50%;" />
+    <img src="https://te.legra.ph/file/ee2c0318c74f6674f4f0a.jpg" style="width: 50%;" />
 </p>
 
 Create new instance of FeedbackSDialog:
@@ -463,14 +431,15 @@ Table of methods:
 
 **Setters**
 
-- `setIconResource(icon)` add icon from resources.
-- `setIconDrawable(icon)` add icon from a Drawable.
-- `setIconBitmap(icon)` add icon from bitmap.
+- `setIconResource(icon)` (optional) add icon from resources.
+- `setIconDrawable(icon)` (optional) add icon from a Drawable.
+- `setIconBitmap(icon)` (optional) add icon from bitmap.
 - `setTitle("Title");` set title as string text.
 - `setTitle(R.string.title);` set title as string resource.
 - `setText("Text");` set text as string.
 - `setText(R.string.text);` set text as string resource.
-- `setOnFeedbackSubmitCallBack(onfeedbacksubmitcallback)` set a callback to get the feedback submitted.
+- `setInputFieldHint("Feedback...");` set text as input hint.
+- `setSubmitFeedBackButton("button text", onfeedbacksubmitcallback)` set a submit button to get the feedback submitted.
 - `setAccentColor(int color/string hex color);` Default color is 0xFFA7B4C5/#FFA7B4C5 you can access it by `SDialog.COLOR_DEFAULT`.
 - `setTheme(SDialog.THEME_SYSTEM);` or `THEME_LIGHT / THEME_DARK`.
 - `show(); / show(2100);` to show it always or for duration of time (auto hide).
@@ -523,7 +492,7 @@ CallBacks used in SDialogs:
     // onItemClickCallBack used in items sdialog
     OnItemClickCallBack itemclickcallback = new OnItemClickCallBack() {
         @Override
-        public void onItemClick(String itemValue, int itemIndex) {
+        public void onItemClick(int index, MenuSDialogItem item) {
             // use itemValue to get item text, itemIndex to get item index.
         }
     };
@@ -534,6 +503,11 @@ CallBacks used in SDialogs:
         public void onProgress(int progress, int percent) {
             // use progress to get the progress 120 of max 200 eg..
             // use percent to get progress percentage 20 of 100% eg..
+        }
+        
+        @Override
+        public void onFinish() {
+            // add logic to when progress finish.
         }
     };
     
@@ -562,36 +536,11 @@ CallBacks used in SDialogs:
             // use value
         }
     };
-    
-    // onDraw pattern callback
-    OnDrawPatternCallBack ondrawpatterncallback = new OnDrawPatternCallBack() {
-        @Override
-        public void onStartDrawing() {
-        
-        }
-
-        @Override
-        public void onDrawingProgress(String pattern) {
-            // use pattern
-        }
-        
-        @Override
-        public void onCompleteDrawing(String pattern) {
-            // use pattern
-            d.setPatternMode(SDialog.PATTERN_MODE_CORRECT);
-            d.dismiss(500);
-        }
-        
-        @Override
-        public void onClearDrawing() {
-        
-        }
-    };
 
     // onFeedback submit callback
     OnFeedbackSubmitCallBack onfeedbacksubmitcallback = new OnFeedbackSubmitCallBack() {
         @Override
-        public void onSubmit(boolean isLiked) {
+        public void onSubmit(boolean isLiked, String feedbackText) {
             // use isLiked
         }
     };
@@ -608,13 +557,15 @@ List of apps on Play Store where this library used. Contact me if you want your 
 <br>
 
 # Contributors
+
 <a href="https://github.com/smith8h/sdialogs/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=kimoandroid/glide-slider" />
 </a>
-<br>
+
+<br/>
 
 # Donations
->
+
 > If you would like to support this project's further development, the creator of this projects or the continuous maintenance of the project **feel free to donate**.
 > Your donation is highly appreciated. Thank you!
 <br/>
