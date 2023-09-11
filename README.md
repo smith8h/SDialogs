@@ -51,7 +51,7 @@ allprojects {
 ```gradle
 dependencies {
     ...
-    implementation 'com.github.smith8h:SDialogs:4.3'
+    implementation 'com.github.smith8h:SDialogs:4.4'
 }
 ```
 

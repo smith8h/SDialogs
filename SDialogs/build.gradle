@@ -12,7 +12,7 @@ android {
         minSdk 21
         targetSdk 33
         versionCode 5
-        versionName '4.3'
+        versionName '4.4'
         multiDexEnabled true
     }
 
@@ -51,7 +51,7 @@ afterEvaluate {
                 from components.release
                 groupId "smith.lib"
                 artifactId "sdialogs"
-                version '4.3'
+                version '4.4'
             }
         }
     }
