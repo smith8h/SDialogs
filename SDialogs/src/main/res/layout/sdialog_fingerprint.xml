@@ -18,9 +18,10 @@
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:gravity="center">
 
     <LinearLayout
         android:id="@+id/sdialog_main"
@@ -76,8 +77,8 @@
                 android:layout_marginEnd="12dp"
                 android:contentDescription="@string/sdialog_fingerprint_icon"
                 android:scaleType="fitXY"
-                android:padding="8dp"
-                tools:src="@drawable/sdialog_img_fingerprint"
+                android:padding="12dp"
+                android:src="@drawable/sdialog_img_fingerprint"
                 tools:tint="#000" />
 
             <TextView
@@ -94,7 +95,6 @@
             android:id="@+id/sdialog_holder"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
             android:orientation="horizontal"
             android:visibility="gone"
             android:gravity="end">

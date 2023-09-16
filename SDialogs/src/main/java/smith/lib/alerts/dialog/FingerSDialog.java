@@ -26,6 +26,8 @@ import android.graphics.drawable.Drawable;
 import android.view.View;
 import androidx.annotation.*;
 
+import smith.lib.alerts.dialog.utils.FingerSDialogAuth;
+
 /**
  * The safest and most secured class of SDialog lib.
  * this class create a security SDialogs that alerts the user to input his fingerprint to access or proceed to something.
@@ -161,6 +163,7 @@ public class FingerSDialog extends SDialog {
         super.show(duration);
     }
 
+    @SuppressLint("SetTextI18n")
     private void update() {
         updateTheme();
         utils.backgroundColor(b.main, backgroundColor);
@@ -169,9 +172,18 @@ public class FingerSDialog extends SDialog {
         b.fingerprintText.setTextColor(textColor);
         b.negative.setTextColor(accentColor);
 
-        updateIcon(iconColor, iconBackground);
-
-        this.setCancelable(false);
+        if (FingerSDialogAuth.hasFingerprintSupport(context)) {
+            updateIcon(iconColor, iconBackground);
+            // todo : fingerprint logic here
+            setCancelable(false);
+        } else {
+            updateIcon(0xFFEB6D64, 0x47FF7D5F);
+            b.fingerprintText.setText(
+                    "No Fingerprint Sensor Found, Or No Fingerprint Registered In This Device."
+            );
+            b.holder.setVisibility(View.GONE);
+            setCancelable(true);
+        }
     }
 
     private void updateIcon(int color, int background) {

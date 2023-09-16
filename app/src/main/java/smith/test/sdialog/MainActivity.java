@@ -101,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
         sDialog.setTitle("Fingerprint Confirmation");
         sDialog.setText("Confirm your fingerprint to proceed further to the next payment step.");
         sDialog.setAccentColor(SDialog.COLOR_DEFAULT);
-        sDialog.setTheme(SDialog.THEME_DARK);
+        sDialog.setTheme(SDialog.THEME_LIGHT);
         sDialog.show();
     }
 
