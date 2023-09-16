@@ -121,6 +121,15 @@
             android:textColor="#000000"
             android:textSize="18sp" />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="finger"
+            android:padding="10dp"
+            android:text="show fingerprint dialog"
+            android:textColor="#000000"
+            android:textSize="18sp" />
+
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

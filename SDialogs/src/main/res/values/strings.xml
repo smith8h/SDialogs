@@ -19,4 +19,5 @@
 
 <resources>
     <string name="sdialog_icon">Dialog Icon</string>
+    <string name="sdialog_fingerprint_icon">SDialog fingerprint icon</string>
 </resources>

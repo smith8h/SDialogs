@@ -94,6 +94,17 @@ public class MainActivity extends AppCompatActivity {
         sDialog.show();
     }
 
+    public void finger(View view) {
+        FingerSDialog sDialog = new FingerSDialog(this);
+        sDialog.setNegativeButtonText("Cancel");
+        sDialog.setIconResource(smith.lib.alerts.dialog.R.drawable.sdialog_img_fingerprint);
+        sDialog.setTitle("Fingerprint Confirmation");
+        sDialog.setText("Confirm your fingerprint to proceed further to the next payment step.");
+        sDialog.setAccentColor(SDialog.COLOR_DEFAULT);
+        sDialog.setTheme(SDialog.THEME_DARK);
+        sDialog.show();
+    }
+
     public void input(View v) {
         InputSDialog sdialog = new InputSDialog(this);
         sdialog.setAccentColor(0xFFAD97BE);

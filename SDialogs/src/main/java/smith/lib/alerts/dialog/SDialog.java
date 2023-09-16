@@ -239,8 +239,8 @@ public class SDialog {
     protected static class DialogBinding {
 
         LinearLayout main, holder;
-        ImageView icon, like, dislike;
-        TextView title, text, positive, negative, neutral, percent;
+        ImageView icon, like, dislike, fingerprint;
+        TextView title, text, positive, negative, neutral, percent, fingerprintText;
         SRecyclerView recycler;
         TextInputLayout input;
         TextInputEditText inputed;
@@ -267,6 +267,8 @@ public class SDialog {
             like = view.findViewById(R.id.sdialog_like);
             dislike = view.findViewById(R.id.sdialog_dislike);
             scroll = view.findViewById(R.id.sdialog_scroll);
+            fingerprint = view.findViewById(R.id.sdialog_fingerprint);
+            fingerprintText = view.findViewById(R.id.sdialog_fingerprint_text);
         }
     }
 }
