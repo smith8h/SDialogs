@@ -1,9 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ /*
-  ~ *  Created by Dev. Smith (Hussein Shakir) on 9/16/23, 10:07 PM
+  ~ *  Created by Dev. Smith (Hussein Shakir) on 9/16/23, 10:12 PM
   ~ *  Copyright Ⓒ 2023. All rights reserved Ⓒ 2023 http://github.com/smith8h
-  ~ *  Last modified: 7/28/23, 6:13 PM
+  ~ *  Last modified: 9/16/23, 10:12 PM
   ~ *
   ~ *  Licensed under the Apache License, Version 2.0 (the "License");
   ~ *  you may not use this file except in compliance with the License.
@@ -20,16 +19,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:gravity="center">
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="16sp"
-        android:textStyle="bold|italic"
-        android:text="show alert sdialog in fragment"
-        android:id="@+id/text"
-        android:textColor="@android:color/black" />
+    android:layout_height="match_parent">
 
 </LinearLayout>

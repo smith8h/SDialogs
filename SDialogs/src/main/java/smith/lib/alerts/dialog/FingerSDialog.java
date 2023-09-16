@@ -2,7 +2,7 @@
  *
  *   Created by Dev. Smith (Hussein Shakir) on 9/16/23, 10:07 PM
  *   Copyright Ⓒ 2023. All rights reserved Ⓒ 2023 http://github.com/smith8h
- *   Last modified: 8/6/23, 3:51 PM
+ *   Last modified: 9/16/23, 10:07 PM
  *
  *   Licensed under the Apache License, Version 2.0 (the "License");
  *   you may not use this file except in compliance with the License.
@@ -16,17 +16,27 @@
  * /
  */
 
-package smith.lib.alerts.dialog.callbacks;
+package smith.lib.alerts.dialog;
+
+import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.content.Context;
 
 /**
- * Slider callback to get the value selected.
+ * The safest and most secured class of SDialog lib.
+ * this class create a security SDialogs that alerts the user to input his fingerprint to access or proceed to something.
  */
-@FunctionalInterface
-public interface OnSlideCallBack {
+@SuppressWarnings({"unused"})
+public class FingerSDialog extends SDialog {
+
     /**
-     * triggered when clicking on ok button to get the value selected from the slider.
-     *
-     * @param value The value returned from slider as Float.
+     * Pass the current context you're using this sdialog from.
+     * @param context Current context (or Activity).
      */
-    void onValueSelected(float value);
+    @SuppressLint("InflateParams")
+    public FingerSDialog(Context context) {
+        super.context = context;
+        dialogView = ((Activity) context).getLayoutInflater().inflate(R.layout.sdialog_fingerprint, null);
+        init();
+    }
 }
