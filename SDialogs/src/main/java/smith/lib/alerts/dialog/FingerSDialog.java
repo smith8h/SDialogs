@@ -24,7 +24,9 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.view.View;
-import androidx.annotation.*;
+
+import androidx.annotation.DrawableRes;
+import androidx.annotation.StringRes;
 
 import smith.lib.alerts.dialog.utils.FingerSDialogAuth;
 
@@ -172,7 +174,7 @@ public class FingerSDialog extends SDialog {
         b.fingerprintText.setTextColor(textColor);
         b.negative.setTextColor(accentColor);
 
-        if (FingerSDialogAuth.hasFingerprintSupport(context)) {
+        if (FingerSDialogAuth.hasBiometrics(context)) {
             updateIcon(iconColor, iconBackground);
             // todo : fingerprint logic here
             setCancelable(false);

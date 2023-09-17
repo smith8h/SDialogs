@@ -27,13 +27,17 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RestrictTo;
 import androidx.recyclerview.widget.RecyclerView;
+
 import java.util.List;
+
 import smith.lib.alerts.dialog.MenuSDialog;
 import smith.lib.alerts.dialog.R;
 import smith.lib.alerts.dialog.callbacks.OnItemClickCallBack;
 import smith.lib.alerts.dialog.utils.MenuSDialogItem;
 
+@RestrictTo(RestrictTo.Scope.LIBRARY)
 public class SMenuAdapter extends RecyclerView.Adapter<SMenuAdapter.ViewHolder> {
 
     private final List<MenuSDialogItem> data;

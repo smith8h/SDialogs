@@ -22,12 +22,29 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentTransaction;
-import java.util.*;
-import smith.lib.alerts.dialog.*;
-import smith.lib.alerts.dialog.callbacks.*;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
+
+import smith.lib.alerts.dialog.AlertSDialog;
+import smith.lib.alerts.dialog.CustomSDialog;
+import smith.lib.alerts.dialog.FeedbackSDialog;
+import smith.lib.alerts.dialog.FingerSDialog;
+import smith.lib.alerts.dialog.InputSDialog;
+import smith.lib.alerts.dialog.LoadingSDialog;
+import smith.lib.alerts.dialog.MenuSDialog;
+import smith.lib.alerts.dialog.MultiSelectSDialog;
+import smith.lib.alerts.dialog.ProgressSDialog;
+import smith.lib.alerts.dialog.SDialog;
+import smith.lib.alerts.dialog.SingleSelectSDialog;
+import smith.lib.alerts.dialog.SliderSDialog;
+import smith.lib.alerts.dialog.callbacks.OnProgressCallBack;
 import smith.lib.alerts.dialog.utils.MenuSDialogItem;
 
 public class MainActivity extends AppCompatActivity {

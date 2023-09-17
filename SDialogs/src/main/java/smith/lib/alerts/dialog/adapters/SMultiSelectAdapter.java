@@ -20,15 +20,27 @@ package smith.lib.alerts.dialog.adapters;
 
 import android.annotation.SuppressLint;
 import android.content.res.ColorStateList;
-import android.view.*;
-import android.widget.*;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.CheckBox;
+import android.widget.LinearLayout;
+
 import androidx.annotation.NonNull;
+import androidx.annotation.RestrictTo;
 import androidx.recyclerview.widget.RecyclerView;
+
 import org.jetbrains.annotations.Contract;
-import java.util.*;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+
 import smith.lib.alerts.dialog.MultiSelectSDialog;
 import smith.lib.alerts.dialog.R;
 
+@RestrictTo(RestrictTo.Scope.LIBRARY)
 public class SMultiSelectAdapter extends RecyclerView.Adapter<SMultiSelectAdapter.ViewHolder> {
 
     private final List<Map<String, Object>> data;

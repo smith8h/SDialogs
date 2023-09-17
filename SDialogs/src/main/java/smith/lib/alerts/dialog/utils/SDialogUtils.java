@@ -20,16 +20,27 @@ package smith.lib.alerts.dialog.utils;
 
 import android.animation.ObjectAnimator;
 import android.content.Context;
-import android.content.res.*;
+import android.content.res.ColorStateList;
+import android.content.res.Configuration;
 import android.graphics.Color;
-import android.graphics.drawable.*;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
+import android.graphics.drawable.LayerDrawable;
+import android.graphics.drawable.RippleDrawable;
+import android.graphics.drawable.ScaleDrawable;
+import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.RoundRectShape;
 import android.os.Build;
 import android.util.TypedValue;
-import android.view.*;
-import androidx.annotation.*;
+import android.view.Gravity;
+import android.view.View;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
+import androidx.annotation.RestrictTo;
 
 @SuppressWarnings({"unused", "all"})
+@RestrictTo(RestrictTo.Scope.LIBRARY)
 public class SDialogUtils {
 
     private final Context context;

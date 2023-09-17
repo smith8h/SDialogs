@@ -20,19 +20,38 @@ package smith.lib.alerts.dialog.utils;
 
 import android.app.KeyguardManager;
 import android.content.Context;
-import androidx.core.hardware.fingerprint.FingerprintManagerCompat;
+import android.hardware.biometrics.BiometricManager;
+import android.hardware.fingerprint.FingerprintManager;
+import android.os.Build;
+import androidx.annotation.RestrictTo;
 
+@SuppressWarnings({"unused", "deprecation"})
+@RestrictTo(RestrictTo.Scope.LIBRARY)
 public class FingerSDialogAuth {
 
-    public static boolean hasFingerprintSupport(Context context) {
-        FingerprintManagerCompat fingerprintManager = FingerprintManagerCompat.from(context);
-        boolean hardwareSupport = fingerprintManager.isHardwareDetected();
+    /**
+     * Check if device does have biometrics hardware or enrolled biometrics <i><b>at least</b></i>.
+     *
+     * @param context paas the current context.
+     * @return {@code true} if device has fingerprint sensor and one fingerprint registered.
+     */
 
-        boolean secureSupport = true;
-        KeyguardManager keyguardManager = (KeyguardManager) context.getSystemService(Context.KEYGUARD_SERVICE);
-        if (keyguardManager != null) secureSupport = keyguardManager.isKeyguardSecure();
+    public static boolean hasBiometrics(Context context) {
+        boolean hasBiometrics;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            BiometricManager biometricManager = (BiometricManager) context.getSystemService(Context.BIOMETRIC_SERVICE);
+            hasBiometrics = biometricManager.canAuthenticate() == BiometricManager.BIOMETRIC_SUCCESS;
+        } else {
+            FingerprintManager fingerprintManager = (FingerprintManager) context.getSystemService(Context.FINGERPRINT_SERVICE);
+            boolean hardwareSupport = fingerprintManager.isHardwareDetected();
 
-        boolean hasPwd = fingerprintManager.hasEnrolledFingerprints();
-        return hardwareSupport && secureSupport && hasPwd;
+            boolean secureSupport = true;
+            KeyguardManager keyguardManager = (KeyguardManager) context.getSystemService(Context.KEYGUARD_SERVICE);
+            if (keyguardManager != null) secureSupport = keyguardManager.isKeyguardSecure();
+
+            boolean hasPwd = fingerprintManager.hasEnrolledFingerprints();
+            hasBiometrics = hardwareSupport && secureSupport && hasPwd;
+        }
+        return hasBiometrics;
     }
 }

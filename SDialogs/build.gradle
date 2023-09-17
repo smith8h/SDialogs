@@ -9,7 +9,7 @@ android {
     compileSdk 33
 
     defaultConfig {
-        minSdk 21
+        minSdk 23
         targetSdk 33
         versionCode 5
         versionName '4.4'
@@ -42,6 +42,7 @@ android {
 dependencies {
     implementation('androidx.appcompat:appcompat:1.6.1')
     implementation('com.google.android.material:material:1.9.0')
+    // runtimeOnly('androidx.biometric:biometric:1.1.0')
 }
 
 afterEvaluate {

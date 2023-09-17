@@ -20,15 +20,25 @@ package smith.lib.alerts.dialog.adapters;
 
 import android.annotation.SuppressLint;
 import android.content.res.ColorStateList;
-import android.view.*;
-import android.widget.*;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.RadioButton;
+
 import androidx.annotation.NonNull;
+import androidx.annotation.RestrictTo;
 import androidx.recyclerview.widget.RecyclerView;
-import java.util.*;
+
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+
 import smith.lib.alerts.dialog.R;
 import smith.lib.alerts.dialog.SingleSelectSDialog;
 import smith.lib.alerts.dialog.callbacks.OnSingleSelectCallBack;
 
+@RestrictTo(RestrictTo.Scope.LIBRARY)
 public class SSingleSelectAdapter extends RecyclerView.Adapter<SSingleSelectAdapter.ViewHolder> {
 
     private final List<Map<String, Object>> data;

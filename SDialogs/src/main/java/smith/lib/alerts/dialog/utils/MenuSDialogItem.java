@@ -21,12 +21,15 @@ package smith.lib.alerts.dialog.utils;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
+
 import androidx.annotation.DrawableRes;
+import androidx.annotation.RestrictTo;
 import androidx.core.content.ContextCompat;
 
 /**
  * Use this class to add new item to the list in {@link smith.lib.alerts.dialog.MenuSDialog}.
  */
+@RestrictTo(RestrictTo.Scope.LIBRARY)
 public class MenuSDialogItem {
 
     private final Drawable icon;
