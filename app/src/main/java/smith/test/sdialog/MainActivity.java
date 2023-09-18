@@ -1,19 +1,19 @@
 /*
+ * Created by Dev. Smith (Hussein Shakir) on 9/17/23, 8:01 PM
+ * Copyright Ⓒ 2023. All rights reserved Ⓒ 2023 http://github.com/smith8h
+ * Last modified: 9/17/23, 7:37 PM
  *
- *   Created by Dev. Smith (Hussein Shakir) on 9/16/23, 10:07 PM
- *   Copyright Ⓒ 2023. All rights reserved Ⓒ 2023 http://github.com/smith8h
- *   Last modified: 9/10/23, 12:25 AM
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at:
  *
- *   Licensed under the Apache License, Version 2.0 (the "License");
- *   you may not use this file except in compliance with the License.
- *                     You may obtain a copy of the License at
  *                  http://www.apache.org/licenses/LICENSE-2.0
- *   Unless required by applicable law or agreed to in writing,
- *   software distributed under the License is distributed on an "AS IS" BASIS,
- *   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *   See the License for the specific language governing permissions and
- *   limitations under the License.
- * /
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 
 package smith.test.sdialog;
@@ -35,7 +35,7 @@ import java.util.TimerTask;
 import smith.lib.alerts.dialog.AlertSDialog;
 import smith.lib.alerts.dialog.CustomSDialog;
 import smith.lib.alerts.dialog.FeedbackSDialog;
-import smith.lib.alerts.dialog.FingerSDialog;
+import smith.lib.alerts.dialog.BiometricSDialog;
 import smith.lib.alerts.dialog.InputSDialog;
 import smith.lib.alerts.dialog.LoadingSDialog;
 import smith.lib.alerts.dialog.MenuSDialog;
@@ -44,6 +44,7 @@ import smith.lib.alerts.dialog.ProgressSDialog;
 import smith.lib.alerts.dialog.SDialog;
 import smith.lib.alerts.dialog.SingleSelectSDialog;
 import smith.lib.alerts.dialog.SliderSDialog;
+import smith.lib.alerts.dialog.callbacks.OnBiometricAuthCallBack;
 import smith.lib.alerts.dialog.callbacks.OnProgressCallBack;
 import smith.lib.alerts.dialog.utils.MenuSDialogItem;
 
@@ -112,13 +113,31 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void finger(View view) {
-        FingerSDialog sDialog = new FingerSDialog(this);
-        sDialog.setNegativeButtonText("Cancel");
-        sDialog.setIconResource(smith.lib.alerts.dialog.R.drawable.sdialog_img_fingerprint);
+        BiometricSDialog sDialog = new BiometricSDialog(this);
+        sDialog.setTheme(SDialog.THEME_LIGHT);
+        sDialog.setAccentColor(SDialog.COLOR_DEFAULT);
+        sDialog.setIconResource(R.drawable.lock);
         sDialog.setTitle("Fingerprint Confirmation");
         sDialog.setText("Confirm your fingerprint to proceed further to the next payment step.");
-        sDialog.setAccentColor(SDialog.COLOR_DEFAULT);
-        sDialog.setTheme(SDialog.THEME_LIGHT);
+        sDialog.setNegativeButtonText("Cancel");
+        sDialog.setPositiveButton("Use Password", () -> {});
+        sDialog.setMaxFailureCount(3);
+        sDialog.setOnBiometricAuthCallBack(new OnBiometricAuthCallBack() {
+            @Override
+            public void onSuccess() {
+                Toast.makeText(MainActivity.this, "Success read fingerprint", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onFailure() {
+                Toast.makeText(MainActivity.this, "Fail to read fingerprint", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onError() {
+                Toast.makeText(MainActivity.this, "Error reading fingerprint", Toast.LENGTH_SHORT).show();
+            }
+        });
         sDialog.show();
     }
 
@@ -139,7 +158,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void items(View v) {
         MenuSDialog sdialog = new MenuSDialog(this);
-        sdialog.setAccentColor(0xFFAD97BE);
+        sdialog.setAccentColor(SDialog.COLOR_DEFAULT);
         sdialog.setTheme(SDialog.THEME_BY_SYSTEM);
         sdialog.setMaxHeight(360);
         sdialog.setTitle("Sequence Options");
