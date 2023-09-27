@@ -42,7 +42,6 @@ android {
 dependencies {
     implementation('androidx.appcompat:appcompat:1.6.1')
     implementation('com.google.android.material:material:1.9.0')
-    // runtimeOnly('androidx.biometric:biometric:1.1.0')
 }
 
 afterEvaluate {

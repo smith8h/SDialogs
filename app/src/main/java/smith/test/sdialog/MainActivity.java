@@ -122,6 +122,8 @@ public class MainActivity extends AppCompatActivity {
         sDialog.setNegativeButtonText("Cancel");
         sDialog.setPositiveButton("Use Password", () -> {});
         sDialog.setMaxFailureCount(3);
+        sDialog.setErrorText("Failed to recognise fingerprint. Try again!");
+        sDialog.setSuccessText("Fingerprint recognised!");
         sDialog.setOnBiometricAuthCallBack(new OnBiometricAuthCallBack() {
             @Override
             public void onSuccess() {

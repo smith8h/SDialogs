@@ -68,8 +68,8 @@ public class BiometricSDialog extends SDialog {
      * @param clickCallBack A click callback triggered when clicking positive button using {@link OnClickCallBack}.
      */
     public void setPositiveButton(String text, OnClickCallBack clickCallBack) {
-        b.negative.setText(text);
-        b.negative.setOnClickListener(v -> {
+        b.positive.setText(text);
+        b.positive.setOnClickListener(v -> {
             clickCallBack.onClick();
             dismiss();
         });
@@ -264,7 +264,7 @@ public class BiometricSDialog extends SDialog {
         } else {
             updateIcon(0xFFEB6D64, 0x47FF7D5F);
             b.fingerprintText.setText(
-                    "No Fingerprint Sensor Found, Or No Fingerprint Registered In This Device."
+                    "No biometric hardware found, or no biometric authentication registered on this device."
             );
             b.holder.setVisibility(View.GONE);
             setCancelable(true);
@@ -297,7 +297,7 @@ public class BiometricSDialog extends SDialog {
                 updateIcon(0xFFEB6D64, 0x47FF7D5F);
                 b.fingerprintText.setText(errorText);
 
-                new Handler().postDelayed(() ->{
+                new Handler().postDelayed(() -> {
                     callBack.onError();
                     dismiss();
                 }, 1600);
@@ -312,7 +312,6 @@ public class BiometricSDialog extends SDialog {
                     callBack.onSuccess();
                     dismiss();
                 }, 1600);
-
             }
         });
     }
