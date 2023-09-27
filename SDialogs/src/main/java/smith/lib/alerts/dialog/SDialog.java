@@ -232,7 +232,7 @@ public class SDialog {
     protected void updateTheme() {
         switch (theme) {
             case THEME_BY_SYSTEM -> {
-                if (utils.nightModeON()) darkThemeColors();
+                if (utils.isNightModeON()) darkThemeColors();
                 else lightThemeColors();
             }
             case THEME_DARK -> darkThemeColors();

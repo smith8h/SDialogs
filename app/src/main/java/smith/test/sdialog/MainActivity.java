@@ -20,6 +20,7 @@ package smith.test.sdialog;
 
 import android.os.Build;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Toast;
 
@@ -68,6 +69,7 @@ public class MainActivity extends AppCompatActivity {
         sdialog.setIconDrawable(ContextCompat.getDrawable(this, R.drawable.ok_img));
         sdialog.setTitle("Title Of SDialog");
         sdialog.setText(getString(R.string.dummy_text));
+        sdialog.setTextGravity(Gravity.CENTER_HORIZONTAL);
         sdialog.setPositiveButton("OK", () -> {
             Toast.makeText(MainActivity.this, "ok", Toast.LENGTH_SHORT).show();
             sdialog.dismiss();

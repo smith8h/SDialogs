@@ -64,7 +64,7 @@ public class SDialogUtils {
      *
      * @return true if dark mode is enabled.
      */
-    public boolean nightModeON() {
+    public boolean isNightModeON() {
         var flags = context.getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
         return flags == Configuration.UI_MODE_NIGHT_YES;
     }

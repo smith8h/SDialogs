@@ -25,6 +25,7 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.view.View;
 import androidx.annotation.DrawableRes;
+import androidx.annotation.GravityInt;
 import androidx.annotation.StringRes;
 import smith.lib.alerts.dialog.callbacks.OnClickCallBack;
 
@@ -159,6 +160,10 @@ public class AlertSDialog extends SDialog {
      */
     public void setMaxHeight(int maxHeight) {
         this.maxHeight = utils.dp(maxHeight);
+    }
+
+    public void setTextGravity(@GravityInt int gravity) {
+        b.text.setGravity(gravity);
     }
 
     /**
