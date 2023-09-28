@@ -43,40 +43,6 @@ import smith.lib.views.scroll.SScrollView;
 @SuppressWarnings({"unused"})
 public class SDialog {
 
-    /**
-     * The default color suggested for use in SDialogs.
-     */
-    public static final int COLOR_DEFAULT = 0xFFA7B4C5;
-
-    /**
-     * The light or dark theme setting of SDialogs, based on device's settings.
-     */
-    public static final int THEME_BY_SYSTEM = 0;
-    /**
-     * The dark theme setting of SDialogs.
-     */
-    public static final int THEME_DARK = 1;
-    /**
-     * The light theme setting of SDialogs.
-     */
-    public static final int THEME_LIGHT = 2;
-
-    /**
-     * The constant key of id of items in {@link  MultiSelectSDialog}.
-     * Used to return the id of checked items.
-     */
-    public static final String KEY_ITEM_ID = "id";
-    /**
-     * The constant key of text of items in {@link  MultiSelectSDialog}.
-     * Used to return the text string of checked items.
-     */
-    public static final String KEY_ITEM_TEXT = "text";
-    /**
-     * The constant key of checked items in {@link  MultiSelectSDialog}.
-     * Used to return the condition of checked items.
-     */
-    public static final String KEY_ITEM_CHECKED = "checked";
-
     protected Context context;
     protected View dialogView;
     protected AlertDialog alertdialog;
@@ -89,9 +55,9 @@ public class SDialog {
     protected int titleColor;
     protected int textColor;
     protected int iconBackground;
-    protected int accentColor = COLOR_DEFAULT;
+    protected int accentColor = SDialogUtils.COLOR_DEFAULT;
     protected int backgroundColor;
-    protected int theme = THEME_BY_SYSTEM;
+    protected int theme = SDialogUtils.THEME_BY_SYSTEM;
     protected int hintColor;
 
 
@@ -128,8 +94,8 @@ public class SDialog {
     /**
      * Set SDialog theme as light, dark or by system.
      *
-     * @param theme Options are {@link SDialog#THEME_DARK},
-     *              {@link SDialog#THEME_LIGHT} and {@link SDialog#THEME_BY_SYSTEM}.
+     * @param theme Options are {@link SDialogUtils#THEME_DARK},
+     *              {@link SDialogUtils#THEME_LIGHT} and {@link SDialogUtils#THEME_BY_SYSTEM}.
      */
     public void setTheme(int theme) {
         this.theme = theme;
@@ -232,26 +198,26 @@ public class SDialog {
 
     protected void updateTheme() {
         switch (theme) {
-            case THEME_BY_SYSTEM -> {
+            case SDialogUtils.THEME_BY_SYSTEM -> {
                 if (utils.isNightModeON()) darkThemeColors();
                 else lightThemeColors();
             }
-            case THEME_DARK -> darkThemeColors();
-            case THEME_LIGHT -> lightThemeColors();
+            case SDialogUtils.THEME_DARK -> darkThemeColors();
+            case SDialogUtils.THEME_LIGHT -> lightThemeColors();
         }
     }
 
     protected static class DialogBinding {
 
-        LinearLayout main, holder;
-        ImageView icon, like, dislike, fingerprint;
-        TextView title, text, positive, negative, neutral, percent, fingerprintText;
-        SRecyclerView recycler, dayRV, monthRV, yearRV;
-        TextInputLayout input;
-        TextInputEditText inputed;
-        ProgressBar loading, progress;
-        Slider seek;
-        SScrollView scroll;
+        final LinearLayout main, holder;
+        final ImageView icon, like, dislike, fingerprint;
+        final TextView title, text, positive, negative, neutral, percent, fingerprintText, dayTitle, monthTitle, yearTitle;
+        final SRecyclerView recycler, dayRV, monthRV, yearRV;
+        final TextInputLayout input;
+        final TextInputEditText inputed;
+        final ProgressBar loading, progress;
+        final Slider seek;
+        final SScrollView scroll;
 
         public DialogBinding(@NonNull View view) {
             main = view.findViewById(R.id.sdialog_main);
@@ -267,6 +233,9 @@ public class SDialog {
             dayRV = view.findViewById(R.id.sdialog_day_rv);
             monthRV = view.findViewById(R.id.sdialog_month_rv);
             yearRV = view.findViewById(R.id.sdialog_year_rv);
+            dayTitle = view.findViewById(R.id.sdialog_day_title);
+            monthTitle = view.findViewById(R.id.sdialog_month_title);
+            yearTitle = view.findViewById(R.id.sdialog_year_title);
             input = view.findViewById(R.id.sdialog_input);
             inputed = view.findViewById(R.id.sdialog_inputed);
             loading = view.findViewById(R.id.sdialog_loading);
