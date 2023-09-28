@@ -18,36 +18,16 @@
 
 package smith.test.sdialog;
 
-import android.os.Build;
-import android.os.Bundle;
-import android.view.Gravity;
-import android.view.View;
+import android.os.*;
+import android.view.*;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentTransaction;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
-
-import smith.lib.alerts.dialog.AlertSDialog;
-import smith.lib.alerts.dialog.CustomSDialog;
-import smith.lib.alerts.dialog.FeedbackSDialog;
-import smith.lib.alerts.dialog.BiometricSDialog;
-import smith.lib.alerts.dialog.InputSDialog;
-import smith.lib.alerts.dialog.LoadingSDialog;
-import smith.lib.alerts.dialog.MenuSDialog;
-import smith.lib.alerts.dialog.MultiSelectSDialog;
-import smith.lib.alerts.dialog.ProgressSDialog;
-import smith.lib.alerts.dialog.SDialog;
-import smith.lib.alerts.dialog.SingleSelectSDialog;
-import smith.lib.alerts.dialog.SliderSDialog;
-import smith.lib.alerts.dialog.callbacks.OnBiometricAuthCallBack;
-import smith.lib.alerts.dialog.callbacks.OnProgressCallBack;
-import smith.lib.alerts.dialog.utils.MenuSDialogItem;
+import java.util.*;
+import smith.lib.alerts.dialog.*;
+import smith.lib.alerts.dialog.callbacks.*;
+import smith.lib.alerts.dialog.utils.*;
 
 public class MainActivity extends AppCompatActivity {
     int p = 0;
@@ -83,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
             sdialog.dismiss();
         });
         sdialog.setAccentColor(0xFFAD97BE);
-        sdialog.setTheme(SDialog.THEME_BY_SYSTEM);
+        sdialog.setTheme(SDialogUtils.THEME_BY_SYSTEM);
         sdialog.setCancelable(true);
         sdialog.setMaxHeight(150);
         sdialog.setOnDismissCallBack(() -> Toast.makeText(this, "onDismiss", Toast.LENGTH_SHORT).show());
@@ -100,13 +80,26 @@ public class MainActivity extends AppCompatActivity {
         sdialog.show();
     }
 
+    public void date(View view) {
+        DatePickerSDialog sDialog = new DatePickerSDialog(this);
+        sDialog.setTheme(SDialogUtils.THEME_BY_SYSTEM);
+        sDialog.setAccentColor(0xFFE687A3);
+        sDialog.setIconResource(R.drawable.ok_img);
+        sDialog.setTitle("Pick Date");
+        sDialog.setPickerTitles("Days", "Months", "Years");
+        sDialog.setDaysAndMonthsFormat(SDateFormat.DAYS.D, SDateFormat.MONTHS.MMMM);
+        sDialog.setOnDatePickedCallBack((pickedDate, pickedDateString) -> {
+
+        });
+    }
+
     public void feedback(View view) {
         FeedbackSDialog sDialog = new FeedbackSDialog(this);
         sDialog.setTitle("Feedback SDialog!");
         sDialog.setText("Your feedback is valuable, please rate our work.");
         sDialog.setAccentColor(0xFFAD97BE);
         sDialog.setIconResource(R.drawable.ok_img);
-        sDialog.setTheme(SDialog.THEME_BY_SYSTEM);
+        sDialog.setTheme(SDialogUtils.THEME_BY_SYSTEM);
         sDialog.setInputFieldHint("Feedback...");
         sDialog.setSubmitFeedBackButton("Submit Feedback", (isLiked, feedbackText) ->
                 Toast.makeText(this, "isLiked " + isLiked, Toast.LENGTH_SHORT).show()
@@ -116,8 +109,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void finger(View view) {
         BiometricSDialog sDialog = new BiometricSDialog(this);
-        sDialog.setTheme(SDialog.THEME_LIGHT);
-        sDialog.setAccentColor(SDialog.COLOR_DEFAULT);
+        sDialog.setTheme(SDialogUtils.THEME_LIGHT);
+        sDialog.setAccentColor(SDialogUtils.COLOR_DEFAULT);
         sDialog.setIconResource(R.drawable.lock);
         sDialog.setTitle("Fingerprint Confirmation");
         sDialog.setText("Confirm your fingerprint to proceed further to the next payment step.");
@@ -148,7 +141,7 @@ public class MainActivity extends AppCompatActivity {
     public void input(View v) {
         InputSDialog sdialog = new InputSDialog(this);
         sdialog.setAccentColor(0xFFAD97BE);
-        sdialog.setTheme(SDialog.THEME_BY_SYSTEM);
+        sdialog.setTheme(SDialogUtils.THEME_BY_SYSTEM);
         sdialog.setCancelable(false);
         sdialog.setIconResource(R.drawable.ok_img);
         sdialog.setTitle("Input Your Name");
@@ -162,8 +155,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void items(View v) {
         MenuSDialog sdialog = new MenuSDialog(this);
-        sdialog.setAccentColor(SDialog.COLOR_DEFAULT);
-        sdialog.setTheme(SDialog.THEME_BY_SYSTEM);
+        sdialog.setAccentColor(SDialogUtils.COLOR_DEFAULT);
+        sdialog.setTheme(SDialogUtils.THEME_BY_SYSTEM);
         sdialog.setMaxHeight(360);
         sdialog.setTitle("Sequence Options");
 
@@ -185,15 +178,15 @@ public class MainActivity extends AppCompatActivity {
         sdialog.setTitle("Loading SDialog!");
         sdialog.setText("Please wait a second...");
         sdialog.setAccentColor(0xFFAD97BE);
-        sdialog.setTheme(SDialog.THEME_BY_SYSTEM);
+        sdialog.setTheme(SDialogUtils.THEME_BY_SYSTEM);
         sdialog.setOnDismissCallBack(() -> Toast.makeText(this, "onDismiss", Toast.LENGTH_SHORT).show());
         sdialog.show(6 * 1000);
     }
 
     public void multi(View v) {
         MultiSelectSDialog sdialog = new MultiSelectSDialog(this);
-        sdialog.setAccentColor(SDialog.COLOR_DEFAULT);
-        sdialog.setTheme(SDialog.THEME_BY_SYSTEM);
+        sdialog.setAccentColor(SDialogUtils.COLOR_DEFAULT);
+        sdialog.setTheme(SDialogUtils.THEME_BY_SYSTEM);
         sdialog.setTitle("Search Filters");
         sdialog.setCancelable(true);
         sdialog.setMaxHeight(150);
@@ -206,11 +199,11 @@ public class MainActivity extends AppCompatActivity {
             StringBuilder builder = new StringBuilder();
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
                 itemsList.forEach(item -> {
-                    builder.append(item.get(SDialog.KEY_ITEM_ID));
+                    builder.append(item.get(SDialogUtils.KEY_ITEM_ID));
                     builder.append(" ");
-                    builder.append(item.get(SDialog.KEY_ITEM_TEXT));
+                    builder.append(item.get(SDialogUtils.KEY_ITEM_TEXT));
                     builder.append(" ");
-                    builder.append(item.get(SDialog.KEY_ITEM_CHECKED));
+                    builder.append(item.get(SDialogUtils.KEY_ITEM_CHECKED));
                     builder.append("\n");
                 });
             }
@@ -223,7 +216,7 @@ public class MainActivity extends AppCompatActivity {
     public void progress(View v) {
         ProgressSDialog sdialog = new ProgressSDialog(this);
         sdialog.setAccentColor(0xFFAD97BE);
-        sdialog.setTheme(SDialog.THEME_BY_SYSTEM);
+        sdialog.setTheme(SDialogUtils.THEME_BY_SYSTEM);
         sdialog.setIconResource(R.drawable.ok_img);
         sdialog.setMax(200);
         sdialog.setMin(0);
@@ -266,8 +259,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void single(View v) {
         SingleSelectSDialog sdialog = new SingleSelectSDialog(this);
-        sdialog.setAccentColor(SDialog.COLOR_DEFAULT);
-        sdialog.setTheme(SDialog.THEME_BY_SYSTEM);
+        sdialog.setAccentColor(SDialogUtils.COLOR_DEFAULT);
+        sdialog.setTheme(SDialogUtils.THEME_BY_SYSTEM);
         sdialog.setTitle("Notifications Sounds");
         sdialog.setCancelable(true);
         sdialog.setMaxHeight(150);
@@ -285,7 +278,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void slider(View v) {
     	SliderSDialog d = new SliderSDialog(this);
-        d.setAccentColor(SDialog.COLOR_DEFAULT);
+        d.setAccentColor(SDialogUtils.COLOR_DEFAULT);
         d.setCancelable(false);
         d.setIconResource(R.drawable.ok_img);
         d.setMax(120);
@@ -293,7 +286,7 @@ public class MainActivity extends AppCompatActivity {
         d.setStepBy(3);
         d.setNegativeButtonText("Cancel");
         d.setPositiveButtonAction("Confirm", value -> Toast.makeText(this, "" + value, Toast.LENGTH_SHORT).show());
-        d.setTheme(SDialog.THEME_DARK);
+        d.setTheme(SDialogUtils.THEME_DARK);
         d.setTitle("Confirm Your Age");
         d.setText("Select the distance between you and the people you want to met.");
         d.show();
