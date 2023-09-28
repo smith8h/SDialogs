@@ -35,6 +35,7 @@ import smith.lib.alerts.dialog.callbacks.OnSingleSelectCallback;
 /**
  * The beautiful and stunning class of SDialog lib.
  * this class create an alert SDialogs that alerts the user what going on.
+ * @since 1.0
  */
 @SuppressWarnings({"all"})
 public class SingleSelectSDialog extends SDialog {

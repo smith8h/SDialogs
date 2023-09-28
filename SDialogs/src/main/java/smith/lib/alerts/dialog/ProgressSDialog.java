@@ -33,7 +33,9 @@ import smith.lib.alerts.dialog.callbacks.OnProgressCallback;
 
 /**
  * The beautiful and smoothest class of SDialog lib.
- * this class create a progress loading SDialogs that inform the user about the progress of the task going on background.
+ * this class create a progress loading SDialogs that inform the user about the progress of the task
+ * going on background.
+ * @since 1.0
  */
 @SuppressWarnings({"unused"})
 public class ProgressSDialog extends SDialog {

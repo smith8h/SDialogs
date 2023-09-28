@@ -37,6 +37,7 @@ import smith.lib.alerts.dialog.callbacks.OnSlideCallback;
 /**
  * The beautiful and coolest class of SDialog lib.
  * this class create a seekbar SDialogs that let the user select from range of numerical values.
+ * @since 2.0
  */
 @SuppressWarnings({"unused"})
 public class SliderSDialog extends SDialog {

@@ -37,6 +37,7 @@ import smith.lib.alerts.dialog.utils.MenuSDialogItem;
 /**
  * The beautiful and most sorted class of SDialog lib.
  * this class create a list of items SDialogs that let the user choose the item he/she prefer.
+ * @since 1.0
  */
 @SuppressWarnings({"unused"})
 public class MenuSDialog extends SDialog {

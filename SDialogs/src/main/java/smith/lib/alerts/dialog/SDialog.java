@@ -38,6 +38,7 @@ import smith.lib.views.scroll.SScrollView;
 /**
  * The parent and main class of SDialog lib.
  * this class handles the repeated and main methods of setters and getters for all types of SDialogs.
+ * @since 1.0
  */
 @SuppressWarnings({"unused"})
 public class SDialog {
@@ -245,7 +246,7 @@ public class SDialog {
         LinearLayout main, holder;
         ImageView icon, like, dislike, fingerprint;
         TextView title, text, positive, negative, neutral, percent, fingerprintText;
-        SRecyclerView recycler;
+        SRecyclerView recycler, dayRV, monthRV, yearRV;
         TextInputLayout input;
         TextInputEditText inputed;
         ProgressBar loading, progress;
@@ -263,6 +264,9 @@ public class SDialog {
             neutral = view.findViewById(R.id.sdialog_neutral);
             percent = view.findViewById(R.id.sdialog_percent);
             recycler = view.findViewById(R.id.sdialog_recycler);
+            dayRV = view.findViewById(R.id.sdialog_day_rv);
+            monthRV = view.findViewById(R.id.sdialog_month_rv);
+            yearRV = view.findViewById(R.id.sdialog_year_rv);
             input = view.findViewById(R.id.sdialog_input);
             inputed = view.findViewById(R.id.sdialog_inputed);
             loading = view.findViewById(R.id.sdialog_loading);
