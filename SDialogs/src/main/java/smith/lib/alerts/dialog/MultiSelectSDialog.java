@@ -34,6 +34,7 @@ import smith.lib.alerts.dialog.callbacks.OnMultiSelectCallBack;
 /**
  * The beautiful and most functional class of SDialog lib.
  * this class create an items with checkboxes SDialogs that allow the user to select multiple items.
+ * @since 1.0
  */
 @SuppressWarnings({"all"})
 public class MultiSelectSDialog extends SDialog {

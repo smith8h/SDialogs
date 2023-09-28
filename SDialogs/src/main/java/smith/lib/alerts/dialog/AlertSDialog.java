@@ -32,6 +32,7 @@ import smith.lib.alerts.dialog.callbacks.OnClickCallBack;
 /**
  * The beautiful and coolest class of SDialog lib.
  * this class create an alert SDialogs that alerts the user what going on.
+ * @since 1.0
  */
 @SuppressWarnings({"unused"})
 public class AlertSDialog extends SDialog {

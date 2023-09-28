@@ -26,7 +26,9 @@ import androidx.annotation.StringRes;
 
 /**
  * The beautiful and coolest class of SDialog lib.
- * this class create a loading SDialogs that inform the user to wait for some time while doing something in backend.
+ * this class create a loading SDialogs that inform the user to wait for some time while doing
+ * something in backend.
+ * @since 1.0
  */
 @SuppressWarnings({"unused"})
 public class LoadingSDialog extends SDialog {

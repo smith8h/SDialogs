@@ -28,7 +28,9 @@ import smith.lib.alerts.dialog.callbacks.OnBindCustomViewCallBack;
 
 /**
  * The fully customizable class of SDialog lib.
- * this class create an alert SDialogs that is full depends on you as you set its layout and design and functionality.
+ * this class create an alert SDialogs that is full depends on you as you set its layout and design
+ * and functionality.
+ * @since 1.0
  */
 @SuppressWarnings({"unused"})
 public class CustomSDialog extends SDialog {

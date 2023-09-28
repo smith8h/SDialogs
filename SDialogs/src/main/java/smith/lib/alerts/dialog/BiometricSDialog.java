@@ -31,7 +31,9 @@ import smith.lib.alerts.dialog.utils.SBiometricAuth;
 
 /**
  * The safest and most secured class of SDialog lib.
- * this class create a security SDialogs that alerts the user to input his fingerprint to access or proceed to something.
+ * this class create a security SDialogs that alerts the user to input his fingerprint to access or
+ * proceed to something.
+ * @since 5.0
  */
 @SuppressWarnings({"unused"})
 public class BiometricSDialog extends SDialog {
