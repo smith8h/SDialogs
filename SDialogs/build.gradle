@@ -3,16 +3,18 @@ plugins {
     id 'maven-publish'
 }
 
+var versonCode = 5
+var versonName = "4.4.0"
+var gropId = "smith.lib"
+var artifctId = "sdialogs"
+
 android {
     namespace 'smith.lib.alerts.dialog'
-
-    compileSdk 33
+    compileSdk 35
 
     defaultConfig {
         minSdk 23
-        targetSdk 33
-        versionCode 5
-        versionName '4.4'
+        targetSdk 35
         multiDexEnabled true
     }
 
@@ -29,6 +31,7 @@ android {
 
     buildFeatures {
         viewBinding true
+        buildConfig = true
     }
 
     publishing {
@@ -40,8 +43,8 @@ android {
 }
 
 dependencies {
-    implementation('androidx.appcompat:appcompat:1.6.1')
-    implementation('com.google.android.material:material:1.9.0')
+    implementation('androidx.appcompat:appcompat:1.7.0')
+    implementation('com.google.android.material:material:1.12.0')
 }
 
 afterEvaluate {
@@ -49,9 +52,9 @@ afterEvaluate {
         publications {
             release(MavenPublication) {
                 from components.release
-                groupId "smith.lib"
-                artifactId "sdialogs"
-                version '4.4'
+                groupId gropId
+                artifactId artifctId
+                version versonCode
             }
         }
     }
