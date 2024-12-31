@@ -19,17 +19,13 @@
 package smith.test.sdialog;
 
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
-import android.widget.Toast;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
+import android.view.*;
+import android.widget.*;
+import androidx.annotation.*;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import smith.lib.alerts.dialog.AlertSDialog;
-import smith.lib.alerts.dialog.SDialog;
+import smith.lib.alerts.dialog.utils.SDialogUtils;
 
 public class TestFragment extends Fragment {
 
@@ -59,7 +55,7 @@ public class TestFragment extends Fragment {
                 sDialog.dismiss();
             });
             sDialog.setAccentColor(0xFFAD97BE);
-            sDialog.setTheme(SDialog.THEME_BY_SYSTEM);
+            sDialog.setTheme(SDialogUtils.THEME_BY_SYSTEM);
             sDialog.setCancelable(true);
             sDialog.setOnDismissCallback(() -> {
                 Toast.makeText(getActivity(), "onDismiss", Toast.LENGTH_SHORT).show();

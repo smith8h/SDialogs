@@ -24,13 +24,12 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.view.View;
+import androidx.annotation.*;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
-import androidx.annotation.DrawableRes;
-import androidx.annotation.StringRes;
-
-import smith.lib.alerts.dialog.callbacks.OnClickCallBack;
-import smith.lib.alerts.dialog.callbacks.OnDatePickedCallBack;
-import smith.lib.alerts.dialog.utils.SDateFormat;
+import smith.lib.alerts.dialog.adapters.SPickerAdapter;
+import smith.lib.alerts.dialog.callbacks.*;
+import smith.lib.alerts.dialog.utils.*;
 
 /**
  * The beautiful class of SDialog lib.
@@ -41,6 +40,8 @@ import smith.lib.alerts.dialog.utils.SDateFormat;
 public class DatePickerSDialog extends SDialog {
 
     private OnDatePickedCallBack callBack;
+    private SDateFormat.DAYS daysFormat;
+    private SDateFormat.MONTHS monthsFormat;
 
     @SuppressLint("InflateParams")
     public DatePickerSDialog(Context context) {
@@ -103,10 +104,11 @@ public class DatePickerSDialog extends SDialog {
      * @param text     String represent the text of positive button (e.g. "Pick")
      * @param callback OnPositiveButtonClick callback using {@link OnClickCallBack}
      */
-    public void setPositiveButton(String text, OnClickCallBack callback) {
+    public void setPositiveButton(String text, OnDatePickedCallBack callback) {
         b.positive.setText(text);
         b.positive.setOnClickListener(v -> {
-            callback.onClick();
+            // todo : implement callback
+            // callback.onDatePicked(Calendar.);
             dismiss();
         });
     }
@@ -125,11 +127,12 @@ public class DatePickerSDialog extends SDialog {
 
     /**
      *
-     * @param daysFormat
-     * @param monthsFormat
+     * @param daysFormat a
+     * @param monthsFormat a
      */
-    public void setDaysAndMonthsFormat(SDateFormat.DAYS daysFormat, SDateFormat.MONTHS monthsFormat) {
-
+    public void setDaysAndMonthsFormat(@NonNull SDateFormat.DAYS daysFormat, SDateFormat.MONTHS monthsFormat) {
+        this.daysFormat = daysFormat;
+        this.monthsFormat = monthsFormat;
     }
 
     public void setOnDatePickedCallBack(OnDatePickedCallBack callBack) {
@@ -157,5 +160,49 @@ public class DatePickerSDialog extends SDialog {
         return backgroundColor;
     }
 
+    @Override
+    public void show() {
+        update();
+        super.show();
+    }
 
+    @Override
+    public void show(long duration) {
+        update();
+        super.show(duration);
+    }
+
+    private void update() {
+        updateTheme();
+        utils.backgroundColor(b.main, backgroundColor);
+        b.icon.setColorFilter(iconColor);
+        b.title.setTextColor(titleColor);
+        b.dayTitle.setTextColor(accentColor);
+        b.monthTitle.setTextColor(accentColor);
+        b.yearTitle.setTextColor(accentColor);
+        b.positive.setTextColor(accentColor);
+
+        b.dayRV.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false));
+        b.monthRV.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false));
+        b.yearRV.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false));
+
+        if (daysFormat == SDateFormat.DAYS.D) {
+            b.dayRV.setAdapter(new SPickerAdapter(SDialogUtils.getDays1Chars(), textColor));
+        } else {
+            b.dayRV.setAdapter(new SPickerAdapter(SDialogUtils.getDays2Chars(), textColor));
+        }
+
+        switch (monthsFormat) {
+            case M -> b.monthRV.setAdapter(new SPickerAdapter(SDialogUtils.getMonths1Chars(), textColor));
+            case MM -> b.monthRV.setAdapter(new SPickerAdapter(SDialogUtils.getMonths2Chars(), textColor));
+            case MMM -> b.monthRV.setAdapter(new SPickerAdapter(SDialogUtils.getMonths3Chars(), textColor));
+            default -> b.monthRV.setAdapter(new SPickerAdapter(SDialogUtils.getMonthsFullChars(), textColor));
+        }
+
+        b.yearRV.setAdapter(new SPickerAdapter(SDialogUtils.getYears(), textColor));
+
+        SDialogUtils.SwipeSpinner.bindRecyclerView(b.dayRV);
+        SDialogUtils.SwipeSpinner.bindRecyclerView(b.monthRV);
+        SDialogUtils.SwipeSpinner.bindRecyclerView(b.yearRV);
+    }
 }
