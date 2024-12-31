@@ -30,6 +30,7 @@ import androidx.recyclerview.widget.*;
 import java.util.*;
 import smith.lib.alerts.dialog.adapters.SMultiSelectAdapter;
 import smith.lib.alerts.dialog.callbacks.OnMultiSelectCallBack;
+import smith.lib.alerts.dialog.utils.SDialogUtils;
 
 /**
  * The beautiful and most functional class of SDialog lib.
@@ -133,9 +134,9 @@ public class MultiSelectSDialog extends SDialog {
      */
     public void addItem(int id, String text, boolean checked) {
         item = new HashMap<>();
-        item.put(KEY_ITEM_ID, id);
-        item.put(KEY_ITEM_TEXT, text);
-        item.put(KEY_ITEM_CHECKED, checked);
+        item.put(SDialogUtils.KEY_ITEM_ID, id);
+        item.put(SDialogUtils.KEY_ITEM_TEXT, text);
+        item.put(SDialogUtils.KEY_ITEM_CHECKED, checked);
         data.add(item);
         update();
     }
@@ -146,11 +147,11 @@ public class MultiSelectSDialog extends SDialog {
      */
     public void setCheckedItem(int id) {
         for (int i = 0; i < data.size(); i++) {
-            int ids = (int) data.get(i).get(KEY_ITEM_ID);
+            int ids = (int) data.get(i).get(SDialogUtils.KEY_ITEM_ID);
             if (ids == id) {
                 item = data.get(i);
                 data.remove(i);
-                item.put(KEY_ITEM_CHECKED, true);
+                item.put(SDialogUtils.KEY_ITEM_CHECKED, true);
                 data.add(i, item);
                 break;
             }

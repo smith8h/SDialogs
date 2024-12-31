@@ -71,13 +71,12 @@ public class SMultiSelectAdapter extends RecyclerView.Adapter<SMultiSelectAdapte
 
         if (!contains(checkedList, data.get(p)) && checked) checkedList.add(data.get(p));
         if (contains(checkedList, data.get(p)) && !checked) checkedList.remove(data.get(p));
+
         holder.choice.setOnCheckedChangeListener((button, isChecked) -> {
             if (!contains(checkedList, data.get(p)) && isChecked) checkedList.add(data.get(p));
             if (contains(checkedList, data.get(p)) && !isChecked) checkedList.remove(data.get(p));
         });
     }
-
-
 
     @Override public int getItemCount() {
         return data.size();

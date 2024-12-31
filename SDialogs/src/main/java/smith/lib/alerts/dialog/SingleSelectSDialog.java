@@ -31,6 +31,7 @@ import androidx.recyclerview.widget.*;
 import java.util.*;
 import smith.lib.alerts.dialog.adapters.SSingleSelectAdapter;
 import smith.lib.alerts.dialog.callbacks.OnSingleSelectCallBack;
+import smith.lib.alerts.dialog.utils.SDialogUtils;
 
 /**
  * The beautiful and stunning class of SDialog lib.
@@ -129,9 +130,9 @@ public class SingleSelectSDialog extends SDialog {
      */
     public void addItem(int id, String text) {
         item = new HashMap<>();
-        item.put(KEY_ITEM_ID, id);
-        item.put(KEY_ITEM_TEXT, text);
-        item.put(KEY_ITEM_CHECKED, false);
+        item.put(SDialogUtils.KEY_ITEM_ID, id);
+        item.put(SDialogUtils.KEY_ITEM_TEXT, text);
+        item.put(SDialogUtils.KEY_ITEM_CHECKED, false);
         data.add(item);
         update();
     }
@@ -142,15 +143,15 @@ public class SingleSelectSDialog extends SDialog {
      */
     public void setCheckedItem(int id) {
         for (int i = 0; i < data.size(); i++) {
-            if (Objects.equals(data.get(i).get(KEY_ITEM_ID), id)) {
+            if (Objects.equals(data.get(i).get(SDialogUtils.KEY_ITEM_ID), id)) {
                 item = data.get(i);
                 data.remove(item);
-                item.put(KEY_ITEM_CHECKED, true);
+                item.put(SDialogUtils.KEY_ITEM_CHECKED, true);
                 data.add(i, item);
             } else {
                 item = data.get(i);
                 data.remove(item);
-                item.put(KEY_ITEM_CHECKED, false);
+                item.put(SDialogUtils.KEY_ITEM_CHECKED, false);
                 data.add(i, item);
             }
         }

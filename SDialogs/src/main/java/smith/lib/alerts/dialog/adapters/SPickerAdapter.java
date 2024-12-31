@@ -18,5 +18,55 @@
 
 package smith.lib.alerts.dialog.adapters;
 
-public class SPickerAdapter {
+import android.annotation.SuppressLint;
+import android.view.*;
+import android.widget.*;
+import androidx.annotation.*;
+import androidx.recyclerview.widget.RecyclerView;
+import smith.lib.alerts.dialog.R;
+
+@SuppressWarnings({"unused"})
+@RestrictTo(RestrictTo.Scope.LIBRARY)
+public class SPickerAdapter extends RecyclerView.Adapter<SPickerAdapter.ViewHolder> {
+
+    private final String[] data;
+    private final int textColor;
+
+    public SPickerAdapter(String[] data, int textColor) {
+        this.data = data;
+        this.textColor = textColor;
+    }
+
+    @NonNull
+    @SuppressLint("InflateParams")
+    @Override
+    public SPickerAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.sitem_picker, null);
+        view.setLayoutParams(new RecyclerView.LayoutParams(RecyclerView.LayoutParams.WRAP_CONTENT,
+                RecyclerView.LayoutParams.WRAP_CONTENT));
+        return new SPickerAdapter.ViewHolder(view);
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull SPickerAdapter.ViewHolder holder, int position) {
+        holder.text.setText(data[position]);
+        holder.text.setTextColor(textColor);
+    }
+
+    @Override
+    public int getItemCount() {
+        return data.length;
+    }
+
+    static class ViewHolder extends RecyclerView.ViewHolder {
+
+        TextView text;
+        LinearLayout main;
+
+        public ViewHolder(View view) {
+            super(view);
+            text = view.findViewById(R.id.sdialog_text);
+            main = view.findViewById(R.id.sdialog_main);
+        }
+    }
 }
