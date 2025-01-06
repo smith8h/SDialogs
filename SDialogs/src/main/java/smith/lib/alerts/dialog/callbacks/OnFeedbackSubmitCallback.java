@@ -19,18 +19,14 @@
 package smith.lib.alerts.dialog.callbacks;
 
 /**
- * on progress changed callback for ProgressSDialog.
+ * On feedback callback for FeedbackSDialog.
  */
-public interface OnProgressCallBack {
+@FunctionalInterface
+public interface OnFeedbackSubmitCallback {
     /**
-     * triggered when progress is continuing and returns:
+     * triggered when clicking on feedback buttons.
      *
-     * @param progress the current progress as int.
-     * @param percent  the progress percent from 100% as int.
+     * @param isLiked returns true if user hit the like button and false if hitting dislike button.
      */
-    void onProgress(int progress, int percent);
-    /**
-     * triggered as far as the progress is completed.
-     */
-    void onFinish();
+    void onSubmit(Boolean isLiked, String feedbackText);
 }

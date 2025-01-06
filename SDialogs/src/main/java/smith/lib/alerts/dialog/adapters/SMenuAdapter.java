@@ -34,17 +34,17 @@ import java.util.List;
 
 import smith.lib.alerts.dialog.MenuSDialog;
 import smith.lib.alerts.dialog.R;
-import smith.lib.alerts.dialog.callbacks.OnItemClickCallBack;
+import smith.lib.alerts.dialog.callbacks.OnItemClickCallback;
 import smith.lib.alerts.dialog.utils.MenuSDialogItem;
 
 @RestrictTo(RestrictTo.Scope.LIBRARY)
 public class SMenuAdapter extends RecyclerView.Adapter<SMenuAdapter.ViewHolder> {
 
     private final List<MenuSDialogItem> data;
-    private final OnItemClickCallBack callback;
+    private final OnItemClickCallback callback;
     private final MenuSDialog sdialog;
 
-    public SMenuAdapter(List<MenuSDialogItem> data, OnItemClickCallBack callback, MenuSDialog sdialog) {
+    public SMenuAdapter(List<MenuSDialogItem> data, OnItemClickCallback callback, MenuSDialog sdialog) {
         this.data = data;
         this.callback = callback;
         this.sdialog = sdialog;
@@ -61,8 +61,8 @@ public class SMenuAdapter extends RecyclerView.Adapter<SMenuAdapter.ViewHolder> 
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int p) {
-        MenuSDialogItem item = data.get(p);
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        MenuSDialogItem item = data.get(position);
 
         holder.icon.setImageDrawable(item.getIcon());
         holder.icon.setColorFilter(sdialog.getAccentColor());

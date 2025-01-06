@@ -29,7 +29,7 @@ import androidx.annotation.StringRes;
 import androidx.recyclerview.widget.*;
 import java.util.*;
 import smith.lib.alerts.dialog.adapters.SMultiSelectAdapter;
-import smith.lib.alerts.dialog.callbacks.OnMultiSelectCallBack;
+import smith.lib.alerts.dialog.callbacks.OnMultiSelectCallback;
 
 /**
  * The beautiful and most functional class of SDialog lib.
@@ -113,9 +113,9 @@ public class MultiSelectSDialog extends SDialog {
     /**
      * Set the text to be displayed on positive button.
      * @param text as {@link String} text.
-     * @param callback a callback using {@link OnMultiSelectCallBack}
+     * @param callback a callback using {@link OnMultiSelectCallback}
      */
-    public void setPositiveButton(String text, OnMultiSelectCallBack callback) {
+    public void setPositiveButton(String text, OnMultiSelectCallback callback) {
          b.holder.setVisibility(View.VISIBLE);
          b.positive.setText(text);
          b.positive.setOnClickListener(v-> {

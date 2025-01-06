@@ -28,8 +28,8 @@ import android.os.Build;
 import android.view.View;
 import androidx.annotation.*;
 
-import smith.lib.alerts.dialog.callbacks.OnClickCallBack;
-import smith.lib.alerts.dialog.callbacks.OnProgressCallBack;
+import smith.lib.alerts.dialog.callbacks.OnClickCallback;
+import smith.lib.alerts.dialog.callbacks.OnProgressCallback;
 
 /**
  * The beautiful and smoothest class of SDialog lib.
@@ -38,7 +38,7 @@ import smith.lib.alerts.dialog.callbacks.OnProgressCallBack;
 @SuppressWarnings({"unused"})
 public class ProgressSDialog extends SDialog {
     
-    private OnProgressCallBack callback = null;
+    private OnProgressCallback callback = null;
 
     /**
      * Pass the current context you're using this sdialog from.
@@ -162,23 +162,23 @@ public class ProgressSDialog extends SDialog {
 
     /**
      * Add a functional interface to get a callback whenever the progress changed.
-     * @param callback a callback using {@link OnProgressCallBack}.
+     * @param callback a callback using {@link OnProgressCallback}.
      */
-    public void setOnProgressCallBack(OnProgressCallBack callback) {
+    public void setOnProgressCallback(OnProgressCallback callback) {
         this.callback = callback;
     }
 
     /**
      * Set the negative button text and a functional interface to it.
      * @param text a string text to display on the negative button.
-     * @param clickCallBack a callback using {@link OnClickCallBack}.
+     * @param clickCallback a callback using {@link OnClickCallback}.
      */
     @SuppressLint("NewApi")
-    public void setNegativeButtonAction(String text, OnClickCallBack clickCallBack) {
+    public void setNegativeButtonAction(String text, OnClickCallback clickCallback) {
         b.negative.setVisibility(View.VISIBLE);
         b.negative.setText(text);
         b.negative.setOnClickListener(v -> {
-            clickCallBack.onClick();
+            clickCallback.onClick();
             this.callback = null;
             b.progress.setProgress(getMin());
             dismiss();

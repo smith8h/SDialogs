@@ -28,7 +28,7 @@ import android.view.View;
 import androidx.annotation.DrawableRes;
 import androidx.annotation.StringRes;
 import java.util.Objects;
-import smith.lib.alerts.dialog.callbacks.OnInputClickCallBack;
+import smith.lib.alerts.dialog.callbacks.OnInputClickCallback;
 
 /**
  * The beautiful and well-designed class of SDialog lib.
@@ -117,9 +117,9 @@ public class InputSDialog extends SDialog {
     /**
      * Declare displayed positive button text and its functionality.
      * @param text     String represent the text of positive button (e.g. "Confirm")
-     * @param callback Click callback using {@link OnInputClickCallBack}
+     * @param callback Click callback using {@link OnInputClickCallback}
      */
-    public void setPositiveButtonAction(String text, OnInputClickCallBack callback) {
+    public void setPositiveButtonAction(String text, OnInputClickCallback callback) {
         b.positive.setText(text);
         b.positive.setOnClickListener(v -> {
             callback.onClick(Objects.requireNonNull(b.inputed.getText()).toString());
