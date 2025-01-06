@@ -36,7 +36,7 @@ import smith.lib.alerts.dialog.utils.SBiometricAuth;
 @SuppressWarnings({"unused"})
 public class BiometricSDialog extends SDialog {
 
-    private OnBiometricAuthCallBack callBack;
+    private OnBiometricAuthCallback callBack;
     private SBiometricAuth auth;
     private String text, errorText, successText;
 
@@ -189,10 +189,10 @@ public class BiometricSDialog extends SDialog {
 
     /**
      * Set the callback to interact with biometric authentication response when needed, using
-     * {@link OnBiometricAuthCallBack}.
-     * @param callBack the callback using {@link OnBiometricAuthCallBack}.
+     * {@link OnBiometricAuthCallback}.
+     * @param callBack the callback using {@link OnBiometricAuthCallback}.
      */
-    public void setOnBiometricAuthCallBack(OnBiometricAuthCallBack callBack) {
+    public void setOnBiometricAuthCallBack(OnBiometricAuthCallback callBack) {
         this.callBack = callBack;
     }
 
@@ -279,7 +279,7 @@ public class BiometricSDialog extends SDialog {
 
     private void initAuth() {
         auth = new SBiometricAuth(context);
-        auth.setCallBack(new OnBiometricAuthCallBack() {
+        auth.setCallback(new OnBiometricAuthCallback() {
             @Override
             public void onFailure() {
                 updateIcon(0xFFEB6D64, 0x47FF7D5F);

@@ -27,7 +27,6 @@ import android.hardware.fingerprint.FingerprintManager;
 import android.os.Build;
 import android.security.keystore.KeyGenParameterSpec;
 import android.security.keystore.KeyProperties;
-import android.util.Log;
 import android.os.CancellationSignal;
 
 import androidx.annotation.NonNull;
@@ -38,33 +37,40 @@ import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.security.NoSuchProviderException;
-import java.util.concurrent.Executor;
-import java.util.concurrent.Executors;
 
 import javax.crypto.Cipher;
 import javax.crypto.KeyGenerator;
 import javax.crypto.NoSuchPaddingException;
 
-import smith.lib.alerts.dialog.callbacks.OnBiometricAuthCallBack;
+import smith.lib.alerts.dialog.callbacks.OnBiometricAuthCallback;
 
 @RestrictTo(RestrictTo.Scope.LIBRARY)
 @SuppressWarnings({"unused", "deprecation"})
 public class SBiometricAuth {
 
-    private OnBiometricAuthCallBack callBack;
+    private OnBiometricAuthCallback callback;
     private CancellationSignal cancellationSignal;
+    private final Cipher cipher;
     private int failedCount = 0, maxFailedCount = 3;
 
     public SBiometricAuth(Context context) {
         try {
             init(context);
-        } catch (NoSuchAlgorithmException | InvalidKeyException e) {
+
+            var keyGenerator = KeyGenerator.getInstance(KeyProperties.KEY_ALGORITHM_AES, "AndroidKeyStore");
+            keyGenerator.init(new KeyGenParameterSpec.Builder("SDialogs", KeyProperties.PURPOSE_ENCRYPT | KeyProperties.PURPOSE_DECRYPT)
+                    .setBlockModes(KeyProperties.BLOCK_MODE_GCM)
+                    .setEncryptionPaddings(KeyProperties.ENCRYPTION_PADDING_NONE)
+                    .build());
+            cipher = Cipher.getInstance("AES/GCM/NoPadding");
+            cipher.init(Cipher.ENCRYPT_MODE, keyGenerator.generateKey());
+        } catch (NoSuchAlgorithmException | InvalidKeyException |InvalidAlgorithmParameterException | NoSuchProviderException | NoSuchPaddingException e) {
             throw new RuntimeException(e);
         }
     }
 
-    public void setCallBack(OnBiometricAuthCallBack callBack) {
-        this.callBack = callBack;
+    public void setCallback(OnBiometricAuthCallback callback) {
+        this.callback = callback;
     }
 
     public void setMaxFailureCount(int maxFailedCount) {
@@ -76,110 +82,100 @@ public class SBiometricAuth {
         failedCount = 0;
         cancellationSignal = new CancellationSignal();
 
-        Cipher cipher;
-        try {
-            KeyGenerator keyGenerator = KeyGenerator.getInstance(KeyProperties.KEY_ALGORITHM_AES, "AndroidKeyStore");
-            keyGenerator.init(new KeyGenParameterSpec.Builder("SDialogs", KeyProperties.PURPOSE_ENCRYPT | KeyProperties.PURPOSE_DECRYPT)
-                    .setBlockModes(KeyProperties.BLOCK_MODE_GCM)
-                    .setEncryptionPaddings(KeyProperties.ENCRYPTION_PADDING_NONE)
-                    .build());
-            cipher = Cipher.getInstance("AES/GCM/NoPadding");
-            cipher.init(Cipher.ENCRYPT_MODE, keyGenerator.generateKey());
-        } catch (InvalidAlgorithmParameterException | NoSuchProviderException |
-                 NoSuchPaddingException e) {
-            throw new RuntimeException(e);
-        }
-
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
-            BiometricPrompt.AuthenticationCallback promptCallback = new BiometricPrompt.AuthenticationCallback() {
+            var promptCallback = new BiometricPrompt.AuthenticationCallback() {
                 @Override public void onAuthenticationFailed() {
                     super.onAuthenticationFailed();
-                    Log.i("Fingerprint", "Authentication failed");
                     failedCount++;
                     if (failedCount == maxFailedCount) {
                         failedCount = 0;
-                        if (callBack != null) {
+                        if (callback != null) {
                             cancelSignal();
-                            callBack.onError();
+                            callback.onError();
                         }
                     } else {
-                        callBack.onFailure();
+                        callback.onFailure();
                     }
                 }
 
                 @Override public void onAuthenticationSucceeded(@NonNull BiometricPrompt.AuthenticationResult result) {
                     super.onAuthenticationSucceeded(result);
-                    Log.i("Fingerprint", "Authentication succeeded");
-                    Log.i("Fingerprint Object String", result.getCryptoObject().g.toString());
 
-                    if (callBack != null) {
+                    if (callback != null) {
                         cancelSignal();
-                        callBack.onSuccess();
+                        callback.onSuccess();
                     }
                 }
 
                 @Override public void onAuthenticationError(int errorCode, CharSequence errString) {
                     super.onAuthenticationError(errorCode, errString);
-                    Log.i("Fingerprint", "Authentication error: " + errorCode + " - " + errString);
-                    if (callBack != null) {
-                        cancelSignal();
-                        callBack.onError();
-                    }
-                }
+//                    Log.i("Fingerprint", "Authentication error: " + errorCode + " - " + errString);
 
-                @Override public void onAuthenticationHelp(int helpCode, CharSequence helpString) {
-                    super.onAuthenticationHelp(helpCode, helpString);
-                    Log.i("Fingerprint Help", helpString.toString());
+                    if (callback != null) {
+                        cancelSignal();
+                        callback.onError();
+                    }
                 }
             };
 
-            BiometricPrompt prompt = new BiometricPrompt.Builder(context)
+            var prompt = new BiometricPrompt.Builder(context)
                     .setTitle("Biometric Authentication")
-                    .setNegativeButton("Cancel", context.getMainExecutor(), (dialogInterface, which) -> {})
+                    .setNegativeButton("Cancel", context.getMainExecutor(),  (dialogInterface, which) -> {})
                     .build();
 
-            prompt.authenticate(
-                    new BiometricPrompt.CryptoObject(cipher),
-                    cancellationSignal,
-                    context.getMainExecutor(),
-                    promptCallback
-            );
+            if (cipher != null) {
+                prompt.authenticate(
+                        new BiometricPrompt.CryptoObject(cipher),
+                        cancellationSignal,
+                        context.getMainExecutor(),
+                        promptCallback
+                );
+            } else {
+                if (callback != null) {
+                    cancelSignal();
+                    callback.onFailure();
+                }
+            }
         } else {
-            FingerprintManagerCompat.AuthenticationCallback authenticationCallback =
-                    new FingerprintManagerCompat.AuthenticationCallback() {
-                        @Override
-                        public void onAuthenticationFailed() {
+            var authenticationCallback = new FingerprintManagerCompat.AuthenticationCallback() {
+                        @Override public void onAuthenticationFailed() {
                             failedCount++;
                             if (failedCount == maxFailedCount) {
                                 failedCount = 0;
-                                if (callBack != null) {
+                                if (callback != null) {
                                     cancelSignal();
-                                    callBack.onError();
+                                    callback.onError();
                                 }
                             } else {
-                                callBack.onFailure();
+                                callback.onFailure();
                             }
                         }
 
-                        @Override
-                        public void onAuthenticationSucceeded(@NonNull FingerprintManagerCompat.AuthenticationResult result) {
-                            Log.i("Fingerprint Object String", String.valueOf(result.getCryptoObject()));
-
-                            if (callBack != null) {
+                        @Override public void onAuthenticationSucceeded(@NonNull FingerprintManagerCompat.AuthenticationResult result) {
+                            if (callback != null) {
                                 cancelSignal();
-                                callBack.onSuccess();
+                                callback.onSuccess();
                             }
                         }
                     };
-            FingerprintManagerCompat fingerprintManagerCompat = FingerprintManagerCompat.from(context);
+
+            var fingerprintManagerCompat = FingerprintManagerCompat.from(context);
             cancellationSignal = new CancellationSignal();
 
-            fingerprintManagerCompat.authenticate(
-                    new FingerprintManagerCompat.CryptoObject(cipher),
-                    0,
-                    cancellationSignal,
-                    authenticationCallback,
-                    null);
+            if (cipher != null) {
+                fingerprintManagerCompat.authenticate(
+                        new FingerprintManagerCompat.CryptoObject(cipher),
+                        0,
+                        cancellationSignal,
+                        authenticationCallback,
+                        null
+                );
+            } else {
+                if (callback != null) {
+                    cancelSignal();
+                    callback.onFailure();
+                }
+            }
         }
     }
 

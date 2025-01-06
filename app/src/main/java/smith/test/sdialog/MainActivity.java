@@ -45,7 +45,7 @@ import smith.lib.alerts.dialog.ProgressSDialog;
 import smith.lib.alerts.dialog.SDialog;
 import smith.lib.alerts.dialog.SingleSelectSDialog;
 import smith.lib.alerts.dialog.SliderSDialog;
-import smith.lib.alerts.dialog.callbacks.OnBiometricAuthCallBack;
+import smith.lib.alerts.dialog.callbacks.OnBiometricAuthCallback;
 import smith.lib.alerts.dialog.callbacks.OnProgressCallBack;
 import smith.lib.alerts.dialog.utils.MenuSDialogItem;
 
@@ -126,7 +126,7 @@ public class MainActivity extends AppCompatActivity {
         sDialog.setMaxFailureCount(3);
         sDialog.setErrorText("Failed to recognise fingerprint. Try again!");
         sDialog.setSuccessText("Fingerprint recognised!");
-        sDialog.setOnBiometricAuthCallBack(new OnBiometricAuthCallBack() {
+        sDialog.setOnBiometricAuthCallBack(new OnBiometricAuthCallback() {
             @Override
             public void onSuccess() {
                 Toast.makeText(MainActivity.this, "Success read fingerprint", Toast.LENGTH_SHORT).show();
