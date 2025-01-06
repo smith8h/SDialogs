@@ -4,7 +4,7 @@
 [![JitPack release](https://jitpack.io/v/smith8h/SDialogs.svg)](https://jitpack.io/#smith8h/SDialogs)
 ![Latest release](https://img.shields.io/github/v/release/smith8h/SDialogs?include_prereleases&amp;label=latest%20release)
 ![Stability](https://img.shields.io/badge/stability-stable-green.svg)
-![Monthly download statistics](https://jitpack.io/v/USER/REPO/month.svg)
+![Monthly download statistics](https://jitpack.io/v/smith8h/SDialogs/month.svg)
 ![minSDK](https://img.shields.io/badge/minSDK-21-f39f37)
 ![repo size](https://img.shields.io/github/repo-size/smith8h/sdialogs)
 
