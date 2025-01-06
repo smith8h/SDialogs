@@ -64,6 +64,16 @@ public class BiometricSDialog extends SDialog {
     }
 
     /**
+     * Declare displayed negative button text and its functionality.
+     *
+     * @param text a string represents the text of negative button (e.g. "R.string.cancel")
+     */
+    public void setNegativeButtonText(@StringRes int text) {
+        b.negative.setText(text);
+        b.negative.setOnClickListener(v -> dismiss());
+    }
+
+    /**
      * Declare displayed positive button text and its functionality.
      *
      * @param text a string represents the text of positive button (e.g. "<b>Use Password</b>").
@@ -73,6 +83,20 @@ public class BiometricSDialog extends SDialog {
         b.positive.setText(text);
         b.positive.setOnClickListener(v -> {
             clickCallBack.onClick();
+            dismiss();
+        });
+    }
+
+    /**
+     * Declare displayed positive button text and its functionality.
+     *
+     * @param text a string represents the text of positive button (e.g. R.string.password).
+     * @param clickCallback A click callback triggered when clicking positive button using {@link OnClickCallback}.
+     */
+    public void setPositiveButton(@StringRes int text, OnClickCallback clickCallback) {
+        b.positive.setText(text);
+        b.positive.setOnClickListener(v -> {
+            clickCallback.onClick();
             dismiss();
         });
     }

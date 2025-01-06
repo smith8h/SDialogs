@@ -3,11 +3,12 @@
 ![Builds and tests](https://github.com/smith8h/SDialogs/actions/workflows/build.yml/badge.svg)
 [![JitPack release](https://jitpack.io/v/smith8h/SDialogs.svg)](https://jitpack.io/#smith8h/SDialogs)
 ![Latest release](https://img.shields.io/github/v/release/smith8h/SDialogs?include_prereleases&amp;label=latest%20release)
-
-[//]: # (![Stable Version]&#40;https://img.shields.io/badge/stable_version-4.4-blue&#41;)
 ![Stability](https://img.shields.io/badge/stability-stable-green.svg)
+![Monthly download statistics](https://jitpack.io/v/USER/REPO/month.svg)
 ![minSDK](https://img.shields.io/badge/minSDK-21-f39f37)
 ![repo size](https://img.shields.io/github/repo-size/smith8h/sdialogs)
+
+[//]: # (![Stable Version]&#40;https://img.shields.io/badge/stable_version-4.4-blue&#41;)
 
 </br>
 
@@ -19,6 +20,7 @@ Beautiful custom Android dialogs (Alert, MultiSelect, CheckBox, SingleSelect, Ra
 - [Changelog](https://github.com/smith8h/SDialogs/blob/main/CHANGELOG.md)
 - [How to implement (Documentation)](#documentation)
   - [AlertSDialog](#alertsdialog)
+  - [BiometricSDialog](#biometricsdialog)
   - [CustomSDialog](#customsdialog)
   - [InputSDialog](#inputsdialog)
   - [MenuSDialog](#menusdialog)
@@ -52,7 +54,7 @@ allprojects {
 ```gradle
 dependencies {
     ...
-    implementation 'com.github.smith8h:SDialogs:4.4'
+    implementation 'com.github.smith8h:SDialogs:4.5'
 }
 ```
 
@@ -66,7 +68,7 @@ All these SDialogs using an algorithm to calculate and extract colors lighter/da
 ## AlertSDialog
 
 <p align="center">
-    <img src="https://te.legra.ph/file/29a07cd23e39721c24002.jpg" style="width: 50%;" />
+    <img src="https://te.legra.ph/file/29a07cd23e39721c24002.jpg" style="width: 50%;"  alt=""/>
 </p>
 Create new instance of AlertSDialog:
 
@@ -92,6 +94,47 @@ Table of methods:
 - `setTheme(SDialog.THEME_SYSTEM);` or `THEME_LIGHT / THEME_DARK`.
 - `setCancelable(false);` (Optional).
 - `setOnDismissCallBack(dismisscallback);` (Optional).
+- `show(); / show(1200);` to show always or for a duration of time (auto hide).
+- `dismiss(); / dismiss(500);` to hide it immediately or after duration of time (auto dismiss).
+
+**Getters**
+
+- `getAccentColor()` get accent color.
+- `getTitleColor()` get accent color.
+- `getBackgroundColor()` get accent color.
+- `getTextColor()` get accent color.
+
+## BiometricSDialog
+
+<p align="center">
+    <img src="https://silabotov.ru/img/8eac71e0-5915-422c-a25a-7471657f8474.jpg" style="width: 50%;"  alt=""/>
+</p>
+Create new instance of BiometricSDialog:
+
+```java
+    BiometricSDialog sdialog = new BiometricSDialog(context);
+```
+
+Table of methods:
+
+**Setters**
+
+- `setNegativeButtonText("Button Text");` (Optional) cancel button text.
+- `setNegativeButtonText(R.string.text);` (Optional) cancel button text.
+- `setPositiveButton("Button Text", clickcallback);` (Optional) the code here in java8, to use java7 or below syntax see in [CallBacks](#callbacks).
+- `setPositiveButton(R.string.text, clickcallback);` (Optional) the code here in java8, to use java7 or below syntax see in [CallBacks](#callbacks).
+- `setIconResource(icon)` (optional) add icon from res.
+- `setIconDrawable(icon)` (optional) add icon from a Drawable.
+- `setIconBitmap(icon)` (optional) add icon from bitmap.
+- `setTitle("Title");` set title as string text.
+- `setTitle(R.string.title);` set title as string resource.
+- `setText(text);` accepts span text | int string res | string text...
+- `setErrorText(text);` accepts span text | int string res | string text...
+- `setSuccessText(text);` accepts span text | int string res | string text...
+- `setMaxFailureCount(3);` set max failure to ignore dialog (default is 3).
+- `setAccentColor(int color/string hex color);` Default color is 0xFFA7B4C5/#FFA7B4C5 you can access it by `SDialog.COLOR_DEFAULT`.
+- `setTheme(SDialog.THEME_SYSTEM);` or `THEME_LIGHT / THEME_DARK`.
+- `setOnBiometricAuthCallback(biometricAuthCallback);` (Optional).
 - `show(); / show(1200);` to show always or for a duration of time (auto hide).
 - `dismiss(); / dismiss(500);` to hide it immediately or after duration of time (auto dismiss).
 
@@ -544,6 +587,24 @@ CallBacks used in SDialogs:
         public void onSubmit(boolean isLiked, String feedbackText) {
             // use isLiked
         }
+    };
+
+    // onBiometricAuthCallback
+    OnBiometricAuthCallback biometricAuthCallback = new OnBiometricAuthCallback() {
+      @Override
+      public void onSuccess() {
+        // auth succeed
+      }
+      
+      @Override
+      public void onFailure() {
+        // auth failed
+      }
+      
+      @Override
+      public void onError() {
+        // auth error
+      }
     };
 ```
 
