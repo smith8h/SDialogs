@@ -19,12 +19,14 @@
 package smith.lib.alerts.dialog.callbacks;
 
 /**
- * On click callback for several SDialog types.
+ * Slider callback to get the value selected.
  */
 @FunctionalInterface
-public interface OnClickCallBack {
+public interface OnSlideCallback {
     /**
-     * Triggered whenever buttons clicked.
+     * triggered when clicking on ok button to get the value selected from the slider.
+     *
+     * @param value The value returned from slider as Float.
      */
-    void onClick();
+    void onValueSelected(float value);
 }

@@ -26,7 +26,9 @@ import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.view.View;
 import androidx.annotation.*;
-import smith.lib.alerts.dialog.callbacks.*;
+import smith.lib.alerts.dialog.callbacks.OnBiometricAuthCallback;
+import smith.lib.alerts.dialog.callbacks.OnClickCallback;
+import smith.lib.alerts.dialog.callbacks.OnDismissCallback;
 import smith.lib.alerts.dialog.utils.SBiometricAuth;
 
 /**
@@ -36,7 +38,7 @@ import smith.lib.alerts.dialog.utils.SBiometricAuth;
 @SuppressWarnings({"unused"})
 public class BiometricSDialog extends SDialog {
 
-    private OnBiometricAuthCallBack callBack;
+    private OnBiometricAuthCallback callBack;
     private SBiometricAuth auth;
     private String text, errorText, successText;
 
@@ -65,9 +67,9 @@ public class BiometricSDialog extends SDialog {
      * Declare displayed positive button text and its functionality.
      *
      * @param text a string represents the text of positive button (e.g. "<b>Use Password</b>").
-     * @param clickCallBack A click callback triggered when clicking positive button using {@link OnClickCallBack}.
+     * @param clickCallBack A click callback triggered when clicking positive button using {@link OnClickCallback}.
      */
-    public void setPositiveButton(String text, OnClickCallBack clickCallBack) {
+    public void setPositiveButton(String text, OnClickCallback clickCallBack) {
         b.positive.setText(text);
         b.positive.setOnClickListener(v -> {
             clickCallBack.onClick();
@@ -189,10 +191,10 @@ public class BiometricSDialog extends SDialog {
 
     /**
      * Set the callback to interact with biometric authentication response when needed, using
-     * {@link OnBiometricAuthCallBack}.
-     * @param callBack the callback using {@link OnBiometricAuthCallBack}.
+     * {@link OnBiometricAuthCallback}.
+     * @param callBack the callback using {@link OnBiometricAuthCallback}.
      */
-    public void setOnBiometricAuthCallBack(OnBiometricAuthCallBack callBack) {
+    public void setOnBiometricAuthCallback(OnBiometricAuthCallback callBack) {
         this.callBack = callBack;
     }
 
@@ -225,7 +227,7 @@ public class BiometricSDialog extends SDialog {
     }
 
     @Override
-    public void setOnDismissCallBack(OnDismissCallBack callback) {
+    public void setOnDismissCallback(OnDismissCallback callback) {
         this.dismissCallback = callback;
         alertdialog.setOnDismissListener(dialog -> {
             if (auth != null) auth.cancelSignal();
@@ -279,7 +281,7 @@ public class BiometricSDialog extends SDialog {
 
     private void initAuth() {
         auth = new SBiometricAuth(context);
-        auth.setCallBack(new OnBiometricAuthCallBack() {
+        auth.setCallback(new OnBiometricAuthCallback() {
             @Override
             public void onFailure() {
                 updateIcon(0xFFEB6D64, 0x47FF7D5F);

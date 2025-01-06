@@ -18,18 +18,17 @@
 
 package smith.lib.alerts.dialog.callbacks;
 
-import smith.lib.alerts.dialog.utils.MenuSDialogItem;
+import java.util.*;
 
 /**
- * On item selected callback for ItemsSDialog.
+ * On multiple items selected callback for MultiSelectSDialog.
  */
 @FunctionalInterface
-public interface OnItemClickCallBack {
+public interface OnMultiSelectCallback {
     /**
-     * triggered on selecting item from the list and returns:
+     * triggered on selecting items from the list and returns:
      *
-     * @param index the index of that item clicked.
-     * @param item the item clicked on the menu.
+     * @param selectedItems as a list of items that been selected.
      */
-    void onItemClick(int index, MenuSDialogItem item);
+    void onMultiSelect(List<Map<String, Object>> selectedItems);
 }

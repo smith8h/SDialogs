@@ -27,7 +27,7 @@ import android.view.View;
 import androidx.annotation.DrawableRes;
 import androidx.annotation.GravityInt;
 import androidx.annotation.StringRes;
-import smith.lib.alerts.dialog.callbacks.OnClickCallBack;
+import smith.lib.alerts.dialog.callbacks.OnClickCallback;
 
 /**
  * The beautiful and coolest class of SDialog lib.
@@ -53,9 +53,9 @@ public class AlertSDialog extends SDialog {
      * Declare displayed positive button text and its functionality.
      *
      * @param text     String represent the text of positive button (e.g. "OK")
-     * @param callback Click callback using {@link OnClickCallBack}
+     * @param callback Click callback using {@link OnClickCallback}
      */
-    public void setPositiveButton(String text, OnClickCallBack callback) {
+    public void setPositiveButton(String text, OnClickCallback callback) {
         b.holder.setVisibility(View.VISIBLE);
         b.positive.setVisibility(View.VISIBLE);
         b.positive.setText(text);
@@ -69,9 +69,9 @@ public class AlertSDialog extends SDialog {
      * Declare displayed negative button text and its functionality.
      *
      * @param text     String represent the text of negative button (e.g. "CANCEL")
-     * @param callback Click callback using {@link OnClickCallBack}
+     * @param callback Click callback using {@link OnClickCallback}
      */
-    public void setNegativeButton(String text, OnClickCallBack callback) {
+    public void setNegativeButton(String text, OnClickCallback callback) {
         b.holder.setVisibility(View.VISIBLE);
         b.negative.setVisibility(View.VISIBLE);
         b.negative.setText(text);
@@ -85,9 +85,9 @@ public class AlertSDialog extends SDialog {
      * Declare displayed neutral button text and its functionality.
      *
      * @param text     String represent the text of neutral button (e.g. "HIDE")
-     * @param callback Click callback using {@link OnClickCallBack}
+     * @param callback Click callback using {@link OnClickCallback}
      */
-    public void setNeutralButton(String text, OnClickCallBack callback) {
+    public void setNeutralButton(String text, OnClickCallback callback) {
         b.holder.setVisibility(View.VISIBLE);
         b.neutral.setVisibility(View.VISIBLE);
         b.neutral.setText(text);

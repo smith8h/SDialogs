@@ -18,15 +18,18 @@
 
 package smith.lib.alerts.dialog.callbacks;
 
+import smith.lib.alerts.dialog.utils.MenuSDialogItem;
+
 /**
- * On input data callback for InputSDialog.
+ * On item selected callback for ItemsSDialog.
  */
 @FunctionalInterface
-public interface OnInputClickCallBack {
+public interface OnItemClickCallback {
     /**
-     * triggered when clicking positive button in InputSDialog.
+     * triggered on selecting item from the list and returns:
      *
-     * @param input return the inputted data as string.
+     * @param index the index of that item clicked.
+     * @param item the item clicked on the menu.
      */
-    void onClick(String input);
+    void onItemClick(int index, MenuSDialogItem item);
 }

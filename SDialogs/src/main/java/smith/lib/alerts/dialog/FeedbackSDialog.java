@@ -33,7 +33,7 @@ import androidx.annotation.StringRes;
 
 import java.util.Objects;
 
-import smith.lib.alerts.dialog.callbacks.OnFeedbackSubmitCallBack;
+import smith.lib.alerts.dialog.callbacks.OnFeedbackSubmitCallback;
 
 /**
  * The beautiful and fastest class of SDialog lib.
@@ -141,9 +141,9 @@ public class FeedbackSDialog extends SDialog {
     /**
      * Add a functionality to submit feedback interface.
      * @param text a text to be displayed on submit button.
-     * @param callBack a functional submit callback using {@link OnFeedbackSubmitCallBack}
+     * @param callBack a functional submit callback using {@link OnFeedbackSubmitCallback}
      */
-    public void setSubmitFeedBackButton(String text, OnFeedbackSubmitCallBack callBack) {
+    public void setSubmitFeedBackButton(String text, OnFeedbackSubmitCallback callBack) {
         b.negative.setText(text);
         b.negative.setOnClickListener(v -> {
             callBack.onSubmit(isLiked, Objects.requireNonNull(b.inputed.getText()).toString());

@@ -34,17 +34,17 @@ import java.util.List;
 
 import smith.lib.alerts.dialog.MenuSDialog;
 import smith.lib.alerts.dialog.R;
-import smith.lib.alerts.dialog.callbacks.OnItemClickCallBack;
+import smith.lib.alerts.dialog.callbacks.OnItemClickCallback;
 import smith.lib.alerts.dialog.utils.MenuSDialogItem;
 
 @RestrictTo(RestrictTo.Scope.LIBRARY)
 public class SMenuAdapter extends RecyclerView.Adapter<SMenuAdapter.ViewHolder> {
 
     private final List<MenuSDialogItem> data;
-    private final OnItemClickCallBack callback;
+    private final OnItemClickCallback callback;
     private final MenuSDialog sdialog;
 
-    public SMenuAdapter(List<MenuSDialogItem> data, OnItemClickCallBack callback, MenuSDialog sdialog) {
+    public SMenuAdapter(List<MenuSDialogItem> data, OnItemClickCallback callback, MenuSDialog sdialog) {
         this.data = data;
         this.callback = callback;
         this.sdialog = sdialog;
@@ -54,15 +54,15 @@ public class SMenuAdapter extends RecyclerView.Adapter<SMenuAdapter.ViewHolder> 
     @SuppressLint("InflateParams")
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.sitem_menu, null);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.sitem_menu, parent, false);
         view.setLayoutParams(new RecyclerView.LayoutParams(RecyclerView.LayoutParams.WRAP_CONTENT,
             RecyclerView.LayoutParams.WRAP_CONTENT));
         return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int p) {
-        MenuSDialogItem item = data.get(p);
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        MenuSDialogItem item = data.get(position);
 
         holder.icon.setImageDrawable(item.getIcon());
         holder.icon.setColorFilter(sdialog.getAccentColor());
@@ -71,7 +71,7 @@ public class SMenuAdapter extends RecyclerView.Adapter<SMenuAdapter.ViewHolder> 
         holder.text.setTextColor(sdialog.getAccentColor());
 
         holder.main.setOnClickListener(v -> {
-            if (callback != null) callback.onItemClick(p, item);
+            if (callback != null) callback.onItemClick(position, item);
             sdialog.dismiss();
         });
     }

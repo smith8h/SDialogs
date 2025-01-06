@@ -31,7 +31,7 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.*;
 import java.util.*;
 import smith.lib.alerts.dialog.adapters.SMenuAdapter;
-import smith.lib.alerts.dialog.callbacks.OnItemClickCallBack;
+import smith.lib.alerts.dialog.callbacks.OnItemClickCallback;
 import smith.lib.alerts.dialog.utils.MenuSDialogItem;
 
 /**
@@ -42,7 +42,7 @@ import smith.lib.alerts.dialog.utils.MenuSDialogItem;
 public class MenuSDialog extends SDialog {
     
     private List<MenuSDialogItem> iconsItemsList = new ArrayList<>();
-    private OnItemClickCallBack callback;
+    private OnItemClickCallback callback;
     private int maxHeight;
 
     /**
@@ -114,9 +114,9 @@ public class MenuSDialog extends SDialog {
 
     /**
      * Add functionality to when an item clicked.
-     * @param callback A callback using {@link OnItemClickCallBack}
+     * @param callback A callback using {@link OnItemClickCallback}
      */
-    public void setOnItemClickCallBack(OnItemClickCallBack callback) {
+    public void setOnItemClickCallback(OnItemClickCallback callback) {
         this.callback = callback;
     }
 

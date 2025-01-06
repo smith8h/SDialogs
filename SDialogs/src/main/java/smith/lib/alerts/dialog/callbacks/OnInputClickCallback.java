@@ -18,17 +18,15 @@
 
 package smith.lib.alerts.dialog.callbacks;
 
-import java.util.*;
-
 /**
- * On multiple items selected callback for MultiSelectSDialog.
+ * On input data callback for InputSDialog.
  */
 @FunctionalInterface
-public interface OnMultiSelectCallBack {
+public interface OnInputClickCallback {
     /**
-     * triggered on selecting items from the list and returns:
+     * triggered when clicking positive button in InputSDialog.
      *
-     * @param selectedItems as a list of items that been selected.
+     * @param input return the inputted data as string.
      */
-    void onMultiSelect(List<Map<String, Object>> selectedItems);
+    void onClick(String input);
 }

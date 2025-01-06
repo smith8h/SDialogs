@@ -30,7 +30,7 @@ import androidx.annotation.StringRes;
 import androidx.recyclerview.widget.*;
 import java.util.*;
 import smith.lib.alerts.dialog.adapters.SSingleSelectAdapter;
-import smith.lib.alerts.dialog.callbacks.OnSingleSelectCallBack;
+import smith.lib.alerts.dialog.callbacks.OnSingleSelectCallback;
 
 /**
  * The beautiful and stunning class of SDialog lib.
@@ -41,7 +41,7 @@ public class SingleSelectSDialog extends SDialog {
 
     private final List<Map<String, Object>> data = new ArrayList<>();
     private Map<String, Object> item = new HashMap<>();
-    private OnSingleSelectCallBack callback;
+    private OnSingleSelectCallback callback;
     private int maxHeight;
 
     /**
@@ -115,9 +115,9 @@ public class SingleSelectSDialog extends SDialog {
 
     /**
      * Set a functional interface to get the chosen items when selected.
-     * @param callback a callback using {@link OnSingleSelectCallBack}.
+     * @param callback a callback using {@link OnSingleSelectCallback}.
      */
-    public void setOnSingleSelectCallBack(OnSingleSelectCallBack callback) {
+    public void setOnSingleSelectCallback(OnSingleSelectCallback callback) {
          this.callback = callback;
     }
 

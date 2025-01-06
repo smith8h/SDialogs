@@ -60,7 +60,7 @@ public class TestFragment extends Fragment {
             sDialog.setAccentColor(0xFFAD97BE);
             sDialog.setTheme(SDialog.THEME_BY_SYSTEM);
             sDialog.setCancelable(true);
-            sDialog.setOnDismissCallBack(() -> {
+            sDialog.setOnDismissCallback(() -> {
                 Toast.makeText(getActivity(), "onDismiss", Toast.LENGTH_SHORT).show();
             });
             sDialog.show();

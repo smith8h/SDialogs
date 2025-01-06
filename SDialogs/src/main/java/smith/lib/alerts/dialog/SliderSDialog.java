@@ -32,7 +32,7 @@ import androidx.annotation.DrawableRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.StringRes;
 
-import smith.lib.alerts.dialog.callbacks.OnSlideCallBack;
+import smith.lib.alerts.dialog.callbacks.OnSlideCallback;
 
 /**
  * The beautiful and coolest class of SDialog lib.
@@ -165,9 +165,9 @@ public class SliderSDialog extends SDialog {
     /**
      * Set a functional interface to the positive button.
      * @param text string text that displayed on the button.
-     * @param callback a callback using {@link OnSlideCallBack}.
+     * @param callback a callback using {@link OnSlideCallback}.
      */
-    public void setPositiveButtonAction(String text, OnSlideCallBack callback) {
+    public void setPositiveButtonAction(String text, OnSlideCallback callback) {
         b.positive.setText(text);
         b.positive.setOnClickListener(v-> {
             callback.onValueSelected(b.seek.getValue());
