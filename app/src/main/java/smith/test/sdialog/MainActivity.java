@@ -18,36 +18,16 @@
 
 package smith.test.sdialog;
 
-import android.os.Build;
-import android.os.Bundle;
-import android.view.Gravity;
-import android.view.View;
+import android.os.*;
+import android.view.*;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentTransaction;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
-
-import smith.lib.alerts.dialog.AlertSDialog;
-import smith.lib.alerts.dialog.CustomSDialog;
-import smith.lib.alerts.dialog.FeedbackSDialog;
-import smith.lib.alerts.dialog.BiometricSDialog;
-import smith.lib.alerts.dialog.InputSDialog;
-import smith.lib.alerts.dialog.LoadingSDialog;
-import smith.lib.alerts.dialog.MenuSDialog;
-import smith.lib.alerts.dialog.MultiSelectSDialog;
-import smith.lib.alerts.dialog.ProgressSDialog;
-import smith.lib.alerts.dialog.SDialog;
-import smith.lib.alerts.dialog.SingleSelectSDialog;
-import smith.lib.alerts.dialog.SliderSDialog;
-import smith.lib.alerts.dialog.callbacks.OnBiometricAuthCallback;
-import smith.lib.alerts.dialog.callbacks.OnProgressCallBack;
-import smith.lib.alerts.dialog.utils.MenuSDialogItem;
+import java.util.*;
+import smith.lib.alerts.dialog.*;
+import smith.lib.alerts.dialog.callbacks.*;
+import smith.lib.alerts.dialog.utils.*;
 
 public class MainActivity extends AppCompatActivity {
     int p = 0;
@@ -86,15 +66,15 @@ public class MainActivity extends AppCompatActivity {
         sdialog.setTheme(SDialog.THEME_BY_SYSTEM);
         sdialog.setCancelable(true);
         sdialog.setMaxHeight(150);
-        sdialog.setOnDismissCallBack(() -> Toast.makeText(this, "onDismiss", Toast.LENGTH_SHORT).show());
+        sdialog.setOnDismissCallback(() -> Toast.makeText(this, "onDismiss", Toast.LENGTH_SHORT).show());
         sdialog.show();
     }
 
     public void custom(View v) {
         CustomSDialog sdialog = new CustomSDialog(this, R.layout.activity_main);
         sdialog.setCancelable(true);
-        sdialog.setOnDismissCallBack(() -> Toast.makeText(this, "onDismiss", Toast.LENGTH_SHORT).show());
-        sdialog.setOnBindViewCallBack(customView -> {
+        sdialog.setOnDismissCallback(() -> Toast.makeText(this, "onDismiss", Toast.LENGTH_SHORT).show());
+        sdialog.setOnBindViewCallback(customView -> {
             // dialog logic here
         });
         sdialog.show();
@@ -126,7 +106,7 @@ public class MainActivity extends AppCompatActivity {
         sDialog.setMaxFailureCount(3);
         sDialog.setErrorText("Failed to recognise fingerprint. Try again!");
         sDialog.setSuccessText("Fingerprint recognised!");
-        sDialog.setOnBiometricAuthCallBack(new OnBiometricAuthCallback() {
+        sDialog.setOnBiometricAuthCallback(new OnBiometricAuthCallback() {
             @Override
             public void onSuccess() {
                 Toast.makeText(MainActivity.this, "Success read fingerprint", Toast.LENGTH_SHORT).show();
@@ -156,7 +136,7 @@ public class MainActivity extends AppCompatActivity {
         sdialog.setInputFieldHint("Your Name");
         sdialog.setPositiveButtonAction("Save", inputText -> Toast.makeText(this, inputText, Toast.LENGTH_SHORT).show());
         sdialog.setNegativeButtonText("Close");
-        sdialog.setOnDismissCallBack(() -> Toast.makeText(this, "onDismiss", Toast.LENGTH_SHORT).show());
+        sdialog.setOnDismissCallback(() -> Toast.makeText(this, "onDismiss", Toast.LENGTH_SHORT).show());
         sdialog.show();
     }
 
@@ -175,7 +155,7 @@ public class MainActivity extends AppCompatActivity {
         sdialog.addItemsList(items);
         sdialog.addItem(R.drawable.ok_img, getString(R.string.app_name));
 
-        sdialog.setOnItemClickCallBack((index, item) -> Toast.makeText(this, index + " " + (item.getTitle()), Toast.LENGTH_SHORT).show());
+        sdialog.setOnItemClickCallback((index, item) -> Toast.makeText(this, index + " " + (item.getTitle()), Toast.LENGTH_SHORT).show());
 //        sdialog.removeItem(2);
         sdialog.show();
     }
@@ -186,7 +166,7 @@ public class MainActivity extends AppCompatActivity {
         sdialog.setText("Please wait a second...");
         sdialog.setAccentColor(0xFFAD97BE);
         sdialog.setTheme(SDialog.THEME_BY_SYSTEM);
-        sdialog.setOnDismissCallBack(() -> Toast.makeText(this, "onDismiss", Toast.LENGTH_SHORT).show());
+        sdialog.setOnDismissCallback(() -> Toast.makeText(this, "onDismiss", Toast.LENGTH_SHORT).show());
         sdialog.show(6 * 1000);
     }
 
@@ -229,7 +209,7 @@ public class MainActivity extends AppCompatActivity {
         sdialog.setMin(0);
         sdialog.setTitle("Downloading Files");
         sdialog.setText("Gathering Resources...");
-        sdialog.setOnProgressCallBack(new OnProgressCallBack() {
+        sdialog.setOnProgressCallback(new OnProgressCallback() {
             @Override
             public void onProgress(int progress, int percent) {
                 if (percent > 0 && percent <= 20) sdialog.setText("Gathering Resources...");
@@ -261,7 +241,7 @@ public class MainActivity extends AppCompatActivity {
             });
         }};
         timer = new Timer();
-        timer.scheduleAtFixedRate(task, 0, 100);
+        timer.schedule(task, 0, 100);
     }
 
     public void single(View v) {
@@ -278,7 +258,7 @@ public class MainActivity extends AppCompatActivity {
 
         sdialog.setCheckedItem(2);
 
-        sdialog.setOnSingleSelectCallBack((itemId, itemText) -> Toast.makeText(this, itemId + " " + itemText, Toast.LENGTH_SHORT).show());
+        sdialog.setOnSingleSelectCallback((itemId, itemText) -> Toast.makeText(this, itemId + " " + itemText, Toast.LENGTH_SHORT).show());
 
         sdialog.show();
     }

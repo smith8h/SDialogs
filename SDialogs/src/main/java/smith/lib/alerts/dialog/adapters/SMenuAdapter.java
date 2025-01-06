@@ -54,7 +54,7 @@ public class SMenuAdapter extends RecyclerView.Adapter<SMenuAdapter.ViewHolder> 
     @SuppressLint("InflateParams")
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.sitem_menu, null);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.sitem_menu, parent, false);
         view.setLayoutParams(new RecyclerView.LayoutParams(RecyclerView.LayoutParams.WRAP_CONTENT,
             RecyclerView.LayoutParams.WRAP_CONTENT));
         return new ViewHolder(view);
@@ -71,7 +71,7 @@ public class SMenuAdapter extends RecyclerView.Adapter<SMenuAdapter.ViewHolder> 
         holder.text.setTextColor(sdialog.getAccentColor());
 
         holder.main.setOnClickListener(v -> {
-            if (callback != null) callback.onItemClick(p, item);
+            if (callback != null) callback.onItemClick(position, item);
             sdialog.dismiss();
         });
     }

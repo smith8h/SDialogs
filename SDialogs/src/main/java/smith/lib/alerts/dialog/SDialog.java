@@ -119,7 +119,7 @@ public class SDialog {
      *
      * @param callback {@link OnDismissCallback} interface.
      */
-    public void setOnDismissCallBack(OnDismissCallback callback) {
+    public void setOnDismissCallback(OnDismissCallback callback) {
         this.dismissCallback = callback;
         alertdialog.setOnDismissListener(dialogInterface -> callback.onDismiss());
     }

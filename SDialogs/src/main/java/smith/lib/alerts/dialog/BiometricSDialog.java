@@ -194,7 +194,7 @@ public class BiometricSDialog extends SDialog {
      * {@link OnBiometricAuthCallback}.
      * @param callBack the callback using {@link OnBiometricAuthCallback}.
      */
-    public void setOnBiometricAuthCallBack(OnBiometricAuthCallback callBack) {
+    public void setOnBiometricAuthCallback(OnBiometricAuthCallback callBack) {
         this.callBack = callBack;
     }
 
@@ -227,7 +227,7 @@ public class BiometricSDialog extends SDialog {
     }
 
     @Override
-    public void setOnDismissCallBack(OnDismissCallback callback) {
+    public void setOnDismissCallback(OnDismissCallback callback) {
         this.dismissCallback = callback;
         alertdialog.setOnDismissListener(dialog -> {
             if (auth != null) auth.cancelSignal();

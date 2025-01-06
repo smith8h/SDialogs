@@ -63,7 +63,7 @@ public class CustomSDialog extends SDialog {
      * Set the callback to interact with the dialog onBindingView of the SDialog.
      * @param callback On bind view callback using {@link OnBindCustomViewCallback}
      */
-    public void setOnBindViewCallBack(@NonNull OnBindCustomViewCallback callback) {
+    public void setOnBindViewCallback(@NonNull OnBindCustomViewCallback callback) {
         callback.onBindCustomView(view);
     }
 
