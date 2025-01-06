@@ -3,8 +3,8 @@ plugins {
     id 'maven-publish'
 }
 
-var versonCode = 5
-var versonName = "4.4.0"
+var versonCode = 6
+var versonName = "4.5.0"
 var gropId = "smith.lib"
 var artifctId = "sdialogs"
 
