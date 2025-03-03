@@ -36,16 +36,16 @@ import java.util.Objects;
 
 import smith.lib.alerts.dialog.R;
 import smith.lib.alerts.dialog.SingleSelectSDialog;
-import smith.lib.alerts.dialog.callbacks.OnSingleSelectCallBack;
+import smith.lib.alerts.dialog.callbacks.OnSingleSelectCallback;
 
 @RestrictTo(RestrictTo.Scope.LIBRARY)
 public class SSingleSelectAdapter extends RecyclerView.Adapter<SSingleSelectAdapter.ViewHolder> {
 
     private final List<Map<String, Object>> data;
-    private final OnSingleSelectCallBack callback;
+    private final OnSingleSelectCallback callback;
     private final SingleSelectSDialog sdialog;
 
-    public SSingleSelectAdapter(List<Map<String, Object>> data, OnSingleSelectCallBack callback, SingleSelectSDialog sdialog) {
+    public SSingleSelectAdapter(List<Map<String, Object>> data, OnSingleSelectCallback callback, SingleSelectSDialog sdialog) {
         this.data = data;
         this.callback = callback;
         this.sdialog = sdialog;

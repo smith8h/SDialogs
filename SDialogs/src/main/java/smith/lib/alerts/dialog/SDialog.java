@@ -27,7 +27,7 @@ import android.view.*;
 import android.widget.*;
 import com.google.android.material.slider.Slider;
 import com.google.android.material.textfield.*;
-import smith.lib.alerts.dialog.callbacks.OnDismissCallBack;
+import smith.lib.alerts.dialog.callbacks.OnDismissCallback;
 import smith.lib.alerts.dialog.utils.SDialogUtils;
 import smith.lib.views.recyclerview.SRecyclerView;
 import androidx.annotation.*;
@@ -49,7 +49,7 @@ public class SDialog {
     protected DialogBinding b;
     protected SDialogUtils utils;
 
-    protected OnDismissCallBack dismissCallback;
+    protected OnDismissCallback dismissCallback;
 
     protected int iconColor;
     protected int titleColor;
@@ -84,9 +84,9 @@ public class SDialog {
     /**
      * OnDismissCallBack triggered whenever the sdialog is dismissed.
      *
-     * @param callback {@link OnDismissCallBack} interface.
+     * @param callback {@link OnDismissCallback} interface.
      */
-    public void setOnDismissCallBack(OnDismissCallBack callback) {
+    public void setOnDismissCallback(OnDismissCallback callback) {
         this.dismissCallback = callback;
         alertdialog.setOnDismissListener(dialogInterface -> callback.onDismiss());
     }

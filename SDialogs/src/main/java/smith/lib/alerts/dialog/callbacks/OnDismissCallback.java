@@ -19,14 +19,12 @@
 package smith.lib.alerts.dialog.callbacks;
 
 /**
- * On feedback callback for FeedbackSDialog.
+ * On dismiss callback useful for dismissing SDialogs.
  */
 @FunctionalInterface
-public interface OnFeedbackSubmitCallBack {
+public interface OnDismissCallback {
     /**
-     * triggered when clicking on feedback buttons.
-     *
-     * @param isLiked returns true if user hit the like button and false if hitting dislike button.
+     * Triggered whenever the SDialogs are dismissed.
      */
-    void onSubmit(Boolean isLiked, String feedbackText);
+    void onDismiss();
 }

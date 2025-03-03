@@ -29,13 +29,11 @@ import androidx.annotation.StringRes;
 import androidx.recyclerview.widget.*;
 import java.util.*;
 import smith.lib.alerts.dialog.adapters.SMultiSelectAdapter;
-import smith.lib.alerts.dialog.callbacks.OnMultiSelectCallBack;
-import smith.lib.alerts.dialog.utils.SDialogUtils;
+import smith.lib.alerts.dialog.callbacks.OnMultiSelectCallback;
 
 /**
  * The beautiful and most functional class of SDialog lib.
  * this class create an items with checkboxes SDialogs that allow the user to select multiple items.
- * @since 1.0
  */
 @SuppressWarnings({"all"})
 public class MultiSelectSDialog extends SDialog {
@@ -115,9 +113,9 @@ public class MultiSelectSDialog extends SDialog {
     /**
      * Set the text to be displayed on positive button.
      * @param text as {@link String} text.
-     * @param callback a callback using {@link OnMultiSelectCallBack}
+     * @param callback a callback using {@link OnMultiSelectCallback}
      */
-    public void setPositiveButton(String text, OnMultiSelectCallBack callback) {
+    public void setPositiveButton(String text, OnMultiSelectCallback callback) {
          b.holder.setVisibility(View.VISIBLE);
          b.positive.setText(text);
          b.positive.setOnClickListener(v-> {
@@ -134,9 +132,9 @@ public class MultiSelectSDialog extends SDialog {
      */
     public void addItem(int id, String text, boolean checked) {
         item = new HashMap<>();
-        item.put(SDialogUtils.KEY_ITEM_ID, id);
-        item.put(SDialogUtils.KEY_ITEM_TEXT, text);
-        item.put(SDialogUtils.KEY_ITEM_CHECKED, checked);
+        item.put(KEY_ITEM_ID, id);
+        item.put(KEY_ITEM_TEXT, text);
+        item.put(KEY_ITEM_CHECKED, checked);
         data.add(item);
         update();
     }
@@ -147,11 +145,11 @@ public class MultiSelectSDialog extends SDialog {
      */
     public void setCheckedItem(int id) {
         for (int i = 0; i < data.size(); i++) {
-            int ids = (int) data.get(i).get(SDialogUtils.KEY_ITEM_ID);
+            int ids = (int) data.get(i).get(KEY_ITEM_ID);
             if (ids == id) {
                 item = data.get(i);
                 data.remove(i);
-                item.put(SDialogUtils.KEY_ITEM_CHECKED, true);
+                item.put(KEY_ITEM_CHECKED, true);
                 data.add(i, item);
                 break;
             }

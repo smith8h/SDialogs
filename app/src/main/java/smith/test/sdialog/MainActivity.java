@@ -63,34 +63,21 @@ public class MainActivity extends AppCompatActivity {
             sdialog.dismiss();
         });
         sdialog.setAccentColor(0xFFAD97BE);
-        sdialog.setTheme(SDialogUtils.THEME_BY_SYSTEM);
+        sdialog.setTheme(SDialog.THEME_BY_SYSTEM);
         sdialog.setCancelable(true);
         sdialog.setMaxHeight(150);
-        sdialog.setOnDismissCallBack(() -> Toast.makeText(this, "onDismiss", Toast.LENGTH_SHORT).show());
+        sdialog.setOnDismissCallback(() -> Toast.makeText(this, "onDismiss", Toast.LENGTH_SHORT).show());
         sdialog.show();
     }
 
     public void custom(View v) {
         CustomSDialog sdialog = new CustomSDialog(this, R.layout.activity_main);
         sdialog.setCancelable(true);
-        sdialog.setOnDismissCallBack(() -> Toast.makeText(this, "onDismiss", Toast.LENGTH_SHORT).show());
-        sdialog.setOnBindViewCallBack(customView -> {
+        sdialog.setOnDismissCallback(() -> Toast.makeText(this, "onDismiss", Toast.LENGTH_SHORT).show());
+        sdialog.setOnBindViewCallback(customView -> {
             // dialog logic here
         });
         sdialog.show();
-    }
-
-    public void date(View view) {
-        DatePickerSDialog sDialog = new DatePickerSDialog(this);
-        sDialog.setTheme(SDialogUtils.THEME_BY_SYSTEM);
-        sDialog.setAccentColor(0xFFE687A3);
-        sDialog.setIconResource(R.drawable.ok_img);
-        sDialog.setTitle("Pick Date");
-        sDialog.setPickerTitles("Days", "Months", "Years");
-        sDialog.setDaysAndMonthsFormat(SDateFormat.DAYS.D, SDateFormat.MONTHS.MMMM);
-        sDialog.setOnDatePickedCallBack((pickedDate, pickedDateString) -> {
-
-        });
     }
 
     public void feedback(View view) {
@@ -99,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
         sDialog.setText("Your feedback is valuable, please rate our work.");
         sDialog.setAccentColor(0xFFAD97BE);
         sDialog.setIconResource(R.drawable.ok_img);
-        sDialog.setTheme(SDialogUtils.THEME_BY_SYSTEM);
+        sDialog.setTheme(SDialog.THEME_BY_SYSTEM);
         sDialog.setInputFieldHint("Feedback...");
         sDialog.setSubmitFeedBackButton("Submit Feedback", (isLiked, feedbackText) ->
                 Toast.makeText(this, "isLiked " + isLiked, Toast.LENGTH_SHORT).show()
@@ -109,8 +96,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void finger(View view) {
         BiometricSDialog sDialog = new BiometricSDialog(this);
-        sDialog.setTheme(SDialogUtils.THEME_LIGHT);
-        sDialog.setAccentColor(SDialogUtils.COLOR_DEFAULT);
+        sDialog.setTheme(SDialog.THEME_LIGHT);
+        sDialog.setAccentColor(SDialog.COLOR_DEFAULT);
         sDialog.setIconResource(R.drawable.lock);
         sDialog.setTitle("Fingerprint Confirmation");
         sDialog.setText("Confirm your fingerprint to proceed further to the next payment step.");
@@ -119,7 +106,7 @@ public class MainActivity extends AppCompatActivity {
         sDialog.setMaxFailureCount(3);
         sDialog.setErrorText("Failed to recognise fingerprint. Try again!");
         sDialog.setSuccessText("Fingerprint recognised!");
-        sDialog.setOnBiometricAuthCallBack(new OnBiometricAuthCallBack() {
+        sDialog.setOnBiometricAuthCallback(new OnBiometricAuthCallback() {
             @Override
             public void onSuccess() {
                 Toast.makeText(MainActivity.this, "Success read fingerprint", Toast.LENGTH_SHORT).show();
@@ -141,7 +128,7 @@ public class MainActivity extends AppCompatActivity {
     public void input(View v) {
         InputSDialog sdialog = new InputSDialog(this);
         sdialog.setAccentColor(0xFFAD97BE);
-        sdialog.setTheme(SDialogUtils.THEME_BY_SYSTEM);
+        sdialog.setTheme(SDialog.THEME_BY_SYSTEM);
         sdialog.setCancelable(false);
         sdialog.setIconResource(R.drawable.ok_img);
         sdialog.setTitle("Input Your Name");
@@ -149,14 +136,14 @@ public class MainActivity extends AppCompatActivity {
         sdialog.setInputFieldHint("Your Name");
         sdialog.setPositiveButtonAction("Save", inputText -> Toast.makeText(this, inputText, Toast.LENGTH_SHORT).show());
         sdialog.setNegativeButtonText("Close");
-        sdialog.setOnDismissCallBack(() -> Toast.makeText(this, "onDismiss", Toast.LENGTH_SHORT).show());
+        sdialog.setOnDismissCallback(() -> Toast.makeText(this, "onDismiss", Toast.LENGTH_SHORT).show());
         sdialog.show();
     }
 
     public void items(View v) {
         MenuSDialog sdialog = new MenuSDialog(this);
-        sdialog.setAccentColor(SDialogUtils.COLOR_DEFAULT);
-        sdialog.setTheme(SDialogUtils.THEME_BY_SYSTEM);
+        sdialog.setAccentColor(SDialog.COLOR_DEFAULT);
+        sdialog.setTheme(SDialog.THEME_BY_SYSTEM);
         sdialog.setMaxHeight(360);
         sdialog.setTitle("Sequence Options");
 
@@ -168,7 +155,7 @@ public class MainActivity extends AppCompatActivity {
         sdialog.addItemsList(items);
         sdialog.addItem(R.drawable.ok_img, getString(R.string.app_name));
 
-        sdialog.setOnItemClickCallBack((index, item) -> Toast.makeText(this, index + " " + (item.getTitle()), Toast.LENGTH_SHORT).show());
+        sdialog.setOnItemClickCallback((index, item) -> Toast.makeText(this, index + " " + (item.getTitle()), Toast.LENGTH_SHORT).show());
 //        sdialog.removeItem(2);
         sdialog.show();
     }
@@ -178,15 +165,15 @@ public class MainActivity extends AppCompatActivity {
         sdialog.setTitle("Loading SDialog!");
         sdialog.setText("Please wait a second...");
         sdialog.setAccentColor(0xFFAD97BE);
-        sdialog.setTheme(SDialogUtils.THEME_BY_SYSTEM);
-        sdialog.setOnDismissCallBack(() -> Toast.makeText(this, "onDismiss", Toast.LENGTH_SHORT).show());
+        sdialog.setTheme(SDialog.THEME_BY_SYSTEM);
+        sdialog.setOnDismissCallback(() -> Toast.makeText(this, "onDismiss", Toast.LENGTH_SHORT).show());
         sdialog.show(6 * 1000);
     }
 
     public void multi(View v) {
         MultiSelectSDialog sdialog = new MultiSelectSDialog(this);
-        sdialog.setAccentColor(SDialogUtils.COLOR_DEFAULT);
-        sdialog.setTheme(SDialogUtils.THEME_BY_SYSTEM);
+        sdialog.setAccentColor(SDialog.COLOR_DEFAULT);
+        sdialog.setTheme(SDialog.THEME_BY_SYSTEM);
         sdialog.setTitle("Search Filters");
         sdialog.setCancelable(true);
         sdialog.setMaxHeight(150);
@@ -199,11 +186,11 @@ public class MainActivity extends AppCompatActivity {
             StringBuilder builder = new StringBuilder();
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
                 itemsList.forEach(item -> {
-                    builder.append(item.get(SDialogUtils.KEY_ITEM_ID));
+                    builder.append(item.get(SDialog.KEY_ITEM_ID));
                     builder.append(" ");
-                    builder.append(item.get(SDialogUtils.KEY_ITEM_TEXT));
+                    builder.append(item.get(SDialog.KEY_ITEM_TEXT));
                     builder.append(" ");
-                    builder.append(item.get(SDialogUtils.KEY_ITEM_CHECKED));
+                    builder.append(item.get(SDialog.KEY_ITEM_CHECKED));
                     builder.append("\n");
                 });
             }
@@ -216,13 +203,13 @@ public class MainActivity extends AppCompatActivity {
     public void progress(View v) {
         ProgressSDialog sdialog = new ProgressSDialog(this);
         sdialog.setAccentColor(0xFFAD97BE);
-        sdialog.setTheme(SDialogUtils.THEME_BY_SYSTEM);
+        sdialog.setTheme(SDialog.THEME_BY_SYSTEM);
         sdialog.setIconResource(R.drawable.ok_img);
         sdialog.setMax(200);
         sdialog.setMin(0);
         sdialog.setTitle("Downloading Files");
         sdialog.setText("Gathering Resources...");
-        sdialog.setOnProgressCallBack(new OnProgressCallBack() {
+        sdialog.setOnProgressCallback(new OnProgressCallback() {
             @Override
             public void onProgress(int progress, int percent) {
                 if (percent > 0 && percent <= 20) sdialog.setText("Gathering Resources...");
@@ -254,13 +241,13 @@ public class MainActivity extends AppCompatActivity {
             });
         }};
         timer = new Timer();
-        timer.scheduleAtFixedRate(task, 0, 100);
+        timer.schedule(task, 0, 100);
     }
 
     public void single(View v) {
         SingleSelectSDialog sdialog = new SingleSelectSDialog(this);
-        sdialog.setAccentColor(SDialogUtils.COLOR_DEFAULT);
-        sdialog.setTheme(SDialogUtils.THEME_BY_SYSTEM);
+        sdialog.setAccentColor(SDialog.COLOR_DEFAULT);
+        sdialog.setTheme(SDialog.THEME_BY_SYSTEM);
         sdialog.setTitle("Notifications Sounds");
         sdialog.setCancelable(true);
         sdialog.setMaxHeight(150);
@@ -271,14 +258,14 @@ public class MainActivity extends AppCompatActivity {
 
         sdialog.setCheckedItem(2);
 
-        sdialog.setOnSingleSelectCallBack((itemId, itemText) -> Toast.makeText(this, itemId + " " + itemText, Toast.LENGTH_SHORT).show());
+        sdialog.setOnSingleSelectCallback((itemId, itemText) -> Toast.makeText(this, itemId + " " + itemText, Toast.LENGTH_SHORT).show());
 
         sdialog.show();
     }
 
     public void slider(View v) {
     	SliderSDialog d = new SliderSDialog(this);
-        d.setAccentColor(SDialogUtils.COLOR_DEFAULT);
+        d.setAccentColor(SDialog.COLOR_DEFAULT);
         d.setCancelable(false);
         d.setIconResource(R.drawable.ok_img);
         d.setMax(120);
@@ -286,7 +273,7 @@ public class MainActivity extends AppCompatActivity {
         d.setStepBy(3);
         d.setNegativeButtonText("Cancel");
         d.setPositiveButtonAction("Confirm", value -> Toast.makeText(this, "" + value, Toast.LENGTH_SHORT).show());
-        d.setTheme(SDialogUtils.THEME_DARK);
+        d.setTheme(SDialog.THEME_DARK);
         d.setTitle("Confirm Your Age");
         d.setText("Select the distance between you and the people you want to met.");
         d.show();

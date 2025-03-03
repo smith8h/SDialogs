@@ -30,20 +30,18 @@ import androidx.annotation.StringRes;
 import androidx.recyclerview.widget.*;
 import java.util.*;
 import smith.lib.alerts.dialog.adapters.SSingleSelectAdapter;
-import smith.lib.alerts.dialog.callbacks.OnSingleSelectCallBack;
-import smith.lib.alerts.dialog.utils.SDialogUtils;
+import smith.lib.alerts.dialog.callbacks.OnSingleSelectCallback;
 
 /**
  * The beautiful and stunning class of SDialog lib.
  * this class create an alert SDialogs that alerts the user what going on.
- * @since 1.0
  */
 @SuppressWarnings({"all"})
 public class SingleSelectSDialog extends SDialog {
 
     private final List<Map<String, Object>> data = new ArrayList<>();
     private Map<String, Object> item = new HashMap<>();
-    private OnSingleSelectCallBack callback;
+    private OnSingleSelectCallback callback;
     private int maxHeight;
 
     /**
@@ -117,9 +115,9 @@ public class SingleSelectSDialog extends SDialog {
 
     /**
      * Set a functional interface to get the chosen items when selected.
-     * @param callback a callback using {@link OnSingleSelectCallBack}.
+     * @param callback a callback using {@link OnSingleSelectCallback}.
      */
-    public void setOnSingleSelectCallBack(OnSingleSelectCallBack callback) {
+    public void setOnSingleSelectCallback(OnSingleSelectCallback callback) {
          this.callback = callback;
     }
 
@@ -130,9 +128,9 @@ public class SingleSelectSDialog extends SDialog {
      */
     public void addItem(int id, String text) {
         item = new HashMap<>();
-        item.put(SDialogUtils.KEY_ITEM_ID, id);
-        item.put(SDialogUtils.KEY_ITEM_TEXT, text);
-        item.put(SDialogUtils.KEY_ITEM_CHECKED, false);
+        item.put(KEY_ITEM_ID, id);
+        item.put(KEY_ITEM_TEXT, text);
+        item.put(KEY_ITEM_CHECKED, false);
         data.add(item);
         update();
     }
@@ -143,15 +141,15 @@ public class SingleSelectSDialog extends SDialog {
      */
     public void setCheckedItem(int id) {
         for (int i = 0; i < data.size(); i++) {
-            if (Objects.equals(data.get(i).get(SDialogUtils.KEY_ITEM_ID), id)) {
+            if (Objects.equals(data.get(i).get(KEY_ITEM_ID), id)) {
                 item = data.get(i);
                 data.remove(item);
-                item.put(SDialogUtils.KEY_ITEM_CHECKED, true);
+                item.put(KEY_ITEM_CHECKED, true);
                 data.add(i, item);
             } else {
                 item = data.get(i);
                 data.remove(item);
-                item.put(SDialogUtils.KEY_ITEM_CHECKED, false);
+                item.put(KEY_ITEM_CHECKED, false);
                 data.add(i, item);
             }
         }

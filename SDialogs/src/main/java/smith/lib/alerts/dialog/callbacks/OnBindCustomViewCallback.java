@@ -18,16 +18,16 @@
 
 package smith.lib.alerts.dialog.callbacks;
 
+import android.view.View;
+
 /**
- * Single item selection callback to get the value selected.
+ * Binding view callback to do logic when attaching a view to CustomSDialog.
  */
 @FunctionalInterface
-public interface OnSingleSelectCallBack {
+public interface OnBindCustomViewCallback {
     /**
-     * triggered when selecting an item from the selection.
-     *
-     * @param itemId   the id of that selected item.
-     * @param itemText the text of that selected item.
+     * Triggered whenever a new view/layout been attached to CustomSDialog.
+     * @param customView the view that been attached to th SDialog.
      */
-    void onSelect(int itemId, String itemText);
+    void onBindCustomView(View customView);
 }

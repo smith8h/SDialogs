@@ -21,7 +21,7 @@ package smith.lib.alerts.dialog.callbacks;
 /**
  * Set a functional interface to interact with biometric hardware results.
  */
-public interface OnBiometricAuthCallBack {
+public interface OnBiometricAuthCallback {
 
     /**
      * Triggered when the biometric response is complete successfully.

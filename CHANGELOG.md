@@ -1,5 +1,15 @@
 # SDialog Changelog
 
+## 4.5
+> (Jan 5, 2025)
+
+### New Features & Improvements
+
+- Add new `BiometricSDialog` for fingerprint security.
+- Improvement in biometric engine.
+
+**Full Changelog**: [4.3...4.4](https://github.com/smith8h/SDialogs/compare/4.4...4.5)
+
 ## 4.4  
 > (Sep 12, 2023)
 

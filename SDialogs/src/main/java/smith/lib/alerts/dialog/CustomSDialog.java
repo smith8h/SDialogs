@@ -24,7 +24,7 @@ import android.view.View;
 
 import androidx.annotation.LayoutRes;
 import androidx.annotation.NonNull;
-import smith.lib.alerts.dialog.callbacks.OnBindCustomViewCallBack;
+import smith.lib.alerts.dialog.callbacks.OnBindCustomViewCallback;
 
 /**
  * The fully customizable class of SDialog lib.
@@ -63,9 +63,9 @@ public class CustomSDialog extends SDialog {
 
     /**
      * Set the callback to interact with the dialog onBindingView of the SDialog.
-     * @param callback On bind view callback using {@link OnBindCustomViewCallBack}
+     * @param callback On bind view callback using {@link OnBindCustomViewCallback}
      */
-    public void setOnBindViewCallBack(@NonNull OnBindCustomViewCallBack callback) {
+    public void setOnBindViewCallback(@NonNull OnBindCustomViewCallback callback) {
         callback.onBindCustomView(view);
     }
 
