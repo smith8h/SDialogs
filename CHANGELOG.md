@@ -8,7 +8,7 @@
 - Add new `BiometricSDialog` for fingerprint security.
 - Improvement in biometric engine.
 
-**Full Changelog**: [4.3...4.4](https://github.com/smith8h/SDialogs/compare/4.4...4.5)
+**Full Changelog**: [4.4...4.5](https://github.com/smith8h/SDialogs/compare/4.4...4.5)
 
 ## 4.4  
 > (Sep 12, 2023)
